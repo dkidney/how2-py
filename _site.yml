@@ -47,6 +47,8 @@ navbar:
         - text: "---------"
         - text: "sklearn"
           href: sklearn.html
+        - text: "keras"
+          href: keras.html
         - text: "---------"
         - text: "matplotlib"
           href: todo.html

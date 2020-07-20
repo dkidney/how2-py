@@ -1,0 +1,24 @@
+---
+title: object oriented programming
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+## Glossary
+
+term | description
+------------- | -------------
+attribute | *todo*
+class | *todo*
+constructor | *todo*
+instance | *todo*
+instance variable | *todo*
+method | *todo*
+object | *todo*
+state | *todo*
+

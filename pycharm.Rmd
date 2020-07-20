@@ -1,0 +1,151 @@
+---
+title: pycharm
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+> an integrated development environment specifically for python - developed by the Czech company JetBrains - the community edition provides an intelligent editor, graphical debugger, refactorings, code inspections and version control integration
+
+*********************************************************************
+
+* https://www.jetbrains.com/help/pycharm/meet-pycharm.html  
+* https://realpython.com/pycharm-guide/  
+* https://www.jetbrains.com/pycharm/guide/playlists/42/  
+
+
+*********************************************************************
+
+## installation 
+
+```sh
+brew cask install pycharm-ce
+```
+
+*********************************************************************
+
+## project setup
+
+### make a new project
+
+### set the interpreter
+
+#### python console
+
+#### run configurations
+
+#### terminal
+
+*********************************************************************
+
+## customisation
+
+### keyboard shortcuts
+
+### appearance
+
+### plugins
+
+*********************************************************************
+
+## todo
+
+### make a new py file
+
+within the project, right click on the project folder and then click `New > Python file`
+
+### set the interpreter 
+
+* set the **project** interpreter  
+* this will be the interpreter used in the pycharm **python console**  
+* e.g. to set the interpreter to an existing conda env
+
+- `PyCharm >`  
+- `Preferences >`  
+- `Project: [my project] >`  
+- `Project Interpreter >`  
+- `Project Interpreter... >`  
+- `[Settings wheel] >`  
+- `Add... >`  
+- `Conda Environment >`  
+- `Existing Environment >`  
+- `Interpreter`  
+- then choose `make available to all projects` (if you want it to be)
+- *Dont forget to `Apply` before clicking `Ok`*
+
+things to note:
+
+* if you change the project interpreter you may need to close and re-launch the python console for the change to take effect:  
+  * close the console, then click `Tools > Pycharm console...`  
+
+### run script
+
+`Run > Run > `
+
+then either:
+
+* `select file from drop down` to use existing interpreter etc, or  
+* `edit configurations` to change interpreter and/or command args etc.  
+
+things to note:
+
+* when you run a script it gets run in a new terminal tab called `Run`  
+* this is *not* the same thing as the pycharm python console  
+* you can change the interpreter used in the run terminal from the `edit configurations` window  
+* changing this will not change the interpreter used in the pycharm python console, although it's probably a good idea to use the same interpreter for both  
+
+
+*********************************************************************
+
+## switching project
+
+`File > Open Recent`
+
+
+*********************************************************************
+
+## customisation
+
+### shortcuts
+
+- `PyCharm >`  
+- `Preferences >`  
+- `Appearances & Behaviour >`  
+- `Keymap`  
+
+### misc
+
+shortcut  | action
+------------- | -------------
+`CTRL` `R` | run script from terminal
+`CTRL` `SPACE` | help with code completion
+`CTRL` `UP/DOWN` | move between methods in editor
+`CTRL` + `OPTION` + `I` | auto indent selection
+`CMD` `/` | auto comment/uncomment lines
+`CMD` `,` | open preferences
+`CMD` `B` | jump to function definition
+`CMD` `E` | opens a popup of recently visited files
+`CMD` `P` | view parameter info
+`CMD` `SHIFT` `A` | open 'Find Action' utility
+`SHIFT` `OPTION` `E` | run line / selection in python console
+
+### code folding
+
+shortcut  | action
+------------- | -------------
+`CMD` `+` | expand section
+`CMD` `-` | collapse section 
+`SHIFT` `CMD` `+` | expand all sections
+`SHIFT` `CMD` `-` | collapse all sections
+
+
+*********************************************************************
+
+git integration
+
+themes & color schemes
+

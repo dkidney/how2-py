@@ -9,11 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Darren Kidney" />
 
-<meta name="date" content="2020-07-20" />
 
-<title>How to do stuff in python</title>
+<title>pycharm</title>
 
 <script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -31,6 +29,93 @@
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
 
 
 <style type="text/css">
@@ -493,19 +578,236 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">How to do stuff in python</h1>
-<h4 class="author">Darren Kidney</h4>
-<h4 class="date">20 Jul 2020</h4>
+<h1 class="title toc-ignore">pycharm</h1>
 
 </div>
 
 
 <hr />
-<div id="links" class="section level2">
-<h2>links</h2>
+<blockquote>
+<p>an integrated development environment specifically for python - developed by the Czech company JetBrains - the community edition provides an intelligent editor, graphical debugger, refactorings, code inspections and version control integration</p>
+</blockquote>
+<hr />
 <ul>
-<li>todo</li>
+<li><a href="https://www.jetbrains.com/help/pycharm/meet-pycharm.html" class="uri">https://www.jetbrains.com/help/pycharm/meet-pycharm.html</a><br />
+</li>
+<li><a href="https://realpython.com/pycharm-guide/" class="uri">https://realpython.com/pycharm-guide/</a><br />
+</li>
+<li><a href="https://www.jetbrains.com/pycharm/guide/playlists/42/" class="uri">https://www.jetbrains.com/pycharm/guide/playlists/42/</a></li>
 </ul>
+<hr />
+<div id="installation" class="section level2">
+<h2>installation</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">brew</span> cask install pycharm-ce</span></code></pre></div>
+<hr />
+</div>
+<div id="project-setup" class="section level2">
+<h2>project setup</h2>
+<div id="make-a-new-project" class="section level3">
+<h3>make a new project</h3>
+</div>
+<div id="set-the-interpreter" class="section level3">
+<h3>set the interpreter</h3>
+<div id="python-console" class="section level4">
+<h4>python console</h4>
+</div>
+<div id="run-configurations" class="section level4">
+<h4>run configurations</h4>
+</div>
+<div id="terminal" class="section level4">
+<h4>terminal</h4>
+<hr />
+</div>
+</div>
+</div>
+<div id="customisation" class="section level2">
+<h2>customisation</h2>
+<div id="keyboard-shortcuts" class="section level3">
+<h3>keyboard shortcuts</h3>
+</div>
+<div id="appearance" class="section level3">
+<h3>appearance</h3>
+</div>
+<div id="plugins" class="section level3">
+<h3>plugins</h3>
+<hr />
+</div>
+</div>
+<div id="todo" class="section level2">
+<h2>todo</h2>
+<div id="make-a-new-py-file" class="section level3">
+<h3>make a new py file</h3>
+<p>within the project, right click on the project folder and then click <code>New &gt; Python file</code></p>
+</div>
+<div id="set-the-interpreter-1" class="section level3">
+<h3>set the interpreter</h3>
+<ul>
+<li><p>set the <strong>project</strong> interpreter<br />
+</p></li>
+<li><p>this will be the interpreter used in the pycharm <strong>python console</strong><br />
+</p></li>
+<li><p>e.g. to set the interpreter to an existing conda env</p></li>
+<li><p><code>PyCharm &gt;</code><br />
+</p></li>
+<li><p><code>Preferences &gt;</code><br />
+</p></li>
+<li><p><code>Project: [my project] &gt;</code><br />
+</p></li>
+<li><p><code>Project Interpreter &gt;</code><br />
+</p></li>
+<li><p><code>Project Interpreter... &gt;</code><br />
+</p></li>
+<li><p><code>[Settings wheel] &gt;</code><br />
+</p></li>
+<li><p><code>Add... &gt;</code><br />
+</p></li>
+<li><p><code>Conda Environment &gt;</code><br />
+</p></li>
+<li><p><code>Existing Environment &gt;</code><br />
+</p></li>
+<li><p><code>Interpreter</code><br />
+</p></li>
+<li><p>then choose <code>make available to all projects</code> (if you want it to be)</p></li>
+<li><p><em>Dont forget to <code>Apply</code> before clicking <code>Ok</code></em></p></li>
+</ul>
+<p>things to note:</p>
+<ul>
+<li>if you change the project interpreter you may need to close and re-launch the python console for the change to take effect:
+<ul>
+<li>close the console, then click <code>Tools &gt; Pycharm console...</code></li>
+</ul></li>
+</ul>
+</div>
+<div id="run-script" class="section level3">
+<h3>run script</h3>
+<p><code>Run &gt; Run &gt;</code></p>
+<p>then either:</p>
+<ul>
+<li><code>select file from drop down</code> to use existing interpreter etc, or<br />
+</li>
+<li><code>edit configurations</code> to change interpreter and/or command args etc.</li>
+</ul>
+<p>things to note:</p>
+<ul>
+<li>when you run a script it gets run in a new terminal tab called <code>Run</code><br />
+</li>
+<li>this is <em>not</em> the same thing as the pycharm python console<br />
+</li>
+<li>you can change the interpreter used in the run terminal from the <code>edit configurations</code> window<br />
+</li>
+<li>changing this will not change the interpreter used in the pycharm python console, although it’s probably a good idea to use the same interpreter for both</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="switching-project" class="section level2">
+<h2>switching project</h2>
+<p><code>File &gt; Open Recent</code></p>
+<hr />
+</div>
+<div id="customisation-1" class="section level2">
+<h2>customisation</h2>
+<div id="shortcuts" class="section level3">
+<h3>shortcuts</h3>
+<ul>
+<li><code>PyCharm &gt;</code><br />
+</li>
+<li><code>Preferences &gt;</code><br />
+</li>
+<li><code>Appearances &amp; Behaviour &gt;</code><br />
+</li>
+<li><code>Keymap</code></li>
+</ul>
+</div>
+<div id="misc" class="section level3">
+<h3>misc</h3>
+<table>
+<thead>
+<tr class="header">
+<th>shortcut</th>
+<th>action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>CTRL</code> <code>R</code></td>
+<td>run script from terminal</td>
+</tr>
+<tr class="even">
+<td><code>CTRL</code> <code>SPACE</code></td>
+<td>help with code completion</td>
+</tr>
+<tr class="odd">
+<td><code>CTRL</code> <code>UP/DOWN</code></td>
+<td>move between methods in editor</td>
+</tr>
+<tr class="even">
+<td><code>CTRL</code> + <code>OPTION</code> + <code>I</code></td>
+<td>auto indent selection</td>
+</tr>
+<tr class="odd">
+<td><code>CMD</code> <code>/</code></td>
+<td>auto comment/uncomment lines</td>
+</tr>
+<tr class="even">
+<td><code>CMD</code> <code>,</code></td>
+<td>open preferences</td>
+</tr>
+<tr class="odd">
+<td><code>CMD</code> <code>B</code></td>
+<td>jump to function definition</td>
+</tr>
+<tr class="even">
+<td><code>CMD</code> <code>E</code></td>
+<td>opens a popup of recently visited files</td>
+</tr>
+<tr class="odd">
+<td><code>CMD</code> <code>P</code></td>
+<td>view parameter info</td>
+</tr>
+<tr class="even">
+<td><code>CMD</code> <code>SHIFT</code> <code>A</code></td>
+<td>open ‘Find Action’ utility</td>
+</tr>
+<tr class="odd">
+<td><code>SHIFT</code> <code>OPTION</code> <code>E</code></td>
+<td>run line / selection in python console</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="code-folding" class="section level3">
+<h3>code folding</h3>
+<table>
+<thead>
+<tr class="header">
+<th>shortcut</th>
+<th>action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>CMD</code> <code>+</code></td>
+<td>expand section</td>
+</tr>
+<tr class="even">
+<td><code>CMD</code> <code>-</code></td>
+<td>collapse section</td>
+</tr>
+<tr class="odd">
+<td><code>SHIFT</code> <code>CMD</code> <code>+</code></td>
+<td>expand all sections</td>
+</tr>
+<tr class="even">
+<td><code>SHIFT</code> <code>CMD</code> <code>-</code></td>
+<td>collapse all sections</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>git integration</p>
+<p>themes &amp; color schemes</p>
+</div>
 </div>
 
 
