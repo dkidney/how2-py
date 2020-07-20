@@ -1,0 +1,84 @@
+name: "how2-py"
+output_dir: "."
+# include: ["_knitr_config.R"]
+navbar:
+  title: "how2-py"
+  left:
+    - text: "Programming"
+      menu:
+        - text: "basics"
+          href: basics.html
+        - text: "---------"
+        - text: "strings"
+          href: todo.html
+        - text: "lists"
+          href: todo.html
+        - text: "dicts"
+          href: todo.html
+        - text: "tuples"
+          href: todo.html
+        - text: "---------"
+        - text: "files"
+          href: todo.html
+        - text: "exceptions"
+          href: todo.html
+        - text: "oop"
+          href: oop.html
+        - text: "scripting"
+          href: todo.html
+        - text: "tests"
+          href: todo.html
+    - text: "Standard libs"
+      menu:
+        - text: "datetime"
+          href: todo.html
+        - text: "json"
+          href: todo.html
+        - text: "random"
+          href: todo.html
+        - text: "re"
+          href: todo.html
+    - text: "DS libs"
+      menu:
+        - text: "numpy"
+          href: todo.html
+        - text: "pandas"
+          href: todo.html
+        - text: "---------"
+        - text: "sklearn"
+          href: sklearn.html
+        - text: "---------"
+        - text: "matplotlib"
+          href: todo.html
+        - text: "seaborn"
+          href: todo.html
+        - text: "---------"
+        - text: "boto3"
+          href: todo.html
+        - text: "hocon"
+          href: todo.html
+        - text: "xml"
+          href: todo.html
+    - text: "Managers and IDEs"
+      menu:
+        - text: "pip"
+          href: todo.html
+        - text: "conda"
+          href: todo.html
+        - text: "---------"
+        - text: "pyenv"
+          href: todo.html
+        - text: "venv"
+          href: todo.html
+        - text: "---------"
+        - text: "pycharm"
+          href: todo.html
+        - text: "jupyter"
+          href: todo.html
+        - text: "spyder"
+          href: todo.html
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/dkidney/how2-py
+    - icon: fa-linkedin fa-lg
+      href: https://uk.linkedin.com/in/darren-kidney-495b8a103/
