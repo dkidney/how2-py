@@ -11,7 +11,7 @@
 
 
 
-<title>seaborn</title>
+<title>jupyter</title>
 
 <script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -578,20 +578,242 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">seaborn</h1>
+<h1 class="title toc-ignore">jupyter</h1>
 
 </div>
 
 
 <hr />
+<blockquote>
+<p>an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text</p>
+</blockquote>
+<blockquote>
+<p>jupyter stands for julia, python, and r</p>
+</blockquote>
+<hr />
 <ul>
-<li><a href="https://www.datacamp.com/community/tutorials/seaborn-python-tutorial" class="uri">https://www.datacamp.com/community/tutorials/seaborn-python-tutorial</a></li>
+<li><a href="https://jupyter.org/" class="uri">https://jupyter.org/</a><br />
+</li>
+<li><a href="https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook" class="uri">https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook</a></li>
 </ul>
 <hr />
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-2"><a href="#cb1-2"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">7</span>]</span>
-<span id="cb1-3"><a href="#cb1-3"></a>sns.distplot(x)</span></code></pre></div>
-<p><img src="seaborn_files/figure-html/unnamed-chunk-1-1.svg" width="75%" style="display: block; margin: auto;" /></p>
+<div id="installation" class="section level2">
+<h2>installation</h2>
+<p>jupyter notebook is included in the anaconda distribution - see notes on <a href="https://dkidney.github.io/how2/conda.html">conda</a></p>
+<p>however, here are some options if you need to install it manaully:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">python3</span> -m pip install jupyter</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">python</span> -m pip install jupyter</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="ex">pip3</span> install jupyter</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="ex">pip</span> install jupyter</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="ex">conda</span> install jupyter</span></code></pre></div>
+<hr />
+</div>
+<div id="kernels" class="section level2">
+<h2>kernels</h2>
+<p>The ipython kernel is the python execution backend for jupyter</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># list all kernels</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="ex">jupyter</span> kernelspec list</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># e.g. add a new python 2 kernel using an existing conda environment</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="ex">conda</span> activate py2</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="ex">conda</span> install ipykernel</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="ex">conda</span> install jupyter <span class="co"># I had to use pip instead to get this to work for python 2.</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="ex">python</span> -m ipykernel install --user --name py2 --display-name <span class="st">&quot;py2&quot;</span> <span class="co"># manually register it</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co"># e.g. add a new python 2 kernel using pip</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="ex">python2</span> -m pip --version <span class="co"># need pip version &gt;= 9</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="ex">python2</span> -m pip install ipykernel</span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="ex">python2</span> -m ipykernel install --user</span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co"># delete a kernel</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="ex">jupyter</span> kernelspec uninstall unwanted-kernel</span></code></pre></div>
+<p>See which python you are using - i.e. the python associated with the kernel</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> sys</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="bu">print</span>(sys.executable)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="bu">print</span>(sys.version)</span></code></pre></div>
+<p>See which python <em>jupyter notebook was launched from</em> - this is <strong>not necessarily</strong> the same as the python associated with the kernel (unless the environment you launched from is also the environment associated with the kernel)</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># python 3</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> subprocess</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="bu">print</span>(subprocess.getoutput(<span class="st">&quot;which python&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># python 2</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> commands</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="bu">print</span>(commands.getoutput(<span class="st">&quot;which python&quot;</span>))</span></code></pre></div>
+<p>Things I’ve noticed:</p>
+<ul>
+<li><p>I’ve added two kernels - <code>py2</code> and <code>py3</code></p>
+<ul>
+<li><p>if I launch jupyter from <code>py2</code> then the available kernels are <code>py2</code>, <code>py3</code> and <code>Python 2</code>, where <code>Python 2</code> is identical to <code>py2</code></p></li>
+<li><p>if I launch jupyter from <code>py3</code> then the available kernels are <code>py2</code>, <code>py3</code> and <code>Python 3</code>, where <code>Python 3</code> is identical to <code>py3</code></p></li>
+<li><p>if I launch jupyter from <code>base</code> then the available kernels are <code>py2</code>, <code>py3</code> and <code>Python 3</code>, where <code>Python 3</code> is identical to <code>base</code></p></li>
+</ul></li>
+<li><p>so I think that whichever python environment you launch from gets assigned to a default kernel - either <code>Python 2</code> or <code>Python 3</code> - which exists is in addition to any kernels you have added manually.</p></li>
+</ul>
+<div id="r" class="section level3">
+<h3>r</h3>
+<p><em>TODO</em></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># install the R essentials in your current environment</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="ex">conda</span> install -c r r-essentials</span></code></pre></div>
+<p>this includes <a href="https://dkidney.github.io/how2/r_tidyverse.html#dplyr">dplyr</a>, <a href="https://dkidney.github.io/how2/r_shiny.html">shiny</a>, <a href="https://dkidney.github.io/how2/r_tidyverse.html#ggplot2">ggplot2</a>, <a href="https://dkidney.github.io/how2/r_tidyverse.html#tidyr">tidyr</a>, <a href="https://dkidney.github.io/how2/r_caret.html">caret</a> and nnet</p>
+</div>
+<div id="julia" class="section level3">
+<h3>julia</h3>
+<p><em>TODO</em></p>
+<hr />
+</div>
+</div>
+<div id="magic" class="section level2">
+<h2>magic</h2>
+<ul>
+<li><a href="https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/" class="uri">https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/</a></li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># see which magic commands are available in your interpreter</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="op">%</span>lsmagic</span></code></pre></div>
+<p>examples:</p>
+<table>
+<thead>
+<tr class="header">
+<th>command</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>%quickref</code></td>
+<td>show a quick reference sheet for IPython</td>
+</tr>
+<tr class="even">
+<td><code>%matplotlib inline</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>%save</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>%clear</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>%debug</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>%time</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>%timeit</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>%pdb</code></td>
+<td>debug</td>
+</tr>
+<tr class="odd">
+<td><code>%prun</code></td>
+<td>performance run</td>
+</tr>
+<tr class="even">
+<td><code>%writefile</code></td>
+<td>saves contents of a cell to an external file</td>
+</tr>
+<tr class="odd">
+<td><code>%pycat</code></td>
+<td>shows syntax highlighted contents of an external file</td>
+</tr>
+<tr class="even">
+<td><code>%who</code></td>
+<td>list variables of global scope</td>
+</tr>
+<tr class="odd">
+<td><code>%store</code></td>
+<td>pass variables between notebooks</td>
+</tr>
+<tr class="even">
+<td><code>%load</code></td>
+<td>insert code from external script</td>
+</tr>
+<tr class="odd">
+<td><code>%run</code></td>
+<td>execute python code</td>
+</tr>
+<tr class="even">
+<td><code>%env</code></td>
+<td>set environment variables</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>use <code>%%</code> for multiline expressions<br />
+</li>
+<li>use <code>?</code> before the command (or function) to get help</li>
+</ul>
+<div id="shell-commands" class="section level3">
+<h3>shell commands</h3>
+<ul>
+<li>use <code>!</code> before the command</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="op">!</span>ls</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="op">!</span>cd</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="op">!</span>pwd</span></code></pre></div>
+</div>
+<div id="mixing-languages" class="section level3">
+<h3>mixing languages</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">pip</span> install ipython-sql</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="ex">pip</span> install cython</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="ex">pip</span> install rpy2</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">%</span>load_ext sql</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="op">%</span>load_ext cython</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="op">%</span>load_ext rpy2.ipython</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="shortcuts" class="section level2">
+<h2>shortcuts</h2>
+<ul>
+<li><a href="https://www.cheatography.com/weidadeyue/cheat-sheets/jupyter-notebook/" class="uri">https://www.cheatography.com/weidadeyue/cheat-sheets/jupyter-notebook/</a><br />
+</li>
+<li><a href="https://towardsdatascience.com/jypyter-notebook-shortcuts-bf0101a98330" class="uri">https://towardsdatascience.com/jypyter-notebook-shortcuts-bf0101a98330</a><br />
+</li>
+<li><a href="https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/" class="uri">https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/</a><br />
+</li>
+<li><a href="http://maxmelnick.com/2016/04/19/python-beginner-tips-and-tricks.html" class="uri">http://maxmelnick.com/2016/04/19/python-beginner-tips-and-tricks.html</a></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>shortcut</th>
+<th>action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>shift + enter</td>
+<td>run cell, select below</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="latex" class="section level2">
+<h2>latex</h2>
+<p>wrap latex code (e.g. equations) between double dollar signs <code>$$</code></p>
+<hr />
+</div>
+<div id="docker" class="section level2">
+<h2>docker</h2>
+<p>to run the official Jupyter Notebook image:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">docker</span> run --rm -it -p 8888:8888 -v <span class="st">&quot;</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">:/notebooks&quot;</span> jupyter/notebook </span></code></pre></div>
+<p>other images are available, e.g. </p>
+<ul>
+<li><code>jupyter/datascience-notebook</code></li>
+</ul>
+<hr />
+</div>
+<div id="share" class="section level2">
+<h2>share</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="ex">jupyter</span> nbconvert --to html Untitled4.ipynb</span></code></pre></div>
+</div>
 
 
 

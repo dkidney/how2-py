@@ -41,7 +41,7 @@ navbar:
     - text: "DS libs"
       menu:
         - text: "numpy"
-          href: todo.html
+          href: numpy.html
         - text: "pandas"
           href: todo.html
         - text: "---------"
