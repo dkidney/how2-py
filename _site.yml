@@ -53,7 +53,7 @@ navbar:
         - text: "matplotlib"
           href: todo.html
         - text: "seaborn"
-          href: todo.html
+          href: seaborn.html
         - text: "---------"
         - text: "boto3"
           href: todo.html
