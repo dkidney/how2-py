@@ -11,7 +11,7 @@
 
 
 
-<title>numpy</title>
+<title>subprocess</title>
 
 <script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -581,125 +581,37 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">numpy</h1>
+<h1 class="title toc-ignore">subprocess</h1>
 
 </div>
 
 
-<hr />
-<blockquote>
-<p>numerical python: provides a high-performance multidimensional array object and fast array-oriented arithmetic operations and flexible broadcasting capabilities</p>
-</blockquote>
 <hr />
 <ul>
-<li><a href="https://www.numpy.org/" class="uri">https://www.numpy.org/</a><br />
-</li>
-<li><a href="https://realpython.com/tutorials/numpy/" class="uri">https://realpython.com/tutorials/numpy/</a><br />
-</li>
-<li><a href="https://realpython.com/numpy-array-programming/" class="uri">https://realpython.com/numpy-array-programming/</a><br />
-</li>
-<li><a href="https://realpython.com/how-to-use-numpy-arange/" class="uri">https://realpython.com/how-to-use-numpy-arange/</a><br />
-</li>
-<li><a href="https://www.datacamp.com/community/tutorials/python-numpy-tutorial" class="uri">https://www.datacamp.com/community/tutorials/python-numpy-tutorial</a></li>
+<li><a href="https://queirozf.com/entries/python-3-subprocess-examples" class="uri">https://queirozf.com/entries/python-3-subprocess-examples</a></li>
 </ul>
 <hr />
-<div id="ndarray" class="section level2">
-<h2>ndarray</h2>
+<div id="run" class="section level3">
+<h3>run</h3>
 <ul>
-<li>NumPy’s array class is called <code>ndarray</code></li>
-<li>all elements must be the same type</li>
+<li><code>shell=True</code> - the command string is interpreted as a raw shell command</li>
+<li><code>universal_newlines=True</code> - converts the output to a string</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2"></a>np.__version__</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co">#  &#39;1.19.1&#39;</span></span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># create an array from a regular Python list </span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>myarray <span class="op">=</span> np.array([[ <span class="fl">1.</span>, <span class="fl">2.</span>, <span class="fl">3.</span>],  </span>
-<span id="cb2-3"><a href="#cb2-3"></a>                    [ <span class="fl">4.</span>, <span class="fl">5.</span>, <span class="fl">6.</span>]])</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="bu">print</span>(myarray)</span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#  [[1. 2. 3.]</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#   [4. 5. 6.]]</span></span></code></pre></div>
-<hr />
-</div>
-<div id="attributes" class="section level2">
-<h2>attributes</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>myarray.ndim</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#  2</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>myarray.shape</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#  (2, 3)</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>myarray.dtype</span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#  dtype(&#39;float64&#39;)</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>myarray.size</span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#  6</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a>myarray.itemsize</span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#  8</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a>myarray.data</span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#  &lt;memory at 0x7fab227bf040&gt;</span></span></code></pre></div>
-<hr />
-</div>
-<div id="indexing" class="section level2">
-<h2>indexing</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># first row, first column</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>myarray[<span class="dv">0</span>,<span class="dv">0</span>]</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#  1.0</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>myarray[<span class="dv">1</span>,<span class="dv">1</span>]</span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#  5.0</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>myarray[:<span class="dv">2</span>, <span class="dv">1</span>:<span class="dv">3</span>]</span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#  array([[2., 3.],</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#         [5., 6.]])</span></span></code></pre></div>
-<hr />
-</div>
-<div id="methods" class="section level2">
-<h2>methods</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>myarray.reshape((<span class="dv">3</span>,<span class="dv">2</span>))</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co">#  array([[1., 2.],</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#         [3., 4.],</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#         [5., 6.]])</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>myarray.ravel() </span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># myarray.view() # shallow copy</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co"># myarray.copy() # deep copy</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#  array([1., 2., 3., 4., 5., 6.])</span></span></code></pre></div>
-<p><code>.ravel()</code></p>
-<hr />
-</div>
-<div id="constructors" class="section level2">
-<h2>constructors</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>np.empty((<span class="dv">3</span>,<span class="dv">4</span>))</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="co">#  array([[-0.00000000e+000,  2.00389613e+000,  2.96439388e-323,</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#           1.32082986e+180],</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#         [ 5.02607948e+180,  0.00000000e+000,  8.96561888e+073,</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#           8.40929548e-315],</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#         [ 0.00000000e+000,  4.89584003e-085,  4.89209922e-085,</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#           8.97628402e-309]])</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a>np.zeros((<span class="dv">3</span>,<span class="dv">4</span>))</span>
-<span id="cb6-9"><a href="#cb6-9"></a><span class="co">#  array([[0., 0., 0., 0.],</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="co">#         [0., 0., 0., 0.],</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a><span class="co">#         [0., 0., 0., 0.]])</span></span>
-<span id="cb6-12"><a href="#cb6-12"></a>np.ones((<span class="dv">3</span>,<span class="dv">4</span>))</span>
-<span id="cb6-13"><a href="#cb6-13"></a><span class="co">#  array([[1., 1., 1., 1.],</span></span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="co">#         [1., 1., 1., 1.],</span></span>
-<span id="cb6-15"><a href="#cb6-15"></a><span class="co">#         [1., 1., 1., 1.]])</span></span>
-<span id="cb6-16"><a href="#cb6-16"></a>np.arange(<span class="dv">12</span>).reshape((<span class="dv">3</span>,<span class="dv">4</span>))</span>
-<span id="cb6-17"><a href="#cb6-17"></a><span class="co">#  array([[ 0,  1,  2,  3],</span></span>
-<span id="cb6-18"><a href="#cb6-18"></a><span class="co">#         [ 4,  5,  6,  7],</span></span>
-<span id="cb6-19"><a href="#cb6-19"></a><span class="co">#         [ 8,  9, 10, 11]])</span></span>
-<span id="cb6-20"><a href="#cb6-20"></a>np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">12</span>).reshape((<span class="dv">3</span>,<span class="dv">4</span>)) </span>
-<span id="cb6-21"><a href="#cb6-21"></a><span class="co">#  array([[0.        , 0.09090909, 0.18181818, 0.27272727],</span></span>
-<span id="cb6-22"><a href="#cb6-22"></a><span class="co">#         [0.36363636, 0.45454545, 0.54545455, 0.63636364],</span></span>
-<span id="cb6-23"><a href="#cb6-23"></a><span class="co">#         [0.72727273, 0.81818182, 0.90909091, 1.        ]])</span></span></code></pre></div>
-<hr />
-</div>
-<div id="other-functions" class="section level2">
-<h2>other functions</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>np.random.random((<span class="dv">2</span>,<span class="dv">3</span>))</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="co"># np.add</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co"># np.hstack</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># np.vstack</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co"># np.hsplit</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="co"># np.vsplit</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#  array([[0.48743704, 0.19381455, 0.07067667],</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#         [0.04603071, 0.97616201, 0.62467324]])</span></span></code></pre></div>
-<hr />
-<p>Note the difference between np.ndarray and np.array() . The former is an actual data type, while the latter is a function to make arrays from other data structures</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> subprocess</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
+<span id="cb1-3"><a href="#cb1-3"></a>process <span class="op">=</span> subprocess.run(<span class="st">&quot;ls -lha&quot;</span>,</span>
+<span id="cb1-4"><a href="#cb1-4"></a>                         shell<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-5"><a href="#cb1-5"></a>                         universal_newlines<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-6"><a href="#cb1-6"></a>                         stdout<span class="op">=</span>subprocess.PIPE,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>                         stderr<span class="op">=</span>subprocess.PIPE)</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="bu">print</span>(process.returncode)</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#  0</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>pprint(process.stdout.split(<span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>)[:<span class="dv">5</span>])</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#  [&#39;total 496&#39;,</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#   &#39;drwxr-xr-x  34 kida8005  staff   1.1K 28 Jul 12:51 .&#39;,</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co">#   &#39;drwxr-xr-x  13 kida8005  staff   416B 23 Jul 10:25 ..&#39;,</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co">#   &#39;drwxr-xr-x   4 kida8005  staff   128B 23 Jul 10:29 .Rproj.user&#39;,</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="co">#   &#39;drwxr-xr-x  14 kida8005  staff   448B 28 Jul 12:51 .git&#39;]</span></span></code></pre></div>
 </div>
 
 

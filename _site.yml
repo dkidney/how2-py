@@ -38,6 +38,8 @@ navbar:
           href: todo.html
         - text: "re"
           href: todo.html
+        - text: "subprocess"
+          href: subprocess.html
     - text: "DS libs"
       menu:
         - text: "numpy"

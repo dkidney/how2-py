@@ -46,9 +46,42 @@ brew cask install pycharm-ce
 
 ### keyboard shortcuts
 
-### appearance
+Useful shortcuts:
+
+Description | Shortcut
+------------- | -------------
+Preferences | CMD + ,
+Jump to definition | CMD + B
+
+My personal setup:
+
+Description | Shortcut | Keymap location
+------------- | ------------- | ----------
+Execute in python console | CMD + ENTER | Plug-Ins/Python Community Edition/Execute Selection In Python Console
+Comment/uncomment | SHIFT + CMD + C | Main menu/Code/Comment with Line Comment
+Auto-indent | CMD + I | Main menu/Code/Auto-Indent Lines
+Toggle soft-wrap | SHIFT + CMD + W | Main menu/View/Active Editor/Soft-Wrap
+Run | SHIFT + CMD + S | Main menu/Run/Run
+Debug | SHIFT + CMD + D | Main menu/Run/Debug
+
+### window layout
+
+My personal setup:
+
+What | Move to
+------------- | ------------- 
+Python Console | Bottom Top
+Terminal | Bottom Right
+Todo | Bottom Right
+Run | Bottom Right
+
+`Window > Use current layout as default`
 
 ### plugins
+
+### default interpreter
+
+`File > Other settings > Project Interpreter`
 
 *********************************************************************
 

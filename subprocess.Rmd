@@ -1,0 +1,31 @@
+---
+title: subprocess
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+* https://queirozf.com/entries/python-3-subprocess-examples
+
+*********************************************************************
+
+### run
+
+* `shell=True` - the command string is interpreted as a raw shell command
+* `universal_newlines=True` - converts the output to a string
+
+```{python, echo=TRUE}
+import subprocess
+from pprint import pprint
+process = subprocess.run("ls -lha",
+                         shell=True,
+                         universal_newlines=True,
+                         stdout=subprocess.PIPE,
+                         stderr=subprocess.PIPE)
+print(process.returncode)
+pprint(process.stdout.split('\n')[:5])
+```
