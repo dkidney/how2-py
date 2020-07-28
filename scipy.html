@@ -11,7 +11,7 @@
 
 
 
-<title>seaborn</title>
+<title>scipy</title>
 
 <script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -584,20 +584,33 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">seaborn</h1>
+<h1 class="title toc-ignore">scipy</h1>
 
 </div>
 
 
 <hr />
+<blockquote>
+<p>SciPy (pronounced “Sigh Pie”) is open-source software for mathematics, science, and engineering.</p>
+</blockquote>
+<hr />
 <ul>
-<li><a href="https://www.datacamp.com/community/tutorials/seaborn-python-tutorial" class="uri">https://www.datacamp.com/community/tutorials/seaborn-python-tutorial</a></li>
+<li><a href="https://docs.scipy.org/doc/scipy/reference/index.html" class="uri">https://docs.scipy.org/doc/scipy/reference/index.html</a></li>
 </ul>
 <hr />
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-2"><a href="#cb1-2"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">7</span>]</span>
-<span id="cb1-3"><a href="#cb1-3"></a>sns.distplot(x)</span></code></pre></div>
-<p><img src="seaborn_files/figure-html/unnamed-chunk-1-1.svg" width="75%" style="display: block; margin: auto;" /></p>
+<div id="sparse" class="section level2">
+<h2>sparse</h2>
+<p>E.g. make a 3x3 identity matrix</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> scipy.sparse <span class="im">import</span> csc_matrix</span>
+<span id="cb1-3"><a href="#cb1-3"></a>row <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb1-4"><a href="#cb1-4"></a>col <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb1-5"><a href="#cb1-5"></a>data <span class="op">=</span> np.ones(<span class="dv">3</span>)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>csc_matrix((data, (row, col)), shape<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>)).toarray()</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co">#  array([[1., 0., 0.],</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#         [0., 1., 0.],</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#         [0., 0., 1.]])</span></span></code></pre></div>
+</div>
 
 
 

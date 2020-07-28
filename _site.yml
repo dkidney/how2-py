@@ -45,7 +45,9 @@ navbar:
         - text: "numpy"
           href: numpy.html
         - text: "pandas"
-          href: todo.html
+          href: pandas.html
+        - text: "scipy"
+          href: scipy.html
         - text: "---------"
         - text: "sklearn"
           href: sklearn.html

@@ -1,0 +1,31 @@
+---
+title: scipy
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+> SciPy (pronounced “Sigh Pie”) is open-source software for mathematics, science, and engineering.
+
+*********************************************************************
+
+* https://docs.scipy.org/doc/scipy/reference/index.html
+
+*********************************************************************
+
+## sparse
+
+E.g. make a 3x3 identity matrix
+
+```{python}
+import numpy as np
+from scipy.sparse import csc_matrix
+row = np.array([0, 1, 2])
+col = np.array([0, 1, 2])
+data = np.ones(3)
+csc_matrix((data, (row, col)), shape=(3, 3)).toarray()
+```
