@@ -78,9 +78,9 @@ navbar:
           href: todo.html
         - text: "---------"
         - text: "pycharm"
-          href: todo.html
+          href: pycharm.html
         - text: "jupyter"
-          href: todo.html
+          href: jupyter.html
         - text: "spyder"
           href: todo.html
   right:

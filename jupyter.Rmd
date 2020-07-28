@@ -108,7 +108,9 @@ this includes [dplyr](https://dkidney.github.io/how2/r_tidyverse.html#dplyr), [s
 
 *********************************************************************
 
-## magic
+## syntax
+
+### magic
 
 * https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/  
 
@@ -141,16 +143,6 @@ command | description
 * use `%%` for multiline expressions  
 * use `?` before the command (or function) to get help  
 
-### shell commands
-
-* use `!` before the command
-
-```python
-!ls
-!cd
-!pwd
-```
-
 ### mixing languages
 
 ```sh
@@ -163,6 +155,16 @@ pip install rpy2
 %load_ext sql
 %load_ext cython
 %load_ext rpy2.ipython
+```
+
+### shell commands
+
+* use `!` before the command
+
+```python
+!ls
+!cd
+!pwd
 ```
 
 

@@ -551,10 +551,10 @@ div.tocify {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="todo.html">pycharm</a>
+      <a href="pycharm.html">pycharm</a>
     </li>
     <li>
-      <a href="todo.html">jupyter</a>
+      <a href="jupyter.html">jupyter</a>
     </li>
     <li>
       <a href="todo.html">spyder</a>
@@ -685,8 +685,10 @@ div.tocify {
 <hr />
 </div>
 </div>
-<div id="magic" class="section level2">
-<h2>magic</h2>
+<div id="syntax" class="section level2">
+<h2>syntax</h2>
+<div id="magic" class="section level3">
+<h3>magic</h3>
 <ul>
 <li><a href="https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/" class="uri">https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/</a></li>
 </ul>
@@ -772,23 +774,24 @@ div.tocify {
 </li>
 <li>use <code>?</code> before the command (or function) to get help</li>
 </ul>
+</div>
+<div id="mixing-languages" class="section level3">
+<h3>mixing languages</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">pip</span> install ipython-sql</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="ex">pip</span> install cython</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="ex">pip</span> install rpy2</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="op">%</span>load_ext sql</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="op">%</span>load_ext cython</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="op">%</span>load_ext rpy2.ipython</span></code></pre></div>
+</div>
 <div id="shell-commands" class="section level3">
 <h3>shell commands</h3>
 <ul>
 <li>use <code>!</code> before the command</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="op">!</span>ls</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="op">!</span>cd</span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="op">!</span>pwd</span></code></pre></div>
-</div>
-<div id="mixing-languages" class="section level3">
-<h3>mixing languages</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">pip</span> install ipython-sql</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="ex">pip</span> install cython</span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="ex">pip</span> install rpy2</span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">%</span>load_ext sql</span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="op">%</span>load_ext cython</span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="op">%</span>load_ext rpy2.ipython</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">!</span>ls</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="op">!</span>cd</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="op">!</span>pwd</span></code></pre></div>
 <hr />
 </div>
 </div>
