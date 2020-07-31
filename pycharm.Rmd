@@ -79,6 +79,11 @@ Run | Bottom Right
 
 ### plugins
 
+`Preferences > Plugins`
+
+* Markdown
+* 
+
 ### default interpreter
 
 `File > Other settings > Project Interpreter`
