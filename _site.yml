@@ -18,8 +18,13 @@ navbar:
         - text: "tuples"
           href: todo.html
         - text: "---------"
-        - text: "files"
+        - text: "comprehensions"
           href: todo.html
+        - text: "args and kwargs"
+          href: todo.html
+        - text: "---------"
+        - text: "files"
+          href: files.html
         - text: "exceptions"
           href: todo.html
         - text: "oop"
@@ -28,7 +33,7 @@ navbar:
           href: todo.html
         - text: "tests"
           href: todo.html
-    - text: "Standard libs"
+    - text: "Std modules"
       menu:
         - text: "datetime"
           href: todo.html
@@ -40,7 +45,7 @@ navbar:
           href: todo.html
         - text: "subprocess"
           href: subprocess.html
-    - text: "DS libs"
+    - text: "DS modules"
       menu:
         - text: "numpy"
           href: numpy.html
@@ -65,7 +70,7 @@ navbar:
           href: todo.html
         - text: "xml"
           href: todo.html
-    - text: "Managers and IDEs"
+    - text: "Managers"
       menu:
         - text: "pip"
           href: todo.html
@@ -76,7 +81,8 @@ navbar:
           href: todo.html
         - text: "venv"
           href: todo.html
-        - text: "---------"
+    - text: "IDEs"
+      menu:
         - text: "pycharm"
           href: pycharm.html
         - text: "jupyter"

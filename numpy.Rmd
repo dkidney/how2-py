@@ -7,7 +7,7 @@ title: numpy
 
 ******************************************************************************************
 
-> numerical python: provides a high-performance multidimensional array object and fast array-oriented arithmetic operations and flexible broadcasting capabilities
+> numerical python: provides a high-performance multidimensional array object, fast array-oriented arithmetic operations and flexible broadcasting capabilities
 
 *********************************************************************
 
@@ -16,90 +16,278 @@ title: numpy
 * https://realpython.com/numpy-array-programming/  
 * https://realpython.com/how-to-use-numpy-arange/  
 * https://www.datacamp.com/community/tutorials/python-numpy-tutorial  
+* https://jakevdp.github.io/PythonDataScienceHandbook/  
 
 *********************************************************************
-
-## ndarray
-
-* NumPy’s array class is called `ndarray`
-* all elements must be the same type
 
 ```{python, eval=TRUE}
 import numpy as np
 np.__version__
 ```
 
+*********************************************************************
+
+## creating
+
+* numpy array class
+* all elements must be the same type
+
+### create from list
+
 ```{python, eval=TRUE}
-# create an array from a regular Python list 
-myarray = np.array([[ 1., 2., 3.],  
-                    [ 4., 5., 6.]])
-print(myarray)
+import numpy as np
+np.array([[1, 2, 3], [4, 5, 6]])
+np.arange(6).reshape((2,3))
+np.linspace(0, 1, 6).reshape((2,3)) 
+```
+
+Note the difference between `np.ndarray` and `np.array()` . The former is a data type, while the latter is a function to make arrays from other data structures.
+
+### create from scratch
+
+```{python, eval=TRUE}
+import numpy as np
+np.empty((2,3))
+np.zeros((2,3))
+np.ones((2,3))
+np.full((2,3), 42)
+np.empty((2,3))
+np.eye(3)
+```
+
+#### np.random
+
+```{python, eval=TRUE}
+import numpy as np
+np.random.seed(42)
+np.random.random((2,3))
+np.random.normal(0, 1, (2,3))
+np.random.randint(0, 10, (2, 3))
 ```
 
 *********************************************************************
 
 ## attributes
 
-```{python, eval=TRUE}
-myarray.ndim
-myarray.shape
-myarray.dtype
-myarray.size
-myarray.itemsize
-myarray.data
+### size and shape
+
+```python
+x.ndim # number of dimensions
+x.shape # size of each dimension
+x.size # number of elements
 ```
+
+### memory usage
+
+```python
+x.itemsize # size (in bytes) of each array element
+x.nbytes # total size (in bytes) of the array
+x.data # memory address
+```
+
+### data type
+
+```python
+x.dtype
+```
+
+TODO
 
 *********************************************************************
 
 ## indexing
 
+Similar tostandrd list indexing.
+
+### individual elements
+
+```python
+x[0,0] # 1st row, 1st column
+x[1,1] # 2nd row, 2nd column
+```
+
+### sub-arrays
+
 ```{python, eval=TRUE}
-# first row, first column
-myarray[0,0]
-myarray[1,1]
-myarray[:2, 1:3]
+import numpy as np
+x = np.array([[ 1., 2., 3.], [ 4., 5., 6.]])
+x
+x[:2, 1:3]
+```
+
+Note that array slices return **views** rather than copies of the array. This is different to list slicing (where slices are copies).
+
+To make a copy use `.copy`
+
+```python
+y = x[:2, 1:3].copy()
 ```
 
 *********************************************************************
 
-## methods
+## reshaping
+
+### change sizes of dimensions
 
 ```{python, eval=TRUE}
-myarray.reshape((3,2))
-myarray.ravel() 
-# myarray.view() # shallow copy
-# myarray.copy() # deep copy
+import numpy as np
+np.arange(6).reshape((2,3))
+np.linspace(0, 1, 6).reshape((2,3)) 
 ```
 
+### add a dimension
 
-`.ravel()`
+```{python, eval=TRUE}
+import numpy as np
+x = np.array([1, 2, 3, 4, 5, 6])
+x
+x.shape
+x.reshape((2,3))
+x[np.newaxis, :].shape
+```
+
+### flatten
+
+```{python, eval=TRUE}
+import numpy as np
+x = np.array([[ 1., 2., 3.], [ 4., 5., 6.]])
+x
+x.shape
+x.ravel()
+x.ravel().shape
+```
 
 *********************************************************************
 
-## constructors
+## joining
+
+### 1d
 
 ```{python, eval=TRUE}
-np.empty((3,4))
-np.zeros((3,4))
-np.ones((3,4))
-np.arange(12).reshape((3,4))
-np.linspace(0, 1, 12).reshape((3,4)) 
+import numpy as np
+x = np.array([1, 2, 3]) 
+y = np.array([4, 5, 6])
+np.concatenate([x, y])
+```
+
+### 2d
+
+```{python, eval=TRUE}
+import numpy as np
+x = np.array([[ 1., 2., 3.], [ 4., 5., 6.]])
+np.concatenate([x, x])
+np.vstack([x, x])
+```
+
+```{python, eval=TRUE}
+import numpy as np
+x = np.array([[ 1., 2., 3.], [ 4., 5., 6.]])
+np.concatenate([x, x], axis=1)
+np.hstack([x, x])
+```
+
+### 3d
+
+Use `np.concatenate` with `axis=1` or `np.dstack`
+
+*********************************************************************
+
+## splitting
+
+### 1d
+
+```{python, eval=TRUE}
+import numpy as np
+x = np.arange(10)
+a, b = np.split(x, [5])
+a
+b
+```
+
+```{python, eval=TRUE}
+import numpy as np
+x = np.arange(10)
+a, b, c = np.split(x, [5, 8])
+a
+b
+c
+```
+
+### 2d
+
+```{python, eval=TRUE}
+import numpy as np
+x = np.arange(12).reshape((3,4))
+a, b = np.hsplit(x, [2])
+a
+b
+```
+
+```{python, eval=TRUE}
+import numpy as np
+x = np.arange(12).reshape((3,4))
+a, b = np.vsplit(x, [2])
+a
+b
 ```
 
 *********************************************************************
 
-## other functions
+## sequences
 
 ```{python, eval=TRUE}
-np.random.random((2,3))
-# np.add
-# np.hstack
-# np.vstack
-# np.hsplit
-# np.vsplit
+import numpy as np
+np.arange(10) # 0 to 9, step size = 1
+np.arange(0, 10, 2) # (from, up-to-not-including, step-size)
+np.arange(0., 10., 2.)
+np.linspace(0, 8, 5) # (from, up-to-including, length)
 ```
 
-******************************************************************************************
+*********************************************************************
 
-Note the difference between np.ndarray and np.array() . The former is an actual data type, while the latter is a function to make arrays from other data structures
+## universal functions
+
+These are vectorized operations (also called `ufuncs`).
+
+### arithmetic
+
+ufunc | e.g. | notes
+------------- | ------------- | ----------
+np.add | `x + 5` | 
+np.subtract | `x - 5` | 
+np.negative | `-x` | 
+np.multiply | `x * 2` | 
+np.divide | `x / 2` | 
+np.floor_divide | `x // 2` | 
+np.power(x, 2) | `x ** 2` | 
+np.mod | `x % 2` | 
+np.abs, np.absolute | `abs(x)` | 
+np.sin | `np.sin(x)` | 
+np.cos | `np.cos(x)` | 
+np.tan | `np.tan(x)` | 
+np.arcsin | `np.arcsin(x)` | 
+np.arccos | `np.arccos(x)` | 
+np.arctan | `np.arctan(x)` | 
+np.exp | `np.exp(x)` | i.e. e^x
+np.exp2 | `2 ** x` | 
+np.power(3, x) | `3 ** x` | 
+np.log | `np.log(x)` | i.e. ln(x)
+np.log2 | `np.log2(x)` | 
+np.log10 | `np.log10(x)` | 
+np.expm1 | `np.expm1(x)` | i.e. exp(x) - 1
+np.log1p | `np.log1p(x)` | i.e. log(1 + x)
+
+`np.expm1` and `np.log1p` are specialized versions that are useful for maintaining precision with very small input - when x is very small, these functions give more precise values than if the raw `np.log` or `np.exp` were used.
+
+There are lots more functions available - see also `scipy.special` for some stats ones.
+
+### out argument
+
+p56 python-data-science-handbook
+
+### aggregates
+
+### outer products
+
+
 

@@ -88,6 +88,10 @@ Run | Bottom Right
 
 `File > Other settings > Project Interpreter`
 
+### run configurations
+
+* select `Emulate termnal in output console` to see `progress` progress bars.
+
 *********************************************************************
 
 ## todo
