@@ -45,6 +45,8 @@ navbar:
           href: todo.html
         - text: "subprocess"
           href: subprocess.html
+        - text: "xml"
+          href: todo.html
     - text: "DS modules"
       menu:
         - text: "numpy"
@@ -68,7 +70,7 @@ navbar:
           href: todo.html
         - text: "hocon"
           href: todo.html
-        - text: "xml"
+        - text: "pyarrow"
           href: todo.html
     - text: "Managers"
       menu:

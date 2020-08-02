@@ -31,21 +31,21 @@ datacamp tutorials:
 
 ### DataFrames
 
-* how to [subset columns by name](#subset-columns-by-bool)   
-* how to [subset columns by position](#subset-columns-by-position)   
-* how to [subset columns by boolean](#subset-columns-by-boolean) 
-* how to [subset rows by index](#subset-rows-by-index)  
-* how to [subset rows by position](#subset-rows-by-position)   
-* how to [subset rows by boolean](#subset-rows-by-boolean) 
-* how to [order by column values](#sort-values)
-* how to do [grouped summaries](#grouped-summaries)
-* how to do a [left join](#left-join)  
+* [subset rows by index](#subset-rows-by-index)  
+* [subset rows by position](#subset-rows-by-position)   
+* [subset rows by boolean](#subset-rows-by-boolean) 
+* [subset columns by name](#subset-columns-by-name)   
+* [subset columns by position](#subset-columns-by-position)   
+* [subset columns by boolean](#subset-columns-by-boolean) 
+* [order rows by column values](#sort-values)
+* [grouped summaries](#grouped-summaries)
+* [left join](#left-join)  
 
 ### Series
 
-* how to [subset index](#subset-by-index)  
-* how to [subset by position](#subset-by-position)   
-* how to [subset by boolean](#subset-by-boolean) 
+* [subset index](#subset-by-index)  
+* [subset by position](#subset-by-position)   
+* [subset by boolean](#subset-by-boolean) 
 
 *********************************************************************
 
@@ -66,64 +66,81 @@ pd.__version__
 
 > a one-dimensional labeled array capable of holding any data type
 
-### creation
+### create
 
 `pd.Series(data, index, dtype, copy)`
 
 ```python
-# create empty series
-x = pd.Series()
+ser = pd.Series() # empty series
+```
 
-# create from scalar
-x = pd.Series(0) 
-x = pd.Series(0, ['a', 'b', 'c']) 
+#### from scalar
 
-# create from list
-x = pd.Series([1, 2, 3])
-x = pd.Series([1, 2, 3], ['a', 'b', 'c']) 
+```python
+ser = pd.Series(0) 
+ser = pd.Series(0, ['a', 'b', 'c']) 
+```
 
-# create from nparray
-x = pd.Series(np.array([1, 2, 3]), ['a', 'b', 'c']) 
+#### from list
 
-# create from dict
-x = pd.Series({'a': 1, 'b': 2, 'c': 3})
+```python
+ser = pd.Series([1, 2, 3])
+ser = pd.Series([1, 2, 3], ['a', 'b', 'c']) 
+```
+
+#### from dict
+
+```python
+ser = pd.Series({'a': 1, 'b': 2, 'c': 3})
+```
+
+#### from ndarray
+
+```python
+ser = pd.Series(np.array([1, 2, 3]), ['a', 'b', 'c']) 
 ```
 
 ### attributes
 
 ```python
-x.shape
-x.index
-x.count
-len(x)
+ser.shape
+ser.index
+ser.count
+len(ser)
 ```
 
-### indexing
+### methods
+
+```python
+ser.unique()
+```
+
+### indexing and slicing
 
 by location
 ```python
-x[0] # first (returns scalar)
-x[-1] # last (returns scalar)
-x[[0]] # first
-x[[-1]] # last
-x[[0,2]] # first and third
-x[1:] # everything but the first
-x[:-1] # everything but the first
-x[:1] # first
-x[-1:] # last
+ser[0] # first (returns scalar)
+ser[-1] # last (returns scalar)
+ser[[0]] # first
+ser[[-1]] # last
+ser[[0,2]] # first and third
+ser[1:] # everything but the first
+ser[:-1] # everything but the first
+ser[:1] # first
+ser[-1:] # last
 ```
 
 by index
 ```python
-x['a'] # first (returns scalar)
-x['c'] # last (returns scalar)
-x[['a']] # first
-x[['c']] # last
-x[['a','c']] # first and third
-x['b':] # everything but the first
-x[:'b'] # everything but the last
-x[:'a'] # first
-x['c':] # last
+ser['a'] # first (returns scalar)
+ser['c'] # last (returns scalar)
+ser[['a']] # first
+ser[['c']] # last
+ser[['a','c']] # first and third
+ser['b':] # everything but the first
+ser[:'b'] # everything but the last
+ser[:'a'] # first
+ser['c':] # last
 ```
 
 #### subset by index {#subset-by-index}
@@ -144,12 +161,12 @@ conversion
 
 ```python
 list(x)
-x.to_list()
+df.to_list()
 
 dict(x)
-x.to_dict()
+df.to_dict()
 
-x.to_numpy()
+df.to_numpy()
 ```
 
 *********************************************************************
@@ -158,106 +175,115 @@ x.to_numpy()
 
 > a two-dimensional labeled data structure with columns of potentially different types
 
-### creation
+### create
 
 `pd.DataFrame(data, index, columns, dtype, copy)`
 
 ```python
 # create empty df
-x = pd.DataFrame()
+df = pd.DataFrame()
+```
 
-# create from list
-x = pd.DataFrame([1, 2, 3])
-x = pd.DataFrame([1, 2, 3], columns=['v1'])
+#### from list
+
+```python
+df = pd.DataFrame([1, 2, 3])
+df = pd.DataFrame([1, 2, 3], columns=['v1'])
 
 # create from list of lists - each sublist is a row
-x = pd.DataFrame([['x', 1], ['y', 2], ['z', 3]],
+df = pd.DataFrame([['x', 1], ['y', 2], ['z', 3]],
                  index=['a', 'b', 'c'],
                  columns=['v1', 'v2'])
 
 # create from list of dicts - each sublist is a row
-x = pd.DataFrame([{'v1': 'x', 'v2': 1},
+df = pd.DataFrame([{'v1': 'x', 'v2': 1},
                   {'v1': 'y', 'v2': 2},
                   {'v1': 'z', 'v2': 3}],
                  index=['a', 'b', 'c'])
+```
 
+#### from dict
+
+```python
 # create from dict of lists - each key is a column
-x = pd.DataFrame({'v1': ['x', 'y', 'z'],
+df = pd.DataFrame({'v1': ['x', 'y', 'z'],
                   'v2': [1, 2, 3]},
                  index=['a', 'b', 'c'])
 
 # create from dict of series - each key is a column
-x = pd.DataFrame({'v1': pd.Series(['x', 'y', 'z'], index=['a', 'b', 'c']),
+df = pd.DataFrame({'v1': pd.Series(['x', 'y', 'z'], index=['a', 'b', 'c']),
                   'v2': pd.Series([1, 2, 3], index=['a', 'b', 'c'])})
 ```
 
-### indexing
-
-method | type
-------------- | -------------
-`x[col]` | label-based
-`x.loc[row, col]` | label-based
-`x.iloc[row, col]` | positional
-
-In label-based indexing `row` and `col` can be: 
-
-* lists of strings - in which case the output is a DataFrame
-* bare strings - in which case the output is simplified to a Series where possible  
+### attributes
 
 ```python
-# subset columns by key using square brackets
-x['v1'] # returns series
-x[['v1']]
-x[['v1', 'v2']]
+df.shape # (nrows, ncols) tuple
+df.head # first 5 rows
+df.tail # last 5 rows
+```
 
-# subset rows by logical vector
-i = x['v1'] == "x"
-x[i]
+### indexing and slicing
 
-# subset rows by index using loc
-x.loc['a'] # first row - returns a series
-x.loc["c"] # last row - returns a series
-x.loc[["a"]] # first row
-x.loc[["c"]] # last row
+#### subset rows by index {#subset-rows-by-index}
 
-# subset rows by location using iloc
-x.iloc[0] # first row - returns a series
-x.iloc[-1] # last row - returns a series
-x.iloc[[0]] # first row
-x.iloc[[-1]] # last row
+```python
+df.loc['a'] # first row - returns a series
+df.loc["c"] # last row - returns a series
+df.loc[["a"]] # first row
+df.loc[["c"]] # last row
+```
 
-# subset rows by index and columns by ??? using loc
-x.loc
+#### subset rows by position {#subset-rows-by-position}
 
-# subset rows by location and columns by ??? using iloc
+```python
+df.iloc[0] # first row - returns a series
+df.iloc[-1] # last row - returns a series
+df.iloc[[0]] # first row
+df.iloc[[-1]] # last row
+```
+
+#### subset rows by boolean {#subset-rows-by-boolean}
+
+```python
+df[df['v1'] == "x"]
+```
+
+Or a more generalisable form,
+
+```python
+df.loc[df['v1'].isin(['x', 'y'])]
 ```
 
 #### subset columns by name {#subset-columns-by-name}
 
-TODO
+```python
+df['v1'] # returns a series
+df[['v1']]
+df[['v1', 'v2']]
+```
+
+Equivalently,
+
+```python
+df.loc[:, 'v1']  # returns a series
+df.loc[:, ['v1']]
+df.loc[:, ['v1', 'v2']]
+```
 
 #### subset columns by position {#subset-columns-by-position}
 
-TODO
+```python
+df.iloc[:, 0]  # returns a series
+df.iloc[:, [0]]
+df.iloc[:, [0, 1]]
+```
 
 #### subset columns by boolean {#subset-columns-by-boolean}
 
-TODO
-
-#### subset rows by index {#subset-rows-by-index}
-
-TODO
-
-#### subset rows by position {#subset-rows-by-position}
-
-TODO
-
-#### subset rows by boolean {#subset-rows-by-boolean}
-
-`df.loc[boolean]`
-
 ```python
-df.loc[df['col1'].isin([1,2,3,4,5,6])]
+df.loc[:, [True, False]]
+df.loc[:, [True, True]]
 ```
 
 ### ordering {#sort-values}
@@ -281,20 +307,31 @@ pd.merge(df1, df2, on='column-name', how='left')
 
 *********************************************************************
 
-## importing
-
-### read_csv
+## reading and writing
 
 * https://www.datacamp.com/community/tutorials/pandas-read-csv  
 
-### read_sql
+```python
+df = pd.read_csv("file.csv")
+df = pd.read_excel("file.xlsx")
+df = pd.read_sql(query, con)
+```
 
 ```python
-read_sql(query, con)
+df.to_csv("file.csv")
 ```
 
 *********************************************************************
 
+## options
+
+```python
+pd.options.display.max_colwidth = 100
+```
+
+*********************************************************************
+
+```
 Create from scratch, lists, NumPy arrays, dicts, series or other data frames
 .shape, len(), .index, .count, .columns, .columns.values
 .loc, .iloc, .at, .iat, .ix
@@ -312,13 +349,6 @@ read_csv, parse_dates
 .to_csv, .to_excel
 pivot, pivot_table, stack, unstack, melt
 .iterrows
-
-*********************************************************************
-
-## options
-
-```python
-pd.options.display.max_colwidth = 100
 ```
 
 *********************************************************************
