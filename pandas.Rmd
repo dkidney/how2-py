@@ -352,7 +352,7 @@ pd.merge(df1, df2, on='column-name', how='left')
 
 ## munging
 
-### str.split
+### .str.split
 
 ```{python}
 import pandas as pd
@@ -361,11 +361,26 @@ df
 df['c1'].str.split(',', expand=True)
 ```
 
-### pivot
+### .pivot
 
-### get_dummies
+### .get_dummies
 
-### cut
+### .cut
+
+### .map
+
+```{python}
+import pandas as pd
+df = pd.DataFrame(dict(c1=[1,2,3]))
+df
+mapper = dict(zip([1,2,3], ['a','b','c']))
+df['c1'] = df['c1'].map(mapper)
+df
+```
+
+### .dropna
+
+### distinct rows
 
 *********************************************************************
 

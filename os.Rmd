@@ -1,5 +1,5 @@
 ---
-title: collections
+title: os
 editor_options: 
   chunk_output_type: console
 ---
@@ -9,4 +9,45 @@ editor_options:
 
 *********************************************************************
 
+> Operating system interfaces
 
+*********************************************************************
+
+* https://python.readthedocs.io/en/latest/library/os.html  
+* https://python.readthedocs.io/en/latest/library/os.path.html  
+
+*********************************************************************
+
+## os.path
+
+```{python}
+import os
+os.path.abspath('a/b/c')
+os.path.basename('a/b/c')
+os.path.dirname('a/b/c')
+os.path.expanduser('~')
+os.path.join('a', 'b', 'c')
+os.path.split('a/b/c')
+os.path.getsize('.') # in bytes
+```
+
+### predictates
+
+```{python}
+import os
+os.path.exists('a/b/c')
+os.path.isabs('a/b/c')
+os.path.isdir('a/b/c')
+os.path.isfile('a/b/c')
+```
+
+*********************************************************************
+
+## misc
+
+```{python}
+import os
+os.getcwd()
+os.getenv('HOME')
+os.getenv('BLAH', default=None)
+```

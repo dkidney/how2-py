@@ -11,7 +11,7 @@
 
 
 
-<title>collections</title>
+<title>os</title>
 
 <script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -26,6 +26,93 @@
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
 
 
 <style type="text/css">
@@ -315,11 +402,21 @@ $(document).ready(function () {
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    built-in
+    std
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="_todo.html">functions</a>
+    </li>
+    <li>
+      <a href="_todo.html">constants</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="_todo.html">argparse</a>
+    </li>
     <li>
       <a href="collections.html">collections</a>
     </li>
@@ -391,6 +488,30 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="_todo.html">pyarrow</a>
+    </li>
+    <li>
+      <a href="_todo.html">requests</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    misc
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="apis.html">apis</a>
+    </li>
+    <li>
+      <a href="_todo.html">flask</a>
+    </li>
+    <li>
+      <a href="_todo.html">packages</a>
+    </li>
+    <li>
+      <a href="_todo.html">sphinx</a>
     </li>
   </ul>
 </li>
@@ -474,12 +595,71 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">collections</h1>
+<h1 class="title toc-ignore">os</h1>
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#os.path">os.path</a>
+<ul>
+<li><a href="#predictates">predictates</a></li>
+</ul></li>
+<li><a href="#misc">misc</a></li>
+</ul>
+</div>
 
 <hr />
+<blockquote>
+<p>Operating system interfaces</p>
+</blockquote>
+<hr />
+<ul>
+<li><a href="https://python.readthedocs.io/en/latest/library/os.html" class="uri">https://python.readthedocs.io/en/latest/library/os.html</a><br />
+</li>
+<li><a href="https://python.readthedocs.io/en/latest/library/os.path.html" class="uri">https://python.readthedocs.io/en/latest/library/os.path.html</a></li>
+</ul>
+<hr />
+<div id="os.path" class="section level2">
+<h2>os.path</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="#cb1-2"></a>os.path.abspath(<span class="st">&#39;a/b/c&#39;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co">#  &#39;/Users/darrenkidney/Github/how2/how2-py/a/b/c&#39;</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>os.path.basename(<span class="st">&#39;a/b/c&#39;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">#  &#39;c&#39;</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>os.path.dirname(<span class="st">&#39;a/b/c&#39;</span>)</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co">#  &#39;a/b&#39;</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>os.path.expanduser(<span class="st">&#39;~&#39;</span>)</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#  &#39;/Users/darrenkidney&#39;</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>os.path.join(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>)</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#  &#39;a/b/c&#39;</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>os.path.split(<span class="st">&#39;a/b/c&#39;</span>)</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co">#  (&#39;a/b&#39;, &#39;c&#39;)</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>os.path.getsize(<span class="st">&#39;.&#39;</span>) <span class="co"># in bytes</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="co">#  2432</span></span></code></pre></div>
+<div id="predictates" class="section level3">
+<h3>predictates</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> os</span>
+<span id="cb2-2"><a href="#cb2-2"></a>os.path.exists(<span class="st">&#39;a/b/c&#39;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#  False</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>os.path.isabs(<span class="st">&#39;a/b/c&#39;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#  False</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>os.path.isdir(<span class="st">&#39;a/b/c&#39;</span>)</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#  False</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>os.path.isfile(<span class="st">&#39;a/b/c&#39;</span>)</span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#  False</span></span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="misc" class="section level2">
+<h2>misc</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> os</span>
+<span id="cb3-2"><a href="#cb3-2"></a>os.getcwd()</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#  &#39;/Users/darrenkidney/Github/how2/how2-py&#39;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>os.getenv(<span class="st">&#39;HOME&#39;</span>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#  &#39;/Users/darrenkidney&#39;</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>os.getenv(<span class="st">&#39;BLAH&#39;</span>, default<span class="op">=</span><span class="va">None</span>)</span></code></pre></div>
+</div>
 
 
 

@@ -402,11 +402,21 @@ $(document).ready(function () {
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    built-in
+    std
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="_todo.html">functions</a>
+    </li>
+    <li>
+      <a href="_todo.html">constants</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="_todo.html">argparse</a>
+    </li>
     <li>
       <a href="collections.html">collections</a>
     </li>
@@ -478,6 +488,30 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="_todo.html">pyarrow</a>
+    </li>
+    <li>
+      <a href="_todo.html">requests</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    misc
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="apis.html">apis</a>
+    </li>
+    <li>
+      <a href="_todo.html">flask</a>
+    </li>
+    <li>
+      <a href="_todo.html">packages</a>
+    </li>
+    <li>
+      <a href="_todo.html">sphinx</a>
     </li>
   </ul>
 </li>
@@ -575,6 +609,11 @@ $(document).ready(function () {
 <span id="cb1-2"><a href="#cb1-2"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">7</span>]</span>
 <span id="cb1-3"><a href="#cb1-3"></a>sns.distplot(x)</span></code></pre></div>
 <p><img src="seaborn_files/figure-html/unnamed-chunk-1-1.svg" width="75%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-2"><a href="#cb2-2"></a>sns.set_style(<span class="st">&#39;darkgrid&#39;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">7</span>]</span>
+<span id="cb2-4"><a href="#cb2-4"></a>sns.distplot(x)</span></code></pre></div>
+<p><img src="seaborn_files/figure-html/unnamed-chunk-2-1.svg" width="75%" style="display: block; margin: auto;" /></p>
 
 
 

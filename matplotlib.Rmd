@@ -1,5 +1,5 @@
 ---
-title: TODO
+title: matplotlib
 editor_options: 
   chunk_output_type: console
 ---
@@ -9,4 +9,6 @@ editor_options:
 
 *********************************************************************
 
-
+```python
+import matplotlib.pyplot as plt
+```

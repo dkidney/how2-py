@@ -402,11 +402,21 @@ $(document).ready(function () {
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    built-in
+    std
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="_todo.html">functions</a>
+    </li>
+    <li>
+      <a href="_todo.html">constants</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="_todo.html">argparse</a>
+    </li>
     <li>
       <a href="collections.html">collections</a>
     </li>
@@ -478,6 +488,30 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="_todo.html">pyarrow</a>
+    </li>
+    <li>
+      <a href="_todo.html">requests</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    misc
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="apis.html">apis</a>
+    </li>
+    <li>
+      <a href="_todo.html">flask</a>
+    </li>
+    <li>
+      <a href="_todo.html">packages</a>
+    </li>
+    <li>
+      <a href="_todo.html">sphinx</a>
     </li>
   </ul>
 </li>
@@ -631,12 +665,11 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">touch</span> temp.txt</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="bu">echo</span> <span class="st">&#39;line 1\nline 2\nline 3&#39;</span> <span class="op">&gt;</span> temp.txt</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">cat</span> temp.txt</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#  line 1</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#  line 2</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#  line 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="bu">echo</span> <span class="st">&#39;line 1\nline 2\nline 3&#39;</span> <span class="op">&gt;</span> temp.txt</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">cat</span> temp.txt</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#  line 1</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#  line 2</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#  line 3</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>fh <span class="op">=</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a>fh.name</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co">#  &#39;temp.txt&#39;</span></span>
@@ -783,6 +816,7 @@ $(document).ready(function () {
 <span id="cb15-3"><a href="#cb15-3"></a>fh.truncate()</span>
 <span id="cb15-4"><a href="#cb15-4"></a>fh.<span class="bu">next</span>()</span>
 <span id="cb15-5"><a href="#cb15-5"></a>fh.flush()</span></code></pre></div>
+<hr />
 </div>
 
 

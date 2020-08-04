@@ -37,8 +37,15 @@ navbar:
           href: _todo.html
         - text: "tests"
           href: _todo.html
-    - text: "built-in"
+    - text: "std"
       menu:
+        - text: "functions"
+          href: _todo.html
+        - text: "constants"
+          href: _todo.html
+        - text: "---------"
+        - text: "argparse"
+          href: _todo.html
         - text: "collections"
           href: collections.html
         - text: "datetime"
@@ -83,6 +90,18 @@ navbar:
         - text: "hocon"
           href: _todo.html
         - text: "pyarrow"
+          href: _todo.html
+        - text: "requests"
+          href: _todo.html
+    - text: "misc"
+      menu:
+        - text: "apis"
+          href: apis.html
+        - text: "flask"
+          href: _todo.html
+        - text: "packages"
+          href: _todo.html
+        - text: "sphinx"
           href: _todo.html
     - text: "envs"
       menu:

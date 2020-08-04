@@ -28,7 +28,6 @@ b | Add to mode for binary files (i.e., 'rb' or 'wb')
 t | Text mode for files (automatically decoding bytes to Unicode). This is the default if not specified. Add t to other modes to use this (i.e., 'rt' or 'xt')
 
 ```{sh, cache=FALSE}
-touch temp.txt
 echo 'line 1\nline 2\nline 3' > temp.txt
 cat temp.txt
 ```
@@ -168,4 +167,12 @@ fh.truncate()
 fh.next()
 fh.flush()
 ```
+
+*********************************************************************
+
+```{r, cache=FALSE, echo=FALSE}
+system("rm temp.txt")
+system("rm temp2.txt")
+```
+
 
