@@ -1,0 +1,54 @@
+---
+title: sys
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+## sys.path
+
+```{python}
+import sys
+type(sys.path)
+len(sys.path)
+sys.path[0]
+sys.path[1]
+```
+
+### sys.path.append
+
+Append at the end of the current path.
+
+```{python, cache=FALSE}
+import sys
+sys.path.append('path1')
+len(sys.path)
+sys.path[-1]
+```
+
+### sys.path.extend
+
+Similar to append
+
+```{python, cache=FALSE}
+import sys
+sys.path.extend(['path2'])
+len(sys.path)
+sys.path[-2:]
+```
+
+### sys.path.insert
+
+Insert anywhere into the current path.
+
+```{python, cache=FALSE}
+import sys
+sys.path.insert(0, 'path3')
+len(sys.path)
+sys.path[0]
+```
+

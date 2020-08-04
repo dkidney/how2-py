@@ -2,6 +2,9 @@
 title: "How to do stuff in python"
 author: "Darren Kidney"
 date: '`r format(Sys.Date(), "%d %b %Y")`'
+output:
+    html_document:
+        toc: false
 ---
 
 *********************************************************************

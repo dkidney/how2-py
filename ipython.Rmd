@@ -1,0 +1,40 @@
+---
+title: ipython
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+> Interactive Python: a command shell for interactive computing, originally developed for Python but now also supports other languages
+
+*********************************************************************
+
+* https://ipython.org/  
+* https://en.wikipedia.org/wiki/IPython  
+* https://ipython.readthedocs.io/en/stable/  
+
+*********************************************************************
+
+## install
+
+```sh
+pip install ipython
+```
+
+*********************************************************************
+
+## launch
+
+```sh
+ipython
+```
+
+*********************************************************************
+
+## features
+
+### tab completion

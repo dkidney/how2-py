@@ -4,50 +4,54 @@ output_dir: "."
 navbar:
   title: "how2-py"
   left:
-    - text: "Programming"
+    - text: "programming"
       menu:
         - text: "basics"
           href: basics.html
         - text: "---------"
         - text: "strings"
-          href: todo.html
+          href: _todo.html
         - text: "lists"
-          href: todo.html
+          href: _todo.html
         - text: "dicts"
-          href: todo.html
+          href: _todo.html
         - text: "tuples"
-          href: todo.html
+          href: _todo.html
+        - text: "sets"
+          href: _todo.html
         - text: "---------"
         - text: "comprehensions"
-          href: todo.html
+          href: _todo.html
         - text: "args and kwargs"
-          href: todo.html
+          href: _todo.html
         - text: "---------"
         - text: "files"
           href: files.html
         - text: "exceptions"
-          href: todo.html
+          href: _todo.html
         - text: "oop"
           href: oop.html
         - text: "scripting"
-          href: todo.html
+          href: _todo.html
         - text: "tests"
-          href: todo.html
-    - text: "Std modules"
+          href: _todo.html
+    - text: "built-in"
       menu:
         - text: "datetime"
-          href: todo.html
+          href: _todo.html
         - text: "json"
-          href: todo.html
+          href: _todo.html
         - text: "random"
-          href: todo.html
+          href: _todo.html
         - text: "re"
-          href: todo.html
+          href: _todo.html
         - text: "subprocess"
           href: subprocess.html
+        - text: "sys"
+          href: sys.html
         - text: "xml"
-          href: todo.html
-    - text: "DS modules"
+          href: _todo.html
+    - text: "ds"
       menu:
         - text: "numpy"
           href: numpy.html
@@ -62,35 +66,39 @@ navbar:
           href: keras.html
         - text: "---------"
         - text: "matplotlib"
-          href: todo.html
+          href: _todo.html
         - text: "seaborn"
           href: seaborn.html
         - text: "---------"
         - text: "boto3"
-          href: todo.html
+          href: _todo.html
         - text: "hocon"
-          href: todo.html
+          href: _todo.html
         - text: "pyarrow"
-          href: todo.html
-    - text: "Managers"
+          href: _todo.html
+    - text: "envs"
       menu:
         - text: "pip"
-          href: todo.html
+          href: _todo.html
         - text: "conda"
-          href: todo.html
+          href: _todo.html
         - text: "---------"
         - text: "pyenv"
-          href: todo.html
+          href: _todo.html
         - text: "venv"
-          href: todo.html
-    - text: "IDEs"
-      menu:
+          href: _todo.html
+        - text: "---------"
+        - text: "ipython"
+          href: ipython.html
+        - text: "jupyter notebook"
+          href: jupyter.html
+        - text: "jupyter lab"
+          href: _todo.html
+        - text: "---------"
         - text: "pycharm"
           href: pycharm.html
-        - text: "jupyter"
-          href: jupyter.html
         - text: "spyder"
-          href: todo.html
+          href: _todo.html
   right:
     - text: "how2"
       menu:

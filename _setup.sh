@@ -38,9 +38,17 @@ fi
 conda activate $env_name
 echo ${light_green}'updating dependencies'${none}
 pip install --upgrade pip
+pip install boto3
+pip install hocon
+pip install ipython
 pip install matplotlib
+pip install numpy
 pip install pandas
+pip install pyarrow
 pip install seaborn
+pip install sklearn
+pip freeze > _requirements.txt
+pip install -r _requirements.txt --upgrade
 
 # print versions
 python --version && which python && pip list

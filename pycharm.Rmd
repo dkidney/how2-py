@@ -77,6 +77,13 @@ Run | Bottom Right
 
 `Window > Use current layout as default`
 
+### console
+
+Use IPython if available (i.e. installed in your python env)
+
+* Go to `Preferences > Build, Execution, Deployment > Console`  
+* then check `Use IPython if available`
+
 ### plugins
 
 `Preferences > Plugins`
