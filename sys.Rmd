@@ -11,44 +11,23 @@ editor_options:
 
 ## sys.path
 
+* `path`: the list of directories Python searches through to find for modules and files 
+* stored as a list in `sys.path` - can therefore use list methods to modify it  
+
 ```{python}
 import sys
+from pprint import pprint
 type(sys.path)
-len(sys.path)
-sys.path[0]
-sys.path[1]
+pprint(sys.path)
 ```
 
-### sys.path.append
+E.g. 
 
-Append at the end of the current path.
-
-```{python, cache=FALSE}
-import sys
-sys.path.append('path1')
-len(sys.path)
-sys.path[-1]
+```python
+sys.path.append('extrapath') 
+sys.path.extend(['extrapath'])
+sys.path.insert(0, 'extrapath')
 ```
 
-### sys.path.extend
-
-Similar to append
-
-```{python, cache=FALSE}
-import sys
-sys.path.extend(['path2'])
-len(sys.path)
-sys.path[-2:]
-```
-
-### sys.path.insert
-
-Insert anywhere into the current path.
-
-```{python, cache=FALSE}
-import sys
-sys.path.insert(0, 'path3')
-len(sys.path)
-sys.path[0]
-```
+*********************************************************************
 

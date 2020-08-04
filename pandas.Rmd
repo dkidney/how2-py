@@ -13,43 +13,55 @@ editor_options:
 
 *********************************************************************
 
+## links
+
 * https://pandas.pydata.org/  
+* https://pandasguide.readthedocs.io/en/latest/  
 
-datacamp tutorials:
+### datacamp tutorials
 
-* https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python  
-* https://www.datacamp.com/community/tutorials/importing-data-into-pandas  
-* https://www.datacamp.com/community/tutorials/converting-strings-datetime-objects  
-* https://www.datacamp.com/community/tutorials/pandas-split-apply-combine-groupby  
-* https://www.datacamp.com/community/tutorials/pandas-multi-index  
-* https://www.datacamp.com/community/tutorials/data-preparation-with-pandas  
-* https://www.datacamp.com/community/tutorials/moving-averages-in-pandas  
+* [pandas-tutorial-dataframe-python](https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python)  
+* [importing-data-into-pandas](https://www.datacamp.com/community/tutorials/importing-data-into-pandas)  
+* [converting-strings-datetime-objects](https://www.datacamp.com/community/tutorials/converting-strings-datetime-objects)  
+* [pandas-split-apply-combine-groupby](https://www.datacamp.com/community/tutorials/pandas-split-apply-combine-groupby)  
+* [pandas-multi-index](https://www.datacamp.com/community/tutorials/pandas-multi-index)  
+* [data-preparation-with-pandas](https://www.datacamp.com/community/tutorials/data-preparation-with-pandas)  
+* [moving-averages-in-pandas](https://www.datacamp.com/community/tutorials/moving-averages-in-pandas)  
 
 *********************************************************************
 
 ## faqs
 
-### DataFrames
+### DataFrame 
 
-* [subset rows by index](#subset-rows-by-index)  
-* [subset rows by position](#subset-rows-by-position)   
-* [subset rows by boolean](#subset-rows-by-boolean) 
-* [subset columns by name](#subset-columns-by-name)   
-* [subset columns by position](#subset-columns-by-position)   
-* [subset columns by boolean](#subset-columns-by-boolean) 
-* [order rows by column values](#sort-values)
-* [grouped summaries](#grouped-summaries)
-* [left join](#left-join)  
+* subset columns
+  * [subset columns by name](#subset-columns-by-name)   
+  * [subset columns by position](#subset-columns-by-position)   
+  * [subset columns by boolean](#subset-columns-by-boolean) 
+* subset rows 
+  * [subset rows by index](#subset-rows-by-index)  
+  * [subset rows by position](#subset-rows-by-position)   
+  * [subset rows by boolean](#subset-rows-by-boolean) 
+* order  
+  * [order rows by column values](#sort-values)
+* group  
+  * [grouped summaries](#grouped-summaries)
+* rename  
+  * [rename columns](#rename-columns)
+  * [rename rows](#rename-rows)
+* join  
+  * [left join](#left-join)  
 
 ### Series
 
-* [subset index](#subset-by-index)  
-* [subset by position](#subset-by-position)   
-* [subset by boolean](#subset-by-boolean) 
+* subset  
+  * [subset index](#subset-by-index)  
+  * [subset by position](#subset-by-position)   
+  * [subset by boolean](#subset-by-boolean) 
 
 *********************************************************************
 
-## installation
+## install
 
 ```sh
 pip install pandas
@@ -184,6 +196,19 @@ df.to_numpy()
 df = pd.DataFrame()
 ```
 
+#### from dict
+
+```python
+# create from dict of lists - each key is a column
+df = pd.DataFrame({'v1': ['x', 'y', 'z'],
+                  'v2': [1, 2, 3]},
+                 index=['a', 'b', 'c'])
+
+# create from dict of series - each key is a column
+df = pd.DataFrame({'v1': pd.Series(['x', 'y', 'z'], index=['a', 'b', 'c']),
+                  'v2': pd.Series([1, 2, 3], index=['a', 'b', 'c'])})
+```
+
 #### from list
 
 ```python
@@ -200,19 +225,6 @@ df = pd.DataFrame([{'v1': 'x', 'v2': 1},
                   {'v1': 'y', 'v2': 2},
                   {'v1': 'z', 'v2': 3}],
                  index=['a', 'b', 'c'])
-```
-
-#### from dict
-
-```python
-# create from dict of lists - each key is a column
-df = pd.DataFrame({'v1': ['x', 'y', 'z'],
-                  'v2': [1, 2, 3]},
-                 index=['a', 'b', 'c'])
-
-# create from dict of series - each key is a column
-df = pd.DataFrame({'v1': pd.Series(['x', 'y', 'z'], index=['a', 'b', 'c']),
-                  'v2': pd.Series([1, 2, 3], index=['a', 'b', 'c'])})
 ```
 
 ### attributes
@@ -294,28 +306,91 @@ df.sort_values(by='col1', ascending=False)
 df.sort_values(by='col1', ascending=False, na_position='first')
 ```
 
-### joins
+### rename
+
+#### rename columns {#rename-columns}
+
+```python
+df.columns[0] = 'c1' # TypeError: Index does not support mutable operations
+df.columns = ['c1', 'c2', 'c3']
+df.rename(columns={'oldname': 'newname'})
+```
+
+#### rename rows {#rename-rows}
+
+```python
+df.index[0] = 'r1' # TypeError: Index does not support mutable operations
+df.index = ['r1', 'r2', 'r3']
+df.rename(index={'oldname': 'newname'})
+```
+
+*********************************************************************
+
+## joins
 
 * https://www.datacamp.com/community/tutorials/joining-dataframes-pandas  
 
-#### left join {#left-join}
+### left join {#left-join}
 
 ```python
 pd.merge(df1, df2, on='column-name', how='left')
 ```
 
+### right join {#right-join}
+
+### inner join {#inner-join}
+
+### outer join {#outer-join}
+
+### stack
+
+### concatenate
+
+### merge
 
 *********************************************************************
 
-## reading and writing
+## munging
+
+### str.split
+
+```{python}
+import pandas as pd
+df = pd.DataFrame(dict(c1 = ['1,2,3', '4,5,6', '7,8,9']))
+df
+df['c1'].str.split(',', expand=True)
+```
+
+### pivot
+
+### get_dummies
+
+### cut
+
+*********************************************************************
+
+## read
+
+### csv
 
 * https://www.datacamp.com/community/tutorials/pandas-read-csv  
 
 ```python
 df = pd.read_csv("file.csv")
-df = pd.read_excel("file.xlsx")
+df = pd.read_csv("file.csv", header=None, names=['c1', 'c2', 'c3'])
+```
+
+#### chunking
+
+### sql
+
+```python
 df = pd.read_sql(query, con)
 ```
+
+*********************************************************************
+
+## write
 
 ```python
 df.to_csv("file.csv")
@@ -323,7 +398,11 @@ df.to_csv("file.csv")
 
 *********************************************************************
 
-## options
+## display
+
+```python
+df.to.options.display.max_colwidth = 100
+```
 
 ```python
 pd.options.display.max_colwidth = 100

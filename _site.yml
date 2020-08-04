@@ -31,20 +31,28 @@ navbar:
           href: _todo.html
         - text: "oop"
           href: oop.html
+        - text: "profiling"
+          href: _todo.html
         - text: "scripting"
           href: _todo.html
         - text: "tests"
           href: _todo.html
     - text: "built-in"
       menu:
+        - text: "collections"
+          href: collections.html
         - text: "datetime"
-          href: _todo.html
+          href: datetime.html
         - text: "json"
-          href: _todo.html
+          href: json.html
+        - text: "os"
+          href: os.html
         - text: "random"
-          href: _todo.html
+          href: random.html
         - text: "re"
-          href: _todo.html
+          href: re.html
+        - text: "sqlite"
+          href: sqlite.html
         - text: "subprocess"
           href: subprocess.html
         - text: "sys"
@@ -66,7 +74,7 @@ navbar:
           href: keras.html
         - text: "---------"
         - text: "matplotlib"
-          href: _todo.html
+          href: matplotlib.html
         - text: "seaborn"
           href: seaborn.html
         - text: "---------"
