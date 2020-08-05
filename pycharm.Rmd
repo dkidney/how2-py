@@ -99,6 +99,12 @@ Use IPython if available (i.e. installed in your python env)
 
 * select `Emulate termnal in output console` to see `progress` progress bars.
 
+### misc
+
+Don't open previous projects on startup (otherwise it opens all projects that were open when last closed)
+
+`Settings -> Appearance & Behaviour -> System Settings -> Reopen last project on startup`
+
 *********************************************************************
 
 ## todo
