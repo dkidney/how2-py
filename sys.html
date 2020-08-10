@@ -372,14 +372,20 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">sets</a>
     </li>
-    <li class="divider"></li>
     <li>
       <a href="_todo.html">comprehensions</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="_todo.html">functions</a>
     </li>
     <li>
       <a href="_todo.html">args and kwargs</a>
     </li>
     <li class="divider"></li>
+    <li>
+      <a href="_todo.html">constants</a>
+    </li>
     <li>
       <a href="files.html">files</a>
     </li>
@@ -396,24 +402,17 @@ $(document).ready(function () {
       <a href="_todo.html">scripting</a>
     </li>
     <li>
-      <a href="_todo.html">tests</a>
+      <a href="_todo.html">testing</a>
     </li>
   </ul>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    std
+    std lib
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="_todo.html">functions</a>
-    </li>
-    <li>
-      <a href="_todo.html">constants</a>
-    </li>
-    <li class="divider"></li>
     <li>
       <a href="_todo.html">argparse</a>
     </li>
@@ -505,6 +504,9 @@ $(document).ready(function () {
       <a href="apis.html">apis</a>
     </li>
     <li>
+      <a href="databases.html">databases</a>
+    </li>
+    <li>
       <a href="_todo.html">flask</a>
     </li>
     <li>
@@ -537,6 +539,13 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
+      <a href="pycharm.html">pycharm</a>
+    </li>
+    <li>
+      <a href="_todo.html">spyder</a>
+    </li>
+    <li class="divider"></li>
+    <li>
       <a href="ipython.html">ipython</a>
     </li>
     <li>
@@ -545,12 +554,11 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">jupyter lab</a>
     </li>
-    <li class="divider"></li>
     <li>
-      <a href="pycharm.html">pycharm</a>
+      <a href="_todo.html">zepplin</a>
     </li>
     <li>
-      <a href="_todo.html">spyder</a>
+      <a href="_todo.html">databricks</a>
     </li>
   </ul>
 </li>
@@ -601,11 +609,10 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#sys.argv">sys.argv</a></li>
-<li><a href="#sys.path">sys.path</a></li>
-<li><a href="#sys.platform">sys.platform</a></li>
-<li><a href="#sys.prefix">sys.prefix</a></li>
-<li><a href="#sys.version">sys.version</a></li>
+<li><a href="#command-line-args">command line args</a></li>
+<li><a href="#path">path</a></li>
+<li><a href="#python-version">python version</a></li>
+<li><a href="#os">os</a></li>
 </ul>
 </div>
 
@@ -618,8 +625,8 @@ $(document).ready(function () {
 <li><a href="https://python.readthedocs.io/en/latest/library/sys.html" class="uri">https://python.readthedocs.io/en/latest/library/sys.html</a></li>
 </ul>
 <hr />
-<div id="sys.argv" class="section level2">
-<h2>sys.argv</h2>
+<div id="command-line-args" class="section level2">
+<h2>command line args</h2>
 <p>The list of command line arguments passed to a Python script.</p>
 <p>argv[0] is the script name (it is operating system dependent whether this is a full pathname or not). If the command was executed using the -c command line option to the interpreter, argv[0] is set to the string ‘-c’. If no script name was passed to the Python interpreter, argv[0] is the empty string.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="bu">echo</span> <span class="st">&#39;import sys</span></span>
@@ -632,8 +639,8 @@ $(document).ready(function () {
 <span id="cb2-4"><a href="#cb2-4"></a><span class="co">#  sys.argv[2] = &quot;b&quot;</span></span></code></pre></div>
 <hr />
 </div>
-<div id="sys.path" class="section level2">
-<h2>sys.path</h2>
+<div id="path" class="section level2">
+<h2>path</h2>
 <ul>
 <li><code>path</code>: the list of directories Python searches through to find for modules and files</li>
 <li>stored as a list in <code>sys.path</code> - can therefore use list methods to modify it</li>
@@ -656,29 +663,26 @@ $(document).ready(function () {
 <span id="cb4-3"><a href="#cb4-3"></a>sys.path.insert(<span class="dv">0</span>, <span class="st">&#39;extrapath&#39;</span>)</span></code></pre></div>
 <hr />
 </div>
-<div id="sys.platform" class="section level2">
-<h2>sys.platform</h2>
+<div id="python-version" class="section level2">
+<h2>python version</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> sys</span>
-<span id="cb5-2"><a href="#cb5-2"></a>sys.platform</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#  &#39;darwin&#39;</span></span></code></pre></div>
+<span id="cb5-2"><a href="#cb5-2"></a>sys.version</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#  &#39;3.8.3 (default, Jul  2 2020, 11:30:46) \n[Clang 10.0.0 ]&#39;</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>sys.prefix</span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#  &#39;/usr/local/anaconda3/envs/how2-py&#39;</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>sys.executable</span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#  &#39;/usr/local/anaconda3/envs/how2-py/bin/python&#39;</span></span></code></pre></div>
+<hr />
+</div>
+<div id="os" class="section level2">
+<h2>os</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> sys</span>
+<span id="cb6-2"><a href="#cb6-2"></a>sys.platform</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#  &#39;darwin&#39;</span></span></code></pre></div>
 <p><code>linux</code> = Linux<br />
 <code>win32</code> = Windows<br />
 <code>cygwin</code> = Windows/Cygwin<br />
 <code>darwin</code> = Mac OS X</p>
-<hr />
-</div>
-<div id="sys.prefix" class="section level2">
-<h2>sys.prefix</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> sys</span>
-<span id="cb6-2"><a href="#cb6-2"></a>sys.prefix <span class="co"># where packages will installed by default</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#  &#39;/usr/local/anaconda3/envs/how2-py&#39;</span></span></code></pre></div>
-<hr />
-</div>
-<div id="sys.version" class="section level2">
-<h2>sys.version</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> sys</span>
-<span id="cb7-2"><a href="#cb7-2"></a>sys.version</span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#  &#39;3.8.3 (default, Jul  2 2020, 11:30:46) \n[Clang 10.0.0 ]&#39;</span></span></code></pre></div>
 </div>
 
 

@@ -372,14 +372,20 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">sets</a>
     </li>
-    <li class="divider"></li>
     <li>
       <a href="_todo.html">comprehensions</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="_todo.html">functions</a>
     </li>
     <li>
       <a href="_todo.html">args and kwargs</a>
     </li>
     <li class="divider"></li>
+    <li>
+      <a href="_todo.html">constants</a>
+    </li>
     <li>
       <a href="files.html">files</a>
     </li>
@@ -396,24 +402,17 @@ $(document).ready(function () {
       <a href="_todo.html">scripting</a>
     </li>
     <li>
-      <a href="_todo.html">tests</a>
+      <a href="_todo.html">testing</a>
     </li>
   </ul>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    std
+    std lib
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="_todo.html">functions</a>
-    </li>
-    <li>
-      <a href="_todo.html">constants</a>
-    </li>
-    <li class="divider"></li>
     <li>
       <a href="_todo.html">argparse</a>
     </li>
@@ -505,6 +504,9 @@ $(document).ready(function () {
       <a href="apis.html">apis</a>
     </li>
     <li>
+      <a href="databases.html">databases</a>
+    </li>
+    <li>
       <a href="_todo.html">flask</a>
     </li>
     <li>
@@ -537,6 +539,13 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
+      <a href="pycharm.html">pycharm</a>
+    </li>
+    <li>
+      <a href="_todo.html">spyder</a>
+    </li>
+    <li class="divider"></li>
+    <li>
       <a href="ipython.html">ipython</a>
     </li>
     <li>
@@ -545,12 +554,11 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">jupyter lab</a>
     </li>
-    <li class="divider"></li>
     <li>
-      <a href="pycharm.html">pycharm</a>
+      <a href="_todo.html">zepplin</a>
     </li>
     <li>
-      <a href="_todo.html">spyder</a>
+      <a href="_todo.html">databricks</a>
     </li>
   </ul>
 </li>
@@ -607,6 +615,10 @@ $(document).ready(function () {
 <ul>
 <li><a href="#tab-completion">tab completion</a></li>
 </ul></li>
+<li><a href="#extensions">extensions</a>
+<ul>
+<li><a href="#sql">sql</a></li>
+</ul></li>
 </ul>
 </div>
 
@@ -637,6 +649,26 @@ $(document).ready(function () {
 <h2>features</h2>
 <div id="tab-completion" class="section level3">
 <h3>tab completion</h3>
+<hr />
+</div>
+</div>
+<div id="extensions" class="section level2">
+<h2>extensions</h2>
+<div id="sql" class="section level3">
+<h3>sql</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">%</span>load_ext sql</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="op">%</span>sql select <span class="op">*</span> <span class="im">from</span> mytable limit <span class="dv">10</span></span></code></pre></div>
+<p>Use python variables</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>value <span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="op">%</span>sql select <span class="op">*</span> <span class="im">from</span> table where var <span class="op">=</span> :value</span></code></pre></div>
+<p>Assign results of queries to python variables</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>result <span class="op">=</span> <span class="op">%</span>sql select <span class="op">*</span> <span class="im">from</span> mytable limit <span class="dv">10</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="bu">print</span>(result.DataFrame())</span></code></pre></div>
+<p>Import from csv</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-2"><a href="#cb6-2"></a>mydata <span class="op">=</span> pd.read_csv(<span class="st">&#39;https://....csv&#39;</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="op">%</span>sql PERSIST mydata</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="op">%</span>sql SELECT <span class="op">*</span> FROM mydata limit <span class="dv">5</span><span class="op">;</span></span></code></pre></div>
 </div>
 </div>
 

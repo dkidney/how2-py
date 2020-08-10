@@ -9,6 +9,21 @@ editor_options:
 
 *********************************************************************
 
+## REST APIs
+
+> REpresentational State Transfer
+
+term | description
+------- | -------------
+client | program
+resource | web service 
+request | input
+response | output 
+endpoint | url used by the client to connect to the service?  
+api key | user id
+
+*********************************************************************
+
 ## Google
 
 * https://github.com/googleapis/google-api-python-client  

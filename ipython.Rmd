@@ -38,3 +38,37 @@ ipython
 ## features
 
 ### tab completion
+
+*********************************************************************
+
+## extensions
+
+### sql
+
+```python
+%load_ext sql
+%sql select * from mytable limit 10
+```
+
+Use python variables
+
+```python
+value = 42
+%sql select * from table where var = :value
+```
+
+Assign results of queries to python variables
+
+```python
+result = %sql select * from mytable limit 10
+print(result.DataFrame())
+```
+
+Import from csv
+
+```python
+import pandas as pd
+mydata = pd.read_csv('https://....csv')
+%sql PERSIST mydata
+%sql SELECT * FROM mydata limit 5;
+```

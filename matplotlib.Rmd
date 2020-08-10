@@ -9,6 +9,208 @@ editor_options:
 
 *********************************************************************
 
+> A comprehensive library for creating static, animated, and interactive visualizations
+
+*********************************************************************
+
+## faqs
+
+*********************************************************************
+
+## links
+
+* https://matplotlib.org/  
+* https://www.aosabook.org/en/matplotlib.html
+
+*********************************************************************
+
+## setup
+
+```sh
+pip install matplotlib
+```
+
+```{python}
+import matplotlib as mpl
+mpl.__version__
+```
+
+*********************************************************************
+
+## basics
+
+Architecture:
+
+* scripting layer - `pyplot`  
+* artist layer - `Artist`  
+* backend layer - `FigureCanvaas`, `Renderer`, `Event`  
+
+### ipython magic
+
+Allow matplotlib plots to be plotted inline in the notebook:
+
+```
+%matplotlib inline 
+```
+
+Allow modification of figures after they have been rendered:
+
+```
+%matplotlib notebook 
+```
+
+*********************************************************************
+
+## style
+
+```python
+mpl.style.use(['ggplot'])
+```
+
+*********************************************************************
+
+## pyplot
+
 ```python
 import matplotlib.pyplot as plt
 ```
+
+### scatter
+
+```python
+plt.plot(1, 1, 'o')
+```
+
+### hist
+
+```python
+plt.hist(x)
+plt.title(r'Normal distribution with $\mu=0, \sigma=1$')
+plt.xlabel('x-axis-label')
+plt.ylabel('y-axis-label')
+plt.text(x, y, 'label')
+plt.savefig('a_histogram.png)
+plt.show()
+```
+
+### scatter
+
+```python
+plt.scatter(x, y)
+```
+
+### pcolor
+
+Heat map
+
+```python
+plt.pcolor(df_pivot, cmap='Rdbu')
+plt.colourbar()
+plt.show()
+```
+
+*********************************************************************
+
+## Artist
+
+### Primitive
+
+* `Line2D`  
+* `Rectangle`  
+* `Circle`  
+* `Text`  
+
+### Composite
+
+* `Axis`  
+* `Tick`  
+* `Axes` - the most important composite artist because it is where most of the plotting methods are defined - e.g. for creating and manipulating the ticks, axis lines, grid and plot background  
+* `Figure` - top-level object that contains and manages all of the elements in a given graphic  
+
+```python
+from matplotlib.figure import Figure
+fig = Figure()
+ax = fig.add_subplot(111) # create an axes artist
+# 111 means 1 row, 1 col, cell 1
+```
+
+*********************************************************************
+
+## backend_bases
+
+### FigureCanvas
+
+Encompasses the area onto which the figure is drawn
+
+```python
+from matplotlib.backend_bases import FigureCanvasAgg as FigureCanvas
+canvas = FigureCanvas(fig) # see Figure
+```
+
+Agg = anti-green geometry - a high performance library
+
+### Renderer
+
+An instance of the Renderer class that knows how to draw on the FigureCanvas
+
+### Event
+
+Handles user input such as keyboard strokes and mouse clicks
+
+*********************************************************************
+
+## ??
+
+### axis labels 
+
+```python
+ax = plt.subplots()
+
+# label names
+row_labels = list(df.columns)
+col_labels = list(df.index)
+
+# move ticks and labels to the center
+ax.set_xticks(np.arange(df.shape[1]) + 0.5, minor=False)
+ax.set_yticks(np.arange(df.shape[0]) + 0.5, minor=False)
+
+# insert labels
+ax.set_xticklabels(row_labels, minor=False)
+ax.set_yticklabels(col_labels, minor=False)
+
+# rotate labels
+plt.xticks(rotation=90)
+```
+
+### figure size
+
+```python
+width = 12
+height = 10
+plt.figure(figsize=(width, height))
+```
+
+*********************************************************************
+
+## plot
+
+```python
+def PlotPolly(model, independent_variable, dependent_variabble, Name):
+    x_new = np.linspace(15, 55, 100)
+    y_new = model(x_new)
+
+    plt.plot(independent_variable, dependent_variabble, '.', x_new, y_new, '-')
+    plt.title('Polynomial Fit with Matplotlib for Price ~ Length')
+    ax = plt.gca()
+    ax.set_facecolor((0.898, 0.898, 0.898))
+    fig = plt.gcf()
+    plt.xlabel(Name)
+    plt.ylabel('Price of Cars')
+
+    plt.show()
+    plt.close()
+```
+
+*********************************************************************
+
+

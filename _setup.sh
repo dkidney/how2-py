@@ -48,7 +48,8 @@ pip install pyarrow
 pip install seaborn
 pip install sklearn
 pip freeze > _requirements.txt
-pip install -r _requirements.txt --upgrade
+pip install -U -r _requirements.txt
+pip freeze > _requirements.txt
 
 # print versions
 python --version && which python && pip list

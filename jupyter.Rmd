@@ -42,16 +42,12 @@ The ipython kernel is the python execution backend for jupyter
 # list all kernels
 jupyter kernelspec list
 
-# e.g. add a new python 2 kernel using an existing conda environment
-conda activate py2
-conda install ipykernel
-conda install jupyter # I had to use pip instead to get this to work for python 2.
-python -m ipykernel install --user --name py2 --display-name "py2" # manually register it
-
-# e.g. add a new python 2 kernel using pip
-python2 -m pip --version # need pip version >= 9
-python2 -m pip install ipykernel
-python2 -m ipykernel install --user
+# add a kernel using an existing conda environment
+myenv=how2-py
+conda activate $myenv
+pip install -U ipykernel
+python -m ipykernel install --user --name $myenv --display-name $myenv
+jupyter kernelspec list
 
 # delete a kernel
 jupyter kernelspec uninstall unwanted-kernel
@@ -152,7 +148,7 @@ pip install rpy2
 ```
 
 ```python
-%load_ext sql
+%load_ext sql # pip install ipython-sql
 %load_ext cython
 %load_ext rpy2.ipython
 ```

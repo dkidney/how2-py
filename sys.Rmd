@@ -17,7 +17,7 @@ editor_options:
 
 *********************************************************************
 
-## sys.argv
+## command line args
 
 The list of command line arguments passed to a Python script. 
 
@@ -40,7 +40,7 @@ system("rm temp.py")
 
 *********************************************************************
 
-## sys.path
+## path
 
 * `path`: the list of directories Python searches through to find for modules and files 
 * stored as a list in `sys.path` - can therefore use list methods to modify it  
@@ -62,7 +62,18 @@ sys.path.insert(0, 'extrapath')
 
 *********************************************************************
 
-## sys.platform
+## python version
+
+```{python}
+import sys
+sys.version
+sys.prefix
+sys.executable
+```
+
+*********************************************************************
+
+## os
 
 ```{python}
 import sys
@@ -74,23 +85,6 @@ sys.platform
 `cygwin` = Windows/Cygwin  
 `darwin` = Mac OS X  
 
-*********************************************************************
-
-## sys.prefix
-
-```{python}
-import sys
-sys.prefix # where packages will installed by default
-```
-
-*********************************************************************
-
-## sys.version
-
-```{python}
-import sys
-sys.version
-```
 
 
 

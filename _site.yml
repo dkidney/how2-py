@@ -19,12 +19,16 @@ navbar:
           href: _todo.html
         - text: "sets"
           href: _todo.html
-        - text: "---------"
         - text: "comprehensions"
+          href: _todo.html
+        - text: "---------"
+        - text: "functions"
           href: _todo.html
         - text: "args and kwargs"
           href: _todo.html
         - text: "---------"
+        - text: "constants"
+          href: _todo.html
         - text: "files"
           href: files.html
         - text: "exceptions"
@@ -35,15 +39,10 @@ navbar:
           href: _todo.html
         - text: "scripting"
           href: _todo.html
-        - text: "tests"
+        - text: "testing"
           href: _todo.html
-    - text: "std"
+    - text: "std lib"
       menu:
-        - text: "functions"
-          href: _todo.html
-        - text: "constants"
-          href: _todo.html
-        - text: "---------"
         - text: "argparse"
           href: _todo.html
         - text: "collections"
@@ -97,6 +96,8 @@ navbar:
       menu:
         - text: "apis"
           href: apis.html
+        - text: "databases"
+          href: databases.html
         - text: "flask"
           href: _todo.html
         - text: "packages"
@@ -115,16 +116,20 @@ navbar:
         - text: "venv"
           href: _todo.html
         - text: "---------"
+        - text: "pycharm"
+          href: pycharm.html
+        - text: "spyder"
+          href: _todo.html
+        - text: "---------"
         - text: "ipython"
           href: ipython.html
         - text: "jupyter notebook"
           href: jupyter.html
         - text: "jupyter lab"
           href: _todo.html
-        - text: "---------"
-        - text: "pycharm"
-          href: pycharm.html
-        - text: "spyder"
+        - text: "zepplin"
+          href: _todo.html
+        - text: "databricks"
           href: _todo.html
   right:
     - text: "how2"

@@ -32,7 +32,7 @@ e-books:
 
 *********************************************************************
 
-```{python, eval=TRUE}
+```{python}
 import numpy as np
 np.__version__
 ```
@@ -46,7 +46,7 @@ np.__version__
 
 ### create from list
 
-```{python, eval=TRUE}
+```{python}
 import numpy as np
 np.array([[1, 2, 3], [4, 5, 6]])
 np.arange(6).reshape((2,3))
@@ -57,7 +57,7 @@ Note the difference between `np.ndarray` and `np.array()` . The former is a data
 
 ### create from scratch
 
-```{python, eval=TRUE}
+```{python}
 import numpy as np
 np.empty((2,3))
 np.zeros((2,3))
@@ -69,7 +69,7 @@ np.eye(3)
 
 #### np.random
 
-```{python, eval=TRUE}
+```{python}
 import numpy as np
 np.random.seed(42)
 np.random.random((2,3))
@@ -81,12 +81,13 @@ np.random.randint(0, 10, (2, 3))
 
 ## attributes
 
-### size and shape
+### size, shape and type
 
 ```python
 x.ndim # number of dimensions
 x.shape # size of each dimension
 x.size # number of elements
+x.dtype # e.g. float64
 ```
 
 ### memory usage
@@ -96,14 +97,6 @@ x.itemsize # size (in bytes) of each array element
 x.nbytes # total size (in bytes) of the array
 x.data # memory address
 ```
-
-### data type
-
-```python
-x.dtype
-```
-
-TODO
 
 *********************************************************************
 
@@ -120,7 +113,7 @@ x[1,1] # 2nd row, 2nd column
 
 ### sub-arrays
 
-```{python, eval=TRUE}
+```{python}
 import numpy as np
 x = np.array([[ 1., 2., 3.], [ 4., 5., 6.]])
 x
@@ -141,7 +134,7 @@ y = x[:2, 1:3].copy()
 
 ### change sizes of dimensions
 
-```{python, eval=TRUE}
+```{python}
 import numpy as np
 np.arange(6).reshape((2,3))
 np.linspace(0, 1, 6).reshape((2,3)) 
@@ -149,7 +142,7 @@ np.linspace(0, 1, 6).reshape((2,3))
 
 ### add a dimension
 
-```{python, eval=TRUE}
+```{python}
 import numpy as np
 x = np.array([1, 2, 3, 4, 5, 6])
 x
@@ -160,7 +153,7 @@ x[np.newaxis, :].shape
 
 ### flatten
 
-```{python, eval=TRUE}
+```{python}
 import numpy as np
 x = np.array([[ 1., 2., 3.], [ 4., 5., 6.]])
 x
@@ -175,7 +168,7 @@ x.ravel().shape
 
 ### 1d
 
-```{python, eval=TRUE}
+```{python}
 import numpy as np
 x = np.array([1, 2, 3]) 
 y = np.array([4, 5, 6])
@@ -184,14 +177,14 @@ np.concatenate([x, y])
 
 ### 2d
 
-```{python, eval=TRUE}
+```{python}
 import numpy as np
 x = np.array([[ 1., 2., 3.], [ 4., 5., 6.]])
 np.concatenate([x, x])
 np.vstack([x, x])
 ```
 
-```{python, eval=TRUE}
+```{python}
 import numpy as np
 x = np.array([[ 1., 2., 3.], [ 4., 5., 6.]])
 np.concatenate([x, x], axis=1)
@@ -208,7 +201,7 @@ Use `np.concatenate` with `axis=1` or `np.dstack`
 
 ### 1d
 
-```{python, eval=TRUE}
+```{python}
 import numpy as np
 x = np.arange(10)
 a, b = np.split(x, [5])
@@ -216,7 +209,7 @@ a
 b
 ```
 
-```{python, eval=TRUE}
+```{python}
 import numpy as np
 x = np.arange(10)
 a, b, c = np.split(x, [5, 8])
@@ -227,7 +220,7 @@ c
 
 ### 2d
 
-```{python, eval=TRUE}
+```{python}
 import numpy as np
 x = np.arange(12).reshape((3,4))
 a, b = np.hsplit(x, [2])
@@ -235,7 +228,7 @@ a
 b
 ```
 
-```{python, eval=TRUE}
+```{python}
 import numpy as np
 x = np.arange(12).reshape((3,4))
 a, b = np.vsplit(x, [2])
@@ -245,9 +238,26 @@ b
 
 *********************************************************************
 
+## products
+
+```python
+a = np.array([[1, 0], [0, 1], [2, 4]])
+b = np.array([[4, 1], [2, 2], [1, 3]])
+
+# element-wise (i.e. Hadamard) product
+a * b 
+
+# dot product
+a @ b.T
+np.dot(a, b.T)
+np.matmul(a, b.T) # different broadcasting rules to np.dot
+```
+
+*********************************************************************
+
 ## sequences
 
-```{python, eval=TRUE}
+```{python}
 import numpy as np
 np.arange(10) # 0 to 9, step size = 1
 np.arange(0, 10, 2) # (from, up-to-not-including, step-size)
@@ -300,6 +310,19 @@ p56 python-data-science-handbook
 ### aggregates
 
 ### outer products
+
+*********************************************************************
+
+## constants
+
+* https://numpy.org/doc/stable/reference/constants.html
+
+```python
+np.inf
+np.nan
+np.pi
+np.e
+```
 
 
 

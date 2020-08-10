@@ -372,14 +372,20 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">sets</a>
     </li>
-    <li class="divider"></li>
     <li>
       <a href="_todo.html">comprehensions</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="_todo.html">functions</a>
     </li>
     <li>
       <a href="_todo.html">args and kwargs</a>
     </li>
     <li class="divider"></li>
+    <li>
+      <a href="_todo.html">constants</a>
+    </li>
     <li>
       <a href="files.html">files</a>
     </li>
@@ -396,24 +402,17 @@ $(document).ready(function () {
       <a href="_todo.html">scripting</a>
     </li>
     <li>
-      <a href="_todo.html">tests</a>
+      <a href="_todo.html">testing</a>
     </li>
   </ul>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    std
+    std lib
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="_todo.html">functions</a>
-    </li>
-    <li>
-      <a href="_todo.html">constants</a>
-    </li>
-    <li class="divider"></li>
     <li>
       <a href="_todo.html">argparse</a>
     </li>
@@ -505,6 +504,9 @@ $(document).ready(function () {
       <a href="apis.html">apis</a>
     </li>
     <li>
+      <a href="databases.html">databases</a>
+    </li>
+    <li>
       <a href="_todo.html">flask</a>
     </li>
     <li>
@@ -537,6 +539,13 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
+      <a href="pycharm.html">pycharm</a>
+    </li>
+    <li>
+      <a href="_todo.html">spyder</a>
+    </li>
+    <li class="divider"></li>
+    <li>
       <a href="ipython.html">ipython</a>
     </li>
     <li>
@@ -545,12 +554,11 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">jupyter lab</a>
     </li>
-    <li class="divider"></li>
     <li>
-      <a href="pycharm.html">pycharm</a>
+      <a href="_todo.html">zepplin</a>
     </li>
     <li>
-      <a href="_todo.html">spyder</a>
+      <a href="_todo.html">databricks</a>
     </li>
   </ul>
 </li>
@@ -599,21 +607,91 @@ $(document).ready(function () {
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#faqs">faqs</a></li>
+<li><a href="#links">links</a></li>
+<li><a href="#setup">setup</a></li>
+<li><a href="#plot-types">plot types</a>
+<ul>
+<li><a href="#boxplot">boxplot</a></li>
+<li><a href="#distplot">distplot</a></li>
+<li><a href="#jointplot">jointplot</a></li>
+<li><a href="#regplot">regplot</a></li>
+<li><a href="#residplot">residplot</a></li>
+<li><a href="#swarmplot">swarmplot</a></li>
+</ul></li>
+<li><a href="#styles">styles</a></li>
+</ul>
+</div>
 
 <hr />
+<blockquote>
+<p>Headline</p>
+</blockquote>
+<hr />
+<div id="faqs" class="section level2">
+<h2>faqs</h2>
+<hr />
+</div>
+<div id="links" class="section level2">
+<h2>links</h2>
+<p>datacamp:</p>
 <ul>
-<li><a href="https://www.datacamp.com/community/tutorials/seaborn-python-tutorial" class="uri">https://www.datacamp.com/community/tutorials/seaborn-python-tutorial</a></li>
+<li><a href="https://www.datacamp.com/community/tutorials/seaborn-python-tutorial">seaborn tutorial</a></li>
 </ul>
 <hr />
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-2"><a href="#cb1-2"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">7</span>]</span>
-<span id="cb1-3"><a href="#cb1-3"></a>sns.distplot(x)</span></code></pre></div>
-<p><img src="seaborn_files/figure-html/unnamed-chunk-1-1.svg" width="75%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="setup" class="section level2">
+<h2>setup</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">pip</span> install seaborn</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb2-2"><a href="#cb2-2"></a>sns.set_style(<span class="st">&#39;darkgrid&#39;</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">7</span>]</span>
-<span id="cb2-4"><a href="#cb2-4"></a>sns.distplot(x)</span></code></pre></div>
-<p><img src="seaborn_files/figure-html/unnamed-chunk-2-1.svg" width="75%" style="display: block; margin: auto;" /></p>
+<span id="cb2-2"><a href="#cb2-2"></a>sns.__version__</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#  &#39;0.10.1&#39;</span></span></code></pre></div>
+<hr />
+</div>
+<div id="plot-types" class="section level2">
+<h2>plot types</h2>
+<p>Generic example</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># x and y are lists</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>sns.plottype(x<span class="op">=</span>df[<span class="st">&#39;xvar&#39;</span>], y<span class="op">=</span>df[<span class="st">&#39;yvar&#39;</span>])</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># x and y are columns in dataframe</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>sns.plottype(x<span class="op">=</span><span class="st">&#39;xvar&#39;</span>, y<span class="op">=</span><span class="st">&#39;yvar&#39;</span>, data<span class="op">=</span>df)</span></code></pre></div>
+<div id="boxplot" class="section level3">
+<h3>boxplot</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>sns.boxplot(x, y)</span></code></pre></div>
+</div>
+<div id="distplot" class="section level3">
+<h3>distplot</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>sns.distplot(x)</span></code></pre></div>
+<p>E.g. overlay two density plots</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>ax1 <span class="op">=</span> sns.distplot(x1, hist<span class="op">=</span><span class="va">False</span>, col<span class="op">=</span><span class="st">&#39;r&#39;</span>, label<span class="op">=</span><span class="st">&#39;var1&#39;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>sns.distplot(x2, hist<span class="op">=</span><span class="va">False</span>, col<span class="op">=</span><span class="st">&#39;b&#39;</span>, label<span class="op">=</span><span class="st">&#39;var2&#39;</span>, ax<span class="op">=</span>ax1)</span></code></pre></div>
+</div>
+<div id="jointplot" class="section level3">
+<h3>jointplot</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+</div>
+<div id="regplot" class="section level3">
+<h3>regplot</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>sns.regplot(x, y)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>plt.ylim(<span class="dv">0</span>,)</span></code></pre></div>
+</div>
+<div id="residplot" class="section level3">
+<h3>residplot</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>sns.residplot(x, y)</span></code></pre></div>
+</div>
+<div id="swarmplot" class="section level3">
+<h3>swarmplot</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="styles" class="section level2">
+<h2>styles</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>sns.set_style(<span class="st">&#39;darkgrid&#39;</span>)</span></code></pre></div>
+</div>
 
 
 

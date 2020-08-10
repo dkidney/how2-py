@@ -372,14 +372,20 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">sets</a>
     </li>
-    <li class="divider"></li>
     <li>
       <a href="_todo.html">comprehensions</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="_todo.html">functions</a>
     </li>
     <li>
       <a href="_todo.html">args and kwargs</a>
     </li>
     <li class="divider"></li>
+    <li>
+      <a href="_todo.html">constants</a>
+    </li>
     <li>
       <a href="files.html">files</a>
     </li>
@@ -396,24 +402,17 @@ $(document).ready(function () {
       <a href="_todo.html">scripting</a>
     </li>
     <li>
-      <a href="_todo.html">tests</a>
+      <a href="_todo.html">testing</a>
     </li>
   </ul>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    std
+    std lib
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="_todo.html">functions</a>
-    </li>
-    <li>
-      <a href="_todo.html">constants</a>
-    </li>
-    <li class="divider"></li>
     <li>
       <a href="_todo.html">argparse</a>
     </li>
@@ -505,6 +504,9 @@ $(document).ready(function () {
       <a href="apis.html">apis</a>
     </li>
     <li>
+      <a href="databases.html">databases</a>
+    </li>
+    <li>
       <a href="_todo.html">flask</a>
     </li>
     <li>
@@ -537,6 +539,13 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
+      <a href="pycharm.html">pycharm</a>
+    </li>
+    <li>
+      <a href="_todo.html">spyder</a>
+    </li>
+    <li class="divider"></li>
+    <li>
       <a href="ipython.html">ipython</a>
     </li>
     <li>
@@ -545,12 +554,11 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">jupyter lab</a>
     </li>
-    <li class="divider"></li>
     <li>
-      <a href="pycharm.html">pycharm</a>
+      <a href="_todo.html">zepplin</a>
     </li>
     <li>
-      <a href="_todo.html">spyder</a>
+      <a href="_todo.html">databricks</a>
     </li>
   </ul>
 </li>
@@ -601,33 +609,27 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#links">links</a>
-<ul>
-<li><a href="#datacamp-tutorials">datacamp tutorials</a></li>
-</ul></li>
 <li><a href="#faqs">faqs</a>
 <ul>
 <li><a href="#dataframe">DataFrame</a></li>
 <li><a href="#series">Series</a></li>
 </ul></li>
-<li><a href="#install">install</a></li>
+<li><a href="#links">links</a></li>
+<li><a href="#setup">setup</a></li>
 <li><a href="#series-1">Series</a>
 <ul>
 <li><a href="#create">create</a></li>
 <li><a href="#attributes">attributes</a></li>
-<li><a href="#methods">methods</a></li>
 <li><a href="#indexing-and-slicing">indexing and slicing</a></li>
-<li><a href="#misc">misc</a></li>
+<li><a href="#casting">casting</a></li>
 </ul></li>
 <li><a href="#dataframe-1">DataFrame</a>
 <ul>
 <li><a href="#create-1">create</a></li>
 <li><a href="#attributes-1">attributes</a></li>
 <li><a href="#indexing-and-slicing-1">indexing and slicing</a></li>
-<li><a href="#sort-values">ordering</a></li>
-<li><a href="#rename">rename</a></li>
 </ul></li>
-<li><a href="#joins">joins</a>
+<li><a href="#join">join</a>
 <ul>
 <li><a href="#left-join">left join</a></li>
 <li><a href="#right-join">right join</a></li>
@@ -637,22 +639,51 @@ $(document).ready(function () {
 <li><a href="#concatenate">concatenate</a></li>
 <li><a href="#merge">merge</a></li>
 </ul></li>
-<li><a href="#munging">munging</a>
+<li><a href="#wrangling-and-eda">wrangling and eda</a>
 <ul>
-<li><a href="#str.split">.str.split</a></li>
-<li><a href="#pivot">.pivot</a></li>
-<li><a href="#get_dummies">.get_dummies</a></li>
-<li><a href="#cut">.cut</a></li>
-<li><a href="#map">.map</a></li>
-<li><a href="#dropna">.dropna</a></li>
-<li><a href="#distinct-rows">distinct rows</a></li>
+<li><a href="#apply">apply</a></li>
+<li><a href="#applymap">applymap</a></li>
+<li><a href="#astype">astype</a></li>
+<li><a href="#corr">corr</a></li>
+<li><a href="#cut">cut</a></li>
+<li><a href="#describe">describe</a></li>
+<li><a href="#drop">drop</a></li>
+<li><a href="#dropna">dropna</a></li>
+<li><a href="#drop_duplicates">drop_duplicates</a></li>
+<li><a href="#fillna">fillna</a></li>
+<li><a href="#get_dummies">get_dummies</a></li>
+<li><a href="#groupby">groupby</a></li>
+<li><a href="#idxmax">idxmax</a></li>
+<li><a href="#map">map</a></li>
+<li><a href="#melt">melt</a></li>
+<li><a href="#pivot">pivot</a></li>
+<li><a href="#pivot_table">pivot_table</a></li>
+<li><a href="#plot">plot</a></li>
+<li><a href="#rename">rename</a></li>
+<li><a href="#replace">replace</a></li>
+<li><a href="#reset_index">reset_index</a></li>
+<li><a href="#set_index">set_index</a></li>
+<li><a href="#sort-values">sort_values</a></li>
+<li><a href="#str.split">str.split</a></li>
+<li><a href="#transpose">transpose</a></li>
+<li><a href="#unique">unique</a></li>
+<li><a href="#value_counts">value_counts</a></li>
+<li><a href="#wide_to_long">wide_to_long</a></li>
 </ul></li>
 <li><a href="#read">read</a>
 <ul>
-<li><a href="#csv">csv</a></li>
-<li><a href="#sql">sql</a></li>
+<li><a href="#read_csv">read_csv</a></li>
+<li><a href="#read_json">read_json</a></li>
+<li><a href="#read_sql">read_sql</a></li>
+<li><a href="#read_excel">read_excel</a></li>
 </ul></li>
-<li><a href="#write">write</a></li>
+<li><a href="#write">write</a>
+<ul>
+<li><a href="#to_csv">to_csv</a></li>
+<li><a href="#to_json">to_json</a></li>
+<li><a href="#to_sql">to_sql</a></li>
+<li><a href="#to_excel">to_excel</a></li>
+</ul></li>
 <li><a href="#display">display</a></li>
 </ul>
 </div>
@@ -662,33 +693,6 @@ $(document).ready(function () {
 <p>Python Data Analysis Library</p>
 </blockquote>
 <hr />
-<div id="links" class="section level2">
-<h2>links</h2>
-<ul>
-<li><a href="https://pandas.pydata.org/" class="uri">https://pandas.pydata.org/</a><br />
-</li>
-<li><a href="https://pandasguide.readthedocs.io/en/latest/" class="uri">https://pandasguide.readthedocs.io/en/latest/</a></li>
-</ul>
-<div id="datacamp-tutorials" class="section level3">
-<h3>datacamp tutorials</h3>
-<ul>
-<li><a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python">pandas-tutorial-dataframe-python</a><br />
-</li>
-<li><a href="https://www.datacamp.com/community/tutorials/importing-data-into-pandas">importing-data-into-pandas</a><br />
-</li>
-<li><a href="https://www.datacamp.com/community/tutorials/converting-strings-datetime-objects">converting-strings-datetime-objects</a><br />
-</li>
-<li><a href="https://www.datacamp.com/community/tutorials/pandas-split-apply-combine-groupby">pandas-split-apply-combine-groupby</a><br />
-</li>
-<li><a href="https://www.datacamp.com/community/tutorials/pandas-multi-index">pandas-multi-index</a><br />
-</li>
-<li><a href="https://www.datacamp.com/community/tutorials/data-preparation-with-pandas">data-preparation-with-pandas</a><br />
-</li>
-<li><a href="https://www.datacamp.com/community/tutorials/moving-averages-in-pandas">moving-averages-in-pandas</a></li>
-</ul>
-<hr />
-</div>
-</div>
 <div id="faqs" class="section level2">
 <h2>faqs</h2>
 <div id="dataframe" class="section level3">
@@ -744,8 +748,33 @@ $(document).ready(function () {
 <hr />
 </div>
 </div>
-<div id="install" class="section level2">
-<h2>install</h2>
+<div id="links" class="section level2">
+<h2>links</h2>
+<ul>
+<li><a href="https://pandas.pydata.org/" class="uri">https://pandas.pydata.org/</a><br />
+</li>
+<li><a href="https://pandasguide.readthedocs.io/en/latest/" class="uri">https://pandasguide.readthedocs.io/en/latest/</a></li>
+</ul>
+<p>datacamp:</p>
+<ul>
+<li><a href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python">pandas-tutorial-dataframe-python</a><br />
+</li>
+<li><a href="https://www.datacamp.com/community/tutorials/importing-data-into-pandas">importing-data-into-pandas</a><br />
+</li>
+<li><a href="https://www.datacamp.com/community/tutorials/converting-strings-datetime-objects">converting-strings-datetime-objects</a><br />
+</li>
+<li><a href="https://www.datacamp.com/community/tutorials/pandas-split-apply-combine-groupby">pandas-split-apply-combine-groupby</a><br />
+</li>
+<li><a href="https://www.datacamp.com/community/tutorials/pandas-multi-index">pandas-multi-index</a><br />
+</li>
+<li><a href="https://www.datacamp.com/community/tutorials/data-preparation-with-pandas">data-preparation-with-pandas</a><br />
+</li>
+<li><a href="https://www.datacamp.com/community/tutorials/moving-averages-in-pandas">moving-averages-in-pandas</a></li>
+</ul>
+<hr />
+</div>
+<div id="setup" class="section level2">
+<h2>setup</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">pip</span> install pandas</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2"></a>pd.__version__</span>
@@ -764,55 +793,52 @@ $(document).ready(function () {
 <div id="from-scalar" class="section level4">
 <h4>from scalar</h4>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>ser <span class="op">=</span> pd.Series(<span class="dv">0</span>) </span>
-<span id="cb4-2"><a href="#cb4-2"></a>ser <span class="op">=</span> pd.Series(<span class="dv">0</span>, [<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>]) </span></code></pre></div>
+<span id="cb4-2"><a href="#cb4-2"></a>ser <span class="op">=</span> pd.Series(<span class="dv">0</span>, [<span class="st">&#39;e1&#39;</span>, <span class="st">&#39;e2&#39;</span>, <span class="st">&#39;e3&#39;</span>]) </span></code></pre></div>
 </div>
 <div id="from-list" class="section level4">
 <h4>from list</h4>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>ser <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
-<span id="cb5-2"><a href="#cb5-2"></a>ser <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>]) </span></code></pre></div>
+<span id="cb5-2"><a href="#cb5-2"></a>ser <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="st">&#39;e1&#39;</span>, <span class="st">&#39;e2&#39;</span>, <span class="st">&#39;e3&#39;</span>]) </span></code></pre></div>
 </div>
 <div id="from-dict" class="section level4">
 <h4>from dict</h4>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>ser <span class="op">=</span> pd.Series({<span class="st">&#39;a&#39;</span>: <span class="dv">1</span>, <span class="st">&#39;b&#39;</span>: <span class="dv">2</span>, <span class="st">&#39;c&#39;</span>: <span class="dv">3</span>})</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>ser <span class="op">=</span> pd.Series({<span class="st">&#39;e1&#39;</span>: <span class="dv">1</span>, <span class="st">&#39;e2&#39;</span>: <span class="dv">2</span>, <span class="st">&#39;e3&#39;</span>: <span class="dv">3</span>})</span></code></pre></div>
 </div>
 <div id="from-ndarray" class="section level4">
 <h4>from ndarray</h4>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>ser <span class="op">=</span> pd.Series(np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]), [<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>]) </span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>ser <span class="op">=</span> pd.Series(np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]), [<span class="st">&#39;e1&#39;</span>, <span class="st">&#39;e2&#39;</span>, <span class="st">&#39;e3&#39;</span>]) </span></code></pre></div>
 </div>
 </div>
 <div id="attributes" class="section level3">
 <h3>attributes</h3>
 <div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>ser.shape</span>
-<span id="cb8-2"><a href="#cb8-2"></a>ser.index</span>
-<span id="cb8-3"><a href="#cb8-3"></a>ser.count</span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="bu">len</span>(ser)</span></code></pre></div>
-</div>
-<div id="methods" class="section level3">
-<h3>methods</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>ser.unique()</span></code></pre></div>
+<span id="cb8-2"><a href="#cb8-2"></a>ser.count</span>
+<span id="cb8-3"><a href="#cb8-3"></a>ser.index</span>
+<span id="cb8-4"><a href="#cb8-4"></a>ser.index.name</span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="bu">len</span>(ser)</span></code></pre></div>
 </div>
 <div id="indexing-and-slicing" class="section level3">
 <h3>indexing and slicing</h3>
 <p>by location</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>ser[<span class="dv">0</span>] <span class="co"># first (returns scalar)</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>ser[<span class="op">-</span><span class="dv">1</span>] <span class="co"># last (returns scalar)</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>ser[[<span class="dv">0</span>]] <span class="co"># first</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a>ser[[<span class="op">-</span><span class="dv">1</span>]] <span class="co"># last</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a>ser[[<span class="dv">0</span>,<span class="dv">2</span>]] <span class="co"># first and third</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a>ser[<span class="dv">1</span>:] <span class="co"># everything but the first</span></span>
-<span id="cb10-7"><a href="#cb10-7"></a>ser[:<span class="op">-</span><span class="dv">1</span>] <span class="co"># everything but the first</span></span>
-<span id="cb10-8"><a href="#cb10-8"></a>ser[:<span class="dv">1</span>] <span class="co"># first</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a>ser[<span class="op">-</span><span class="dv">1</span>:] <span class="co"># last</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>ser[<span class="dv">0</span>] <span class="co"># first (returns scalar)</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>ser[<span class="op">-</span><span class="dv">1</span>] <span class="co"># last (returns scalar)</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>ser[[<span class="dv">0</span>]] <span class="co"># first</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>ser[[<span class="op">-</span><span class="dv">1</span>]] <span class="co"># last</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>ser[[<span class="dv">0</span>,<span class="dv">2</span>]] <span class="co"># first and third</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a>ser[<span class="dv">1</span>:] <span class="co"># everything but the first</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>ser[:<span class="op">-</span><span class="dv">1</span>] <span class="co"># everything but the first</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>ser[:<span class="dv">1</span>] <span class="co"># first</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>ser[<span class="op">-</span><span class="dv">1</span>:] <span class="co"># last</span></span></code></pre></div>
 <p>by index</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>ser[<span class="st">&#39;a&#39;</span>] <span class="co"># first (returns scalar)</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>ser[<span class="st">&#39;c&#39;</span>] <span class="co"># last (returns scalar)</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a>ser[[<span class="st">&#39;a&#39;</span>]] <span class="co"># first</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a>ser[[<span class="st">&#39;c&#39;</span>]] <span class="co"># last</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a>ser[[<span class="st">&#39;a&#39;</span>,<span class="st">&#39;c&#39;</span>]] <span class="co"># first and third</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a>ser[<span class="st">&#39;b&#39;</span>:] <span class="co"># everything but the first</span></span>
-<span id="cb11-7"><a href="#cb11-7"></a>ser[:<span class="st">&#39;b&#39;</span>] <span class="co"># everything but the last</span></span>
-<span id="cb11-8"><a href="#cb11-8"></a>ser[:<span class="st">&#39;a&#39;</span>] <span class="co"># first</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a>ser[<span class="st">&#39;c&#39;</span>:] <span class="co"># last</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>ser[<span class="st">&#39;e1&#39;</span>] <span class="co"># first (returns scalar)</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>ser[<span class="st">&#39;e3&#39;</span>] <span class="co"># last (returns scalar)</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>ser[[<span class="st">&#39;e1&#39;</span>]] <span class="co"># first</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>ser[[<span class="st">&#39;e3&#39;</span>]] <span class="co"># last</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>ser[[<span class="st">&#39;e1&#39;</span>,<span class="st">&#39;e3&#39;</span>]] <span class="co"># first and third</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>ser[<span class="st">&#39;e2&#39;</span>:] <span class="co"># everything but the first</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>ser[:<span class="st">&#39;e2&#39;</span>] <span class="co"># everything but the last</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>ser[:<span class="st">&#39;e1&#39;</span>] <span class="co"># first</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a>ser[<span class="st">&#39;e3&#39;</span>:] <span class="co"># last</span></span></code></pre></div>
 <div id="subset-by-index" class="section level4">
 <h4>subset by index</h4>
 <p>TODO</p>
@@ -826,16 +852,16 @@ $(document).ready(function () {
 <p>TODO</p>
 </div>
 </div>
-<div id="misc" class="section level3">
-<h3>misc</h3>
+<div id="casting" class="section level3">
+<h3>casting</h3>
 <p>conversion</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="bu">list</span>(x)</span>
-<span id="cb12-2"><a href="#cb12-2"></a>df.to_list()</span>
-<span id="cb12-3"><a href="#cb12-3"></a></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="bu">dict</span>(x)</span>
-<span id="cb12-5"><a href="#cb12-5"></a>df.to_dict()</span>
-<span id="cb12-6"><a href="#cb12-6"></a></span>
-<span id="cb12-7"><a href="#cb12-7"></a>df.to_numpy()</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="bu">list</span>(x)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>ser.to_list()</span>
+<span id="cb11-3"><a href="#cb11-3"></a></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="bu">dict</span>(x)</span>
+<span id="cb11-5"><a href="#cb11-5"></a>ser.to_dict()</span>
+<span id="cb11-6"><a href="#cb11-6"></a></span>
+<span id="cb11-7"><a href="#cb11-7"></a>ser.to_numpy()</span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -847,117 +873,115 @@ $(document).ready(function () {
 <div id="create-1" class="section level3">
 <h3>create</h3>
 <p><code>pd.DataFrame(data, index, columns, dtype, copy)</code></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># create empty df</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>df <span class="op">=</span> pd.DataFrame()</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># create empty df</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>df <span class="op">=</span> pd.DataFrame()</span></code></pre></div>
 <div id="from-dict-1" class="section level4">
 <h4>from dict</h4>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># create from dict of lists - each key is a column</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">&#39;v1&#39;</span>: [<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;z&#39;</span>],</span>
-<span id="cb14-3"><a href="#cb14-3"></a>                  <span class="st">&#39;v2&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]},</span>
-<span id="cb14-4"><a href="#cb14-4"></a>                 index<span class="op">=</span>[<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>])</span>
-<span id="cb14-5"><a href="#cb14-5"></a></span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="co"># create from dict of series - each key is a column</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">&#39;v1&#39;</span>: pd.Series([<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;z&#39;</span>], index<span class="op">=</span>[<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>]),</span>
-<span id="cb14-8"><a href="#cb14-8"></a>                  <span class="st">&#39;v2&#39;</span>: pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], index<span class="op">=</span>[<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>])})</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># create from dict of lists - each key is a column</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">&#39;c1&#39;</span>: [<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;z&#39;</span>],</span>
+<span id="cb13-3"><a href="#cb13-3"></a>                  <span class="st">&#39;c2&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]},</span>
+<span id="cb13-4"><a href="#cb13-4"></a>                 index<span class="op">=</span>[<span class="st">&#39;r1&#39;</span>, <span class="st">&#39;r2&#39;</span>, <span class="st">&#39;r3&#39;</span>])</span>
+<span id="cb13-5"><a href="#cb13-5"></a></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="co"># create from dict of series - each key is a column</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">&#39;c1&#39;</span>: pd.Series([<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;z&#39;</span>], index<span class="op">=</span>[<span class="st">&#39;r1&#39;</span>, <span class="st">&#39;r2&#39;</span>, <span class="st">&#39;r3&#39;</span>]),</span>
+<span id="cb13-8"><a href="#cb13-8"></a>                  <span class="st">&#39;c2&#39;</span>: pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], index<span class="op">=</span>[<span class="st">&#39;r1&#39;</span>, <span class="st">&#39;r2&#39;</span>, <span class="st">&#39;r3&#39;</span>])})</span></code></pre></div>
 </div>
 <div id="from-list-1" class="section level4">
 <h4>from list</h4>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df <span class="op">=</span> pd.DataFrame([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
-<span id="cb15-2"><a href="#cb15-2"></a>df <span class="op">=</span> pd.DataFrame([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], columns<span class="op">=</span>[<span class="st">&#39;v1&#39;</span>])</span>
-<span id="cb15-3"><a href="#cb15-3"></a></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="co"># create from list of lists - each sublist is a row</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a>df <span class="op">=</span> pd.DataFrame([[<span class="st">&#39;x&#39;</span>, <span class="dv">1</span>], [<span class="st">&#39;y&#39;</span>, <span class="dv">2</span>], [<span class="st">&#39;z&#39;</span>, <span class="dv">3</span>]],</span>
-<span id="cb15-6"><a href="#cb15-6"></a>                 index<span class="op">=</span>[<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>],</span>
-<span id="cb15-7"><a href="#cb15-7"></a>                 columns<span class="op">=</span>[<span class="st">&#39;v1&#39;</span>, <span class="st">&#39;v2&#39;</span>])</span>
-<span id="cb15-8"><a href="#cb15-8"></a></span>
-<span id="cb15-9"><a href="#cb15-9"></a><span class="co"># create from list of dicts - each sublist is a row</span></span>
-<span id="cb15-10"><a href="#cb15-10"></a>df <span class="op">=</span> pd.DataFrame([{<span class="st">&#39;v1&#39;</span>: <span class="st">&#39;x&#39;</span>, <span class="st">&#39;v2&#39;</span>: <span class="dv">1</span>},</span>
-<span id="cb15-11"><a href="#cb15-11"></a>                  {<span class="st">&#39;v1&#39;</span>: <span class="st">&#39;y&#39;</span>, <span class="st">&#39;v2&#39;</span>: <span class="dv">2</span>},</span>
-<span id="cb15-12"><a href="#cb15-12"></a>                  {<span class="st">&#39;v1&#39;</span>: <span class="st">&#39;z&#39;</span>, <span class="st">&#39;v2&#39;</span>: <span class="dv">3</span>}],</span>
-<span id="cb15-13"><a href="#cb15-13"></a>                 index<span class="op">=</span>[<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df <span class="op">=</span> pd.DataFrame([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb14-2"><a href="#cb14-2"></a>df <span class="op">=</span> pd.DataFrame([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], columns<span class="op">=</span>[<span class="st">&#39;c1&#39;</span>])</span>
+<span id="cb14-3"><a href="#cb14-3"></a></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="co"># create from list of lists - each sublist is a row</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a>df <span class="op">=</span> pd.DataFrame([[<span class="st">&#39;x&#39;</span>, <span class="dv">1</span>], [<span class="st">&#39;y&#39;</span>, <span class="dv">2</span>], [<span class="st">&#39;z&#39;</span>, <span class="dv">3</span>]],</span>
+<span id="cb14-6"><a href="#cb14-6"></a>                 index<span class="op">=</span>[<span class="st">&#39;r1&#39;</span>, <span class="st">&#39;r2&#39;</span>, <span class="st">&#39;r3&#39;</span>],</span>
+<span id="cb14-7"><a href="#cb14-7"></a>                 columns<span class="op">=</span>[<span class="st">&#39;c1&#39;</span>, <span class="st">&#39;c2&#39;</span>])</span>
+<span id="cb14-8"><a href="#cb14-8"></a></span>
+<span id="cb14-9"><a href="#cb14-9"></a><span class="co"># create from list of dicts - each sublist is a row</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a>df <span class="op">=</span> pd.DataFrame([{<span class="st">&#39;c1&#39;</span>: <span class="st">&#39;x&#39;</span>, <span class="st">&#39;c2&#39;</span>: <span class="dv">1</span>},</span>
+<span id="cb14-11"><a href="#cb14-11"></a>                  {<span class="st">&#39;c1&#39;</span>: <span class="st">&#39;y&#39;</span>, <span class="st">&#39;c2&#39;</span>: <span class="dv">2</span>},</span>
+<span id="cb14-12"><a href="#cb14-12"></a>                  {<span class="st">&#39;c1&#39;</span>: <span class="st">&#39;z&#39;</span>, <span class="st">&#39;c2&#39;</span>: <span class="dv">3</span>}],</span>
+<span id="cb14-13"><a href="#cb14-13"></a>                 index<span class="op">=</span>[<span class="st">&#39;r1&#39;</span>, <span class="st">&#39;r2&#39;</span>, <span class="st">&#39;r3&#39;</span>])</span></code></pre></div>
 </div>
 </div>
 <div id="attributes-1" class="section level3">
 <h3>attributes</h3>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>df.shape <span class="co"># (nrows, ncols) tuple</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>df.head <span class="co"># first 5 rows</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a>df.tail <span class="co"># last 5 rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df.shape <span class="co"># (nrows, ncols) tuple</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>df.head <span class="co"># first 5 rows</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>df.tail <span class="co"># last 5 rows</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>df.info</span>
+<span id="cb15-5"><a href="#cb15-5"></a>df.dtypes</span>
+<span id="cb15-6"><a href="#cb15-6"></a>df.columns</span>
+<span id="cb15-7"><a href="#cb15-7"></a>df.index</span>
+<span id="cb15-8"><a href="#cb15-8"></a>df.columns.values</span>
+<span id="cb15-9"><a href="#cb15-9"></a>df.columns.name <span class="co"># not always</span></span>
+<span id="cb15-10"><a href="#cb15-10"></a>df.columns.names <span class="co"># not always</span></span>
+<span id="cb15-11"><a href="#cb15-11"></a>df.index.values</span>
+<span id="cb15-12"><a href="#cb15-12"></a>df.index.name <span class="co"># not always</span></span>
+<span id="cb15-13"><a href="#cb15-13"></a>df.index.names <span class="co"># not always</span></span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="bu">len</span>(df) <span class="co"># nrows</span></span></code></pre></div>
+<div id="types" class="section level4">
+<h4>types</h4>
+<p>e.g.<br />
+object<br />
+float64<br />
+int64<br />
+datetime</p>
+</div>
 </div>
 <div id="indexing-and-slicing-1" class="section level3">
 <h3>indexing and slicing</h3>
-<div id="subset-rows-by-index" class="section level4">
-<h4>subset rows by index</h4>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df.loc[<span class="st">&#39;a&#39;</span>] <span class="co"># first row - returns a series</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>df.loc[<span class="st">&quot;c&quot;</span>] <span class="co"># last row - returns a series</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>df.loc[[<span class="st">&quot;a&quot;</span>]] <span class="co"># first row</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a>df.loc[[<span class="st">&quot;c&quot;</span>]] <span class="co"># last row</span></span></code></pre></div>
-</div>
-<div id="subset-rows-by-position" class="section level4">
-<h4>subset rows by position</h4>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>df.iloc[<span class="dv">0</span>] <span class="co"># first row - returns a series</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>df.iloc[<span class="op">-</span><span class="dv">1</span>] <span class="co"># last row - returns a series</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a>df.iloc[[<span class="dv">0</span>]] <span class="co"># first row</span></span>
-<span id="cb18-4"><a href="#cb18-4"></a>df.iloc[[<span class="op">-</span><span class="dv">1</span>]] <span class="co"># last row</span></span></code></pre></div>
-</div>
-<div id="subset-rows-by-boolean" class="section level4">
-<h4>subset rows by boolean</h4>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>df[df[<span class="st">&#39;v1&#39;</span>] <span class="op">==</span> <span class="st">&quot;x&quot;</span>]</span></code></pre></div>
-<p>Or a more generalisable form,</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df.loc[df[<span class="st">&#39;v1&#39;</span>].isin([<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>])]</span></code></pre></div>
-</div>
 <div id="subset-columns-by-name" class="section level4">
 <h4>subset columns by name</h4>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>df[<span class="st">&#39;v1&#39;</span>] <span class="co"># returns a series</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a>df[[<span class="st">&#39;v1&#39;</span>]]</span>
-<span id="cb21-3"><a href="#cb21-3"></a>df[[<span class="st">&#39;v1&#39;</span>, <span class="st">&#39;v2&#39;</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>df[<span class="st">&#39;c1&#39;</span>] <span class="co"># returns a series</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>df[[<span class="st">&#39;c1&#39;</span>]]</span>
+<span id="cb16-3"><a href="#cb16-3"></a>df[[<span class="st">&#39;c1&#39;</span>, <span class="st">&#39;c2&#39;</span>]]</span></code></pre></div>
 <p>Equivalently,</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>df.loc[:, <span class="st">&#39;v1&#39;</span>]  <span class="co"># returns a series</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a>df.loc[:, [<span class="st">&#39;v1&#39;</span>]]</span>
-<span id="cb22-3"><a href="#cb22-3"></a>df.loc[:, [<span class="st">&#39;v1&#39;</span>, <span class="st">&#39;v2&#39;</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df.loc[:, <span class="st">&#39;c1&#39;</span>]  <span class="co"># returns a series</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>df.loc[:, [<span class="st">&#39;c1&#39;</span>]]</span>
+<span id="cb17-3"><a href="#cb17-3"></a>df.loc[:, [<span class="st">&#39;c1&#39;</span>, <span class="st">&#39;c2&#39;</span>]]</span></code></pre></div>
 </div>
 <div id="subset-columns-by-position" class="section level4">
 <h4>subset columns by position</h4>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>df.iloc[:, <span class="dv">0</span>]  <span class="co"># returns a series</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a>df.iloc[:, [<span class="dv">0</span>]]</span>
-<span id="cb23-3"><a href="#cb23-3"></a>df.iloc[:, [<span class="dv">0</span>, <span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>df.iloc[:, <span class="dv">0</span>]  <span class="co"># returns a series</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>df.iloc[:, [<span class="dv">0</span>]]</span>
+<span id="cb18-3"><a href="#cb18-3"></a>df.iloc[:, [<span class="dv">0</span>, <span class="dv">1</span>]]</span></code></pre></div>
 </div>
 <div id="subset-columns-by-boolean" class="section level4">
 <h4>subset columns by boolean</h4>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>df.loc[:, [<span class="va">True</span>, <span class="va">False</span>]]</span>
-<span id="cb24-2"><a href="#cb24-2"></a>df.loc[:, [<span class="va">True</span>, <span class="va">True</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>df.loc[:, [<span class="va">True</span>, <span class="va">False</span>]]</span>
+<span id="cb19-2"><a href="#cb19-2"></a>df.loc[:, [<span class="va">True</span>, <span class="va">True</span>]]</span></code></pre></div>
 </div>
+<div id="subset-rows-by-index" class="section level4">
+<h4>subset rows by index</h4>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df.loc[<span class="st">&#39;r1&#39;</span>] <span class="co"># first row - returns a series</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>df.loc[<span class="st">&#39;r3&#39;</span>] <span class="co"># last row - returns a series</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>df.loc[[<span class="st">&#39;r1&#39;</span>]] <span class="co"># first row</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>df.loc[[<span class="st">&#39;r3&#39;</span>]] <span class="co"># last row</span></span></code></pre></div>
 </div>
-<div id="sort-values" class="section level3">
-<h3>ordering</h3>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>df.sort_values(by<span class="op">=</span><span class="st">&#39;col1&#39;</span>)</span>
-<span id="cb25-2"><a href="#cb25-2"></a>df.sort_values(by<span class="op">=</span><span class="st">&#39;col1&#39;</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb25-3"><a href="#cb25-3"></a>df.sort_values(by<span class="op">=</span><span class="st">&#39;col1&#39;</span>, ascending<span class="op">=</span><span class="va">False</span>, na_position<span class="op">=</span><span class="st">&#39;first&#39;</span>)</span></code></pre></div>
+<div id="subset-rows-by-position" class="section level4">
+<h4>subset rows by position</h4>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>df.iloc[<span class="dv">0</span>] <span class="co"># first row - returns a series</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>df.iloc[<span class="op">-</span><span class="dv">1</span>] <span class="co"># last row - returns a series</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a>df.iloc[[<span class="dv">0</span>]] <span class="co"># first row</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>df.iloc[[<span class="op">-</span><span class="dv">1</span>]] <span class="co"># last row</span></span></code></pre></div>
 </div>
-<div id="rename" class="section level3">
-<h3>rename</h3>
-<div id="rename-columns" class="section level4">
-<h4>rename columns</h4>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>df.columns[<span class="dv">0</span>] <span class="op">=</span> <span class="st">&#39;c1&#39;</span> <span class="co"># TypeError: Index does not support mutable operations</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a>df.columns <span class="op">=</span> [<span class="st">&#39;c1&#39;</span>, <span class="st">&#39;c2&#39;</span>, <span class="st">&#39;c3&#39;</span>]</span>
-<span id="cb26-3"><a href="#cb26-3"></a>df.rename(columns<span class="op">=</span>{<span class="st">&#39;oldname&#39;</span>: <span class="st">&#39;newname&#39;</span>})</span></code></pre></div>
-</div>
-<div id="rename-rows" class="section level4">
-<h4>rename rows</h4>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>df.index[<span class="dv">0</span>] <span class="op">=</span> <span class="st">&#39;r1&#39;</span> <span class="co"># TypeError: Index does not support mutable operations</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a>df.index <span class="op">=</span> [<span class="st">&#39;r1&#39;</span>, <span class="st">&#39;r2&#39;</span>, <span class="st">&#39;r3&#39;</span>]</span>
-<span id="cb27-3"><a href="#cb27-3"></a>df.rename(index<span class="op">=</span>{<span class="st">&#39;oldname&#39;</span>: <span class="st">&#39;newname&#39;</span>})</span></code></pre></div>
+<div id="subset-rows-by-boolean" class="section level4">
+<h4>subset rows by boolean</h4>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>df[df[<span class="st">&#39;c1&#39;</span>] <span class="op">==</span> <span class="st">&quot;x&quot;</span>]</span></code></pre></div>
+<p>Or a more generalisable form,</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>df.loc[df[<span class="st">&#39;c1&#39;</span>].isin([<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>])]</span></code></pre></div>
 <hr />
 </div>
 </div>
 </div>
-<div id="joins" class="section level2">
-<h2>joins</h2>
+<div id="join" class="section level2">
+<h2>join</h2>
 <ul>
 <li><a href="https://www.datacamp.com/community/tutorials/joining-dataframes-pandas" class="uri">https://www.datacamp.com/community/tutorials/joining-dataframes-pandas</a></li>
 </ul>
 <div id="left-join" class="section level3">
 <h3>left join</h3>
-<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>pd.merge(df1, df2, on<span class="op">=</span><span class="st">&#39;column-name&#39;</span>, how<span class="op">=</span><span class="st">&#39;left&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>pd.merge(df1, df2, on<span class="op">=</span><span class="st">&#39;column-name&#39;</span>, how<span class="op">=</span><span class="st">&#39;left&#39;</span>)</span></code></pre></div>
 </div>
 <div id="right-join" class="section level3">
 <h3>right join</h3>
@@ -979,85 +1003,314 @@ $(document).ready(function () {
 <hr />
 </div>
 </div>
-<div id="munging" class="section level2">
-<h2>munging</h2>
-<div id="str.split" class="section level3">
-<h3>.str.split</h3>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb29-2"><a href="#cb29-2"></a>df <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(c1 <span class="op">=</span> [<span class="st">&#39;1,2,3&#39;</span>, <span class="st">&#39;4,5,6&#39;</span>, <span class="st">&#39;7,8,9&#39;</span>]))</span>
-<span id="cb29-3"><a href="#cb29-3"></a>df</span>
-<span id="cb29-4"><a href="#cb29-4"></a><span class="co">#        c1</span></span>
-<span id="cb29-5"><a href="#cb29-5"></a><span class="co">#  0  1,2,3</span></span>
-<span id="cb29-6"><a href="#cb29-6"></a><span class="co">#  1  4,5,6</span></span>
-<span id="cb29-7"><a href="#cb29-7"></a><span class="co">#  2  7,8,9</span></span>
-<span id="cb29-8"><a href="#cb29-8"></a>df[<span class="st">&#39;c1&#39;</span>].<span class="bu">str</span>.split(<span class="st">&#39;,&#39;</span>, expand<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb29-9"><a href="#cb29-9"></a><span class="co">#     0  1  2</span></span>
-<span id="cb29-10"><a href="#cb29-10"></a><span class="co">#  0  1  2  3</span></span>
-<span id="cb29-11"><a href="#cb29-11"></a><span class="co">#  1  4  5  6</span></span>
-<span id="cb29-12"><a href="#cb29-12"></a><span class="co">#  2  7  8  9</span></span></code></pre></div>
+<div id="wrangling-and-eda" class="section level2">
+<h2>wrangling and eda</h2>
+<div id="apply" class="section level3">
+<h3>apply</h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
 </div>
-<div id="pivot" class="section level3">
-<h3>.pivot</h3>
+<div id="applymap" class="section level3">
+<h3>applymap</h3>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
 </div>
-<div id="get_dummies" class="section level3">
-<h3>.get_dummies</h3>
+<div id="astype" class="section level3">
+<h3>astype</h3>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>df[<span class="st">&#39;col1&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;col1&#39;</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb27-2"><a href="#cb27-2"></a>df[[<span class="st">&quot;col1&quot;</span>, <span class="st">&quot;col2&quot;</span>]] <span class="op">=</span> df[[<span class="st">&quot;col1&quot;</span>, <span class="st">&quot;col2&quot;</span>]].astype(<span class="bu">float</span>)</span></code></pre></div>
+</div>
+<div id="corr" class="section level3">
+<h3>corr</h3>
+<p>calculate pair-wise correlations for numeric variables.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>df.corr()</span>
+<span id="cb28-2"><a href="#cb28-2"></a>df[[<span class="st">&quot;col1&quot;</span>, <span class="st">&quot;col2&quot;</span>]].corr()</span></code></pre></div>
 </div>
 <div id="cut" class="section level3">
-<h3>.cut</h3>
+<h3>cut</h3>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>labels <span class="op">=</span> [<span class="st">&#39;high&#39;</span>, <span class="st">&#39;med&#39;</span>, <span class="st">&#39;low&#39;</span>]</span>
+<span id="cb29-2"><a href="#cb29-2"></a>bins <span class="op">=</span> np.linspace(df[<span class="st">&#39;col1&#39;</span>].<span class="bu">min</span>(), df[<span class="st">&#39;col1&#39;</span>].<span class="bu">max</span>(), <span class="bu">len</span>(labels) <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb29-3"><a href="#cb29-3"></a>df[<span class="st">&#39;binned&#39;</span>] <span class="op">=</span> pd.cut(df[<span class="st">&#39;col1&#39;</span>], bins, labels<span class="op">=</span>labels, include_lowest<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb29-4"><a href="#cb29-4"></a></span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot</span>
+<span id="cb29-6"><a href="#cb29-6"></a>pyplot.bar(labels, df[<span class="st">&quot;binned&quot;</span>].value_counts())</span></code></pre></div>
 </div>
-<div id="map" class="section level3">
-<h3>.map</h3>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb30-2"><a href="#cb30-2"></a>df <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(c1<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]))</span>
-<span id="cb30-3"><a href="#cb30-3"></a>df</span>
-<span id="cb30-4"><a href="#cb30-4"></a><span class="co">#     c1</span></span>
-<span id="cb30-5"><a href="#cb30-5"></a><span class="co">#  0   1</span></span>
-<span id="cb30-6"><a href="#cb30-6"></a><span class="co">#  1   2</span></span>
-<span id="cb30-7"><a href="#cb30-7"></a><span class="co">#  2   3</span></span>
-<span id="cb30-8"><a href="#cb30-8"></a>mapper <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], [<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>,<span class="st">&#39;c&#39;</span>]))</span>
-<span id="cb30-9"><a href="#cb30-9"></a>df[<span class="st">&#39;c1&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;c1&#39;</span>].<span class="bu">map</span>(mapper)</span>
-<span id="cb30-10"><a href="#cb30-10"></a>df</span>
-<span id="cb30-11"><a href="#cb30-11"></a><span class="co">#    c1</span></span>
-<span id="cb30-12"><a href="#cb30-12"></a><span class="co">#  0  a</span></span>
-<span id="cb30-13"><a href="#cb30-13"></a><span class="co">#  1  b</span></span>
-<span id="cb30-14"><a href="#cb30-14"></a><span class="co">#  2  c</span></span></code></pre></div>
+<div id="describe" class="section level3">
+<h3>describe</h3>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>df.describe() <span class="co"># numerical variables only</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>df.describe(include_all<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
+</div>
+<div id="drop" class="section level3">
+<h3>drop</h3>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>df.drop(<span class="st">&#39;r1&#39;</span>, axis <span class="op">=</span> <span class="dv">0</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb31-2"><a href="#cb31-2"></a>df.drop(<span class="st">&#39;c1&#39;</span>, axis <span class="op">=</span> <span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
 </div>
 <div id="dropna" class="section level3">
-<h3>.dropna</h3>
+<h3>dropna</h3>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># drop all rows with missing values</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>df.dropna(axis<span class="op">=</span><span class="dv">0</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb32-3"><a href="#cb32-3"></a></span>
+<span id="cb32-4"><a href="#cb32-4"></a><span class="co"># drop all columns with missing values</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a>df.dropna(axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb32-6"><a href="#cb32-6"></a></span>
+<span id="cb32-7"><a href="#cb32-7"></a><span class="co"># drop rows with missing values in a single column</span></span>
+<span id="cb32-8"><a href="#cb32-8"></a>df.dropna(subset<span class="op">=</span>[<span class="st">&quot;col1&quot;</span>], axis<span class="op">=</span><span class="dv">0</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
 </div>
-<div id="distinct-rows" class="section level3">
-<h3>distinct rows</h3>
+<div id="drop_duplicates" class="section level3">
+<h3>drop_duplicates</h3>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># remove duplicate rows based on all columns - keep first occurrence</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a>df.drop_duplicates()</span>
+<span id="cb33-3"><a href="#cb33-3"></a></span>
+<span id="cb33-4"><a href="#cb33-4"></a><span class="co"># remove duplicate rows based on all columns - keep last occurrence</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a>df.drop_duplicates(keep<span class="op">=</span><span class="st">&#39;last&#39;</span>)</span>
+<span id="cb33-6"><a href="#cb33-6"></a></span>
+<span id="cb33-7"><a href="#cb33-7"></a><span class="co"># remove duplicate rows based on all columns - remove all duplicates</span></span>
+<span id="cb33-8"><a href="#cb33-8"></a>df.drop_duplicates(keep<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb33-9"><a href="#cb33-9"></a></span>
+<span id="cb33-10"><a href="#cb33-10"></a><span class="co"># remove duplicate rows based on specific columns</span></span>
+<span id="cb33-11"><a href="#cb33-11"></a>df.drop_duplicates(subset<span class="op">=</span>[<span class="st">&#39;col1&#39;</span>, <span class="st">&#39;col2&#39;</span>])</span>
+<span id="cb33-12"><a href="#cb33-12"></a></span>
+<span id="cb33-13"><a href="#cb33-13"></a><span class="co"># modify in-place</span></span>
+<span id="cb33-14"><a href="#cb33-14"></a>df.drop_duplicates(inplace<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
+</div>
+<div id="fillna" class="section level3">
+<h3>fillna</h3>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>df.fillna(<span class="dv">0</span>)</span></code></pre></div>
+</div>
+<div id="get_dummies" class="section level3">
+<h3>get_dummies</h3>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>dummies <span class="op">=</span> pd.get_dummies(df[<span class="st">&#39;col1&#39;</span>])</span>
+<span id="cb35-2"><a href="#cb35-2"></a>df <span class="op">=</span> pd.concat([df, dummies], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb35-3"><a href="#cb35-3"></a>df.drop(<span class="st">&#39;col1&#39;</span>, axis <span class="op">=</span> <span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb35-4"><a href="#cb35-4"></a>df</span></code></pre></div>
+</div>
+<div id="groupby" class="section level3">
+<h3>groupby</h3>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># e.g. group by col1 and col2 and get the grouped means of col3 and col4</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a>df<span class="op">=</span>df[[<span class="st">&#39;col1&#39;</span>, <span class="st">&#39;col2&#39;</span>, <span class="st">&#39;col3&#39;</span>, <span class="st">&#39;col3&#39;</span>]]</span>
+<span id="cb36-3"><a href="#cb36-3"></a>df.groupby([<span class="st">&#39;col1&#39;</span>, <span class="st">&#39;col2&#39;</span>], as_index<span class="op">=</span><span class="va">False</span>).mean()</span></code></pre></div>
+<div id="get_group" class="section level4">
+<h4>get_group</h4>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># e.g. group by col which has levels a and b</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a>grouped_df <span class="op">=</span> df.groupby([<span class="st">&#39;col&#39;</span>])</span>
+<span id="cb37-3"><a href="#cb37-3"></a>grouped_df.get_group(<span class="st">&quot;a&quot;</span>)</span>
+<span id="cb37-4"><a href="#cb37-4"></a>grouped_df.get_group(<span class="st">&quot;b&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="idxmax" class="section level3">
+<h3>idxmax</h3>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+</div>
+<div id="map" class="section level3">
+<h3>map</h3>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb39-2"><a href="#cb39-2"></a>df <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(c1<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]))</span>
+<span id="cb39-3"><a href="#cb39-3"></a>df</span>
+<span id="cb39-4"><a href="#cb39-4"></a><span class="co">#     c1</span></span>
+<span id="cb39-5"><a href="#cb39-5"></a><span class="co">#  0   1</span></span>
+<span id="cb39-6"><a href="#cb39-6"></a><span class="co">#  1   2</span></span>
+<span id="cb39-7"><a href="#cb39-7"></a><span class="co">#  2   3</span></span>
+<span id="cb39-8"><a href="#cb39-8"></a>mapper <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], [<span class="st">&#39;r1&#39;</span>,<span class="st">&#39;r2&#39;</span>,<span class="st">&#39;r3&#39;</span>]))</span>
+<span id="cb39-9"><a href="#cb39-9"></a>df[<span class="st">&#39;c1&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;c1&#39;</span>].<span class="bu">map</span>(mapper)</span>
+<span id="cb39-10"><a href="#cb39-10"></a>df</span>
+<span id="cb39-11"><a href="#cb39-11"></a><span class="co">#     c1</span></span>
+<span id="cb39-12"><a href="#cb39-12"></a><span class="co">#  0  r1</span></span>
+<span id="cb39-13"><a href="#cb39-13"></a><span class="co">#  1  r2</span></span>
+<span id="cb39-14"><a href="#cb39-14"></a><span class="co">#  2  r3</span></span></code></pre></div>
+</div>
+<div id="melt" class="section level3">
+<h3>melt</h3>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+</div>
+<div id="pivot" class="section level3">
+<h3>pivot</h3>
+<p>I.e. pivot wider (spread)</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># e.g. col1 as rownames, col2 as colnames, col3 as values</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>df<span class="op">=</span>df[[<span class="st">&#39;col1&#39;</span>, <span class="st">&#39;col2&#39;</span>, <span class="st">&#39;col3&#39;</span>]]</span>
+<span id="cb41-3"><a href="#cb41-3"></a>df.pivot(index<span class="op">=</span><span class="st">&#39;col1&#39;</span>, columns<span class="op">=</span><span class="st">&#39;col2&#39;</span>)</span></code></pre></div>
+</div>
+<div id="pivot_table" class="section level3">
+<h3>pivot_table</h3>
+<ul>
+<li><p>a generalization of pivot that can handle duplicate values for one pivoted index/column pair</p></li>
+<li><p>can supply a list of aggregation functions using <code>aggfunc</code> argument (default is np.mean).</p></li>
+<li><p>can handle multiple columns for the index and column of the pivoted table (in which case a hierarchical index is generated).</p></li>
+</ul>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+</div>
+<div id="plot" class="section level3">
+<h3>plot</h3>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># histogram</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a>df[[<span class="st">&#39;var&#39;</span>]].plot(kind<span class="op">=</span><span class="st">&#39;hist&#39;</span>)</span>
+<span id="cb43-3"><a href="#cb43-3"></a></span>
+<span id="cb43-4"><a href="#cb43-4"></a><span class="co"># line plot</span></span>
+<span id="cb43-5"><a href="#cb43-5"></a>df[[<span class="st">&#39;line1&#39;</span>, <span class="st">&#39;line2&#39;</span>]].plot(kind<span class="op">=</span><span class="st">&#39;line&#39;</span>) <span class="co"># index is x-axis</span></span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th>method</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>bar</td>
+<td>vertical bar plots</td>
+</tr>
+<tr class="even">
+<td>barh</td>
+<td>horizontal bar plots</td>
+</tr>
+<tr class="odd">
+<td>hist</td>
+<td>histogram</td>
+</tr>
+<tr class="even">
+<td>box</td>
+<td>boxplot</td>
+</tr>
+<tr class="odd">
+<td>kde or density</td>
+<td>density plots</td>
+</tr>
+<tr class="even">
+<td>area</td>
+<td>area plots</td>
+</tr>
+<tr class="odd">
+<td>pie</td>
+<td>pie plots</td>
+</tr>
+<tr class="even">
+<td>scatter</td>
+<td>scatter plots</td>
+</tr>
+<tr class="odd">
+<td>hexbin</td>
+<td>hexbin plot</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="rename" class="section level3">
+<h3>rename</h3>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>df.rename(columns<span class="op">=</span>{<span class="st">&#39;oldname&#39;</span>: <span class="st">&#39;newname&#39;</span>})</span>
+<span id="cb44-2"><a href="#cb44-2"></a>df.rename(index<span class="op">=</span>{<span class="st">&#39;oldname&#39;</span>: <span class="st">&#39;newname&#39;</span>})</span></code></pre></div>
+</div>
+<div id="replace" class="section level3">
+<h3>replace</h3>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>df[<span class="st">&#39;col1&#39;</span>].replace(np.nan, df[<span class="st">&#39;col1&#39;</span>].mean())</span></code></pre></div>
+</div>
+<div id="reset_index" class="section level3">
+<h3>reset_index</h3>
+<p>Set the index to 0, 1, 2, etc.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="co"># adds the old index as a new column</span></span>
+<span id="cb46-2"><a href="#cb46-2"></a>df <span class="op">=</span> df.reset_index()</span>
+<span id="cb46-3"><a href="#cb46-3"></a></span>
+<span id="cb46-4"><a href="#cb46-4"></a><span class="co"># doesn&#39;t add the old index as a new column, modifies in-place</span></span>
+<span id="cb46-5"><a href="#cb46-5"></a>df.reset_index(drop<span class="op">=</span><span class="va">True</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
+</div>
+<div id="set_index" class="section level3">
+<h3>set_index</h3>
+<p>Use a column as the index</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>df.set_index(<span class="st">&#39;col1&#39;</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
+</div>
+<div id="sort-values" class="section level3">
+<h3>sort_values</h3>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>df.sort_values(by<span class="op">=</span><span class="st">&#39;col1&#39;</span>)</span>
+<span id="cb48-2"><a href="#cb48-2"></a>df.sort_values(by<span class="op">=</span><span class="st">&#39;col1&#39;</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb48-3"><a href="#cb48-3"></a>df.sort_values(by<span class="op">=</span><span class="st">&#39;col1&#39;</span>, ascending<span class="op">=</span><span class="va">False</span>, na_position<span class="op">=</span><span class="st">&#39;first&#39;</span>)</span></code></pre></div>
+</div>
+<div id="str.split" class="section level3">
+<h3>str.split</h3>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb49-2"><a href="#cb49-2"></a>df <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(c1 <span class="op">=</span> [<span class="st">&#39;1,2,3&#39;</span>, <span class="st">&#39;4,5,6&#39;</span>, <span class="st">&#39;7,8,9&#39;</span>]))</span>
+<span id="cb49-3"><a href="#cb49-3"></a>df</span>
+<span id="cb49-4"><a href="#cb49-4"></a><span class="co">#        c1</span></span>
+<span id="cb49-5"><a href="#cb49-5"></a><span class="co">#  0  1,2,3</span></span>
+<span id="cb49-6"><a href="#cb49-6"></a><span class="co">#  1  4,5,6</span></span>
+<span id="cb49-7"><a href="#cb49-7"></a><span class="co">#  2  7,8,9</span></span>
+<span id="cb49-8"><a href="#cb49-8"></a>df[<span class="st">&#39;c1&#39;</span>].<span class="bu">str</span>.split(<span class="st">&#39;,&#39;</span>, expand<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb49-9"><a href="#cb49-9"></a><span class="co">#     0  1  2</span></span>
+<span id="cb49-10"><a href="#cb49-10"></a><span class="co">#  0  1  2  3</span></span>
+<span id="cb49-11"><a href="#cb49-11"></a><span class="co">#  1  4  5  6</span></span>
+<span id="cb49-12"><a href="#cb49-12"></a><span class="co">#  2  7  8  9</span></span></code></pre></div>
+</div>
+<div id="transpose" class="section level3">
+<h3>transpose</h3>
+<p>cols to rows and rows to cols</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>df.unique()</span></code></pre></div>
+</div>
+<div id="unique" class="section level3">
+<h3>unique</h3>
+<div class="sourceCode" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>df[<span class="st">&#39;col1&#39;</span>].unique()</span></code></pre></div>
+</div>
+<div id="value_counts" class="section level3">
+<h3>value_counts</h3>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>df[<span class="st">&#39;col1&#39;</span>].value_counts()</span>
+<span id="cb52-2"><a href="#cb52-2"></a>df[<span class="st">&#39;col1&#39;</span>].value_counts().to_frame() <span class="co"># convert series to dataframe</span></span></code></pre></div>
+</div>
+<div id="wide_to_long" class="section level3">
+<h3>wide_to_long</h3>
+<ul>
+<li>Less flexible but more user-friendly than <code>melt</code>.</li>
+</ul>
+<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
 <hr />
 </div>
 </div>
 <div id="read" class="section level2">
 <h2>read</h2>
-<div id="csv" class="section level3">
-<h3>csv</h3>
+<div id="read_csv" class="section level3">
+<h3>read_csv</h3>
 <ul>
 <li><a href="https://www.datacamp.com/community/tutorials/pandas-read-csv" class="uri">https://www.datacamp.com/community/tutorials/pandas-read-csv</a></li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;file.csv&quot;</span>)</span>
-<span id="cb31-2"><a href="#cb31-2"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;file.csv&quot;</span>, header<span class="op">=</span><span class="va">None</span>, names<span class="op">=</span>[<span class="st">&#39;c1&#39;</span>, <span class="st">&#39;c2&#39;</span>, <span class="st">&#39;c3&#39;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;file.csv&quot;</span>)</span>
+<span id="cb54-2"><a href="#cb54-2"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;file.csv&quot;</span>, header<span class="op">=</span><span class="va">None</span>, names<span class="op">=</span>[<span class="st">&#39;c1&#39;</span>, <span class="st">&#39;c2&#39;</span>, <span class="st">&#39;c3&#39;</span>])</span></code></pre></div>
 <div id="chunking" class="section level4">
 <h4>chunking</h4>
+<div class="sourceCode" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
 </div>
 </div>
-<div id="sql" class="section level3">
-<h3>sql</h3>
-<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>df <span class="op">=</span> pd.read_sql(query, con)</span></code></pre></div>
+<div id="read_json" class="section level3">
+<h3>read_json</h3>
+<div class="sourceCode" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>df <span class="op">=</span> pd.read_json(<span class="st">&quot;file.json&quot;</span>)</span></code></pre></div>
+</div>
+<div id="read_sql" class="section level3">
+<h3>read_sql</h3>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>df <span class="op">=</span> pd.read_sql(query, con)</span></code></pre></div>
+</div>
+<div id="read_excel" class="section level3">
+<h3>read_excel</h3>
+<div class="sourceCode" id="cb58"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1"></a><span class="ex">pip</span> install xlrd</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">&quot;file.xlsx&quot;</span>)</span></code></pre></div>
 <hr />
 </div>
 </div>
 <div id="write" class="section level2">
 <h2>write</h2>
-<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>df.to_csv(<span class="st">&quot;file.csv&quot;</span>)</span></code></pre></div>
+<div id="to_csv" class="section level3">
+<h3>to_csv</h3>
+<div class="sourceCode" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>df.to_csv(<span class="st">&quot;file.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="to_json" class="section level3">
+<h3>to_json</h3>
+<div class="sourceCode" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>df.to_json(<span class="st">&quot;file.json&quot;</span>)</span></code></pre></div>
+</div>
+<div id="to_sql" class="section level3">
+<h3>to_sql</h3>
+<div class="sourceCode" id="cb62"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>df.to_sql(<span class="st">&quot;file.sql&quot;</span>)</span></code></pre></div>
+</div>
+<div id="to_excel" class="section level3">
+<h3>to_excel</h3>
+<div class="sourceCode" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>df.to_excel(<span class="st">&quot;file.xlsx&quot;</span>)</span></code></pre></div>
 <hr />
+</div>
 </div>
 <div id="display" class="section level2">
 <h2>display</h2>
-<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>df.to.options.display.max_colwidth <span class="op">=</span> <span class="dv">100</span></span></code></pre></div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>pd.options.display.max_colwidth <span class="op">=</span> <span class="dv">100</span></span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+<!-- df.to.options.display.max_colwidth = 100 -->
+<!-- pd.options.display.max_colwidth = 100 -->
 <hr />
 <pre><code>Create from scratch, lists, NumPy arrays, dicts, series or other data frames
 .shape, len(), .index, .count, .columns, .columns.values
@@ -1066,12 +1319,6 @@ set_index to use a column as an index
 use column as the index df[&#39;colname&#39;] = df.index
 the general recommendation is that you use .loc to insert rows in your DataFrame
 drop
-.drop_duplicates
-.rename
-.replace
-.map
-.apply
-.applymap
 read_csv, parse_dates
 .to_csv, .to_excel
 pivot, pivot_table, stack, unstack, melt

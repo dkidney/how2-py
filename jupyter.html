@@ -372,14 +372,20 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">sets</a>
     </li>
-    <li class="divider"></li>
     <li>
       <a href="_todo.html">comprehensions</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="_todo.html">functions</a>
     </li>
     <li>
       <a href="_todo.html">args and kwargs</a>
     </li>
     <li class="divider"></li>
+    <li>
+      <a href="_todo.html">constants</a>
+    </li>
     <li>
       <a href="files.html">files</a>
     </li>
@@ -396,24 +402,17 @@ $(document).ready(function () {
       <a href="_todo.html">scripting</a>
     </li>
     <li>
-      <a href="_todo.html">tests</a>
+      <a href="_todo.html">testing</a>
     </li>
   </ul>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    std
+    std lib
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="_todo.html">functions</a>
-    </li>
-    <li>
-      <a href="_todo.html">constants</a>
-    </li>
-    <li class="divider"></li>
     <li>
       <a href="_todo.html">argparse</a>
     </li>
@@ -505,6 +504,9 @@ $(document).ready(function () {
       <a href="apis.html">apis</a>
     </li>
     <li>
+      <a href="databases.html">databases</a>
+    </li>
+    <li>
       <a href="_todo.html">flask</a>
     </li>
     <li>
@@ -537,6 +539,13 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
+      <a href="pycharm.html">pycharm</a>
+    </li>
+    <li>
+      <a href="_todo.html">spyder</a>
+    </li>
+    <li class="divider"></li>
+    <li>
       <a href="ipython.html">ipython</a>
     </li>
     <li>
@@ -545,12 +554,11 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">jupyter lab</a>
     </li>
-    <li class="divider"></li>
     <li>
-      <a href="pycharm.html">pycharm</a>
+      <a href="_todo.html">zepplin</a>
     </li>
     <li>
-      <a href="_todo.html">spyder</a>
+      <a href="_todo.html">databricks</a>
     </li>
   </ul>
 </li>
@@ -651,19 +659,15 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># list all kernels</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="ex">jupyter</span> kernelspec list</span>
 <span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># e.g. add a new python 2 kernel using an existing conda environment</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="ex">conda</span> activate py2</span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="ex">conda</span> install ipykernel</span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="ex">conda</span> install jupyter <span class="co"># I had to use pip instead to get this to work for python 2.</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="ex">python</span> -m ipykernel install --user --name py2 --display-name <span class="st">&quot;py2&quot;</span> <span class="co"># manually register it</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="co"># e.g. add a new python 2 kernel using pip</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="ex">python2</span> -m pip --version <span class="co"># need pip version &gt;= 9</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="ex">python2</span> -m pip install ipykernel</span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="ex">python2</span> -m ipykernel install --user</span>
-<span id="cb2-14"><a href="#cb2-14"></a></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="co"># delete a kernel</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="ex">jupyter</span> kernelspec uninstall unwanted-kernel</span></code></pre></div>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># add a kernel using an existing conda environment</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="va">myenv=</span>how2-py</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="ex">conda</span> activate <span class="va">$myenv</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="ex">pip</span> install -U ipykernel</span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="ex">python</span> -m ipykernel install --user --name <span class="va">$myenv</span> --display-name <span class="va">$myenv</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="ex">jupyter</span> kernelspec list</span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co"># delete a kernel</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="ex">jupyter</span> kernelspec uninstall unwanted-kernel</span></code></pre></div>
 <p>See which python you are using - i.e. the python associated with the kernel</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> sys</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="bu">print</span>(sys.executable)</span>
@@ -793,7 +797,7 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">pip</span> install ipython-sql</span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="ex">pip</span> install cython</span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="ex">pip</span> install rpy2</span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="op">%</span>load_ext sql</span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="op">%</span>load_ext sql <span class="co"># pip install ipython-sql</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="op">%</span>load_ext cython</span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="op">%</span>load_ext rpy2.ipython</span></code></pre></div>
 </div>

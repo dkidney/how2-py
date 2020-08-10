@@ -372,14 +372,20 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">sets</a>
     </li>
-    <li class="divider"></li>
     <li>
       <a href="_todo.html">comprehensions</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="_todo.html">functions</a>
     </li>
     <li>
       <a href="_todo.html">args and kwargs</a>
     </li>
     <li class="divider"></li>
+    <li>
+      <a href="_todo.html">constants</a>
+    </li>
     <li>
       <a href="files.html">files</a>
     </li>
@@ -396,24 +402,17 @@ $(document).ready(function () {
       <a href="_todo.html">scripting</a>
     </li>
     <li>
-      <a href="_todo.html">tests</a>
+      <a href="_todo.html">testing</a>
     </li>
   </ul>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    std
+    std lib
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="_todo.html">functions</a>
-    </li>
-    <li>
-      <a href="_todo.html">constants</a>
-    </li>
-    <li class="divider"></li>
     <li>
       <a href="_todo.html">argparse</a>
     </li>
@@ -505,6 +504,9 @@ $(document).ready(function () {
       <a href="apis.html">apis</a>
     </li>
     <li>
+      <a href="databases.html">databases</a>
+    </li>
+    <li>
       <a href="_todo.html">flask</a>
     </li>
     <li>
@@ -537,6 +539,13 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
+      <a href="pycharm.html">pycharm</a>
+    </li>
+    <li>
+      <a href="_todo.html">spyder</a>
+    </li>
+    <li class="divider"></li>
+    <li>
       <a href="ipython.html">ipython</a>
     </li>
     <li>
@@ -545,12 +554,11 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">jupyter lab</a>
     </li>
-    <li class="divider"></li>
     <li>
-      <a href="pycharm.html">pycharm</a>
+      <a href="_todo.html">zepplin</a>
     </li>
     <li>
-      <a href="_todo.html">spyder</a>
+      <a href="_todo.html">databricks</a>
     </li>
   </ul>
 </li>
@@ -599,9 +607,221 @@ $(document).ready(function () {
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#faqs">faqs</a></li>
+<li><a href="#links">links</a></li>
+<li><a href="#setup">setup</a></li>
+<li><a href="#basics">basics</a>
+<ul>
+<li><a href="#ipython-magic">ipython magic</a></li>
+</ul></li>
+<li><a href="#style">style</a></li>
+<li><a href="#pyplot">pyplot</a>
+<ul>
+<li><a href="#scatter">scatter</a></li>
+<li><a href="#hist">hist</a></li>
+<li><a href="#scatter-1">scatter</a></li>
+<li><a href="#pcolor">pcolor</a></li>
+</ul></li>
+<li><a href="#artist">Artist</a>
+<ul>
+<li><a href="#primitive">Primitive</a></li>
+<li><a href="#composite">Composite</a></li>
+</ul></li>
+<li><a href="#backend_bases">backend_bases</a>
+<ul>
+<li><a href="#figurecanvas">FigureCanvas</a></li>
+<li><a href="#renderer">Renderer</a></li>
+<li><a href="#event">Event</a></li>
+</ul></li>
+<li><a href="#section">??</a>
+<ul>
+<li><a href="#axis-labels">axis labels</a></li>
+<li><a href="#figure-size">figure size</a></li>
+</ul></li>
+<li><a href="#plot">plot</a></li>
+</ul>
+</div>
 
 <hr />
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
+<blockquote>
+<p>A comprehensive library for creating static, animated, and interactive visualizations</p>
+</blockquote>
+<hr />
+<div id="faqs" class="section level2">
+<h2>faqs</h2>
+<hr />
+</div>
+<div id="links" class="section level2">
+<h2>links</h2>
+<ul>
+<li><a href="https://matplotlib.org/" class="uri">https://matplotlib.org/</a><br />
+</li>
+<li><a href="https://www.aosabook.org/en/matplotlib.html" class="uri">https://www.aosabook.org/en/matplotlib.html</a></li>
+</ul>
+<hr />
+</div>
+<div id="setup" class="section level2">
+<h2>setup</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">pip</span> install matplotlib</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
+<span id="cb2-2"><a href="#cb2-2"></a>mpl.__version__</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#  &#39;3.3.0&#39;</span></span></code></pre></div>
+<hr />
+</div>
+<div id="basics" class="section level2">
+<h2>basics</h2>
+<p>Architecture:</p>
+<ul>
+<li>scripting layer - <code>pyplot</code><br />
+</li>
+<li>artist layer - <code>Artist</code><br />
+</li>
+<li>backend layer - <code>FigureCanvaas</code>, <code>Renderer</code>, <code>Event</code></li>
+</ul>
+<div id="ipython-magic" class="section level3">
+<h3>ipython magic</h3>
+<p>Allow matplotlib plots to be plotted inline in the notebook:</p>
+<pre><code>%matplotlib inline </code></pre>
+<p>Allow modification of figures after they have been rendered:</p>
+<pre><code>%matplotlib notebook </code></pre>
+<hr />
+</div>
+</div>
+<div id="style" class="section level2">
+<h2>style</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>mpl.style.use([<span class="st">&#39;ggplot&#39;</span>])</span></code></pre></div>
+<hr />
+</div>
+<div id="pyplot" class="section level2">
+<h2>pyplot</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
+<div id="scatter" class="section level3">
+<h3>scatter</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>plt.plot(<span class="dv">1</span>, <span class="dv">1</span>, <span class="st">&#39;o&#39;</span>)</span></code></pre></div>
+</div>
+<div id="hist" class="section level3">
+<h3>hist</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>plt.hist(x)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>plt.title(<span class="vs">r&#39;Normal distribution with $\mu=0, \sigma=1$&#39;</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a>plt.xlabel(<span class="st">&#39;x-axis-label&#39;</span>)</span>
+<span id="cb8-4"><a href="#cb8-4"></a>plt.ylabel(<span class="st">&#39;y-axis-label&#39;</span>)</span>
+<span id="cb8-5"><a href="#cb8-5"></a>plt.text(x, y, <span class="st">&#39;label&#39;</span>)</span>
+<span id="cb8-6"><a href="#cb8-6"></a>plt.savefig(<span class="st">&#39;a_histogram.png)</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="st">plt.show()</span></span></code></pre></div>
+</div>
+<div id="scatter-1" class="section level3">
+<h3>scatter</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>plt.scatter(x, y)</span></code></pre></div>
+</div>
+<div id="pcolor" class="section level3">
+<h3>pcolor</h3>
+<p>Heat map</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>plt.pcolor(df_pivot, cmap<span class="op">=</span><span class="st">&#39;Rdbu&#39;</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>plt.colourbar()</span>
+<span id="cb10-3"><a href="#cb10-3"></a>plt.show()</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="artist" class="section level2">
+<h2>Artist</h2>
+<div id="primitive" class="section level3">
+<h3>Primitive</h3>
+<ul>
+<li><code>Line2D</code><br />
+</li>
+<li><code>Rectangle</code><br />
+</li>
+<li><code>Circle</code><br />
+</li>
+<li><code>Text</code></li>
+</ul>
+</div>
+<div id="composite" class="section level3">
+<h3>Composite</h3>
+<ul>
+<li><code>Axis</code><br />
+</li>
+<li><code>Tick</code><br />
+</li>
+<li><code>Axes</code> - the most important composite artist because it is where most of the plotting methods are defined - e.g. for creating and manipulating the ticks, axis lines, grid and plot background<br />
+</li>
+<li><code>Figure</code> - top-level object that contains and manages all of the elements in a given graphic</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">from</span> matplotlib.figure <span class="im">import</span> Figure</span>
+<span id="cb11-2"><a href="#cb11-2"></a>fig <span class="op">=</span> Figure()</span>
+<span id="cb11-3"><a href="#cb11-3"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>) <span class="co"># create an axes artist</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co"># 111 means 1 row, 1 col, cell 1</span></span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="backend_bases" class="section level2">
+<h2>backend_bases</h2>
+<div id="figurecanvas" class="section level3">
+<h3>FigureCanvas</h3>
+<p>Encompasses the area onto which the figure is drawn</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">from</span> matplotlib.backend_bases <span class="im">import</span> FigureCanvasAgg <span class="im">as</span> FigureCanvas</span>
+<span id="cb12-2"><a href="#cb12-2"></a>canvas <span class="op">=</span> FigureCanvas(fig) <span class="co"># see Figure</span></span></code></pre></div>
+<p>Agg = anti-green geometry - a high performance library</p>
+</div>
+<div id="renderer" class="section level3">
+<h3>Renderer</h3>
+<p>An instance of the Renderer class that knows how to draw on the FigureCanvas</p>
+</div>
+<div id="event" class="section level3">
+<h3>Event</h3>
+<p>Handles user input such as keyboard strokes and mouse clicks</p>
+<hr />
+</div>
+</div>
+<div id="section" class="section level2">
+<h2>??</h2>
+<div id="axis-labels" class="section level3">
+<h3>axis labels</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb13-2"><a href="#cb13-2"></a></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="co"># label names</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>row_labels <span class="op">=</span> <span class="bu">list</span>(df.columns)</span>
+<span id="cb13-5"><a href="#cb13-5"></a>col_labels <span class="op">=</span> <span class="bu">list</span>(df.index)</span>
+<span id="cb13-6"><a href="#cb13-6"></a></span>
+<span id="cb13-7"><a href="#cb13-7"></a><span class="co"># move ticks and labels to the center</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a>ax.set_xticks(np.arange(df.shape[<span class="dv">1</span>]) <span class="op">+</span> <span class="fl">0.5</span>, minor<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb13-9"><a href="#cb13-9"></a>ax.set_yticks(np.arange(df.shape[<span class="dv">0</span>]) <span class="op">+</span> <span class="fl">0.5</span>, minor<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb13-10"><a href="#cb13-10"></a></span>
+<span id="cb13-11"><a href="#cb13-11"></a><span class="co"># insert labels</span></span>
+<span id="cb13-12"><a href="#cb13-12"></a>ax.set_xticklabels(row_labels, minor<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb13-13"><a href="#cb13-13"></a>ax.set_yticklabels(col_labels, minor<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb13-14"><a href="#cb13-14"></a></span>
+<span id="cb13-15"><a href="#cb13-15"></a><span class="co"># rotate labels</span></span>
+<span id="cb13-16"><a href="#cb13-16"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span></code></pre></div>
+</div>
+<div id="figure-size" class="section level3">
+<h3>figure size</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>width <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>height <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>plt.figure(figsize<span class="op">=</span>(width, height))</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="plot" class="section level2">
+<h2>plot</h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">def</span> PlotPolly(model, independent_variable, dependent_variabble, Name):</span>
+<span id="cb15-2"><a href="#cb15-2"></a>    x_new <span class="op">=</span> np.linspace(<span class="dv">15</span>, <span class="dv">55</span>, <span class="dv">100</span>)</span>
+<span id="cb15-3"><a href="#cb15-3"></a>    y_new <span class="op">=</span> model(x_new)</span>
+<span id="cb15-4"><a href="#cb15-4"></a></span>
+<span id="cb15-5"><a href="#cb15-5"></a>    plt.plot(independent_variable, dependent_variabble, <span class="st">&#39;.&#39;</span>, x_new, y_new, <span class="st">&#39;-&#39;</span>)</span>
+<span id="cb15-6"><a href="#cb15-6"></a>    plt.title(<span class="st">&#39;Polynomial Fit with Matplotlib for Price ~ Length&#39;</span>)</span>
+<span id="cb15-7"><a href="#cb15-7"></a>    ax <span class="op">=</span> plt.gca()</span>
+<span id="cb15-8"><a href="#cb15-8"></a>    ax.set_facecolor((<span class="fl">0.898</span>, <span class="fl">0.898</span>, <span class="fl">0.898</span>))</span>
+<span id="cb15-9"><a href="#cb15-9"></a>    fig <span class="op">=</span> plt.gcf()</span>
+<span id="cb15-10"><a href="#cb15-10"></a>    plt.xlabel(Name)</span>
+<span id="cb15-11"><a href="#cb15-11"></a>    plt.ylabel(<span class="st">&#39;Price of Cars&#39;</span>)</span>
+<span id="cb15-12"><a href="#cb15-12"></a></span>
+<span id="cb15-13"><a href="#cb15-13"></a>    plt.show()</span>
+<span id="cb15-14"><a href="#cb15-14"></a>    plt.close()</span></code></pre></div>
+<hr />
+</div>
 
 
 

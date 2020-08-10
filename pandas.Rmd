@@ -13,23 +13,6 @@ editor_options:
 
 *********************************************************************
 
-## links
-
-* https://pandas.pydata.org/  
-* https://pandasguide.readthedocs.io/en/latest/  
-
-### datacamp tutorials
-
-* [pandas-tutorial-dataframe-python](https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python)  
-* [importing-data-into-pandas](https://www.datacamp.com/community/tutorials/importing-data-into-pandas)  
-* [converting-strings-datetime-objects](https://www.datacamp.com/community/tutorials/converting-strings-datetime-objects)  
-* [pandas-split-apply-combine-groupby](https://www.datacamp.com/community/tutorials/pandas-split-apply-combine-groupby)  
-* [pandas-multi-index](https://www.datacamp.com/community/tutorials/pandas-multi-index)  
-* [data-preparation-with-pandas](https://www.datacamp.com/community/tutorials/data-preparation-with-pandas)  
-* [moving-averages-in-pandas](https://www.datacamp.com/community/tutorials/moving-averages-in-pandas)  
-
-*********************************************************************
-
 ## faqs
 
 ### DataFrame 
@@ -61,7 +44,24 @@ editor_options:
 
 *********************************************************************
 
-## install
+## links
+
+* https://pandas.pydata.org/  
+* https://pandasguide.readthedocs.io/en/latest/  
+
+datacamp:
+
+* [pandas-tutorial-dataframe-python](https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python)  
+* [importing-data-into-pandas](https://www.datacamp.com/community/tutorials/importing-data-into-pandas)  
+* [converting-strings-datetime-objects](https://www.datacamp.com/community/tutorials/converting-strings-datetime-objects)  
+* [pandas-split-apply-combine-groupby](https://www.datacamp.com/community/tutorials/pandas-split-apply-combine-groupby)  
+* [pandas-multi-index](https://www.datacamp.com/community/tutorials/pandas-multi-index)  
+* [data-preparation-with-pandas](https://www.datacamp.com/community/tutorials/data-preparation-with-pandas)  
+* [moving-averages-in-pandas](https://www.datacamp.com/community/tutorials/moving-averages-in-pandas)  
+
+*********************************************************************
+
+## setup
 
 ```sh
 pip install pandas
@@ -90,41 +90,36 @@ ser = pd.Series() # empty series
 
 ```python
 ser = pd.Series(0) 
-ser = pd.Series(0, ['a', 'b', 'c']) 
+ser = pd.Series(0, ['e1', 'e2', 'e3']) 
 ```
 
 #### from list
 
 ```python
 ser = pd.Series([1, 2, 3])
-ser = pd.Series([1, 2, 3], ['a', 'b', 'c']) 
+ser = pd.Series([1, 2, 3], ['e1', 'e2', 'e3']) 
 ```
 
 #### from dict
 
 ```python
-ser = pd.Series({'a': 1, 'b': 2, 'c': 3})
+ser = pd.Series({'e1': 1, 'e2': 2, 'e3': 3})
 ```
 
 #### from ndarray
 
 ```python
-ser = pd.Series(np.array([1, 2, 3]), ['a', 'b', 'c']) 
+ser = pd.Series(np.array([1, 2, 3]), ['e1', 'e2', 'e3']) 
 ```
 
 ### attributes
 
 ```python
 ser.shape
-ser.index
 ser.count
+ser.index
+ser.index.name
 len(ser)
-```
-
-### methods
-
-```python
-ser.unique()
 ```
 
 ### indexing and slicing
@@ -144,15 +139,15 @@ ser[-1:] # last
 
 by index
 ```python
-ser['a'] # first (returns scalar)
-ser['c'] # last (returns scalar)
-ser[['a']] # first
-ser[['c']] # last
-ser[['a','c']] # first and third
-ser['b':] # everything but the first
-ser[:'b'] # everything but the last
-ser[:'a'] # first
-ser['c':] # last
+ser['e1'] # first (returns scalar)
+ser['e3'] # last (returns scalar)
+ser[['e1']] # first
+ser[['e3']] # last
+ser[['e1','e3']] # first and third
+ser['e2':] # everything but the first
+ser[:'e2'] # everything but the last
+ser[:'e1'] # first
+ser['e3':] # last
 ```
 
 #### subset by index {#subset-by-index}
@@ -167,18 +162,18 @@ TODO
 
 TODO
 
-### misc
+### casting
 
 conversion
 
 ```python
 list(x)
-df.to_list()
+ser.to_list()
 
 dict(x)
-df.to_dict()
+ser.to_dict()
 
-df.to_numpy()
+ser.to_numpy()
 ```
 
 *********************************************************************
@@ -200,31 +195,31 @@ df = pd.DataFrame()
 
 ```python
 # create from dict of lists - each key is a column
-df = pd.DataFrame({'v1': ['x', 'y', 'z'],
-                  'v2': [1, 2, 3]},
-                 index=['a', 'b', 'c'])
+df = pd.DataFrame({'c1': ['x', 'y', 'z'],
+                  'c2': [1, 2, 3]},
+                 index=['r1', 'r2', 'r3'])
 
 # create from dict of series - each key is a column
-df = pd.DataFrame({'v1': pd.Series(['x', 'y', 'z'], index=['a', 'b', 'c']),
-                  'v2': pd.Series([1, 2, 3], index=['a', 'b', 'c'])})
+df = pd.DataFrame({'c1': pd.Series(['x', 'y', 'z'], index=['r1', 'r2', 'r3']),
+                  'c2': pd.Series([1, 2, 3], index=['r1', 'r2', 'r3'])})
 ```
 
 #### from list
 
 ```python
 df = pd.DataFrame([1, 2, 3])
-df = pd.DataFrame([1, 2, 3], columns=['v1'])
+df = pd.DataFrame([1, 2, 3], columns=['c1'])
 
 # create from list of lists - each sublist is a row
 df = pd.DataFrame([['x', 1], ['y', 2], ['z', 3]],
-                 index=['a', 'b', 'c'],
-                 columns=['v1', 'v2'])
+                 index=['r1', 'r2', 'r3'],
+                 columns=['c1', 'c2'])
 
 # create from list of dicts - each sublist is a row
-df = pd.DataFrame([{'v1': 'x', 'v2': 1},
-                  {'v1': 'y', 'v2': 2},
-                  {'v1': 'z', 'v2': 3}],
-                 index=['a', 'b', 'c'])
+df = pd.DataFrame([{'c1': 'x', 'c2': 1},
+                  {'c1': 'y', 'c2': 2},
+                  {'c1': 'z', 'c2': 3}],
+                 index=['r1', 'r2', 'r3'])
 ```
 
 ### attributes
@@ -233,54 +228,43 @@ df = pd.DataFrame([{'v1': 'x', 'v2': 1},
 df.shape # (nrows, ncols) tuple
 df.head # first 5 rows
 df.tail # last 5 rows
+df.info
+df.dtypes
+df.columns
+df.index
+df.columns.values
+df.columns.name # not always
+df.columns.names # not always
+df.index.values
+df.index.name # not always
+df.index.names # not always
+len(df) # nrows
 ```
+
+#### types
+
+e.g.  
+object  
+float64  
+int64  
+datetime  
 
 ### indexing and slicing
-
-#### subset rows by index {#subset-rows-by-index}
-
-```python
-df.loc['a'] # first row - returns a series
-df.loc["c"] # last row - returns a series
-df.loc[["a"]] # first row
-df.loc[["c"]] # last row
-```
-
-#### subset rows by position {#subset-rows-by-position}
-
-```python
-df.iloc[0] # first row - returns a series
-df.iloc[-1] # last row - returns a series
-df.iloc[[0]] # first row
-df.iloc[[-1]] # last row
-```
-
-#### subset rows by boolean {#subset-rows-by-boolean}
-
-```python
-df[df['v1'] == "x"]
-```
-
-Or a more generalisable form,
-
-```python
-df.loc[df['v1'].isin(['x', 'y'])]
-```
 
 #### subset columns by name {#subset-columns-by-name}
 
 ```python
-df['v1'] # returns a series
-df[['v1']]
-df[['v1', 'v2']]
+df['c1'] # returns a series
+df[['c1']]
+df[['c1', 'c2']]
 ```
 
 Equivalently,
 
 ```python
-df.loc[:, 'v1']  # returns a series
-df.loc[:, ['v1']]
-df.loc[:, ['v1', 'v2']]
+df.loc[:, 'c1']  # returns a series
+df.loc[:, ['c1']]
+df.loc[:, ['c1', 'c2']]
 ```
 
 #### subset columns by position {#subset-columns-by-position}
@@ -298,35 +282,39 @@ df.loc[:, [True, False]]
 df.loc[:, [True, True]]
 ```
 
-### ordering {#sort-values}
+#### subset rows by index {#subset-rows-by-index}
 
 ```python
-df.sort_values(by='col1')
-df.sort_values(by='col1', ascending=False)
-df.sort_values(by='col1', ascending=False, na_position='first')
+df.loc['r1'] # first row - returns a series
+df.loc['r3'] # last row - returns a series
+df.loc[['r1']] # first row
+df.loc[['r3']] # last row
 ```
 
-### rename
-
-#### rename columns {#rename-columns}
+#### subset rows by position {#subset-rows-by-position}
 
 ```python
-df.columns[0] = 'c1' # TypeError: Index does not support mutable operations
-df.columns = ['c1', 'c2', 'c3']
-df.rename(columns={'oldname': 'newname'})
+df.iloc[0] # first row - returns a series
+df.iloc[-1] # last row - returns a series
+df.iloc[[0]] # first row
+df.iloc[[-1]] # last row
 ```
 
-#### rename rows {#rename-rows}
+#### subset rows by boolean {#subset-rows-by-boolean}
 
 ```python
-df.index[0] = 'r1' # TypeError: Index does not support mutable operations
-df.index = ['r1', 'r2', 'r3']
-df.rename(index={'oldname': 'newname'})
+df[df['c1'] == "x"]
+```
+
+Or a more generalisable form,
+
+```python
+df.loc[df['c1'].isin(['x', 'y'])]
 ```
 
 *********************************************************************
 
-## joins
+## join
 
 * https://www.datacamp.com/community/tutorials/joining-dataframes-pandas  
 
@@ -350,9 +338,235 @@ pd.merge(df1, df2, on='column-name', how='left')
 
 *********************************************************************
 
-## munging
+## wrangling and eda
 
-### .str.split
+### apply
+
+```python
+# TODO
+```
+
+### applymap
+
+```python
+# TODO
+```
+
+### astype
+
+```python
+df['col1'] = df['col1'].astype(int)
+df[["col1", "col2"]] = df[["col1", "col2"]].astype(float)
+```
+
+### corr
+
+calculate pair-wise correlations for numeric variables.
+
+```python
+df.corr()
+df[["col1", "col2"]].corr()
+```
+
+### cut
+
+```python
+labels = ['high', 'med', 'low']
+bins = np.linspace(df['col1'].min(), df['col1'].max(), len(labels) + 1)
+df['binned'] = pd.cut(df['col1'], bins, labels=labels, include_lowest=True)
+
+from matplotlib import pyplot
+pyplot.bar(labels, df["binned"].value_counts())
+```
+
+### describe
+
+```python
+df.describe() # numerical variables only
+df.describe(include_all=True)
+```
+
+### drop
+
+```python
+df.drop('r1', axis = 0, inplace=True)
+df.drop('c1', axis = 1, inplace=True)
+```
+
+### dropna
+
+```python
+# drop all rows with missing values
+df.dropna(axis=0, inplace=True)
+
+# drop all columns with missing values
+df.dropna(axis=1, inplace=True)
+
+# drop rows with missing values in a single column
+df.dropna(subset=["col1"], axis=0, inplace=True)
+```
+
+### drop_duplicates
+
+```python
+# remove duplicate rows based on all columns - keep first occurrence
+df.drop_duplicates()
+
+# remove duplicate rows based on all columns - keep last occurrence
+df.drop_duplicates(keep='last')
+
+# remove duplicate rows based on all columns - remove all duplicates
+df.drop_duplicates(keep=False)
+
+# remove duplicate rows based on specific columns
+df.drop_duplicates(subset=['col1', 'col2'])
+
+# modify in-place
+df.drop_duplicates(inplace=True)
+```
+
+### fillna
+
+```python
+df.fillna(0)
+```
+
+### get_dummies
+
+```python
+dummies = pd.get_dummies(df['col1'])
+df = pd.concat([df, dummies], axis=1)
+df.drop('col1', axis = 1, inplace=True)
+df
+```
+
+### groupby
+
+```python
+# e.g. group by col1 and col2 and get the grouped means of col3 and col4
+df=df[['col1', 'col2', 'col3', 'col3']]
+df.groupby(['col1', 'col2'], as_index=False).mean()
+```
+
+#### get_group
+
+```python
+# e.g. group by col which has levels a and b
+grouped_df = df.groupby(['col'])
+grouped_df.get_group("a")
+grouped_df.get_group("b")
+```
+
+
+### idxmax
+
+```python
+# TODO
+```
+
+### map
+
+```{python}
+import pandas as pd
+df = pd.DataFrame(dict(c1=[1,2,3]))
+df
+mapper = dict(zip([1,2,3], ['r1','r2','r3']))
+df['c1'] = df['c1'].map(mapper)
+df
+```
+
+### melt
+
+```python
+# TODO
+```
+
+### pivot
+
+I.e. pivot wider (spread)
+
+```python
+# e.g. col1 as rownames, col2 as colnames, col3 as values
+df=df[['col1', 'col2', 'col3']]
+df.pivot(index='col1', columns='col2')
+```
+
+### pivot_table
+
+* a generalization of pivot that can handle duplicate values for one pivoted index/column pair
+
+* can supply a list of aggregation functions using `aggfunc` argument (default is np.mean).
+
+* can handle multiple columns for the index and column of the pivoted table (in which case a hierarchical index is generated).
+
+```python
+# TODO
+```
+
+### plot
+
+```python
+# histogram
+df[['var']].plot(kind='hist')
+
+# line plot
+df[['line1', 'line2']].plot(kind='line') # index is x-axis
+```
+
+method | description
+------ | -------------
+bar | vertical bar plots
+barh | horizontal bar plots
+hist | histogram
+box | boxplot
+kde or density | density plots
+area | area plots
+pie | pie plots
+scatter | scatter plots
+hexbin | hexbin plot
+
+### rename {#rename}
+
+```python
+df.rename(columns={'oldname': 'newname'})
+df.rename(index={'oldname': 'newname'})
+```
+
+### replace
+
+```python
+df['col1'].replace(np.nan, df['col1'].mean())
+```
+
+### reset_index
+
+Set the index to 0, 1, 2, etc.
+
+```python
+# adds the old index as a new column
+df = df.reset_index()
+
+# doesn't add the old index as a new column, modifies in-place
+df.reset_index(drop=True, inplace=True)
+```
+
+### set_index
+
+Use a column as the index
+
+```python
+df.set_index('col1', inplace=True)
+```
+
+### sort_values {#sort-values}
+
+```python
+df.sort_values(by='col1')
+df.sort_values(by='col1', ascending=False)
+df.sort_values(by='col1', ascending=False, na_position='first')
+```
+
+### str.split
 
 ```{python}
 import pandas as pd
@@ -361,32 +575,40 @@ df
 df['c1'].str.split(',', expand=True)
 ```
 
-### .pivot
+### transpose
 
-### .get_dummies
+cols to rows and rows to cols
 
-### .cut
-
-### .map
-
-```{python}
-import pandas as pd
-df = pd.DataFrame(dict(c1=[1,2,3]))
-df
-mapper = dict(zip([1,2,3], ['a','b','c']))
-df['c1'] = df['c1'].map(mapper)
-df
+```python
+df.unique()
 ```
 
-### .dropna
+### unique
 
-### distinct rows
+```python
+df['col1'].unique()
+```
+
+### value_counts
+
+```python
+df['col1'].value_counts()
+df['col1'].value_counts().to_frame() # convert series to dataframe
+```
+
+### wide_to_long
+
+* Less flexible but more user-friendly than `melt`.
+
+```python
+# TODO
+```
 
 *********************************************************************
 
 ## read
 
-### csv
+### read_csv
 
 * https://www.datacamp.com/community/tutorials/pandas-read-csv  
 
@@ -397,18 +619,59 @@ df = pd.read_csv("file.csv", header=None, names=['c1', 'c2', 'c3'])
 
 #### chunking
 
-### sql
+```python
+# TODO
+```
+
+### read_json
+
+```python
+df = pd.read_json("file.json")
+```
+
+### read_sql
 
 ```python
 df = pd.read_sql(query, con)
 ```
 
+### read_excel
+
+```sh
+pip install xlrd
+```
+
+```python
+df = pd.read_excel("file.xlsx")
+```
+
+
 *********************************************************************
 
 ## write
 
+### to_csv
+
 ```python
 df.to_csv("file.csv")
+```
+
+### to_json
+
+```python
+df.to_json("file.json")
+```
+
+### to_sql
+
+```python
+df.to_sql("file.sql")
+```
+
+### to_excel
+
+```python
+df.to_excel("file.xlsx")
 ```
 
 *********************************************************************
@@ -416,12 +679,11 @@ df.to_csv("file.csv")
 ## display
 
 ```python
-df.to.options.display.max_colwidth = 100
+# TODO
 ```
 
-```python
-pd.options.display.max_colwidth = 100
-```
+<!-- df.to.options.display.max_colwidth = 100 -->
+<!-- pd.options.display.max_colwidth = 100 -->
 
 *********************************************************************
 
@@ -433,12 +695,6 @@ set_index to use a column as an index
 use column as the index df['colname'] = df.index
 the general recommendation is that you use .loc to insert rows in your DataFrame
 drop
-.drop_duplicates
-.rename
-.replace
-.map
-.apply
-.applymap
 read_csv, parse_dates
 .to_csv, .to_excel
 pivot, pivot_table, stack, unstack, melt
