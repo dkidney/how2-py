@@ -2,6 +2,7 @@
 .Rproj.user
 *_cache/**
 *_files/**
+.ipynb_checkpoints/
 wip/**
 
 
