@@ -509,11 +509,31 @@ df.pivot(index='col1', columns='col2')
 ### plot
 
 ```python
-# histogram
-df[['var']].plot(kind='hist')
+# hist
+count, bin_edges = np.histogram(df[['x1', 'x2']])
+df[['x1', 'x2']].plot(kind='hist', 
+                      xticks=bin_edges,
+                      bins=15,
+                      alpha=0.35,
+                      color=['coral', 'darkslateblue'],
+                      stacked=True,  # if more than one xvar
+                      xlim=(xmin, xmax))
 
-# line plot
-df[['line1', 'line2']].plot(kind='line') # index is x-axis
+# scatter
+df.plot(x='xvar', y='yvar', kind='scatter'
+                    alpha=0.5,                  # transparency
+                    color='green',
+                    s=10,  # size weight (can be a list)
+                    xlim=(0, 100))
+
+# line
+df[['y1', 'y2']].plot(kind='line') # index is x-axis
+
+# area (assumes wide format, x = index)
+df.plot(kind='area', 
+       stacked=False,
+       alpha=0.35,
+       figsize=(20, 10))
 ```
 
 method | description
@@ -527,6 +547,22 @@ area | area plots
 pie | pie plots
 scatter | scatter plots
 hexbin | hexbin plot
+
+annotations
+
+```python
+# using plt
+plt.title('title') 
+plt.ylabel('ylabel') 
+plt.xlabel('xlabel') 
+
+# using ax
+ax = df.plot(kind='asdf')
+ax.set_title('title')
+ax.set_ylabel('ylabel')
+ax.set_xlabel('xlabel')
+```
+
 
 ### rename {#rename}
 
@@ -567,6 +603,7 @@ df.set_index('col1', inplace=True)
 df.sort_values(by='col1')
 df.sort_values(by='col1', ascending=False)
 df.sort_values(by='col1', ascending=False, na_position='first')
+df.sort_values(by='col1', ascending=False, na_position='first', inplace=True)
 ```
 
 ### str.split
@@ -653,7 +690,10 @@ pip install xlrd
 ```
 
 ```python
-df = pd.read_excel("file.xlsx")
+df = pd.read_excel("file.xlsx",
+                   sheet_name='Canada by Citizenship',
+                   skiprows=range(20),
+                   skipfooter=2)
 ```
 
 

@@ -478,6 +478,9 @@ $(document).ready(function () {
     <li>
       <a href="seaborn.html">seaborn</a>
     </li>
+    <li>
+      <a href="folium.html">folium</a>
+    </li>
     <li class="divider"></li>
     <li>
       <a href="_todo.html">boto3</a>
@@ -654,10 +657,13 @@ $(document).ready(function () {
 <h2>plot types</h2>
 <p>Generic example</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># x and y are lists</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>sns.plottype(x<span class="op">=</span>df[<span class="st">&#39;xvar&#39;</span>], y<span class="op">=</span>df[<span class="st">&#39;yvar&#39;</span>])</span>
-<span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># x and y are columns in dataframe</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>sns.plottype(x<span class="op">=</span><span class="st">&#39;xvar&#39;</span>, y<span class="op">=</span><span class="st">&#39;yvar&#39;</span>, data<span class="op">=</span>df)</span></code></pre></div>
+<span id="cb3-2"><a href="#cb3-2"></a>sns.plottype(x<span class="op">=</span>df[<span class="st">&#39;xvar&#39;</span>], </span>
+<span id="cb3-3"><a href="#cb3-3"></a>             y<span class="op">=</span>df[<span class="st">&#39;yvar&#39;</span>], </span>
+<span id="cb3-4"><a href="#cb3-4"></a>             color<span class="op">=</span><span class="st">&#39;green&#39;</span>,</span>
+<span id="cb3-5"><a href="#cb3-5"></a>             marker<span class="op">=</span><span class="st">&#39;+&#39;</span>)</span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co"># x and y are columns in dataframe</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>sns.plottype(x<span class="op">=</span><span class="st">&#39;xvar&#39;</span>, y<span class="op">=</span><span class="st">&#39;yvar&#39;</span>, data<span class="op">=</span>df)</span></code></pre></div>
 <div id="boxplot" class="section level3">
 <h3>boxplot</h3>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>sns.boxplot(x, y)</span></code></pre></div>

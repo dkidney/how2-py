@@ -44,7 +44,10 @@ Generic example
 
 ```python
 # x and y are lists
-sns.plottype(x=df['xvar'], y=df['yvar'])
+sns.plottype(x=df['xvar'], 
+             y=df['yvar'], 
+             color='green',
+             marker='+')
 
 # x and y are columns in dataframe
 sns.plottype(x='xvar', y='yvar', data=df)

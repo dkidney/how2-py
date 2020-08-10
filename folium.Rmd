@@ -1,0 +1,45 @@
+---
+title: folium
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+> Python data, leaflet.js maps
+
+*********************************************************************
+
+## faqs
+
+*********************************************************************
+
+## links
+
+* https://python-visualization.github.io/folium/index.html
+
+*********************************************************************
+
+## setup
+
+```python
+pip install folium
+```
+
+```{python}
+import folium
+folium.__version__
+```
+
+*********************************************************************
+
+## basics
+
+```python
+# TODO
+```
+
+

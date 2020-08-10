@@ -37,7 +37,7 @@ fi
 # activate env and check dependencies
 conda activate $env_name
 echo ${light_green}'updating dependencies'${none}
-pip install --upgrade pip
 cat _requirements.txt
+pip install --upgrade pip
 pip install -U -r _requirements.txt
 python --version && which python && pip list
