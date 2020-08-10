@@ -665,6 +665,7 @@ $(document).ready(function () {
 <li><a href="#set_index">set_index</a></li>
 <li><a href="#sort-values">sort_values</a></li>
 <li><a href="#str.split">str.split</a></li>
+<li><a href="#to_string">to_string</a></li>
 <li><a href="#transpose">transpose</a></li>
 <li><a href="#unique">unique</a></li>
 <li><a href="#value_counts">value_counts</a></li>
@@ -778,7 +779,7 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">pip</span> install pandas</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2"></a>pd.__version__</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#  &#39;1.1.0&#39;</span></span></code></pre></div>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#  &#39;1.0.5&#39;</span></span></code></pre></div>
 <hr />
 </div>
 <div id="series-1" class="section level2">
@@ -1087,13 +1088,15 @@ datetime</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># e.g. group by col1 and col2 and get the grouped means of col3 and col4</span></span>
 <span id="cb36-2"><a href="#cb36-2"></a>df<span class="op">=</span>df[[<span class="st">&#39;col1&#39;</span>, <span class="st">&#39;col2&#39;</span>, <span class="st">&#39;col3&#39;</span>, <span class="st">&#39;col3&#39;</span>]]</span>
 <span id="cb36-3"><a href="#cb36-3"></a>df.groupby([<span class="st">&#39;col1&#39;</span>, <span class="st">&#39;col2&#39;</span>], as_index<span class="op">=</span><span class="va">False</span>).mean()</span></code></pre></div>
-<div id="get_group" class="section level4">
-<h4>get_group</h4>
-<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># e.g. group by col which has levels a and b</span></span>
-<span id="cb37-2"><a href="#cb37-2"></a>grouped_df <span class="op">=</span> df.groupby([<span class="st">&#39;col&#39;</span>])</span>
-<span id="cb37-3"><a href="#cb37-3"></a>grouped_df.get_group(<span class="st">&quot;a&quot;</span>)</span>
-<span id="cb37-4"><a href="#cb37-4"></a>grouped_df.get_group(<span class="st">&quot;b&quot;</span>)</span></code></pre></div>
-</div>
+<p>attributes:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>grouped_df <span class="op">=</span> df.groupby([<span class="st">&#39;col&#39;</span>])</span>
+<span id="cb37-2"><a href="#cb37-2"></a></span>
+<span id="cb37-3"><a href="#cb37-3"></a><span class="co"># list all grouping levels</span></span>
+<span id="cb37-4"><a href="#cb37-4"></a><span class="bu">list</span>(grouped_df.groups.keys())</span>
+<span id="cb37-5"><a href="#cb37-5"></a></span>
+<span id="cb37-6"><a href="#cb37-6"></a><span class="co"># group by col which has levels a and b</span></span>
+<span id="cb37-7"><a href="#cb37-7"></a>grouped_df.get_group(<span class="st">&quot;a&quot;</span>)</span>
+<span id="cb37-8"><a href="#cb37-8"></a>grouped_df.get_group(<span class="st">&quot;b&quot;</span>)</span></code></pre></div>
 </div>
 <div id="idxmax" class="section level3">
 <h3>idxmax</h3>
@@ -1234,26 +1237,32 @@ datetime</p>
 <span id="cb49-11"><a href="#cb49-11"></a><span class="co">#  1  4  5  6</span></span>
 <span id="cb49-12"><a href="#cb49-12"></a><span class="co">#  2  7  8  9</span></span></code></pre></div>
 </div>
+<div id="to_string" class="section level3">
+<h3>to_string</h3>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>df.to_string(float_format<span class="op">=</span><span class="st">&#39;</span><span class="sc">{:.6f}</span><span class="st">&#39;</span>.<span class="bu">format</span>, <span class="co"># e.g. print floats using 6dp</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a>             index<span class="op">=</span><span class="va">False</span>, </span>
+<span id="cb50-3"><a href="#cb50-3"></a>             header<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+</div>
 <div id="transpose" class="section level3">
 <h3>transpose</h3>
 <p>cols to rows and rows to cols</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>df.unique()</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>df.unique()</span></code></pre></div>
 </div>
 <div id="unique" class="section level3">
 <h3>unique</h3>
-<div class="sourceCode" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>df[<span class="st">&#39;col1&#39;</span>].unique()</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>df[<span class="st">&#39;col1&#39;</span>].unique()</span></code></pre></div>
 </div>
 <div id="value_counts" class="section level3">
 <h3>value_counts</h3>
-<div class="sourceCode" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>df[<span class="st">&#39;col1&#39;</span>].value_counts()</span>
-<span id="cb52-2"><a href="#cb52-2"></a>df[<span class="st">&#39;col1&#39;</span>].value_counts().to_frame() <span class="co"># convert series to dataframe</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>df[<span class="st">&#39;col1&#39;</span>].value_counts()</span>
+<span id="cb53-2"><a href="#cb53-2"></a>df[<span class="st">&#39;col1&#39;</span>].value_counts().to_frame() <span class="co"># convert series to dataframe</span></span></code></pre></div>
 </div>
 <div id="wide_to_long" class="section level3">
 <h3>wide_to_long</h3>
 <ul>
 <li>Less flexible but more user-friendly than <code>melt</code>.</li>
 </ul>
-<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -1264,25 +1273,25 @@ datetime</p>
 <ul>
 <li><a href="https://www.datacamp.com/community/tutorials/pandas-read-csv" class="uri">https://www.datacamp.com/community/tutorials/pandas-read-csv</a></li>
 </ul>
-<div class="sourceCode" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;file.csv&quot;</span>)</span>
-<span id="cb54-2"><a href="#cb54-2"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;file.csv&quot;</span>, header<span class="op">=</span><span class="va">None</span>, names<span class="op">=</span>[<span class="st">&#39;c1&#39;</span>, <span class="st">&#39;c2&#39;</span>, <span class="st">&#39;c3&#39;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;file.csv&quot;</span>)</span>
+<span id="cb55-2"><a href="#cb55-2"></a>df <span class="op">=</span> pd.read_csv(<span class="st">&quot;file.csv&quot;</span>, header<span class="op">=</span><span class="va">None</span>, names<span class="op">=</span>[<span class="st">&#39;c1&#39;</span>, <span class="st">&#39;c2&#39;</span>, <span class="st">&#39;c3&#39;</span>])</span></code></pre></div>
 <div id="chunking" class="section level4">
 <h4>chunking</h4>
-<div class="sourceCode" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
 </div>
 </div>
 <div id="read_json" class="section level3">
 <h3>read_json</h3>
-<div class="sourceCode" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>df <span class="op">=</span> pd.read_json(<span class="st">&quot;file.json&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>df <span class="op">=</span> pd.read_json(<span class="st">&quot;file.json&quot;</span>)</span></code></pre></div>
 </div>
 <div id="read_sql" class="section level3">
 <h3>read_sql</h3>
-<div class="sourceCode" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>df <span class="op">=</span> pd.read_sql(query, con)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>df <span class="op">=</span> pd.read_sql(query, con)</span></code></pre></div>
 </div>
 <div id="read_excel" class="section level3">
 <h3>read_excel</h3>
-<div class="sourceCode" id="cb58"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1"></a><span class="ex">pip</span> install xlrd</span></code></pre></div>
-<div class="sourceCode" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">&quot;file.xlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb59-1"><a href="#cb59-1"></a><span class="ex">pip</span> install xlrd</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">&quot;file.xlsx&quot;</span>)</span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -1290,25 +1299,25 @@ datetime</p>
 <h2>write</h2>
 <div id="to_csv" class="section level3">
 <h3>to_csv</h3>
-<div class="sourceCode" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>df.to_csv(<span class="st">&quot;file.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>df.to_csv(<span class="st">&quot;file.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="to_json" class="section level3">
 <h3>to_json</h3>
-<div class="sourceCode" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>df.to_json(<span class="st">&quot;file.json&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>df.to_json(<span class="st">&quot;file.json&quot;</span>)</span></code></pre></div>
 </div>
 <div id="to_sql" class="section level3">
 <h3>to_sql</h3>
-<div class="sourceCode" id="cb62"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>df.to_sql(<span class="st">&quot;file.sql&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>df.to_sql(<span class="st">&quot;file.sql&quot;</span>)</span></code></pre></div>
 </div>
 <div id="to_excel" class="section level3">
 <h3>to_excel</h3>
-<div class="sourceCode" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>df.to_excel(<span class="st">&quot;file.xlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>df.to_excel(<span class="st">&quot;file.xlsx&quot;</span>)</span></code></pre></div>
 <hr />
 </div>
 </div>
 <div id="display" class="section level2">
 <h2>display</h2>
-<div class="sourceCode" id="cb64"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
 <!-- df.to.options.display.max_colwidth = 100 -->
 <!-- pd.options.display.max_colwidth = 100 -->
 <hr />

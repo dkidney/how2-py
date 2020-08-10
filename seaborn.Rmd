@@ -65,8 +65,8 @@ sns.distplot(x)
 E.g. overlay two density plots
 
 ```python
-ax1 = sns.distplot(x1, hist=False, col='r', label='var1')
-sns.distplot(x2, hist=False, col='b', label='var2', ax=ax1)
+ax1 = sns.distplot(x1, hist=False, col='r', label='x1')
+sns.distplot(x2, hist=False, col='b', label='x2', ax=ax1)
 ```
 
 ### jointplot

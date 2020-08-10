@@ -448,15 +448,18 @@ df=df[['col1', 'col2', 'col3', 'col3']]
 df.groupby(['col1', 'col2'], as_index=False).mean()
 ```
 
-#### get_group
+attributes:
 
 ```python
-# e.g. group by col which has levels a and b
 grouped_df = df.groupby(['col'])
+
+# list all grouping levels
+list(grouped_df.groups.keys())
+
+# group by col which has levels a and b
 grouped_df.get_group("a")
 grouped_df.get_group("b")
 ```
-
 
 ### idxmax
 
@@ -573,6 +576,14 @@ import pandas as pd
 df = pd.DataFrame(dict(c1 = ['1,2,3', '4,5,6', '7,8,9']))
 df
 df['c1'].str.split(',', expand=True)
+```
+
+### to_string
+
+```python
+df.to_string(float_format='{:.6f}'.format, # e.g. print floats using 6dp
+             index=False, 
+             header=False)
 ```
 
 ### transpose

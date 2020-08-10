@@ -11,4 +11,7 @@ output:
 
 ## links
 
-* [Python Module Index](https://docs.python.org/3/py-modindex.html)
+* https://www.python.org/  
+* [Latest version (Mac OS)](https://www.python.org/downloads/)  
+* [PEP 8 Style Guide](https://www.python.org/dev/peps/pep-0008/)  
+* [Built-in Module Index](https://docs.python.org/3/py-modindex.html)  

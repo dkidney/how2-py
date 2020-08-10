@@ -49,5 +49,11 @@ os.path.isfile('a/b/c')
 import os
 os.getcwd()
 os.getenv('HOME')
-os.getenv('BLAH', default=None)
+os.getenv('BLAH', default='asdf')
 ```
+
+```python
+os.mkdir('new_dir')
+os.remove('new_file')
+```
+
