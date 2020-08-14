@@ -21,7 +21,6 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -494,6 +493,9 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">requests</a>
     </li>
+    <li>
+      <a href="xmltodict.html">xmltodict</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -628,7 +630,7 @@ $(document).ready(function () {
 <p>Two main objects: connection and cursor</p>
 <div id="connection" class="section level3">
 <h3>connection</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>connection <span class="op">=</span> Connect(<span class="st">&#39;databasename&#39;</span>, <span class="st">&#39;username&#39;</span>, <span class="st">&#39;password&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>connection <span class="op">=</span> Connect(<span class="st">&#39;databasename&#39;</span>, <span class="st">&#39;username&#39;</span>, <span class="st">&#39;password&#39;</span>)</span></code></pre></div>
 <p>connection object methods:</p>
 <p><code>.cursor()</code> - returns a new cursor object using the connection<br />
 <code>.commit()</code> - commits any pending transaction to the database<br />
@@ -642,11 +644,11 @@ $(document).ready(function () {
 </li>
 <li>behaves like a file name or file handle in a programming language</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>cursor <span class="op">=</span> connection.cursor()</span>
-<span id="cb2-2"><a href="#cb2-2"></a>cursor.execute(<span class="st">&quot;select * from mytable limit 10&quot;</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>results <span class="op">=</span> cursor.fetchall()</span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>cursor.close()</span>
-<span id="cb3-2"><a href="#cb3-2"></a>connection.close()</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>cursor <span class="op">=</span> connection.cursor()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>cursor.execute(<span class="st">&quot;select * from mytable limit 10&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>results <span class="op">=</span> cursor.fetchall()</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>cursor.close()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>connection.close()</span></code></pre></div>
 <p>cursor object methods:</p>
 <p><code>.execute()</code> -<br />
 <code>.executemany()</code> -<br />
@@ -666,42 +668,42 @@ $(document).ready(function () {
 </div>
 <div id="ibm_db" class="section level2">
 <h2>ibm_db</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>dsn <span class="op">=</span> (</span>
-<span id="cb4-2"><a href="#cb4-2"></a>    <span class="st">&quot;DRIVER={IBM DB2 ODBC DRIVER};&quot;</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>    <span class="st">&quot;DATABASE=BLUDB;&quot;</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>    <span class="st">&quot;HOSTNAME=dashdb-xxx-xxxx-xx-lon02-06.services.eu-gb.bluemix.net;&quot;</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>    <span class="st">&quot;PORT=50000;&quot;</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>    <span class="st">&quot;PROTOCOL=TCPIP;&quot;</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>    <span class="st">&quot;UID=xxx99999;&quot;</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a>    <span class="st">&quot;PWD=xxxxxxxxxxxxxxxx;&quot;</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a>)</span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="cf">try</span>:</span>
-<span id="cb4-11"><a href="#cb4-11"></a>    conn <span class="op">=</span> ibm_db.<span class="ex">connect</span>(dsn, <span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>)</span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="cf">except</span>:</span>
-<span id="cb4-13"><a href="#cb4-13"></a>    <span class="bu">print</span> (<span class="st">&quot;Unable to connect: &quot;</span>, ibm_db.conn_errormsg() )</span>
-<span id="cb4-14"><a href="#cb4-14"></a></span>
-<span id="cb4-15"><a href="#cb4-15"></a>server <span class="op">=</span> ibm_db.server_info(conn)</span>
-<span id="cb4-16"><a href="#cb4-16"></a><span class="bu">print</span> (<span class="st">&quot;DBMS_NAME: &quot;</span>, server.DBMS_NAME)</span>
-<span id="cb4-17"><a href="#cb4-17"></a><span class="bu">print</span> (<span class="st">&quot;DBMS_VER:  &quot;</span>, server.DBMS_VER)</span>
-<span id="cb4-18"><a href="#cb4-18"></a><span class="bu">print</span> (<span class="st">&quot;DB_NAME:   &quot;</span>, server.DB_NAME)</span>
-<span id="cb4-19"><a href="#cb4-19"></a></span>
-<span id="cb4-20"><a href="#cb4-20"></a>client <span class="op">=</span> ibm_db.client_info(conn)</span>
-<span id="cb4-21"><a href="#cb4-21"></a><span class="bu">print</span> (<span class="st">&quot;DRIVER_NAME:          &quot;</span>, client.DRIVER_NAME) </span>
-<span id="cb4-22"><a href="#cb4-22"></a><span class="bu">print</span> (<span class="st">&quot;DRIVER_VER:           &quot;</span>, client.DRIVER_VER)</span>
-<span id="cb4-23"><a href="#cb4-23"></a><span class="bu">print</span> (<span class="st">&quot;DATA_SOURCE_NAME:     &quot;</span>, client.DATA_SOURCE_NAME)</span>
-<span id="cb4-24"><a href="#cb4-24"></a><span class="bu">print</span> (<span class="st">&quot;DRIVER_ODBC_VER:      &quot;</span>, client.DRIVER_ODBC_VER)</span>
-<span id="cb4-25"><a href="#cb4-25"></a><span class="bu">print</span> (<span class="st">&quot;ODBC_VER:             &quot;</span>, client.ODBC_VER)</span>
-<span id="cb4-26"><a href="#cb4-26"></a><span class="bu">print</span> (<span class="st">&quot;ODBC_SQL_CONFORMANCE: &quot;</span>, client.ODBC_SQL_CONFORMANCE)</span>
-<span id="cb4-27"><a href="#cb4-27"></a><span class="bu">print</span> (<span class="st">&quot;APPL_CODEPAGE:        &quot;</span>, client.APPL_CODEPAGE)</span>
-<span id="cb4-28"><a href="#cb4-28"></a><span class="bu">print</span> (<span class="st">&quot;CONN_CODEPAGE:        &quot;</span>, client.CONN_CODEPAGE)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>dsn <span class="op">=</span> (</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>    <span class="st">&quot;DRIVER={IBM DB2 ODBC DRIVER};&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>    <span class="st">&quot;DATABASE=BLUDB;&quot;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>    <span class="st">&quot;HOSTNAME=dashdb-xxx-xxxx-xx-lon02-06.services.eu-gb.bluemix.net;&quot;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>    <span class="st">&quot;PORT=50000;&quot;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>    <span class="st">&quot;PROTOCOL=TCPIP;&quot;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>    <span class="st">&quot;UID=xxx99999;&quot;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a>    <span class="st">&quot;PWD=xxxxxxxxxxxxxxxx;&quot;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a><span class="cf">try</span>:</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a>    conn <span class="op">=</span> ibm_db.<span class="ex">connect</span>(dsn, <span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a><span class="cf">except</span>:</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a>    <span class="bu">print</span> (<span class="st">&quot;Unable to connect: &quot;</span>, ibm_db.conn_errormsg() )</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a>server <span class="op">=</span> ibm_db.server_info(conn)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a><span class="bu">print</span> (<span class="st">&quot;DBMS_NAME: &quot;</span>, server.DBMS_NAME)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a><span class="bu">print</span> (<span class="st">&quot;DBMS_VER:  &quot;</span>, server.DBMS_VER)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a><span class="bu">print</span> (<span class="st">&quot;DB_NAME:   &quot;</span>, server.DB_NAME)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true"></a>client <span class="op">=</span> ibm_db.client_info(conn)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true"></a><span class="bu">print</span> (<span class="st">&quot;DRIVER_NAME:          &quot;</span>, client.DRIVER_NAME) </span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true"></a><span class="bu">print</span> (<span class="st">&quot;DRIVER_VER:           &quot;</span>, client.DRIVER_VER)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true"></a><span class="bu">print</span> (<span class="st">&quot;DATA_SOURCE_NAME:     &quot;</span>, client.DATA_SOURCE_NAME)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true"></a><span class="bu">print</span> (<span class="st">&quot;DRIVER_ODBC_VER:      &quot;</span>, client.DRIVER_ODBC_VER)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true"></a><span class="bu">print</span> (<span class="st">&quot;ODBC_VER:             &quot;</span>, client.ODBC_VER)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true"></a><span class="bu">print</span> (<span class="st">&quot;ODBC_SQL_CONFORMANCE: &quot;</span>, client.ODBC_SQL_CONFORMANCE)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true"></a><span class="bu">print</span> (<span class="st">&quot;APPL_CODEPAGE:        &quot;</span>, client.APPL_CODEPAGE)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true"></a><span class="bu">print</span> (<span class="st">&quot;CONN_CODEPAGE:        &quot;</span>, client.CONN_CODEPAGE)</span></code></pre></div>
 <p>Use the connection object to run queries</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>stmt <span class="op">=</span> ibm_db.exec_immediate(conn, <span class="st">&quot;select * from table limit 10&quot;</span>)</span>
-<span id="cb5-2"><a href="#cb5-2"></a>ibm_db.fetch_both(stmt)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>stmt <span class="op">=</span> ibm_db.exec_immediate(conn, <span class="st">&quot;select * from table limit 10&quot;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>ibm_db.fetch_both(stmt)</span></code></pre></div>
 <p>Use the connection to create another connection object that can be used with pandas</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="im">import</span> ibm_db_dbi</span>
-<span id="cb6-3"><a href="#cb6-3"></a>pconn <span class="op">=</span> ibm_db_dbi.Connection(conn)</span>
-<span id="cb6-4"><a href="#cb6-4"></a>df <span class="op">=</span> pd.read_sql(<span class="st">&quot;select * from table limit 10&quot;</span>, pconn)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="im">import</span> ibm_db_dbi</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>pconn <span class="op">=</span> ibm_db_dbi.Connection(conn)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>df <span class="op">=</span> pd.read_sql(<span class="st">&quot;select * from table limit 10&quot;</span>, pconn)</span></code></pre></div>
 </div>
 
 

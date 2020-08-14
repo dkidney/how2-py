@@ -94,6 +94,8 @@ navbar:
           href: _todo.html
         - text: "requests"
           href: _todo.html
+        - text: "xmltodict"
+          href: xmltodict.html
     - text: "misc"
       menu:
         - text: "apis"

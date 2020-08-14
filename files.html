@@ -21,7 +21,6 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -494,6 +493,9 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">requests</a>
     </li>
+    <li>
+      <a href="xmltodict.html">xmltodict</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -633,7 +635,7 @@ $(document).ready(function () {
 <li><a href="https://www.datacamp.com/community/tutorials/reading-writing-files-python" class="uri">https://www.datacamp.com/community/tutorials/reading-writing-files-python</a></li>
 </ul>
 <hr />
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>fh <span class="op">=</span> <span class="bu">open</span>(filepath, mode) <span class="co"># returns a file object called a handle</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>fh <span class="op">=</span> <span class="bu">open</span>(filepath, mode) <span class="co"># returns a file object called a handle</span></span></code></pre></div>
 <table>
 <colgroup>
 <col width="50%" />
@@ -676,86 +678,86 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="bu">echo</span> <span class="st">&#39;line 1\nline 2\nline 3&#39;</span> <span class="op">&gt;</span> temp.txt</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">cat</span> temp.txt</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#  line 1</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#  line 2</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#  line 3</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>fh <span class="op">=</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a>fh.name</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#  &#39;temp.txt&#39;</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>fh.mode</span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#  &#39;r&#39;</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>fh.close()</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&#39;line 1\nline 2\nline 3&#39;</span> <span class="op">&gt;</span> temp.txt</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="fu">cat</span> temp.txt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="co">#  line 1</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="co">#  line 2</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="co">#  line 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>fh <span class="op">=</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>fh.name</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="co">#  &#39;temp.txt&#39;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>fh.mode</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="co">#  &#39;r&#39;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>fh.close()</span></code></pre></div>
 <p>Using <code>with</code> means you don’t have to explicitly close the file hand.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb4-2"><a href="#cb4-2"></a>    ...</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>    ...</span></code></pre></div>
 <hr />
 <div id="reading" class="section level2">
 <h2>reading</h2>
 <div id="read" class="section level3">
 <h3>read</h3>
 <p>Reads everything by default - returns a string.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb5-2"><a href="#cb5-2"></a>    out <span class="op">=</span> fh.read()</span>
-<span id="cb5-3"><a href="#cb5-3"></a>out</span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#  &#39;line 1\nline 2\nline 3\n&#39;</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="bu">print</span>(out)</span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#  line 1</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#  line 2</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#  line 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>    out <span class="op">=</span> fh.read()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>out</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="co">#  &#39;line 1\nline 2\nline 3\n&#39;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="bu">print</span>(out)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="co">#  line 1</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="co">#  line 2</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a><span class="co">#  line 3</span></span></code></pre></div>
 <p>Specify the number of characters to read</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb6-2"><a href="#cb6-2"></a>    out <span class="op">=</span> fh.read(<span class="dv">2</span>)</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="bu">print</span>(out)</span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#  li</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>    out <span class="op">=</span> fh.read(<span class="dv">2</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="bu">print</span>(out)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="co">#  li</span></span></code></pre></div>
 </div>
 <div id="readline" class="section level3">
 <h3>readline</h3>
 <p>Reads one line at a time</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb7-2"><a href="#cb7-2"></a>    <span class="bu">print</span>(fh.readline(), end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb7-3"><a href="#cb7-3"></a>    <span class="bu">print</span>(fh.readline(), end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb7-4"><a href="#cb7-4"></a>    <span class="bu">print</span>(fh.readline(), end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#  line 1</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#  line 2</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#  line 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(), end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(), end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(), end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="co">#  line 1</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a><span class="co">#  line 2</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="co">#  line 3</span></span></code></pre></div>
 <p>Specify the number of characters to print</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb8-2"><a href="#cb8-2"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">3</span>))</span>
-<span id="cb8-3"><a href="#cb8-3"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">4</span>))</span>
-<span id="cb8-4"><a href="#cb8-4"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">3</span>))</span>
-<span id="cb8-5"><a href="#cb8-5"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">4</span>))</span>
-<span id="cb8-6"><a href="#cb8-6"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">3</span>))</span>
-<span id="cb8-7"><a href="#cb8-7"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">4</span>))</span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="co">#  lin</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="co">#  e 1</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a><span class="co">#  </span></span>
-<span id="cb8-11"><a href="#cb8-11"></a><span class="co">#  lin</span></span>
-<span id="cb8-12"><a href="#cb8-12"></a><span class="co">#  e 2</span></span>
-<span id="cb8-13"><a href="#cb8-13"></a><span class="co">#  </span></span>
-<span id="cb8-14"><a href="#cb8-14"></a><span class="co">#  lin</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a><span class="co">#  e 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">3</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">4</span>))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">3</span>))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">4</span>))</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">3</span>))</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">4</span>))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a><span class="co">#  lin</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a><span class="co">#  e 1</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a><span class="co">#  </span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true"></a><span class="co">#  lin</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true"></a><span class="co">#  e 2</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true"></a><span class="co">#  </span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true"></a><span class="co">#  lin</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true"></a><span class="co">#  e 3</span></span></code></pre></div>
 <p>Alternatively,</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb9-2"><a href="#cb9-2"></a>    <span class="cf">for</span> line <span class="kw">in</span> fh:</span>
-<span id="cb9-3"><a href="#cb9-3"></a>        <span class="bu">print</span>(line, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#  line 1</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#  line 2</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#  line 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>    <span class="cf">for</span> line <span class="kw">in</span> fh:</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>        <span class="bu">print</span>(line, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a><span class="co">#  line 1</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a><span class="co">#  line 2</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a><span class="co">#  line 3</span></span></code></pre></div>
 </div>
 <div id="readlines" class="section level3">
 <h3>readlines</h3>
 <p>Reads everything and returns a list of strings (one line per element).</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb10-2"><a href="#cb10-2"></a>    out <span class="op">=</span> fh.readlines()</span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="bu">print</span>(out)</span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="co">#  [&#39;line 1\n&#39;, &#39;line 2\n&#39;, &#39;line 3\n&#39;]</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>    out <span class="op">=</span> fh.readlines()</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="bu">print</span>(out)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="co">#  [&#39;line 1\n&#39;, &#39;line 2\n&#39;, &#39;line 3\n&#39;]</span></span></code></pre></div>
 <p>Specify the number of lines to read</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb11-2"><a href="#cb11-2"></a>    out <span class="op">=</span> fh.readlines(<span class="dv">2</span>)</span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="bu">print</span>(out)</span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="co">#  [&#39;line 1\n&#39;]</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>    out <span class="op">=</span> fh.readlines(<span class="dv">2</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a><span class="bu">print</span>(out)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="co">#  [&#39;line 1\n&#39;]</span></span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -763,33 +765,33 @@ $(document).ready(function () {
 <h2>writing</h2>
 <div id="write" class="section level3">
 <h3>write</h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;a&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb12-2"><a href="#cb12-2"></a>    fh.write(<span class="st">&quot;line 4</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb12-3"><a href="#cb12-3"></a>    fh.write(<span class="st">&quot;line 5</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="co">#  7</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="co">#  7</span></span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb12-7"><a href="#cb12-7"></a>    <span class="bu">print</span>(fh.read())</span>
-<span id="cb12-8"><a href="#cb12-8"></a><span class="co">#  line 1</span></span>
-<span id="cb12-9"><a href="#cb12-9"></a><span class="co">#  line 2</span></span>
-<span id="cb12-10"><a href="#cb12-10"></a><span class="co">#  line 3</span></span>
-<span id="cb12-11"><a href="#cb12-11"></a><span class="co">#  line 4</span></span>
-<span id="cb12-12"><a href="#cb12-12"></a><span class="co">#  line 5</span></span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>lines <span class="op">=</span> [<span class="st">&#39;line 6</span><span class="ch">\n</span><span class="st">&#39;</span>, <span class="st">&#39;line 7</span><span class="ch">\n</span><span class="st">&#39;</span>]</span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;a&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb13-3"><a href="#cb13-3"></a>    <span class="cf">for</span> line <span class="kw">in</span> lines:</span>
-<span id="cb13-4"><a href="#cb13-4"></a>        fh.write(line)</span>
-<span id="cb13-5"><a href="#cb13-5"></a><span class="co">#  7</span></span>
-<span id="cb13-6"><a href="#cb13-6"></a><span class="co">#  7</span></span>
-<span id="cb13-7"><a href="#cb13-7"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb13-8"><a href="#cb13-8"></a>    <span class="bu">print</span>(fh.read())</span>
-<span id="cb13-9"><a href="#cb13-9"></a><span class="co">#  line 1</span></span>
-<span id="cb13-10"><a href="#cb13-10"></a><span class="co">#  line 2</span></span>
-<span id="cb13-11"><a href="#cb13-11"></a><span class="co">#  line 3</span></span>
-<span id="cb13-12"><a href="#cb13-12"></a><span class="co">#  line 4</span></span>
-<span id="cb13-13"><a href="#cb13-13"></a><span class="co">#  line 5</span></span>
-<span id="cb13-14"><a href="#cb13-14"></a><span class="co">#  line 6</span></span>
-<span id="cb13-15"><a href="#cb13-15"></a><span class="co">#  line 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;a&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>    fh.write(<span class="st">&quot;line 4</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>    fh.write(<span class="st">&quot;line 5</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a><span class="co">#  7</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a><span class="co">#  7</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a>    <span class="bu">print</span>(fh.read())</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a><span class="co">#  line 1</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true"></a><span class="co">#  line 2</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true"></a><span class="co">#  line 3</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true"></a><span class="co">#  line 4</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true"></a><span class="co">#  line 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>lines <span class="op">=</span> [<span class="st">&#39;line 6</span><span class="ch">\n</span><span class="st">&#39;</span>, <span class="st">&#39;line 7</span><span class="ch">\n</span><span class="st">&#39;</span>]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;a&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>    <span class="cf">for</span> line <span class="kw">in</span> lines:</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a>        fh.write(line)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a><span class="co">#  7</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a><span class="co">#  7</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a>    <span class="bu">print</span>(fh.read())</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true"></a><span class="co">#  line 1</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true"></a><span class="co">#  line 2</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true"></a><span class="co">#  line 3</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true"></a><span class="co">#  line 4</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true"></a><span class="co">#  line 5</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true"></a><span class="co">#  line 6</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true"></a><span class="co">#  line 7</span></span></code></pre></div>
 </div>
 <div id="writelines" class="section level3">
 <h3>writelines</h3>
@@ -798,35 +800,35 @@ $(document).ready(function () {
 </div>
 <div id="copying" class="section level2">
 <h2>copying</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> readfile:</span>
-<span id="cb14-2"><a href="#cb14-2"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp2.txt&quot;</span>, <span class="st">&quot;w&quot;</span>) <span class="im">as</span> writefile:</span>
-<span id="cb14-3"><a href="#cb14-3"></a>        <span class="cf">for</span> line <span class="kw">in</span> readfile:</span>
-<span id="cb14-4"><a href="#cb14-4"></a>            writefile.write(line)</span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="co">#  7</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="co">#  7</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a><span class="co">#  7</span></span>
-<span id="cb14-8"><a href="#cb14-8"></a><span class="co">#  7</span></span>
-<span id="cb14-9"><a href="#cb14-9"></a><span class="co">#  7</span></span>
-<span id="cb14-10"><a href="#cb14-10"></a><span class="co">#  7</span></span>
-<span id="cb14-11"><a href="#cb14-11"></a><span class="co">#  7</span></span>
-<span id="cb14-12"><a href="#cb14-12"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp2.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb14-13"><a href="#cb14-13"></a>    <span class="bu">print</span>(fh.read())</span>
-<span id="cb14-14"><a href="#cb14-14"></a><span class="co">#  line 1</span></span>
-<span id="cb14-15"><a href="#cb14-15"></a><span class="co">#  line 2</span></span>
-<span id="cb14-16"><a href="#cb14-16"></a><span class="co">#  line 3</span></span>
-<span id="cb14-17"><a href="#cb14-17"></a><span class="co">#  line 4</span></span>
-<span id="cb14-18"><a href="#cb14-18"></a><span class="co">#  line 5</span></span>
-<span id="cb14-19"><a href="#cb14-19"></a><span class="co">#  line 6</span></span>
-<span id="cb14-20"><a href="#cb14-20"></a><span class="co">#  line 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> readfile:</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp2.txt&quot;</span>, <span class="st">&quot;w&quot;</span>) <span class="im">as</span> writefile:</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>        <span class="cf">for</span> line <span class="kw">in</span> readfile:</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a>            writefile.write(line)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a><span class="co">#  7</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a><span class="co">#  7</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a><span class="co">#  7</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true"></a><span class="co">#  7</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true"></a><span class="co">#  7</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true"></a><span class="co">#  7</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true"></a><span class="co">#  7</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp2.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true"></a>    <span class="bu">print</span>(fh.read())</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true"></a><span class="co">#  line 1</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true"></a><span class="co">#  line 2</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true"></a><span class="co">#  line 3</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true"></a><span class="co">#  line 4</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true"></a><span class="co">#  line 5</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true"></a><span class="co">#  line 6</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true"></a><span class="co">#  line 7</span></span></code></pre></div>
 <hr />
 </div>
 <div id="misc" class="section level2">
 <h2>misc</h2>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>fh.seek(offset,reference_point) <span class="co"># the reference points are 0 (the beginning of the file and is default), 1 (the current position of file) and 2 (the end of the file).</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>fh.tell()</span>
-<span id="cb15-3"><a href="#cb15-3"></a>fh.truncate()</span>
-<span id="cb15-4"><a href="#cb15-4"></a>fh.<span class="bu">next</span>()</span>
-<span id="cb15-5"><a href="#cb15-5"></a>fh.flush()</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>fh.seek(offset,reference_point) <span class="co"># the reference points are 0 (the beginning of the file and is default), 1 (the current position of file) and 2 (the end of the file).</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>fh.tell()</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>fh.truncate()</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a>fh.<span class="bu">next</span>()</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a>fh.flush()</span></code></pre></div>
 <hr />
 </div>
 

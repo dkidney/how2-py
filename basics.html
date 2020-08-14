@@ -21,7 +21,6 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -494,6 +493,9 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">requests</a>
     </li>
+    <li>
+      <a href="xmltodict.html">xmltodict</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -809,12 +811,12 @@ $(document).ready(function () {
 </div>
 <div id="logical-operators" class="section level2">
 <h2>logical operators</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="dv">1</span> <span class="op">==</span> <span class="va">True</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="co">#  True</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="dv">1</span> <span class="kw">is</span> <span class="va">True</span> <span class="co"># strict!</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co">#  False</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="dv">1</span> <span class="kw">in</span> [<span class="va">True</span>]</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co">#  True</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="dv">1</span> <span class="op">==</span> <span class="va">True</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="co">#  True</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="dv">1</span> <span class="kw">is</span> <span class="va">True</span> <span class="co"># strict!</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="co">#  False</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="dv">1</span> <span class="kw">in</span> [<span class="va">True</span>]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="co">#  True</span></span></code></pre></div>
 </div>
 <div id="built-in-functions" class="section level2">
 <h2>built-in functions</h2>
@@ -824,25 +826,25 @@ $(document).ready(function () {
 </div>
 <div id="try-except" class="section level2">
 <h2>try except</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="cf">try</span>:</span>
-<span id="cb2-2"><a href="#cb2-2"></a>    myint <span class="op">=</span> <span class="bu">int</span>(<span class="st">&quot;one&quot;</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="cf">except</span>:</span>
-<span id="cb2-4"><a href="#cb2-4"></a>    myint <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="bu">print</span>(myint)</span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#  -1</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="cf">try</span>:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>    myint <span class="op">=</span> <span class="bu">int</span>(<span class="st">&quot;one&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="cf">except</span>:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>    myint <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="bu">print</span>(myint)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a><span class="co">#  -1</span></span></code></pre></div>
 </div>
 <div id="colours" class="section level2">
 <h2>colours</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">11</span>):</span>
-<span id="cb3-2"><a href="#cb3-2"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb3-3"><a href="#cb3-3"></a>    n <span class="op">=</span> <span class="dv">10</span><span class="op">*</span>i <span class="op">+</span> j<span class="op">;</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>    <span class="cf">if</span> (n <span class="op">&gt;</span> <span class="dv">108</span>) <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>    printf(<span class="st">&quot;</span><span class="ch">\033</span><span class="st">[</span><span class="sc">%d</span><span class="st">m </span><span class="sc">%3d</span><span class="ch">\033</span><span class="st">[m&quot;</span>, n, n)<span class="op">;</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>    }</span>
-<span id="cb3-7"><a href="#cb3-7"></a>    printf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)<span class="op">;</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>  }</span>
-<span id="cb3-9"><a href="#cb3-9"></a>  <span class="cf">return</span> (<span class="dv">0</span>)<span class="op">;</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">11</span>):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>    n <span class="op">=</span> <span class="dv">10</span><span class="op">*</span>i <span class="op">+</span> j<span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>    <span class="cf">if</span> (n <span class="op">&gt;</span> <span class="dv">108</span>) <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>    printf(<span class="st">&quot;</span><span class="ch">\033</span><span class="st">[</span><span class="sc">%d</span><span class="st">m </span><span class="sc">%3d</span><span class="ch">\033</span><span class="st">[m&quot;</span>, n, n)<span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>    }</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>    printf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)<span class="op">;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a>  }</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a>  <span class="cf">return</span> (<span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a>}</span></code></pre></div>
 </div>
 
 

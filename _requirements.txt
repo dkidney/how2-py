@@ -8,3 +8,4 @@ pandas
 pyarrow
 seaborn
 sklearn
+xmltodict

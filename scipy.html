@@ -21,7 +21,6 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -494,6 +493,9 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">requests</a>
     </li>
+    <li>
+      <a href="xmltodict.html">xmltodict</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -635,17 +637,17 @@ $(document).ready(function () {
 <hr />
 <div id="stats" class="section level2">
 <h2>stats</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span></code></pre></div>
 <div id="f_onway" class="section level3">
 <h3>f_onway</h3>
 <p>E.g. ANOVA</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>f_val, p_val <span class="op">=</span> stats.f_oneway(grouped_df.get_group(<span class="st">&#39;level1&#39;</span>)[<span class="st">&#39;col&#39;</span>], </span>
-<span id="cb2-2"><a href="#cb2-2"></a>                              grouped_df.get_group(<span class="st">&#39;level2&#39;</span>)[<span class="st">&#39;col&#39;</span>], </span>
-<span id="cb2-3"><a href="#cb2-3"></a>                              grouped_df.get_group(<span class="st">&#39;level3&#39;</span>)[<span class="st">&#39;col&#39;</span>])  </span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>f_val, p_val <span class="op">=</span> stats.f_oneway(grouped_df.get_group(<span class="st">&#39;level1&#39;</span>)[<span class="st">&#39;col&#39;</span>], </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>                              grouped_df.get_group(<span class="st">&#39;level2&#39;</span>)[<span class="st">&#39;col&#39;</span>], </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>                              grouped_df.get_group(<span class="st">&#39;level3&#39;</span>)[<span class="st">&#39;col&#39;</span>])  </span></code></pre></div>
 </div>
 <div id="pearsonr" class="section level3">
 <h3>pearsonr</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>pearson_coef, p_value <span class="op">=</span> stats.pearsonr(df[<span class="st">&#39;col1&#39;</span>], df[<span class="st">&#39;col2&#39;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>pearson_coef, p_value <span class="op">=</span> stats.pearsonr(df[<span class="st">&#39;col1&#39;</span>], df[<span class="st">&#39;col2&#39;</span>])</span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -654,15 +656,15 @@ $(document).ready(function () {
 <div id="csc_matrix" class="section level3">
 <h3>csc_matrix</h3>
 <p>E.g. make a 3x3 identity matrix</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="im">from</span> scipy.sparse <span class="im">import</span> csc_matrix</span>
-<span id="cb4-3"><a href="#cb4-3"></a>row <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
-<span id="cb4-4"><a href="#cb4-4"></a>col <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
-<span id="cb4-5"><a href="#cb4-5"></a>data <span class="op">=</span> np.ones(<span class="dv">3</span>)</span>
-<span id="cb4-6"><a href="#cb4-6"></a>csc_matrix((data, (row, col)), shape<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>)).toarray()</span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#  array([[1., 0., 0.],</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#         [0., 1., 0.],</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#         [0., 0., 1.]])</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="im">from</span> scipy.sparse <span class="im">import</span> csc_matrix</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>row <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>col <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>data <span class="op">=</span> np.ones(<span class="dv">3</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>csc_matrix((data, (row, col)), shape<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>)).toarray()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="co">#  array([[1., 0., 0.],</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="co">#         [0., 1., 0.],</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a><span class="co">#         [0., 0., 1.]])</span></span></code></pre></div>
 </div>
 </div>
 

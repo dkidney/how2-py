@@ -21,7 +21,6 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -494,6 +493,9 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">requests</a>
     </li>
+    <li>
+      <a href="xmltodict.html">xmltodict</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -623,9 +625,12 @@ $(document).ready(function () {
 <li><a href="#keyboard-shortcuts">keyboard shortcuts</a></li>
 <li><a href="#window-layout">window layout</a></li>
 <li><a href="#console">console</a></li>
+<li><a href="#code-style">code style</a></li>
 <li><a href="#plugins">plugins</a></li>
 <li><a href="#default-interpreter">default interpreter</a></li>
 <li><a href="#run-configurations-1">run configurations</a></li>
+<li><a href="#templates">templates</a></li>
+<li><a href="#docstring-format">docstring format</a></li>
 <li><a href="#misc">misc</a></li>
 </ul></li>
 <li><a href="#todo">todo</a>
@@ -659,7 +664,7 @@ $(document).ready(function () {
 <hr />
 <div id="installation" class="section level2">
 <h2>installation</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">brew</span> cask install pycharm-ce</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">brew</span> cask install pycharm-ce</span></code></pre></div>
 <hr />
 </div>
 <div id="project-setup" class="section level2">
@@ -792,6 +797,11 @@ $(document).ready(function () {
 <li>then check <code>Use IPython if available</code></li>
 </ul>
 </div>
+<div id="code-style" class="section level3">
+<h3>code style</h3>
+<p>Add an 80 character visual guideline</p>
+<p><code>Preferences &gt; Editor &gt; Code Style &gt; General &gt; Visual guides:</code> 80 <code>columns</code></p>
+</div>
 <div id="plugins" class="section level3">
 <h3>plugins</h3>
 <p><code>Preferences &gt; Plugins</code></p>
@@ -809,6 +819,14 @@ $(document).ready(function () {
 <ul>
 <li>select <code>Emulate termnal in output console</code> to see <code>progress</code> progress bars.</li>
 </ul>
+</div>
+<div id="templates" class="section level3">
+<h3>templates</h3>
+<p><code>Preferences &gt; Editor &gt; File and Code Templates</code></p>
+</div>
+<div id="docstring-format" class="section level3">
+<h3>docstring format</h3>
+<p><code>Preferences &gt; Tools &gt; Python Integrated Tools &gt;  Docstrings &gt; File and Code Templates</code></p>
 </div>
 <div id="misc" class="section level3">
 <h3>misc</h3>

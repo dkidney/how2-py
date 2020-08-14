@@ -730,6 +730,10 @@ df.to_excel("file.xlsx")
 ## display
 
 ```python
+with pd.option_context(
+
+):
+  print(df)
 # TODO
 ```
 

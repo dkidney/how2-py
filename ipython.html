@@ -21,7 +21,6 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -494,6 +493,9 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">requests</a>
     </li>
+    <li>
+      <a href="xmltodict.html">xmltodict</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -640,12 +642,12 @@ $(document).ready(function () {
 <hr />
 <div id="install" class="section level2">
 <h2>install</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">pip</span> install ipython</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">pip</span> install ipython</span></code></pre></div>
 <hr />
 </div>
 <div id="launch" class="section level2">
 <h2>launch</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">ipython</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">ipython</span></span></code></pre></div>
 <hr />
 </div>
 <div id="features" class="section level2">
@@ -659,19 +661,19 @@ $(document).ready(function () {
 <h2>extensions</h2>
 <div id="sql" class="section level3">
 <h3>sql</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">%</span>load_ext sql</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="op">%</span>sql select <span class="op">*</span> <span class="im">from</span> mytable limit <span class="dv">10</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="op">%</span>load_ext sql</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="op">%</span>sql select <span class="op">*</span> <span class="im">from</span> mytable limit <span class="dv">10</span></span></code></pre></div>
 <p>Use python variables</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>value <span class="op">=</span> <span class="dv">42</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="op">%</span>sql select <span class="op">*</span> <span class="im">from</span> table where var <span class="op">=</span> :value</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>value <span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="op">%</span>sql select <span class="op">*</span> <span class="im">from</span> table where var <span class="op">=</span> :value</span></code></pre></div>
 <p>Assign results of queries to python variables</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>result <span class="op">=</span> <span class="op">%</span>sql select <span class="op">*</span> <span class="im">from</span> mytable limit <span class="dv">10</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="bu">print</span>(result.DataFrame())</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>result <span class="op">=</span> <span class="op">%</span>sql select <span class="op">*</span> <span class="im">from</span> mytable limit <span class="dv">10</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="bu">print</span>(result.DataFrame())</span></code></pre></div>
 <p>Import from csv</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb6-2"><a href="#cb6-2"></a>mydata <span class="op">=</span> pd.read_csv(<span class="st">&#39;https://....csv&#39;</span>)</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="op">%</span>sql PERSIST mydata</span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="op">%</span>sql SELECT <span class="op">*</span> FROM mydata limit <span class="dv">5</span><span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>mydata <span class="op">=</span> pd.read_csv(<span class="st">&#39;https://....csv&#39;</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="op">%</span>sql PERSIST mydata</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="op">%</span>sql SELECT <span class="op">*</span> FROM mydata limit <span class="dv">5</span><span class="op">;</span></span></code></pre></div>
 </div>
 </div>
 

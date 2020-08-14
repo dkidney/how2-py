@@ -84,6 +84,12 @@ Use IPython if available (i.e. installed in your python env)
 * Go to `Preferences > Build, Execution, Deployment > Console`  
 * then check `Use IPython if available`
 
+### code style
+
+Add an 80 character visual guideline
+
+`Preferences > Editor > Code Style > General > Visual guides:` 80 `columns`
+
 ### plugins
 
 `Preferences > Plugins`
@@ -98,6 +104,14 @@ Use IPython if available (i.e. installed in your python env)
 ### run configurations
 
 * select `Emulate termnal in output console` to see `progress` progress bars.
+
+### templates
+
+`Preferences > Editor > File and Code Templates`
+
+### docstring format
+
+`Preferences > Tools > Python Integrated Tools >  Docstrings > File and Code Templates`
 
 ### misc
 

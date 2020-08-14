@@ -15,3 +15,18 @@ output:
 * [Latest version (Mac OS)](https://www.python.org/downloads/)  
 * [PEP 8 Style Guide](https://www.python.org/dev/peps/pep-0008/)  
 * [Built-in Module Index](https://docs.python.org/3/py-modindex.html)  
+
+## todo next
+
+* sets
+* comprehensions
+* args and kwargs
+* testing
+* collections
+* xml
+* sklearn
+* matplotlib
+* boto3
+* hocon
+* pyarrow
+* requests

@@ -21,7 +21,6 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -494,6 +493,9 @@ $(document).ready(function () {
     <li>
       <a href="_todo.html">requests</a>
     </li>
+    <li>
+      <a href="xmltodict.html">xmltodict</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -665,10 +667,10 @@ $(document).ready(function () {
 </div>
 <div id="setup" class="section level2">
 <h2>setup</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">pip</span> install scikit-learn</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> sklearn</span>
-<span id="cb2-2"><a href="#cb2-2"></a>sklearn.__version__</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#  &#39;0.23.2&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">pip</span> install scikit-learn</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="im">import</span> sklearn</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>sklearn.__version__</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="co">#  &#39;0.23.2&#39;</span></span></code></pre></div>
 <hr />
 </div>
 <div id="basics" class="section level2">
@@ -679,16 +681,16 @@ $(document).ready(function () {
 <h2>preprocessing</h2>
 <div id="standardscaler" class="section level3">
 <h3>StandardScaler</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
-<span id="cb3-2"><a href="#cb3-2"></a>scl<span class="op">=</span>StandardScaler(with_mean<span class="op">=</span><span class="va">True</span>, with_std<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-3"><a href="#cb3-3"></a>scl.fit(X)</span>
-<span id="cb3-4"><a href="#cb3-4"></a>X_scaled <span class="op">=</span> scl.transform(X)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>scl<span class="op">=</span>StandardScaler(with_mean<span class="op">=</span><span class="va">True</span>, with_std<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>scl.fit(X)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>X_scaled <span class="op">=</span> scl.transform(X)</span></code></pre></div>
 </div>
 <div id="polynomialfeatures" class="section level3">
 <h3>PolynomialFeatures</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
-<span id="cb4-2"><a href="#cb4-2"></a>pr<span class="op">=</span>PolynomialFeatures(degree<span class="op">=</span><span class="dv">3</span>, include_bias<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb4-3"><a href="#cb4-3"></a>pr.fit_transform(X[[<span class="st">&#39;x1&#39;</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>pr<span class="op">=</span>PolynomialFeatures(degree<span class="op">=</span><span class="dv">3</span>, include_bias<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>pr.fit_transform(X[[<span class="st">&#39;x1&#39;</span>]])</span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -696,20 +698,20 @@ $(document).ready(function () {
 <h2>linear_model</h2>
 <div id="linearregression" class="section level3">
 <h3>LinearRegression</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb5-2"><a href="#cb5-2"></a>lr <span class="op">=</span> LinearRegression()</span>
-<span id="cb5-3"><a href="#cb5-3"></a>lr.fit(X_train, Y_train)</span>
-<span id="cb5-4"><a href="#cb5-4"></a>lr.intercept_</span>
-<span id="cb5-5"><a href="#cb5-5"></a>lr.coef_</span>
-<span id="cb5-6"><a href="#cb5-6"></a>lr.score(X_train, Y_train) <span class="co"># in-sample R^2</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a>Yhat_test <span class="op">=</span> lr.predict(X_test)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>lr <span class="op">=</span> LinearRegression()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>lr.fit(X_train, Y_train)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>lr.intercept_</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>lr.coef_</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>lr.score(X_train, Y_train) <span class="co"># in-sample R^2</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>Yhat_test <span class="op">=</span> lr.predict(X_test)</span></code></pre></div>
 </div>
 <div id="ridge" class="section level3">
 <h3>Ridge</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
-<span id="cb6-2"><a href="#cb6-2"></a>rr <span class="op">=</span> Ridge(alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb6-3"><a href="#cb6-3"></a>rr.fit(X_train, Y_train)</span>
-<span id="cb6-4"><a href="#cb6-4"></a>yhat_pred <span class="op">=</span> rr.predict(X_test)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>rr <span class="op">=</span> Ridge(alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>rr.fit(X_train, Y_train)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>yhat_pred <span class="op">=</span> rr.predict(X_test)</span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -717,8 +719,8 @@ $(document).ready(function () {
 <h2>metrics</h2>
 <div id="mean_squared_error" class="section level3">
 <h3>mean_squared_error</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
-<span id="cb7-2"><a href="#cb7-2"></a>mean_squared_error(Y_test, Yhat_test)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>mean_squared_error(Y_test, Yhat_test)</span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -726,49 +728,49 @@ $(document).ready(function () {
 <h2>model_selection</h2>
 <div id="train_test_split" class="section level3">
 <h3>train_test_split</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb8-2"><a href="#cb8-2"></a>X_train, X_test, Y_train, Y_test <span class="op">=</span> train_test_split(X, Y, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>X_train, X_test, Y_train, Y_test <span class="op">=</span> train_test_split(X, Y, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span></code></pre></div>
 </div>
 <div id="cross_val_score" class="section level3">
 <h3>cross_val_score</h3>
 <p>returns the evaluation metric for each of the k test folds</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="co"># e.g. R^2 by default for linear model?</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>test_scores <span class="op">=</span> cross_val_score(lr, X_train, Y_train, cv<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="co"># e.g. R^2 by default for linear model?</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>test_scores <span class="op">=</span> cross_val_score(lr, X_train, Y_train, cv<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div>
 </div>
 <div id="cross_val_predict" class="section level3">
 <h3>cross_val_predict</h3>
 <p>returns the predictions for each observation when it was in the test fold</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_predict</span>
-<span id="cb10-2"><a href="#cb10-2"></a>test_preds <span class="op">=</span> cross_val_predict(lr, X_train, Y_train, cv<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_predict</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>test_preds <span class="op">=</span> cross_val_predict(lr, X_train, Y_train, cv<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div>
 </div>
 <div id="gridsearchcv" class="section level3">
 <h3>GridSearchCV</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
-<span id="cb11-2"><a href="#cb11-2"></a>rr <span class="op">=</span> Ridge()</span>
-<span id="cb11-3"><a href="#cb11-3"></a>params <span class="op">=</span> [</span>
-<span id="cb11-4"><a href="#cb11-4"></a>  <span class="bu">dict</span>(alpha <span class="op">=</span> [<span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>]),</span>
-<span id="cb11-5"><a href="#cb11-5"></a>  <span class="bu">dict</span>(normalize <span class="op">=</span> [<span class="va">True</span>, <span class="va">False</span>])</span>
-<span id="cb11-6"><a href="#cb11-6"></a>]</span>
-<span id="cb11-7"><a href="#cb11-7"></a>grid <span class="op">=</span> GridSearchCV(rr, params, cv<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb11-8"><a href="#cb11-8"></a>grid.fit(X_train, Y_train)</span>
-<span id="cb11-9"><a href="#cb11-9"></a>grid.best_estimator_</span>
-<span id="cb11-10"><a href="#cb11-10"></a>scores <span class="op">=</span> grid.cv_results_</span>
-<span id="cb11-11"><a href="#cb11-11"></a>scores[<span class="st">&#39;mean_test_score&#39;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>rr <span class="op">=</span> Ridge()</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>params <span class="op">=</span> [</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>  <span class="bu">dict</span>(alpha <span class="op">=</span> [<span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>]),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>  <span class="bu">dict</span>(normalize <span class="op">=</span> [<span class="va">True</span>, <span class="va">False</span>])</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a>]</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a>grid <span class="op">=</span> GridSearchCV(rr, params, cv<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a>grid.fit(X_train, Y_train)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true"></a>grid.best_estimator_</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true"></a>scores <span class="op">=</span> grid.cv_results_</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true"></a>scores[<span class="st">&#39;mean_test_score&#39;</span>]</span></code></pre></div>
 <hr />
 </div>
 </div>
 <div id="pipeline" class="section level2">
 <h2>pipeline</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
-<span id="cb12-2"><a href="#cb12-2"></a>Input<span class="op">=</span>[</span>
-<span id="cb12-3"><a href="#cb12-3"></a>  (<span class="st">&#39;scale&#39;</span>, StandardScaler()),</span>
-<span id="cb12-4"><a href="#cb12-4"></a>  (<span class="st">&#39;poly3&#39;</span>, PolynomialFeatures(degree<span class="op">=</span><span class="dv">3</span>, include_bias<span class="op">=</span><span class="va">True</span>)),</span>
-<span id="cb12-5"><a href="#cb12-5"></a>  (<span class="st">&#39;model&#39;</span>, LinearRegression())</span>
-<span id="cb12-6"><a href="#cb12-6"></a>]</span>
-<span id="cb12-7"><a href="#cb12-7"></a>pipe<span class="op">=</span>Pipeline(Input)</span>
-<span id="cb12-8"><a href="#cb12-8"></a>pipe.fit(X_train, Y_train)</span>
-<span id="cb12-9"><a href="#cb12-9"></a>yhat_test <span class="op">=</span> pipe.predict(X_test)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>Input<span class="op">=</span>[</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>  (<span class="st">&#39;scale&#39;</span>, StandardScaler()),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a>  (<span class="st">&#39;poly3&#39;</span>, PolynomialFeatures(degree<span class="op">=</span><span class="dv">3</span>, include_bias<span class="op">=</span><span class="va">True</span>)),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a>  (<span class="st">&#39;model&#39;</span>, LinearRegression())</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a>]</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a>pipe<span class="op">=</span>Pipeline(Input)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a>pipe.fit(X_train, Y_train)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true"></a>yhat_test <span class="op">=</span> pipe.predict(X_test)</span></code></pre></div>
 </div>
 
 

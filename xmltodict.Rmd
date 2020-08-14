@@ -1,0 +1,63 @@
+---
+title: xmltodict
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+<!-- ********************************************************************* -->
+
+<!-- > Headline -->
+
+<!-- ********************************************************************* -->
+
+<!-- ## faqs -->
+
+<!-- ********************************************************************* -->
+
+<!-- ## links -->
+
+*********************************************************************
+
+## setup
+
+```sh
+pip istall xmltodict
+```
+
+```{python}
+import xmltodict
+xmltodict.__version__
+```
+
+*********************************************************************
+
+## parse
+
+```{sh}
+echo '<mydocument has="an attribute">
+  <and>
+    <many>elements</many>
+    <many>more elements</many>
+  </and>
+  <plus a="complex">
+    element as well
+  </plus>
+</mydocument>' > temp.xml
+```
+
+```{python}
+from pprint import pprint
+import xmltodict
+with open('temp.xml') as fh:
+    doc = xmltodict.parse(fh.read())
+pprint(doc)
+doc['mydocument']['@has']
+doc['mydocument']['and']['many']
+```
+
+```{r, echo=FALSE, results='hide'}
+file.remove("temp.xml")
+```
