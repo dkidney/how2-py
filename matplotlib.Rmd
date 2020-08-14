@@ -22,6 +22,11 @@ editor_options:
 * https://matplotlib.org/  
 * https://www.aosabook.org/en/matplotlib.html
 
+datacamp tutorials:
+
+* [matplotlib-tutorial-python](https://www.datacamp.com/community/tutorials/matplotlib-tutorial-python)  
+* [histograms-matplotlib](https://www.datacamp.com/community/tutorials/histograms-matplotlib)  
+
 *********************************************************************
 
 ## setup

@@ -15,10 +15,13 @@ editor_options:
 
 <!-- ## faqs -->
 
-<!-- ********************************************************************* -->
+*********************************************************************
 
-<!-- ## links -->
+## links
 
+* https://github.com/martinblech/xmltodict  
+* https://docs.python-guide.org/scenarios/xml  
+ 
 *********************************************************************
 
 ## setup
@@ -36,7 +39,7 @@ xmltodict.__version__
 
 ## parse
 
-```{sh}
+```{sh, cache=FALSE}
 echo '<mydocument has="an attribute">
   <and>
     <many>elements</many>
@@ -56,8 +59,10 @@ with open('temp.xml') as fh:
 pprint(doc)
 doc['mydocument']['@has']
 doc['mydocument']['and']['many']
+doc['mydocument']['plus']['@a']
+doc['mydocument']['plus']['#text']
 ```
 
-```{r, echo=FALSE, results='hide'}
-file.remove("temp.xml")
+```{r, echo=FALSE, results='hide', cache=FALSE}
+try(file.remove("temp.xml"), TRUE)
 ```

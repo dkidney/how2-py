@@ -357,22 +357,22 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">strings</a>
+      <a href="strings.html">strings</a>
     </li>
     <li>
-      <a href="_todo.html">lists</a>
+      <a href="lists.html">lists</a>
     </li>
     <li>
-      <a href="_todo.html">dicts</a>
+      <a href="dicts.html">dicts</a>
     </li>
     <li>
-      <a href="_todo.html">tuples</a>
+      <a href="tuples.html">tuples</a>
     </li>
     <li>
-      <a href="_todo.html">sets</a>
+      <a href="sets.html">sets</a>
     </li>
     <li>
-      <a href="_todo.html">comprehensions</a>
+      <a href="comprehensions.html">comprehensions</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -614,6 +614,7 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
+<li><a href="#links">links</a></li>
 <li><a href="#setup">setup</a></li>
 <li><a href="#parse">parse</a></li>
 </ul>
@@ -623,9 +624,16 @@ $(document).ready(function () {
 <!-- > Headline -->
 <!-- ********************************************************************* -->
 <!-- ## faqs -->
-<!-- ********************************************************************* -->
-<!-- ## links -->
 <hr />
+<div id="links" class="section level2">
+<h2>links</h2>
+<ul>
+<li><a href="https://github.com/martinblech/xmltodict" class="uri">https://github.com/martinblech/xmltodict</a><br />
+</li>
+<li><a href="https://docs.python-guide.org/scenarios/xml" class="uri">https://docs.python-guide.org/scenarios/xml</a></li>
+</ul>
+<hr />
+</div>
 <div id="setup" class="section level2">
 <h2>setup</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">pip</span> istall xmltodict</span></code></pre></div>
@@ -661,7 +669,11 @@ $(document).ready(function () {
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a>doc[<span class="st">&#39;mydocument&#39;</span>][<span class="st">&#39;@has&#39;</span>]</span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a><span class="co">#  &#39;an attribute&#39;</span></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a>doc[<span class="st">&#39;mydocument&#39;</span>][<span class="st">&#39;and&#39;</span>][<span class="st">&#39;many&#39;</span>]</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a><span class="co">#  [&#39;elements&#39;, &#39;more elements&#39;]</span></span></code></pre></div>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a><span class="co">#  [&#39;elements&#39;, &#39;more elements&#39;]</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a>doc[<span class="st">&#39;mydocument&#39;</span>][<span class="st">&#39;plus&#39;</span>][<span class="st">&#39;@a&#39;</span>]</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true"></a><span class="co">#  &#39;complex&#39;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true"></a>doc[<span class="st">&#39;mydocument&#39;</span>][<span class="st">&#39;plus&#39;</span>][<span class="st">&#39;#text&#39;</span>]</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true"></a><span class="co">#  &#39;element as well&#39;</span></span></code></pre></div>
 </div>
 
 

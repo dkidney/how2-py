@@ -10,17 +10,17 @@ navbar:
           href: basics.html
         - text: "---------"
         - text: "strings"
-          href: _todo.html
+          href: strings.html
         - text: "lists"
-          href: _todo.html
+          href: lists.html
         - text: "dicts"
-          href: _todo.html
+          href: dicts.html
         - text: "tuples"
-          href: _todo.html
+          href: tuples.html
         - text: "sets"
-          href: _todo.html
+          href: sets.html
         - text: "comprehensions"
-          href: _todo.html
+          href: comprehensions.html
         - text: "---------"
         - text: "functions"
           href: _todo.html
