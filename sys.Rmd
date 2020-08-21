@@ -60,6 +60,8 @@ sys.path.extend(['extrapath'])
 sys.path.insert(0, 'extrapath')
 ```
 
+where `extrapath` is the path to a py file or a folder containing a py file?
+
 *********************************************************************
 
 ## python version

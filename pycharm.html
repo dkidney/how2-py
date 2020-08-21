@@ -21,6 +21,7 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -614,25 +615,19 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#installation">installation</a></li>
-<li><a href="#project-setup">project setup</a>
+<li><a href="#install">install</a></li>
+<li><a href="#projects">projects</a>
 <ul>
 <li><a href="#make-a-new-project">make a new project</a></li>
 <li><a href="#set-the-interpreter">set the interpreter</a></li>
 </ul></li>
-<li><a href="#customisation">customisation</a>
+<li><a href="#prefrences">prefrences</a>
 <ul>
-<li><a href="#keyboard-shortcuts">keyboard shortcuts</a></li>
+<li><a href="#shortcuts">shortcuts</a></li>
+<li><a href="#other">other</a></li>
 <li><a href="#window-layout">window layout</a></li>
-<li><a href="#console">console</a></li>
-<li><a href="#code-style">code style</a></li>
-<li><a href="#plugins">plugins</a></li>
-<li><a href="#default-interpreter">default interpreter</a></li>
-<li><a href="#run-configurations-1">run configurations</a></li>
-<li><a href="#templates">templates</a></li>
-<li><a href="#docstring-format">docstring format</a></li>
-<li><a href="#misc">misc</a></li>
 </ul></li>
+<li><a href="#run-configurations">run configurations</a></li>
 <li><a href="#todo">todo</a>
 <ul>
 <li><a href="#make-a-new-py-file">make a new py file</a></li>
@@ -640,10 +635,10 @@ $(document).ready(function () {
 <li><a href="#run-script">run script</a></li>
 </ul></li>
 <li><a href="#switching-project">switching project</a></li>
-<li><a href="#customisation-1">customisation</a>
+<li><a href="#customisation">customisation</a>
 <ul>
-<li><a href="#shortcuts">shortcuts</a></li>
-<li><a href="#misc-1">misc</a></li>
+<li><a href="#shortcuts-1">shortcuts</a></li>
+<li><a href="#misc">misc</a></li>
 <li><a href="#code-folding">code folding</a></li>
 </ul></li>
 </ul>
@@ -662,35 +657,25 @@ $(document).ready(function () {
 <li><a href="https://www.jetbrains.com/pycharm/guide/playlists/42/" class="uri">https://www.jetbrains.com/pycharm/guide/playlists/42/</a></li>
 </ul>
 <hr />
-<div id="installation" class="section level2">
-<h2>installation</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">brew</span> cask install pycharm-ce</span></code></pre></div>
+<div id="install" class="section level2">
+<h2>install</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">brew</span> cask install pycharm-ce</span></code></pre></div>
 <hr />
 </div>
-<div id="project-setup" class="section level2">
-<h2>project setup</h2>
+<div id="projects" class="section level2">
+<h2>projects</h2>
 <div id="make-a-new-project" class="section level3">
 <h3>make a new project</h3>
 </div>
 <div id="set-the-interpreter" class="section level3">
 <h3>set the interpreter</h3>
-<div id="python-console" class="section level4">
-<h4>python console</h4>
-</div>
-<div id="run-configurations" class="section level4">
-<h4>run configurations</h4>
-</div>
-<div id="terminal" class="section level4">
-<h4>terminal</h4>
 <hr />
 </div>
 </div>
-</div>
-<div id="customisation" class="section level2">
-<h2>customisation</h2>
-<div id="keyboard-shortcuts" class="section level3">
-<h3>keyboard shortcuts</h3>
-<p>Useful shortcuts:</p>
+<div id="prefrences" class="section level2">
+<h2>prefrences</h2>
+<div id="shortcuts" class="section level3">
+<h3>shortcuts</h3>
 <table>
 <thead>
 <tr class="header">
@@ -707,9 +692,29 @@ $(document).ready(function () {
 <td>Jump to definition</td>
 <td>CMD + B</td>
 </tr>
+<tr class="odd">
+<td>Popup of recent files</td>
+<td>CMD + E</td>
+</tr>
+<tr class="even">
+<td>Parameter info</td>
+<td>CMD + P</td>
+</tr>
+<tr class="odd">
+<td>Find action</td>
+<td>CMD + SHIFT + A</td>
+</tr>
+<tr class="even">
+<td>Code completion</td>
+<td>CTRL + SPACE</td>
+</tr>
+<tr class="odd">
+<td>Move between methods</td>
+<td>CTRL + UP/DOWN</td>
+</tr>
 </tbody>
 </table>
-<p>My personal setup:</p>
+<p>Personal setup - modified using <code>Preferences &gt; Keymap</code>:</p>
 <table>
 <colgroup>
 <col width="36%" />
@@ -757,6 +762,68 @@ $(document).ready(function () {
 </tbody>
 </table>
 </div>
+<div id="other" class="section level3">
+<h3>other</h3>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>what</th>
+<th>where</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Custom font</td>
+<td><code>Preferences &gt; Appearance &amp; Behaviour &gt; Appearance</code></td>
+</tr>
+<tr class="even">
+<td>Default project directory</td>
+<td><code>Preferences &gt; Appearance &amp; Behaviour &gt; System Settings</code></td>
+</tr>
+<tr class="odd">
+<td>Don’t open previous projects</td>
+<td><code>Preferences &gt; Appearance &amp; Behaviour &gt; System Settings &gt; Reopen last project on startup</code></td>
+</tr>
+<tr class="even">
+<td>Soft wrap</td>
+<td><code>Preferences &gt; General &gt; Console</code></td>
+</tr>
+<tr class="odd">
+<td>Custom font</td>
+<td><code>Preferences &gt; Editor &gt; Font</code></td>
+</tr>
+<tr class="even">
+<td>Vertical guidelines</td>
+<td><code>Preferences &gt; Editor &gt; Code Style &gt; General &gt; Visual guides:</code> 72,79 <code>columns</code></td>
+</tr>
+<tr class="odd">
+<td>Templates</td>
+<td><code>Preferences &gt; Editor &gt; File and Code Templates</code></td>
+</tr>
+<tr class="even">
+<td>Plugins</td>
+<td><code>Preferences &gt; Plugins</code></td>
+</tr>
+<tr class="odd">
+<td>Default interpreter</td>
+<td><code>Preferences &gt; Project &gt; Project Interpreter</code></td>
+</tr>
+<tr class="even">
+<td>IPython console</td>
+<td><code>Preferences &gt; Build, Execution, Deployment &gt; Console &gt; Use IPython if available</code></td>
+</tr>
+<tr class="odd">
+<td>Docstring format</td>
+<td><code>Preferences &gt; Tools &gt; Python Integrated Tools &gt;  Docstrings &gt; File and Code Templates</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
 <div id="window-layout" class="section level3">
 <h3>window layout</h3>
 <p>My personal setup:</p>
@@ -787,53 +854,15 @@ $(document).ready(function () {
 </tbody>
 </table>
 <p><code>Window &gt; Use current layout as default</code></p>
+<hr />
 </div>
-<div id="console" class="section level3">
-<h3>console</h3>
-<p>Use IPython if available (i.e. installed in your python env)</p>
-<ul>
-<li>Go to <code>Preferences &gt; Build, Execution, Deployment &gt; Console</code><br />
-</li>
-<li>then check <code>Use IPython if available</code></li>
-</ul>
 </div>
-<div id="code-style" class="section level3">
-<h3>code style</h3>
-<p>Add an 80 character visual guideline</p>
-<p><code>Preferences &gt; Editor &gt; Code Style &gt; General &gt; Visual guides:</code> 80 <code>columns</code></p>
-</div>
-<div id="plugins" class="section level3">
-<h3>plugins</h3>
-<p><code>Preferences &gt; Plugins</code></p>
-<ul>
-<li>Markdown</li>
-<li></li>
-</ul>
-</div>
-<div id="default-interpreter" class="section level3">
-<h3>default interpreter</h3>
-<p><code>File &gt; Other settings &gt; Project Interpreter</code></p>
-</div>
-<div id="run-configurations-1" class="section level3">
-<h3>run configurations</h3>
+<div id="run-configurations" class="section level2">
+<h2>run configurations</h2>
 <ul>
 <li>select <code>Emulate termnal in output console</code> to see <code>progress</code> progress bars.</li>
 </ul>
-</div>
-<div id="templates" class="section level3">
-<h3>templates</h3>
-<p><code>Preferences &gt; Editor &gt; File and Code Templates</code></p>
-</div>
-<div id="docstring-format" class="section level3">
-<h3>docstring format</h3>
-<p><code>Preferences &gt; Tools &gt; Python Integrated Tools &gt;  Docstrings &gt; File and Code Templates</code></p>
-</div>
-<div id="misc" class="section level3">
-<h3>misc</h3>
-<p>Don’t open previous projects on startup (otherwise it opens all projects that were open when last closed)</p>
-<p><code>Settings -&gt; Appearance &amp; Behaviour -&gt; System Settings -&gt; Reopen last project on startup</code></p>
 <hr />
-</div>
 </div>
 <div id="todo" class="section level2">
 <h2>todo</h2>
@@ -907,9 +936,9 @@ $(document).ready(function () {
 <p><code>File &gt; Open Recent</code></p>
 <hr />
 </div>
-<div id="customisation-1" class="section level2">
+<div id="customisation" class="section level2">
 <h2>customisation</h2>
-<div id="shortcuts" class="section level3">
+<div id="shortcuts-1" class="section level3">
 <h3>shortcuts</h3>
 <ul>
 <li><code>PyCharm &gt;</code><br />
@@ -921,7 +950,7 @@ $(document).ready(function () {
 <li><code>Keymap</code></li>
 </ul>
 </div>
-<div id="misc-1" class="section level3">
+<div id="misc" class="section level3">
 <h3>misc</h3>
 <table>
 <thead>
@@ -1008,7 +1037,6 @@ $(document).ready(function () {
 </table>
 <hr />
 <p>git integration</p>
-<p>themes &amp; color schemes</p>
 </div>
 </div>
 

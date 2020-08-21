@@ -20,7 +20,7 @@ editor_options:
 
 *********************************************************************
 
-## installation 
+## install
 
 ```sh
 brew cask install pycharm-ce
@@ -28,32 +28,30 @@ brew cask install pycharm-ce
 
 *********************************************************************
 
-## project setup
+## projects
 
 ### make a new project
 
 ### set the interpreter
 
-#### python console
-
-#### run configurations
-
-#### terminal
-
 *********************************************************************
 
-## customisation
+## prefrences
 
-### keyboard shortcuts
-
-Useful shortcuts:
+### shortcuts
 
 Description | Shortcut
-------------- | -------------
+------- | -------
 Preferences | CMD + ,
 Jump to definition | CMD + B
+Popup of recent files | CMD + E
+Parameter info | CMD + P
+Find action | CMD + SHIFT + A
+Code completion | CTRL + SPACE
+Move between methods | CTRL + UP/DOWN
+F1 | View documentation popup
 
-My personal setup:
+Personal setup - modified using `Preferences > Keymap`:
 
 Description | Shortcut | Keymap location
 ------------- | ------------- | ----------
@@ -64,12 +62,30 @@ Toggle soft-wrap | SHIFT + CMD + W | Main menu/View/Active Editor/Soft-Wrap
 Run | SHIFT + CMD + S | Main menu/Run/Run
 Debug | SHIFT + CMD + D | Main menu/Run/Debug
 
+### other 
+
+what | where
+------------- | -------------
+Custom font | `Preferences > Appearance & Behaviour > Appearance`
+Default project directory | `Preferences > Appearance & Behaviour > System Settings`
+Don't open previous projects | `Preferences > Appearance & Behaviour > System Settings > Reopen last project on startup`
+Soft wrap | `Preferences > General > Console`
+Custom font | `Preferences > Editor > Font`
+Vertical guidelines | `Preferences > Editor > Code Style > General > Visual guides:` 72,79 `columns`
+Templates  | `Preferences > Editor > File and Code Templates`
+Plugins | `Preferences > Plugins`
+Default interpreter | `Preferences > Project > Project Interpreter`
+IPython console | `Preferences > Build, Execution, Deployment > Console > Use IPython if available`
+Docstring format  | `Preferences > Tools > Python Integrated Tools >  Docstrings > File and Code Templates`
+
+*********************************************************************
+
 ### window layout
 
 My personal setup:
 
 What | Move to
-------------- | ------------- 
+---- | ------------- 
 Python Console | Bottom Top
 Terminal | Bottom Right
 Todo | Bottom Right
@@ -77,47 +93,12 @@ Run | Bottom Right
 
 `Window > Use current layout as default`
 
-### console
+*********************************************************************
 
-Use IPython if available (i.e. installed in your python env)
-
-* Go to `Preferences > Build, Execution, Deployment > Console`  
-* then check `Use IPython if available`
-
-### code style
-
-Add an 80 character visual guideline
-
-`Preferences > Editor > Code Style > General > Visual guides:` 80 `columns`
-
-### plugins
-
-`Preferences > Plugins`
-
-* Markdown
-* 
-
-### default interpreter
-
-`File > Other settings > Project Interpreter`
-
-### run configurations
+## run configurations
 
 * select `Emulate termnal in output console` to see `progress` progress bars.
 
-### templates
-
-`Preferences > Editor > File and Code Templates`
-
-### docstring format
-
-`Preferences > Tools > Python Integrated Tools >  Docstrings > File and Code Templates`
-
-### misc
-
-Don't open previous projects on startup (otherwise it opens all projects that were open when last closed)
-
-`Settings -> Appearance & Behaviour -> System Settings -> Reopen last project on startup`
 
 *********************************************************************
 
@@ -216,5 +197,4 @@ shortcut  | action
 
 git integration
 
-themes & color schemes
 

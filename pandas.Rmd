@@ -582,8 +582,11 @@ df['col1'].replace(np.nan, df['col1'].mean())
 Set the index to 0, 1, 2, etc.
 
 ```python
-# adds the old index as a new column
+# add the old index as a new column
 df = df.reset_index()
+
+# rename then add the old index as a new column
+df = df.rename_axis('foo').reset_index()
 
 # doesn't add the old index as a new column, modifies in-place
 df.reset_index(drop=True, inplace=True)
@@ -604,6 +607,12 @@ df.sort_values(by='col1')
 df.sort_values(by='col1', ascending=False)
 df.sort_values(by='col1', ascending=False, na_position='first')
 df.sort_values(by='col1', ascending=False, na_position='first', inplace=True)
+```
+
+Multiple columns
+
+```python
+df.sort_values(['col1', 'col2'], ascending=[True, False])
 ```
 
 ### str.split
