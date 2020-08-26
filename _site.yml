@@ -63,6 +63,8 @@ navbar:
           href: subprocess.html
         - text: "sys"
           href: sys.html
+        - text: "urllib"
+          href: urllib.html
         - text: "xml"
           href: _todo.html
     - text: "ds"

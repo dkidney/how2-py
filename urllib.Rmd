@@ -1,0 +1,76 @@
+---
+title: urllib
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+> a package that collects several modules for working with URLs
+
+<!-- ********************************************************************* -->
+
+<!-- ## faqs -->
+
+<!-- ********************************************************************* -->
+
+## links
+
+* https://docs.python.org/3/library/urllib.html
+
+<!-- ********************************************************************* -->
+
+<!-- ## setup -->
+
+<!-- ```{python} -->
+<!-- import urllib -->
+<!-- urllib.__version__ -->
+<!-- ``` -->
+
+
+<!-- ********************************************************************* -->
+
+<!-- ## basics -->
+
+<!-- ```python -->
+<!-- # TODO -->
+<!-- ``` -->
+
+
+*********************************************************************
+
+## request
+
+> defines functions and classes which help in opening URLs
+
+### urlopen
+
+```{python}
+import re
+from urllib.request import urlopen
+url = "https://www.python.org/downloads/mac-osx/"
+page = urlopen(url)  # returns an HTTPResponse object
+html = page.read().decode("utf-8")  # read bytes and decode
+type(html)
+len(html)
+re.findall("Latest Python 3 Release - Python (3\.\d+\.\d+)", html)[0]
+```
+
+
+*********************************************************************
+
+## error
+
+
+*********************************************************************
+
+## parse
+
+
+*********************************************************************
+
+## robotparser
+

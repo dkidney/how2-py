@@ -1,5 +1,5 @@
 ---
-title: TODO
+title: beautifulsoup
 editor_options: 
   chunk_output_type: console
 ---
@@ -19,27 +19,34 @@ editor_options:
 
 <!-- ## links -->
 
-<!-- ********************************************************************* -->
+*********************************************************************
 
-<!-- ## setup -->
+## setup
 
-<!-- ```sh -->
-<!-- pip install todo -->
-<!-- ``` -->
+```sh
+pip install beautifulsoup4
+```
 
-<!-- ```{python} -->
-<!-- import todo -->
-<!-- todo.__version__ -->
-<!-- ``` -->
+```{python}
+import bs4
+bs4.__version__
+```
 
 
-<!-- ********************************************************************* -->
+*********************************************************************
 
-<!-- ## basics -->
+## basics
 
-<!-- ```python -->
-<!-- # TODO -->
-<!-- ``` -->
+```python
+from bs4 import BeautifulSoup
+from urllib.request import urlopen
+
+url = "http://olympus.realpython.org/profiles/dionysus"
+page = urlopen(url)
+html = page.read().decode("utf-8")
+soup = BeautifulSoup(html, "html.parser")
+dir(soup)
+```
 
 
 <!-- ********************************************************************* -->

@@ -11,7 +11,7 @@
 
 
 
-<title>pycharm</title>
+<title>beautifulsoup</title>
 
 <script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -612,439 +612,49 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">pycharm</h1>
+<h1 class="title toc-ignore">beautifulsoup</h1>
 
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#install">install</a></li>
-<li><a href="#projects">projects</a>
-<ul>
-<li><a href="#make-a-new-project">make a new project</a></li>
-<li><a href="#set-the-interpreter">set the interpreter</a></li>
-</ul></li>
-<li><a href="#prefrences">prefrences</a>
-<ul>
-<li><a href="#shortcuts">shortcuts</a></li>
-<li><a href="#other">other</a></li>
-<li><a href="#window-layout">window layout</a></li>
-</ul></li>
-<li><a href="#run-configurations">run configurations</a></li>
-<li><a href="#todo">todo</a>
-<ul>
-<li><a href="#make-a-new-py-file">make a new py file</a></li>
-<li><a href="#set-the-interpreter-1">set the interpreter</a></li>
-<li><a href="#run-script">run script</a></li>
-</ul></li>
-<li><a href="#switching-project">switching project</a></li>
-<li><a href="#customisation">customisation</a>
-<ul>
-<li><a href="#shortcuts-1">shortcuts</a></li>
-<li><a href="#misc">misc</a></li>
-<li><a href="#code-folding">code folding</a></li>
-</ul></li>
+<li><a href="#setup">setup</a></li>
+<li><a href="#basics">basics</a></li>
 </ul>
 </div>
 
+<!-- ********************************************************************* -->
+<!-- > Headline -->
+<!-- ********************************************************************* -->
+<!-- ## faqs -->
+<!-- ********************************************************************* -->
+<!-- ## links -->
 <hr />
-<blockquote>
-<p>an integrated development environment specifically for python - developed by the Czech company JetBrains - the community edition provides an intelligent editor, graphical debugger, refactorings, code inspections and version control integration</p>
-</blockquote>
-<hr />
-<ul>
-<li><a href="https://www.jetbrains.com/help/pycharm/meet-pycharm.html" class="uri">https://www.jetbrains.com/help/pycharm/meet-pycharm.html</a><br />
-</li>
-<li><a href="https://realpython.com/pycharm-guide/" class="uri">https://realpython.com/pycharm-guide/</a><br />
-</li>
-<li><a href="https://www.jetbrains.com/pycharm/guide/playlists/42/" class="uri">https://www.jetbrains.com/pycharm/guide/playlists/42/</a></li>
-</ul>
-<hr />
-<div id="install" class="section level2">
-<h2>install</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">brew</span> cask install pycharm-ce</span></code></pre></div>
+<div id="setup" class="section level2">
+<h2>setup</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">pip</span> install beautifulsoup4</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> bs4</span>
+<span id="cb2-2"><a href="#cb2-2"></a>bs4.__version__</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#  &#39;4.9.1&#39;</span></span></code></pre></div>
 <hr />
 </div>
-<div id="projects" class="section level2">
-<h2>projects</h2>
-<div id="make-a-new-project" class="section level3">
-<h3>make a new project</h3>
-</div>
-<div id="set-the-interpreter" class="section level3">
-<h3>set the interpreter</h3>
-<hr />
-</div>
-</div>
-<div id="prefrences" class="section level2">
-<h2>prefrences</h2>
-<div id="shortcuts" class="section level3">
-<h3>shortcuts</h3>
-<table>
-<thead>
-<tr class="header">
-<th>Description</th>
-<th>Shortcut</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Preferences</td>
-<td>CMD + ,</td>
-</tr>
-<tr class="even">
-<td>Jump to definition</td>
-<td>CMD + B</td>
-</tr>
-<tr class="odd">
-<td>Popup of recent files</td>
-<td>CMD + E</td>
-</tr>
-<tr class="even">
-<td>Parameter info</td>
-<td>CMD + P</td>
-</tr>
-<tr class="odd">
-<td>Find action</td>
-<td>CMD + SHIFT + A</td>
-</tr>
-<tr class="even">
-<td>Code completion</td>
-<td>CTRL + SPACE</td>
-</tr>
-<tr class="odd">
-<td>Move between methods</td>
-<td>CTRL + UP/DOWN</td>
-</tr>
-<tr class="even">
-<td>F1</td>
-<td>View documentation popup</td>
-</tr>
-</tbody>
-</table>
-<p>Personal setup - modified using <code>Preferences &gt; Keymap</code>:</p>
-<table>
-<colgroup>
-<col width="36%" />
-<col width="36%" />
-<col width="27%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Description</th>
-<th>Shortcut</th>
-<th>Keymap location</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Execute in python console</td>
-<td>CMD + ENTER</td>
-<td>Plug-Ins/Python Community Edition/Execute Selection In Python Console</td>
-</tr>
-<tr class="even">
-<td>Comment/uncomment</td>
-<td>SHIFT + CMD + C</td>
-<td>Main menu/Code/Comment with Line Comment</td>
-</tr>
-<tr class="odd">
-<td>Auto-indent</td>
-<td>CMD + I</td>
-<td>Main menu/Code/Auto-Indent Lines</td>
-</tr>
-<tr class="even">
-<td>Toggle soft-wrap</td>
-<td>SHIFT + CMD + W</td>
-<td>Main menu/View/Active Editor/Soft-Wrap</td>
-</tr>
-<tr class="odd">
-<td>Run</td>
-<td>SHIFT + CMD + S</td>
-<td>Main menu/Run/Run</td>
-</tr>
-<tr class="even">
-<td>Debug</td>
-<td>SHIFT + CMD + D</td>
-<td>Main menu/Run/Debug</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="other" class="section level3">
-<h3>other</h3>
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>what</th>
-<th>where</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Custom font</td>
-<td><code>Preferences &gt; Appearance &amp; Behaviour &gt; Appearance</code></td>
-</tr>
-<tr class="even">
-<td>Default project directory</td>
-<td><code>Preferences &gt; Appearance &amp; Behaviour &gt; System Settings</code></td>
-</tr>
-<tr class="odd">
-<td>Don’t open previous projects</td>
-<td><code>Preferences &gt; Appearance &amp; Behaviour &gt; System Settings &gt; Reopen last project on startup</code></td>
-</tr>
-<tr class="even">
-<td>Soft wrap</td>
-<td><code>Preferences &gt; General &gt; Console</code></td>
-</tr>
-<tr class="odd">
-<td>Custom font</td>
-<td><code>Preferences &gt; Editor &gt; Font</code></td>
-</tr>
-<tr class="even">
-<td>Vertical guidelines</td>
-<td><code>Preferences &gt; Editor &gt; Code Style &gt; General &gt; Visual guides:</code> 72,79 <code>columns</code></td>
-</tr>
-<tr class="odd">
-<td>Templates</td>
-<td><code>Preferences &gt; Editor &gt; File and Code Templates</code></td>
-</tr>
-<tr class="even">
-<td>Plugins</td>
-<td><code>Preferences &gt; Plugins</code></td>
-</tr>
-<tr class="odd">
-<td>Default interpreter</td>
-<td><code>Preferences &gt; Project &gt; Project Interpreter</code></td>
-</tr>
-<tr class="even">
-<td>IPython console</td>
-<td><code>Preferences &gt; Build, Execution, Deployment &gt; Console &gt; Use IPython if available</code></td>
-</tr>
-<tr class="odd">
-<td>Docstring format</td>
-<td><code>Preferences &gt; Tools &gt; Python Integrated Tools &gt;  Docstrings &gt; File and Code Templates</code></td>
-</tr>
-</tbody>
-</table>
-<hr />
-</div>
-<div id="window-layout" class="section level3">
-<h3>window layout</h3>
-<p>My personal setup:</p>
-<table>
-<thead>
-<tr class="header">
-<th>What</th>
-<th>Move to</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Python Console</td>
-<td>Bottom Top</td>
-</tr>
-<tr class="even">
-<td>Terminal</td>
-<td>Bottom Right</td>
-</tr>
-<tr class="odd">
-<td>Todo</td>
-<td>Bottom Right</td>
-</tr>
-<tr class="even">
-<td>Run</td>
-<td>Bottom Right</td>
-</tr>
-</tbody>
-</table>
-<p><code>Window &gt; Use current layout as default</code></p>
-<hr />
-</div>
-</div>
-<div id="run-configurations" class="section level2">
-<h2>run configurations</h2>
-<ul>
-<li>select <code>Emulate termnal in output console</code> to see <code>progress</code> progress bars.</li>
-</ul>
-<hr />
-</div>
-<div id="todo" class="section level2">
-<h2>todo</h2>
-<div id="make-a-new-py-file" class="section level3">
-<h3>make a new py file</h3>
-<p>within the project, right click on the project folder and then click <code>New &gt; Python file</code></p>
-</div>
-<div id="set-the-interpreter-1" class="section level3">
-<h3>set the interpreter</h3>
-<ul>
-<li><p>set the <strong>project</strong> interpreter<br />
-</p></li>
-<li><p>this will be the interpreter used in the pycharm <strong>python console</strong><br />
-</p></li>
-<li><p>e.g. to set the interpreter to an existing conda env</p></li>
-<li><p><code>PyCharm &gt;</code><br />
-</p></li>
-<li><p><code>Preferences &gt;</code><br />
-</p></li>
-<li><p><code>Project: [my project] &gt;</code><br />
-</p></li>
-<li><p><code>Project Interpreter &gt;</code><br />
-</p></li>
-<li><p><code>Project Interpreter... &gt;</code><br />
-</p></li>
-<li><p><code>[Settings wheel] &gt;</code><br />
-</p></li>
-<li><p><code>Add... &gt;</code><br />
-</p></li>
-<li><p><code>Conda Environment &gt;</code><br />
-</p></li>
-<li><p><code>Existing Environment &gt;</code><br />
-</p></li>
-<li><p><code>Interpreter</code><br />
-</p></li>
-<li><p>then choose <code>make available to all projects</code> (if you want it to be)</p></li>
-<li><p><em>Dont forget to <code>Apply</code> before clicking <code>Ok</code></em></p></li>
-</ul>
-<p>things to note:</p>
-<ul>
-<li>if you change the project interpreter you may need to close and re-launch the python console for the change to take effect:
-<ul>
-<li>close the console, then click <code>Tools &gt; Pycharm console...</code></li>
-</ul></li>
-</ul>
-</div>
-<div id="run-script" class="section level3">
-<h3>run script</h3>
-<p><code>Run &gt; Run &gt;</code></p>
-<p>then either:</p>
-<ul>
-<li><code>select file from drop down</code> to use existing interpreter etc, or<br />
-</li>
-<li><code>edit configurations</code> to change interpreter and/or command args etc.</li>
-</ul>
-<p>things to note:</p>
-<ul>
-<li>when you run a script it gets run in a new terminal tab called <code>Run</code><br />
-</li>
-<li>this is <em>not</em> the same thing as the pycharm python console<br />
-</li>
-<li>you can change the interpreter used in the run terminal from the <code>edit configurations</code> window<br />
-</li>
-<li>changing this will not change the interpreter used in the pycharm python console, although it’s probably a good idea to use the same interpreter for both</li>
-</ul>
-<hr />
-</div>
-</div>
-<div id="switching-project" class="section level2">
-<h2>switching project</h2>
-<p><code>File &gt; Open Recent</code></p>
-<hr />
-</div>
-<div id="customisation" class="section level2">
-<h2>customisation</h2>
-<div id="shortcuts-1" class="section level3">
-<h3>shortcuts</h3>
-<ul>
-<li><code>PyCharm &gt;</code><br />
-</li>
-<li><code>Preferences &gt;</code><br />
-</li>
-<li><code>Appearances &amp; Behaviour &gt;</code><br />
-</li>
-<li><code>Keymap</code></li>
-</ul>
-</div>
-<div id="misc" class="section level3">
-<h3>misc</h3>
-<table>
-<thead>
-<tr class="header">
-<th>shortcut</th>
-<th>action</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>CTRL</code> <code>R</code></td>
-<td>run script from terminal</td>
-</tr>
-<tr class="even">
-<td><code>CTRL</code> <code>SPACE</code></td>
-<td>help with code completion</td>
-</tr>
-<tr class="odd">
-<td><code>CTRL</code> <code>UP/DOWN</code></td>
-<td>move between methods in editor</td>
-</tr>
-<tr class="even">
-<td><code>CTRL</code> + <code>OPTION</code> + <code>I</code></td>
-<td>auto indent selection</td>
-</tr>
-<tr class="odd">
-<td><code>CMD</code> <code>/</code></td>
-<td>auto comment/uncomment lines</td>
-</tr>
-<tr class="even">
-<td><code>CMD</code> <code>,</code></td>
-<td>open preferences</td>
-</tr>
-<tr class="odd">
-<td><code>CMD</code> <code>B</code></td>
-<td>jump to function definition</td>
-</tr>
-<tr class="even">
-<td><code>CMD</code> <code>E</code></td>
-<td>opens a popup of recently visited files</td>
-</tr>
-<tr class="odd">
-<td><code>CMD</code> <code>P</code></td>
-<td>view parameter info</td>
-</tr>
-<tr class="even">
-<td><code>CMD</code> <code>SHIFT</code> <code>A</code></td>
-<td>open ‘Find Action’ utility</td>
-</tr>
-<tr class="odd">
-<td><code>SHIFT</code> <code>OPTION</code> <code>E</code></td>
-<td>run line / selection in python console</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="code-folding" class="section level3">
-<h3>code folding</h3>
-<table>
-<thead>
-<tr class="header">
-<th>shortcut</th>
-<th>action</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>CMD</code> <code>+</code></td>
-<td>expand section</td>
-</tr>
-<tr class="even">
-<td><code>CMD</code> <code>-</code></td>
-<td>collapse section</td>
-</tr>
-<tr class="odd">
-<td><code>SHIFT</code> <code>CMD</code> <code>+</code></td>
-<td>expand all sections</td>
-</tr>
-<tr class="even">
-<td><code>SHIFT</code> <code>CMD</code> <code>-</code></td>
-<td>collapse all sections</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<p>git integration</p>
-</div>
+<div id="basics" class="section level2">
+<h2>basics</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="im">from</span> urllib.request <span class="im">import</span> urlopen</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>url <span class="op">=</span> <span class="st">&quot;http://olympus.realpython.org/profiles/dionysus&quot;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>page <span class="op">=</span> urlopen(url)</span>
+<span id="cb3-6"><a href="#cb3-6"></a>html <span class="op">=</span> page.read().decode(<span class="st">&quot;utf-8&quot;</span>)</span>
+<span id="cb3-7"><a href="#cb3-7"></a>soup <span class="op">=</span> BeautifulSoup(html, <span class="st">&quot;html.parser&quot;</span>)</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="bu">dir</span>(soup)</span></code></pre></div>
+<!-- ********************************************************************* -->
+<!-- ## appendix: dir -->
+<!-- ```{python} -->
+<!-- from pprint import pprint -->
+<!-- import todo -->
+<!-- pprint(dir(todo)) -->
+<!-- ``` -->
 </div>
 
 

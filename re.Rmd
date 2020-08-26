@@ -1,5 +1,5 @@
 ---
-title: TODO
+title: re
 editor_options: 
   chunk_output_type: console
 ---
@@ -9,4 +9,77 @@ editor_options:
 
 *********************************************************************
 
+> provides regular expression matching operations similar to those found in Perl
 
+<!-- ********************************************************************* -->
+
+<!-- ## faqs -->
+
+*********************************************************************
+
+## links
+
+* https://docs.python.org/3/library/re.html#module-re
+
+*********************************************************************
+
+## regex
+
+*********************************************************************
+
+## methods
+
+method | description
+------ | -------------
+`re.findall(pattern, string)` | returns a list of strings
+`re.search(pattern, string)` | returns a `Match` object
+`re.split(pattern, string, maxsplit=0)` | returns a list of strings
+`re.sub(pattern, substitute, string)` | returns a string
+
+### findall
+
+```{python}
+import re
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+re.findall('[aeiou]', alphabet)
+re.findall('[aeiou].+[aeiou]', alphabet)  # greedy
+re.findall('[aeiou].+?[aeiou]', alphabet)  # non-greedy
+```
+
+### search
+
+```{python}
+import re
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+re.search('[^aeiou]+', alphabet)                                                                                  
+```
+
+### split
+
+```{python}
+import re
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+re.split('[aeiou]', alphabet)
+re.split('[^aeiou]+', alphabet)
+re.split('[^aeiou]+', alphabet, maxsplit=1)
+```
+
+### sub
+
+```{python}
+import re
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+re.sub('[aeiou]', "_", alphabet)
+re.sub('[^aeiou]', "_", alphabet)
+re.sub('[^aeiou]+', "_", alphabet)
+```
+
+*********************************************************************
+
+## appendix: dir
+
+```{python}
+from pprint import pprint
+import re
+pprint(dir(re))
+```
