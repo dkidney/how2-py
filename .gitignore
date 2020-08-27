@@ -3,6 +3,7 @@
 *_cache/**
 *_files/**
 .ipynb_checkpoints/
+.DS_Store
 wip/**
 
 
