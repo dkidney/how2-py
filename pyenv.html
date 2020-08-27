@@ -11,7 +11,7 @@
 
 
 
-<title>re</title>
+<title>pyenv</title>
 
 <script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -615,28 +615,26 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">re</h1>
+<h1 class="title toc-ignore">pyenv</h1>
 
 </div>
 
 <div id="TOC">
 <ul>
 <li><a href="#links">links</a></li>
-<li><a href="#regex">regex</a></li>
-<li><a href="#methods">methods</a>
+<li><a href="#setup">setup</a></li>
+<li><a href="#basics">basics</a></li>
+<li><a href="#pyenv-virtualenv">pyenv-virtualenv</a>
 <ul>
-<li><a href="#findall">findall</a></li>
-<li><a href="#search">search</a></li>
-<li><a href="#split">split</a></li>
-<li><a href="#sub">sub</a></li>
+<li><a href="#setup-1">setup</a></li>
+<li><a href="#usage">usage</a></li>
 </ul></li>
-<li><a href="#appendix-dir">appendix: dir</a></li>
 </ul>
 </div>
 
 <hr />
 <blockquote>
-<p>provides regular expression matching operations similar to those found in Perl</p>
+<p>Simple Python Version Management</p>
 </blockquote>
 <!-- ********************************************************************* -->
 <!-- ## faqs -->
@@ -644,147 +642,80 @@ $(document).ready(function () {
 <div id="links" class="section level2">
 <h2>links</h2>
 <ul>
-<li><a href="https://docs.python.org/3/library/re.html#module-re" class="uri">https://docs.python.org/3/library/re.html#module-re</a></li>
+<li><a href="https://github.com/pyenv/pyenv" class="uri">https://github.com/pyenv/pyenv</a><br />
+</li>
+<li><a href="https://realpython.com/intro-to-pyenv/" class="uri">https://realpython.com/intro-to-pyenv/</a></li>
 </ul>
 <hr />
 </div>
-<div id="regex" class="section level2">
-<h2>regex</h2>
+<div id="setup" class="section level2">
+<h2>setup</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># make sure Xcode Command Line Tools are installed</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">xcode-select</span> --install</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># make sure python build dependencies are installed</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="ex">brew</span> install openssl readline sqlite3 xz zlib</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># install pyenv</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="ex">brew</span> install pyenv</span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co"># put eval &quot;$(pyenv init -)&quot; in your shell configuration file</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="bu">echo</span> -e <span class="st">&#39;if command -v pyenv 1&gt;/dev/null 2&gt;&amp;1; then\n  eval &quot;$(pyenv init -)&quot;\nfi&#39;</span> <span class="op">&gt;&gt;</span> ~/.zshrc</span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co"># restart your shell so the path changes take effect</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="bu">exec</span> <span class="st">&quot;</span><span class="va">$SHELL</span><span class="st">&quot;</span></span></code></pre></div>
 <hr />
 </div>
-<div id="methods" class="section level2">
-<h2>methods</h2>
-<table>
-<thead>
-<tr class="header">
-<th>method</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>re.findall(pattern, string)</code></td>
-<td>returns a list of strings</td>
-</tr>
-<tr class="even">
-<td><code>re.search(pattern, string)</code></td>
-<td>returns a <code>Match</code> object</td>
-</tr>
-<tr class="odd">
-<td><code>re.split(pattern, string, maxsplit=0)</code></td>
-<td>returns a list of strings</td>
-</tr>
-<tr class="even">
-<td><code>re.sub(pattern, substitute, string)</code></td>
-<td>returns a string</td>
-</tr>
-</tbody>
-</table>
-<div id="findall" class="section level3">
-<h3>findall</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> re</span>
-<span id="cb1-2"><a href="#cb1-2"></a>alphabet <span class="op">=</span> <span class="st">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>re.findall(<span class="st">&#39;[aeiou]&#39;</span>, alphabet)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co">#  [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;]</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>re.findall(<span class="st">&#39;[aeiou].+[aeiou]&#39;</span>, alphabet)  <span class="co"># greedy</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co">#  [&#39;abcdefghijklmnopqrstu&#39;]</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>re.findall(<span class="st">&#39;[aeiou].+?[aeiou]&#39;</span>, alphabet)  <span class="co"># non-greedy</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#  [&#39;abcde&#39;, &#39;ijklmno&#39;]</span></span></code></pre></div>
-</div>
-<div id="search" class="section level3">
-<h3>search</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> re</span>
-<span id="cb2-2"><a href="#cb2-2"></a>alphabet <span class="op">=</span> <span class="st">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>re.search(<span class="st">&#39;[^aeiou]+&#39;</span>, alphabet)                                                                                  </span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#  &lt;re.Match object; span=(1, 4), match=&#39;bcd&#39;&gt;</span></span></code></pre></div>
-</div>
-<div id="split" class="section level3">
-<h3>split</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> re</span>
-<span id="cb3-2"><a href="#cb3-2"></a>alphabet <span class="op">=</span> <span class="st">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>re.split(<span class="st">&#39;[aeiou]&#39;</span>, alphabet)</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#  [&#39;&#39;, &#39;bcd&#39;, &#39;fgh&#39;, &#39;jklmn&#39;, &#39;pqrst&#39;, &#39;vwxyz&#39;]</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>re.split(<span class="st">&#39;[^aeiou]+&#39;</span>, alphabet)</span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#  [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;, &#39;&#39;]</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>re.split(<span class="st">&#39;[^aeiou]+&#39;</span>, alphabet, maxsplit<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#  [&#39;a&#39;, &#39;efghijklmnopqrstuvwxyz&#39;]</span></span></code></pre></div>
-</div>
-<div id="sub" class="section level3">
-<h3>sub</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> re</span>
-<span id="cb4-2"><a href="#cb4-2"></a>alphabet <span class="op">=</span> <span class="st">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>re.sub(<span class="st">&#39;[aeiou]&#39;</span>, <span class="st">&quot;_&quot;</span>, alphabet)</span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#  &#39;_bcd_fgh_jklmn_pqrst_vwxyz&#39;</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>re.sub(<span class="st">&#39;[^aeiou]&#39;</span>, <span class="st">&quot;_&quot;</span>, alphabet)</span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#  &#39;a___e___i_____o_____u_____&#39;</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>re.sub(<span class="st">&#39;[^aeiou]+&#39;</span>, <span class="st">&quot;_&quot;</span>, alphabet)</span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#  &#39;a_e_i_o_u_&#39;</span></span></code></pre></div>
+<div id="basics" class="section level2">
+<h2>basics</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># display all available versions</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="ex">pyenv</span> install --list <span class="kw">|</span> <span class="fu">grep</span> -E <span class="st">&quot;^\s*(\d+\.\d+\.\d+)$&quot;</span> <span class="kw">|</span> <span class="fu">tail</span> -1</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># install/uninstall a specific version</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="ex">pyenv</span> install 3.7.6</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="ex">pyenv</span> uninstall 3.7.6</span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co"># display all installed python versions</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="ex">pyenv</span> versions</span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="fu">ls</span> ~/.pyenv/versions/</span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="co"># display currently active python version</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="ex">pyenv</span> version</span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co"># display path of currently active interpreter</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="ex">pyenv</span> which python</span>
+<span id="cb2-17"><a href="#cb2-17"></a></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="co"># set a global/local/shell level python version</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="ex">pyenv</span> global 3.6.8 <span class="co"># uses ~/.pyenv/version</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="ex">pyenv</span> local 3.7.6 <span class="co"># uses .python-version file</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="ex">pyenv</span> shell 3.8.3 <span class="co"># uses $PYENV_VERSION</span></span></code></pre></div>
 <hr />
 </div>
+<div id="pyenv-virtualenv" class="section level2">
+<h2>pyenv-virtualenv</h2>
+<p>Manages virtual environments across varying versions of Python.</p>
+<div id="setup-1" class="section level3">
+<h3>setup</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">brew</span> install pyenv-virtualenv</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># put eval &quot;$(pyenv virtualenv-init -)&quot; in your shell configuration file</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="bu">echo</span> -e <span class="st">&#39;if which pyenv-virtualenv-init &gt; /dev/null; then\n  eval &quot;$(pyenv virtualenv-init -)&quot;\nfi&#39;</span> <span class="op">&gt;&gt;</span> ~/.zshrc</span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co"># restart your shell so the path changes take effect</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="bu">exec</span> <span class="st">&quot;</span><span class="va">$SHELL</span><span class="st">&quot;</span></span></code></pre></div>
 </div>
-<div id="appendix-dir" class="section level2">
-<h2>appendix: dir</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> re</span>
-<span id="cb5-3"><a href="#cb5-3"></a>pprint(<span class="bu">dir</span>(re))</span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#  [&#39;A&#39;,</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#   &#39;ASCII&#39;,</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#   &#39;DEBUG&#39;,</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#   &#39;DOTALL&#39;,</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#   &#39;I&#39;,</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#   &#39;IGNORECASE&#39;,</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#   &#39;L&#39;,</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#   &#39;LOCALE&#39;,</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#   &#39;M&#39;,</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#   &#39;MULTILINE&#39;,</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#   &#39;Match&#39;,</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#   &#39;Pattern&#39;,</span></span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="co">#   &#39;RegexFlag&#39;,</span></span>
-<span id="cb5-17"><a href="#cb5-17"></a><span class="co">#   &#39;S&#39;,</span></span>
-<span id="cb5-18"><a href="#cb5-18"></a><span class="co">#   &#39;Scanner&#39;,</span></span>
-<span id="cb5-19"><a href="#cb5-19"></a><span class="co">#   &#39;T&#39;,</span></span>
-<span id="cb5-20"><a href="#cb5-20"></a><span class="co">#   &#39;TEMPLATE&#39;,</span></span>
-<span id="cb5-21"><a href="#cb5-21"></a><span class="co">#   &#39;U&#39;,</span></span>
-<span id="cb5-22"><a href="#cb5-22"></a><span class="co">#   &#39;UNICODE&#39;,</span></span>
-<span id="cb5-23"><a href="#cb5-23"></a><span class="co">#   &#39;VERBOSE&#39;,</span></span>
-<span id="cb5-24"><a href="#cb5-24"></a><span class="co">#   &#39;X&#39;,</span></span>
-<span id="cb5-25"><a href="#cb5-25"></a><span class="co">#   &#39;_MAXCACHE&#39;,</span></span>
-<span id="cb5-26"><a href="#cb5-26"></a><span class="co">#   &#39;__all__&#39;,</span></span>
-<span id="cb5-27"><a href="#cb5-27"></a><span class="co">#   &#39;__builtins__&#39;,</span></span>
-<span id="cb5-28"><a href="#cb5-28"></a><span class="co">#   &#39;__cached__&#39;,</span></span>
-<span id="cb5-29"><a href="#cb5-29"></a><span class="co">#   &#39;__doc__&#39;,</span></span>
-<span id="cb5-30"><a href="#cb5-30"></a><span class="co">#   &#39;__file__&#39;,</span></span>
-<span id="cb5-31"><a href="#cb5-31"></a><span class="co">#   &#39;__loader__&#39;,</span></span>
-<span id="cb5-32"><a href="#cb5-32"></a><span class="co">#   &#39;__name__&#39;,</span></span>
-<span id="cb5-33"><a href="#cb5-33"></a><span class="co">#   &#39;__package__&#39;,</span></span>
-<span id="cb5-34"><a href="#cb5-34"></a><span class="co">#   &#39;__spec__&#39;,</span></span>
-<span id="cb5-35"><a href="#cb5-35"></a><span class="co">#   &#39;__version__&#39;,</span></span>
-<span id="cb5-36"><a href="#cb5-36"></a><span class="co">#   &#39;_cache&#39;,</span></span>
-<span id="cb5-37"><a href="#cb5-37"></a><span class="co">#   &#39;_compile&#39;,</span></span>
-<span id="cb5-38"><a href="#cb5-38"></a><span class="co">#   &#39;_compile_repl&#39;,</span></span>
-<span id="cb5-39"><a href="#cb5-39"></a><span class="co">#   &#39;_expand&#39;,</span></span>
-<span id="cb5-40"><a href="#cb5-40"></a><span class="co">#   &#39;_locale&#39;,</span></span>
-<span id="cb5-41"><a href="#cb5-41"></a><span class="co">#   &#39;_pickle&#39;,</span></span>
-<span id="cb5-42"><a href="#cb5-42"></a><span class="co">#   &#39;_special_chars_map&#39;,</span></span>
-<span id="cb5-43"><a href="#cb5-43"></a><span class="co">#   &#39;_subx&#39;,</span></span>
-<span id="cb5-44"><a href="#cb5-44"></a><span class="co">#   &#39;compile&#39;,</span></span>
-<span id="cb5-45"><a href="#cb5-45"></a><span class="co">#   &#39;copyreg&#39;,</span></span>
-<span id="cb5-46"><a href="#cb5-46"></a><span class="co">#   &#39;enum&#39;,</span></span>
-<span id="cb5-47"><a href="#cb5-47"></a><span class="co">#   &#39;error&#39;,</span></span>
-<span id="cb5-48"><a href="#cb5-48"></a><span class="co">#   &#39;escape&#39;,</span></span>
-<span id="cb5-49"><a href="#cb5-49"></a><span class="co">#   &#39;findall&#39;,</span></span>
-<span id="cb5-50"><a href="#cb5-50"></a><span class="co">#   &#39;finditer&#39;,</span></span>
-<span id="cb5-51"><a href="#cb5-51"></a><span class="co">#   &#39;fullmatch&#39;,</span></span>
-<span id="cb5-52"><a href="#cb5-52"></a><span class="co">#   &#39;functools&#39;,</span></span>
-<span id="cb5-53"><a href="#cb5-53"></a><span class="co">#   &#39;match&#39;,</span></span>
-<span id="cb5-54"><a href="#cb5-54"></a><span class="co">#   &#39;purge&#39;,</span></span>
-<span id="cb5-55"><a href="#cb5-55"></a><span class="co">#   &#39;search&#39;,</span></span>
-<span id="cb5-56"><a href="#cb5-56"></a><span class="co">#   &#39;split&#39;,</span></span>
-<span id="cb5-57"><a href="#cb5-57"></a><span class="co">#   &#39;sre_compile&#39;,</span></span>
-<span id="cb5-58"><a href="#cb5-58"></a><span class="co">#   &#39;sre_parse&#39;,</span></span>
-<span id="cb5-59"><a href="#cb5-59"></a><span class="co">#   &#39;sub&#39;,</span></span>
-<span id="cb5-60"><a href="#cb5-60"></a><span class="co">#   &#39;subn&#39;,</span></span>
-<span id="cb5-61"><a href="#cb5-61"></a><span class="co">#   &#39;template&#39;]</span></span></code></pre></div>
+<div id="usage" class="section level3">
+<h3>usage</h3>
+<p><code>pyenv virtualenv &lt;python_version&gt; &lt;environment_name&gt;</code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># create an environment</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="ex">pyenv</span> virtualenv 3.6.8 myproject</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># activate an environment</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="ex">pyenv</span> local myproject</span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co"># deactivate an active environment</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="ex">pyenv</span> deactivate</span></code></pre></div>
+</div>
 </div>
 
 

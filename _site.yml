@@ -117,8 +117,10 @@ navbar:
         - text: "conda"
           href: _todo.html
         - text: "---------"
-        - text: "pyenv"
+        - text: "pipenv"
           href: _todo.html
+        - text: "pyenv"
+          href: pyenv.html
         - text: "venv"
           href: _todo.html
         - text: "---------"
