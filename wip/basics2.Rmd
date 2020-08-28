@@ -1,0 +1,779 @@
+---
+title: basics
+subtitle: python
+---
+
+```{css css_custom, code=readLines("~/github/how2/_css_custom.css"), echo=FALSE}
+```
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+w3schools tutorials:
+
+* https://www.w3schools.com/python/default.asp  
+* https://www.w3schools.com/python/ref_string_format.asp  
+
+datacamp tutorials:
+
+* https://www.datacamp.com/community/tutorials/data-structures-python  
+* https://www.datacamp.com/community/tutorials/python-data-type-conversion  
+* https://www.datacamp.com/community/tutorials/setup-data-science-environment  
+* https://www.datacamp.com/community/tutorials/python-developer-set-up  
+* https://www.datacamp.com/community/tutorials/usage-asterisks-python  
+* https://www.datacamp.com/community/tutorials/argument-parsing-in-python  
+* https://www.datacamp.com/community/tutorials/functions-python-tutorial  
+* https://www.datacamp.com/community/tutorials/fuzzy-string-python  
+* https://www.datacamp.com/community/tutorials/understanding-recursive-functions-python  
+* https://www.datacamp.com/community/tutorials/role-underscore-python  
+
+*********************************************************************
+
+## background
+
+* created by Guido van Rossum
+* released in 1991
+
+*********************************************************************
+
+## setup
+
+```{sh}
+which python
+python --version
+```
+
+*********************************************************************
+
+## naming conventions
+
+* variable/function names are in `snake_case`  
+* classes are in `UpperCamelCase`  
+* named constants are in `ALL_CAPITAL_LETTERS`  
+
+*********************************************************************
+
+## reserved words
+
+*********************************************************************
+
+## primitive data structures
+
+### integers
+
+Use `int()` to create or coerce.
+
+### floats
+
+Use `float()` to create or coerce.
+
+### booleans
+
+Use `bool()` to create or coerce.
+
+### strings
+
+* https://www.datacamp.com/community/tutorials/python-string-tutorial
+
+* use `str()` to create or coerce  
+* use `"""` or `'''` for multiline strings  
+
+#### indexing
+
+* index with `[` (see [indexing](#indexing))  
+* `include:ignore:increment`
+
+```{python}
+x = "123456789"
+x[0] # first character
+x[-1] # last character
+x[:2] # first two characters
+x[2:] # exclude the first threecharacters
+x[-3:] # last three characters
+x[:-3] # exclude the last two characters
+x[1::2] # start at the second and increment by 2
+```
+
+#### methods
+
+```{python, eval=FALSE}
+x.lower()
+x.upper()
+x.strip() # remove leading and trailing whitespace
+x.replace("this", "that")
+x.split(",") # split and return results as a list
+"put {} here".format("this)
+```
+
+#### r-strings
+
+raw strings
+
+```{python}
+r'blah'
+```
+
+#### f-strings
+
+```{python}
+x = 10
+y = 20
+print(f"x is {x}, y is {y} and z is {2*y}")
+print(f"this is \"quoted\"")
+print(f"""this works too""")
+print(f"{{this is inside literal braces}}")
+```
+
+* can use `f` or `F`  
+* can wrap strings in triple quotes  
+* can use expressions inside the curly braces  
+* use backslash to print literal quotes  
+* use double brace to print literal brace  
+
+#### docstrings
+
+* https://www.datacamp.com/community/tutorials/docstrings-python  
+
+```python
+def square(value):
+    """Return the square of a value"""
+    new_value = value ** 2
+    return new_value
+```
+
+*********************************************************************
+
+## non-primitive data structures
+
+* https://www.datacamp.com/community/tutorials/python-list-index  
+* https://www.datacamp.com/community/tutorials/python-tuples-tutorial  
+* https://www.datacamp.com/community/tutorials/sets-in-python  
+* https://www.datacamp.com/community/tutorials/18-most-common-python-list-questions-learn-python  
+
+Constructors:
+
+```{python}
+l = ["apple", "banana", "cherry"]
+t = ("apple", "banana", "cherry")
+s = {"apple", "banana", "cherry"}
+d = {"apple" : "green", "banana" : "yellow", "cherry" : "red"}
+```
+
+Alternative constructors:
+
+```{python}
+l = list(("apple", "banana", "cherry"))
+t = tuple(("apple", "banana", "cherry"))
+s = set(("apple", "banana", "cherry"))
+d = dict(apple = "green", banana = "yellow", cherry = "red")
+```
+
+
+property                      | list  | tuple | set   | dict
+:---------------------------- | ----- | ----- | ----- | -----
+constructor                   | `[]`  | `()`  | `{}`  | `{}`
+ordered                       | yes   | yes   |       | 
+changeable                    | yes   |       | yes   | yes 
+indexed                       | yes   | yes   |       | yes    
+duplicates allowed            | yes   | yes   |       |     
+                              |       |       |       | 
+**method**                    | **list** | **tuple** | **set** | **dict**
+`add`                         |       |       | yes   | 
+`append`                      |  yes  |       |       |  
+`clear`                       |  yes  |       | yes   | yes 
+`copy`                        |  yes  |       | yes   | yes 
+`count`                       |  yes  |  yes  |       |  
+`difference`                  |       |       | yes   | 
+`difference_update`           |       |       | yes   | 
+`discard`                     |       |       | yes   | 
+`extend`                      |  yes  |       |       |  
+`fromkeys`                    |       |       |       | yes
+`get`                         |       |       |       | yes
+`index`                       |  yes  |  yes  |       |  
+`insert`                      |  yes  |       |       |  
+`intersection`                |       |       | yes   | 
+`intersection_update`         |       |       | yes   | 
+`isdispoint`                  |       |       | yes   | 
+`issubset`                    |       |       | yes   | 
+`issuperset`                  |       |       | yes   | 
+`items`                       |       |       |       | yes
+`keys`                        |       |       |       | yes
+`pop`                         |  yes  |       | yes   | yes 
+`popitems`                    |       |       |       | yes
+`remove`                      |  yes  |       | yes   |  
+`reverse`                     |  yes  |       |       |  
+`setdefault`                  |       |       |       | yes
+`sort`                        |  yes  |       |       |  
+`symmetric_difference`        |       |       | yes   | 
+`symmetric_difference_update` |       |       | yes   | 
+`union`                       |       |       | yes   | 
+`update`                      |       |       | yes   | yes
+`values`                      |       |       |       | yes
+
+
+
+### list  
+
+### dict  
+
+* also called a *hash map* or *associative array*  
+* any immutable and hashable object can be used as a key in a dict  
+
+### tuple  
+
+### set  
+
+*********************************************************************
+
+Indexing:
+
+```{python}
+l[0]
+t[0]
+# s[0] # throws an error
+# d[0] # throws an error
+d["apple"]
+```
+
+Loops:
+
+```{python}
+for element in l: print(element)
+for element in t: print(element)
+for element in s: print(element)
+for key in d: print(key) # print keys
+for key in d: print(d[key]) # print values
+for value in d.values(): print(value)  # print values
+for key, value in d.items(): print(key, value) # print keys and values
+```
+
+Querying:
+  
+```{python}
+if "banana" in l: print("I love bananas")
+if "banana" in t: print("I love bananas")
+if "banana" in s: print("I love bananas")
+if "banana" in d: print("I love bananas")
+```
+
+Set methods:
+
+```{python}
+s.add("orange")
+s.update(["mango", "grapes"])
+print(s)
+s.discard("pear") # no error
+# s.remove("pear") # error
+```
+
+Dict methods:
+
+```{python}
+d["apple"]
+d.get("model")
+d["apple"] = "red"
+d["pear"] = "green"
+print(d)
+d.popitem()
+print(d)
+```
+
+Keywords:
+
+```{python}
+del l[0]
+print(l)
+# del t[0] # throws an error
+# del s[0] # throws an error
+# del d[0] # throws an error
+#del d["cherry"]
+#print(d)
+```
+
+```{python}
+del l
+del t
+del s
+del d
+```
+
+
+*********************************************************************
+
+## operators
+
+* https://www.datacamp.com/community/tutorials/python-operators-tutorial  
+
+### arithmetic
+
+`%` - modulus  
+`**` - exponentiation  
+`//` - floor division  
+
+### logical
+
+`x < 5 and x < 10`  
+`x < 5 or x < 4`  
+`not(x < 5 and x < 10)`  
+
+### identity
+
+`x is y`  
+`x is not y`  
+
+### membership
+
+`x in y`  
+`x not in y`  
+
+### bitwise
+
+`&` : binary AND  
+`|` : binary OR  
+`^` : binary XOR  
+`~` : binary flip bits  
+`<<` : binary left shift  
+`>>` : binary right shift  
+
+```{python}
+a = 60        #  60 = 0011 1100 
+b = 13        #  13 = 0000 1101 
+print(a & b)  #  12 = 0000 1100 
+print(a | b)  #  61 = 0011 1101
+print(a ^ b)  #  49 = 0011 0001
+print(~a)     # -61 = 1100 0011
+print(a << 2) # 240 = 1111 0000
+print(a >> 2) #  15 = 0000 1111
+```
+
+### augmented assignment
+
+`x += 3` is the same as `x = x + 3`	 
+`x -= 3` is the same as `x = x - 3`  
+`x *= 3` is the same as `x = x * 3`	 
+`x /= 3` is the same as `x = x / 3`	 
+`x %= 3` is the same as `x = x % 3`	 
+`x //= 3` is the same as `x = x // 3`	 
+`x **= 3` is the same as `x = x ** 3`	 
+`x ^= 3` is the same as `x = x ^ 3`  
+`x &= 3` is the same as `x = x & 3`	 
+`x |= 3` is the same as `x = x | 3`	 
+
+*********************************************************************
+
+## loops
+
+* https://www.datacamp.com/community/tutorials/loops-python-tutorial  
+* https://www.datacamp.com/community/tutorials/for-loops-in-python
+
+can be used to iterate over a sequence of a list, string, tuple, set, array, data frame.
+For loops use the range function which returns a new list with numbers of that specified range based on the length of the sequence.
+you can also use the index of elements in the sequence to iterate
+The for loops in Python are zero-indexed.
+
+range always expects an integer value.
+
+for i in range(10): 
+    print (i+1)
+
+for i in range(len(sequence)): 
+    print (sequence[i])
+
+Or define the starting point, the ending point and the increment
+
+for i in range(1,20,2): 
+    print (i)
+
+columns = ['sepal_length','sepal_width','petal_length','petal_width'] for indices, row in iris.iterrows(): for column in columns: iris.at[indices,column] = row[column] + 2 iris.head()
+
+Lambda functions
+x = [20, 30, 40, 50, 60]
+y = map(lambda x: x * 5,x)
+list(y)
+
+*********************************************************************
+
+## if else
+
+* https://www.datacamp.com/community/tutorials/python-if-elif-else  
+
+*********************************************************************
+
+## iterators
+
+* https://www.datacamp.com/community/tutorials/python-iterator-tutorial
+
+*********************************************************************
+
+## functions
+
+### parameters and arguments
+
+https://docs.python.org/3.3/faq/programming.html#faq-argument-vs-parameter
+
+### range
+
+* https://www.datacamp.com/community/tutorials/python-list-comprehension  
+* https://www.datacamp.com/community/tutorials/python-dictionary-comprehension  
+
+### scope
+
+* https://www.datacamp.com/community/tutorials/scope-of-variables-python
+
+* global - defines the main body of a script  
+* local - defined inside a function  
+* built-in - names in the pre-defined built-ins module  
+
+#### nonlocal
+
+* used when defining a function that is nested inside another function
+* allows the nested function to use/modify variables defined in the outer function
+
+```{python}
+def myfunc1():
+    x = "John"
+    def myfunc2():
+        nonlocal x
+        x = "hello"
+    myfunc2() 
+    return x
+
+print(myfunc1())
+```
+
+
+*********************************************************************
+
+## comprehensions
+
+### list comprehensions
+
+`[expr for val in collection if condition]`
+
+```python
+x = ["A", None, "C"]
+[str(x).lower() if x is not None else x for x in x]
+
+x = ["A", None, "C"]
+[True if x == "A" else False for x in x]
+```
+
+### dict comprehensions
+
+`{key-expr : value-expr for value in collection if condition}`
+             
+```python
+x = {"a": 1, "b": 2}
+{k:10*v for (k,v) in x.items()}
+```
+
+### set comprehensions
+
+`{expr for value in collection if condition}`
+
+
+*********************************************************************
+
+## modules
+
+* a python module is a file that contains code  
+* can be exectuted directly or it can be imported  
+* when importing, using the filename bit leave out the `.py` extention
+* once imported, the code becomes availble via a namespace with the the module's name (or the name specified via `as`)  
+* functions with names that start with an underscore don't get imported ???  
+
+```python
+# from mymodule.py
+import mymodule
+mymodule.myfunction()
+```
+
+import using `as`
+
+```python
+# from mymodule.py
+import mymodule as mm
+mm.myfunction()
+```
+
+import directly
+
+```python
+# from mymodule.py
+from mymodule import myfunction, myotherfunction
+myfunction()
+myotherfunction()
+```
+
+*********************************************************************
+
+## r-strings
+
+raw strings
+
+```{python}
+r'blah'
+```
+
+*********************************************************************
+
+## f-strings
+
+```{python}
+x = 10
+y = 20
+print(f"x is {x}, y is {y} and z is {2*y}")
+print(f"this is \"quoted\"")
+print(f"""this works too""")
+print(f"{{this is inside literal braces}}")
+```
+
+* can use `f` or `F`  
+* can wrap strings in triple quotes  
+* can use expressions inside the curly braces  
+* use backslash to print literal quotes  
+* use double brace to print literal brace  
+
+*********************************************************************
+
+## envs
+
+create a new virtual environment inside directory new_venv.
+
+$ python -m venv new_venv
+
+source new_venv/bin/activate
+
+*********************************************************************
+
+## databases
+
+* https://www.datacamp.com/community/tutorials/sqlite-in-python  
+* https://www.datacamp.com/community/tutorials/mysql-python  
+
+*********************************************************************
+
+## reserved words
+
+*********************************************************************
+
+## scope
+
+* https://www.datacamp.com/community/tutorials/scope-of-variables-python
+
+* global - defines the main body of a script  
+* local - defined inside a function  
+* built-in - names in the pre-defined built-ins module  
+
+### nonlocal
+
+* used when defining a function that is nested inside another function
+* allows the nested function to use/modify variables defined in the outer function
+
+```{python}
+def myfunc1():
+    x = "John"
+    def myfunc2():
+        nonlocal x
+        x = "hello"
+    myfunc2() 
+    return x
+
+print(myfunc1())
+```
+
+*********************************************************************
+
+## scripts
+
+* https://www.datacamp.com/community/tutorials/running-a-python-script
+* https://www.datacamp.com/community/tutorials/modules-in-python
+
+Scripting - passing args via command line
+
+```sh
+python my_python_script.py
+
+# supply input arguments
+python my_python_script.py arg1 arg2
+
+### explicityly specify the python interpreter
+usr/bin/python my_python_script.py
+
+# clear the screen first
+clear; python my_python_script.py
+
+# run as a standalone executable
+# uses the interpreter specified by the shebang line in the script - e.g. #! usr/bin/python
+my_python_script.py
+```
+
+*********************************************************************
+
+## packing and unpacking
+
+* https://www.datacamp.com/community/tutorials/usage-asterisks-python  
+* unpacking operators unpack the values from iterable objects  
+* single asterisks can be used on any iterable  
+* double asterisks can only be used on dictionaries  
+
+### tuples
+
+```{python}
+nums = (1, 2, 3, 4)
+print(nums)
+print(*nums)
+a, b, c, d = nums
+print(a, b, c, d)
+a, *b = nums 
+print(a, b)
+```
+
+### lists
+
+```{python}
+nums = [1, 2, 3, 4]
+print(nums)
+print(*nums)
+a, b, c, d = nums
+print(a, b, c, d)
+a, *b = nums 
+print(a, b)
+```
+
+### combining iterables
+
+```{python}
+nums1 = [1, 2, 3] # list
+nums2 = (4, 5, 6) # tuple 
+nums3 = {7, 8, 9} # set
+type([*nums1, *nums2, *nums3])
+type((*nums1, *nums2, *nums3))
+type({*nums1, *nums2, *nums3})
+```
+
+### nested unpacking
+
+```{python}
+languages = ["Python", "Is", "Great"] 
+[[first_letter_first_word, *remain_letters_first_word], *other_words] = languages 
+first_letter_first_word
+remain_letters_first_word
+other_words
+```
+
+### dicts
+
+TODO
+
+*********************************************************************
+
+## *args and **kwargs
+
+* https://realpython.com/python-kwargs-and-args/  
+* https://www.datacamp.com/community/tutorials/usage-asterisks-python  
+
+allow you to pass multiple arguments or keyword arguments to a function
+
+### *args
+
+* the unpacking operator (*) produces a `tuple`
+ 
+```{python}
+def print_args(*args):
+    print(type(args))
+    print(args)
+    for arg in args:
+        print(arg)
+print_args("Python", "Is", "Great")
+```
+
+### **kwargs
+
+* the unpacking operator (**) produces a `dict`  
+* iterate over keys using `kwargs`  
+* iterate over values using `kwargs.values`  
+
+```{python}
+def print_kwargs_keys(**kwargs):
+    print(type(kwargs))
+    print(kwargs)
+    for key in kwargs:
+        print(key)
+    for val in kwargs.values():
+        print(val)
+print_kwargs_keys(a="Python", b="Is", c="Great")
+```
+
+### argument order
+
+* non-default arguments  
+* default arguments  
+* *args  
+* **kwargs  
+
+* `*args` allows you to pass a varying number of positional arguments
+  * the unpacking operator (*) 
+
+Bear in mind that the iterable object you’ll get using the unpacking operator * is not a list but a tuple
+
+*args allows you to pass a varying number of positional arguments
+
+```{python}
+def add(*args):
+    result = 0
+    for x in args:
+        result += x
+    return result
+print(add(1, 2, 3))
+```
+
+*********************************************************************
+
+## exceptions
+
+* https://www.datacamp.com/community/tutorials/exception-handling-python
+
+```python
+try:
+    asdfasdfadsf
+except Exception as error:
+    print(error)
+    print('blah')
+```
+  
+*********************************************************************
+
+## environment variables
+
+* https://docs.python.org/3/using/cmdline.html#envvar-PYTHONHOME
+
+
+*********************************************************************
+
+## coloured text
+
+```python
+color = {
+    'white':    "\033[1;37m",
+    'yellow':   "\033[1;33m",
+    'green':    "\033[1;32m",
+    'blue':     "\033[1;34m",
+    'cyan':     "\033[1;36m",
+    'red':      "\033[1;31m",
+    'magenta':  "\033[1;35m",
+    'black':      "\033[1;30m",
+    'darkwhite':  "\033[0;37m",
+    'darkyellow': "\033[0;33m",
+    'darkgreen':  "\033[0;32m",
+    'darkblue':   "\033[0;34m",
+    'darkcyan':   "\033[0;36m",
+    'darkred':    "\033[0;31m",
+    'darkmagenta':"\033[0;35m",
+    'darkblack':  "\033[0;30m",
+    'off':        "\033[0;0m"
+}
+
+print(color['red'] + 'string' + color['off'])
+```
