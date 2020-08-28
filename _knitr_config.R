@@ -53,9 +53,9 @@ knitr::opts_template$set(
     comment = ""
   )
 )
-cat_file = function(x){
+cat_file = function(x, print_filename=TRUE){
     y = paste0(readLines(x, warn = FALSE), collapse = "\n")
-    cat("`", x, "`\n")
+    if (print_filename) cat("`", x, "`\n")
     ext = tools::file_ext(x)
     # if (!tolower(ext) %in% c("r", "python", "sql")) {
     #   ext = ""

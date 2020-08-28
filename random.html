@@ -11,7 +11,7 @@
 
 
 
-<title>TODO</title>
+<title>random</title>
 
 <script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -25,6 +25,93 @@
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
 
 
 <style type="text/css">
@@ -289,32 +376,17 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">functions</a>
-    </li>
-    <li>
-      <a href="_todo.html">args and kwargs</a>
+      <a href="documentation.html">documentation</a>
     </li>
     <li class="divider"></li>
-    <li>
-      <a href="_todo.html">constants</a>
-    </li>
     <li>
       <a href="files.html">files</a>
     </li>
     <li>
-      <a href="_todo.html">exceptions</a>
+      <a href="exceptions.html">exceptions</a>
     </li>
     <li>
       <a href="oop.html">oop</a>
-    </li>
-    <li>
-      <a href="_todo.html">profiling</a>
-    </li>
-    <li>
-      <a href="_todo.html">scripting</a>
-    </li>
-    <li>
-      <a href="_todo.html">testing</a>
     </li>
   </ul>
 </li>
@@ -326,7 +398,7 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="_todo.html">argparse</a>
+      <a href="argparse.html">argparse</a>
     </li>
     <li>
       <a href="collections.html">collections</a>
@@ -350,13 +422,16 @@ $(document).ready(function () {
       <a href="sqlite.html">sqlite</a>
     </li>
     <li>
+      <a href="statistics.html">statistics</a>
+    </li>
+    <li>
       <a href="subprocess.html">subprocess</a>
     </li>
     <li>
       <a href="sys.html">sys</a>
     </li>
     <li>
-      <a href="_todo.html">xml</a>
+      <a href="urllib.html">urllib</a>
     </li>
   </ul>
 </li>
@@ -395,19 +470,20 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">boto3</a>
+      <a href="boto3.html">boto3</a>
     </li>
     <li>
-      <a href="_todo.html">hocon</a>
+      <a href="pyhocon.html">pyhocon</a>
     </li>
     <li>
-      <a href="_todo.html">pyarrow</a>
-    </li>
-    <li>
-      <a href="_todo.html">requests</a>
+      <a href="requests.html">requests</a>
     </li>
     <li>
       <a href="xmltodict.html">xmltodict</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="beautifulsoup.html">beautifulsoup</a>
     </li>
   </ul>
 </li>
@@ -424,15 +500,6 @@ $(document).ready(function () {
     <li>
       <a href="databases.html">databases</a>
     </li>
-    <li>
-      <a href="_todo.html">flask</a>
-    </li>
-    <li>
-      <a href="_todo.html">packages</a>
-    </li>
-    <li>
-      <a href="_todo.html">sphinx</a>
-    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -443,24 +510,18 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="_todo.html">pip</a>
+      <a href="pip.html">pip</a>
     </li>
     <li>
-      <a href="_todo.html">conda</a>
+      <a href="conda.html">conda</a>
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">pyenv</a>
-    </li>
-    <li>
-      <a href="_todo.html">venv</a>
+      <a href="pyenv.html">pyenv</a>
     </li>
     <li class="divider"></li>
     <li>
       <a href="pycharm.html">pycharm</a>
-    </li>
-    <li>
-      <a href="_todo.html">spyder</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -468,15 +529,6 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="jupyter.html">jupyter notebook</a>
-    </li>
-    <li>
-      <a href="_todo.html">jupyter lab</a>
-    </li>
-    <li>
-      <a href="_todo.html">zepplin</a>
-    </li>
-    <li>
-      <a href="_todo.html">databricks</a>
     </li>
   </ul>
 </li>
@@ -521,12 +573,38 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">TODO</h1>
+<h1 class="title toc-ignore">random</h1>
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#basics">basics</a></li>
+</ul>
+</div>
 
+<!-- ********************************************************************* -->
+<!-- > Headline -->
+<!-- ********************************************************************* -->
+<!-- ## faqs -->
+<!-- ********************************************************************* -->
+<!-- ## links -->
 <hr />
+<div id="basics" class="section level2">
+<h2>basics</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="im">import</span> random</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>random.random() <span class="co"># random real between 0 and 1 - like runif(0,1)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="co">#  0.4268848639120686</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>random.randint(<span class="dv">1</span>, <span class="dv">10</span>) <span class="co"># random integer between 1 an 10 inclusive</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="co">#  7</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>random.randrange(<span class="dv">1</span>, <span class="dv">10</span>) <span class="co"># random integer between 1 an 9 (excludes 10)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="co">#  4</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>random.choice([<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>]) <span class="co"># choose one element at random from list</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="co">#  &#39;c&#39;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>random.sample(<span class="bu">range</span>(<span class="dv">10</span>, <span class="dv">30</span>), <span class="dv">5</span>) <span class="co"># list of 5 random integers between 10 and 29 (range excludes 30)</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a><span class="co">#  [10, 20, 17, 18, 27]</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>random.seed(<span class="dv">42</span>) <span class="co"># set random number seed</span></span></code></pre></div>
+</div>
 
 
 

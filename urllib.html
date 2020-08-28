@@ -21,7 +21,6 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -377,32 +376,17 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">functions</a>
-    </li>
-    <li>
-      <a href="_todo.html">args and kwargs</a>
+      <a href="documentation.html">documentation</a>
     </li>
     <li class="divider"></li>
-    <li>
-      <a href="_todo.html">constants</a>
-    </li>
     <li>
       <a href="files.html">files</a>
     </li>
     <li>
-      <a href="_todo.html">exceptions</a>
+      <a href="exceptions.html">exceptions</a>
     </li>
     <li>
       <a href="oop.html">oop</a>
-    </li>
-    <li>
-      <a href="_todo.html">profiling</a>
-    </li>
-    <li>
-      <a href="_todo.html">scripting</a>
-    </li>
-    <li>
-      <a href="_todo.html">testing</a>
     </li>
   </ul>
 </li>
@@ -414,7 +398,7 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="_todo.html">argparse</a>
+      <a href="argparse.html">argparse</a>
     </li>
     <li>
       <a href="collections.html">collections</a>
@@ -438,6 +422,9 @@ $(document).ready(function () {
       <a href="sqlite.html">sqlite</a>
     </li>
     <li>
+      <a href="statistics.html">statistics</a>
+    </li>
+    <li>
       <a href="subprocess.html">subprocess</a>
     </li>
     <li>
@@ -445,9 +432,6 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="urllib.html">urllib</a>
-    </li>
-    <li>
-      <a href="_todo.html">xml</a>
     </li>
   </ul>
 </li>
@@ -486,19 +470,20 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">boto3</a>
+      <a href="boto3.html">boto3</a>
     </li>
     <li>
-      <a href="_todo.html">hocon</a>
+      <a href="pyhocon.html">pyhocon</a>
     </li>
     <li>
-      <a href="_todo.html">pyarrow</a>
-    </li>
-    <li>
-      <a href="_todo.html">requests</a>
+      <a href="requests.html">requests</a>
     </li>
     <li>
       <a href="xmltodict.html">xmltodict</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="beautifulsoup.html">beautifulsoup</a>
     </li>
   </ul>
 </li>
@@ -515,15 +500,6 @@ $(document).ready(function () {
     <li>
       <a href="databases.html">databases</a>
     </li>
-    <li>
-      <a href="_todo.html">flask</a>
-    </li>
-    <li>
-      <a href="_todo.html">packages</a>
-    </li>
-    <li>
-      <a href="_todo.html">sphinx</a>
-    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -534,24 +510,18 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="_todo.html">pip</a>
+      <a href="pip.html">pip</a>
     </li>
     <li>
-      <a href="_todo.html">conda</a>
+      <a href="conda.html">conda</a>
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">pyenv</a>
-    </li>
-    <li>
-      <a href="_todo.html">venv</a>
+      <a href="pyenv.html">pyenv</a>
     </li>
     <li class="divider"></li>
     <li>
       <a href="pycharm.html">pycharm</a>
-    </li>
-    <li>
-      <a href="_todo.html">spyder</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -559,15 +529,6 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="jupyter.html">jupyter notebook</a>
-    </li>
-    <li>
-      <a href="_todo.html">jupyter lab</a>
-    </li>
-    <li>
-      <a href="_todo.html">zepplin</a>
-    </li>
-    <li>
-      <a href="_todo.html">databricks</a>
     </li>
   </ul>
 </li>
@@ -661,17 +622,17 @@ $(document).ready(function () {
 </blockquote>
 <div id="urlopen" class="section level3">
 <h3>urlopen</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> re</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> urllib.request <span class="im">import</span> urlopen</span>
-<span id="cb1-3"><a href="#cb1-3"></a>url <span class="op">=</span> <span class="st">&quot;https://www.python.org/downloads/mac-osx/&quot;</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>page <span class="op">=</span> urlopen(url)  <span class="co"># returns an HTTPResponse object</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>html <span class="op">=</span> page.read().decode(<span class="st">&quot;utf-8&quot;</span>)  <span class="co"># read bytes and decode</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="bu">type</span>(html)</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co">#  &lt;class &#39;str&#39;&gt;</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="bu">len</span>(html)</span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#  161550</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>re.findall(<span class="st">&quot;Latest Python 3 Release - Python (3\.\d+\.\d+)&quot;</span>, html)[<span class="dv">0</span>]</span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#  &#39;3.8.5&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="im">import</span> re</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="im">from</span> urllib.request <span class="im">import</span> urlopen</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>url <span class="op">=</span> <span class="st">&quot;https://www.python.org/downloads/mac-osx/&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>page <span class="op">=</span> urlopen(url)  <span class="co"># returns an HTTPResponse object</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>html <span class="op">=</span> page.read().decode(<span class="st">&quot;utf-8&quot;</span>)  <span class="co"># read bytes and decode</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="bu">type</span>(html)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="co">#  &lt;class &#39;str&#39;&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="bu">len</span>(html)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="co">#  161550</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>re.findall(<span class="st">&quot;Latest Python 3 Release - Python (3\.\d+\.\d+)&quot;</span>, html)[<span class="dv">0</span>]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a><span class="co">#  &#39;3.8.5&#39;</span></span></code></pre></div>
 <hr />
 </div>
 </div>

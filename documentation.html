@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>documentation</title>
+
+<script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="_style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">how2-py</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    programming
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="basics.html">basics</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="strings.html">strings</a>
+    </li>
+    <li>
+      <a href="lists.html">lists</a>
+    </li>
+    <li>
+      <a href="dicts.html">dicts</a>
+    </li>
+    <li>
+      <a href="tuples.html">tuples</a>
+    </li>
+    <li>
+      <a href="sets.html">sets</a>
+    </li>
+    <li>
+      <a href="comprehensions.html">comprehensions</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="documentation.html">documentation</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="files.html">files</a>
+    </li>
+    <li>
+      <a href="exceptions.html">exceptions</a>
+    </li>
+    <li>
+      <a href="oop.html">oop</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    std lib
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="argparse.html">argparse</a>
+    </li>
+    <li>
+      <a href="collections.html">collections</a>
+    </li>
+    <li>
+      <a href="datetime.html">datetime</a>
+    </li>
+    <li>
+      <a href="json.html">json</a>
+    </li>
+    <li>
+      <a href="os.html">os</a>
+    </li>
+    <li>
+      <a href="random.html">random</a>
+    </li>
+    <li>
+      <a href="re.html">re</a>
+    </li>
+    <li>
+      <a href="sqlite.html">sqlite</a>
+    </li>
+    <li>
+      <a href="statistics.html">statistics</a>
+    </li>
+    <li>
+      <a href="subprocess.html">subprocess</a>
+    </li>
+    <li>
+      <a href="sys.html">sys</a>
+    </li>
+    <li>
+      <a href="urllib.html">urllib</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    ds
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="numpy.html">numpy</a>
+    </li>
+    <li>
+      <a href="pandas.html">pandas</a>
+    </li>
+    <li>
+      <a href="scipy.html">scipy</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="sklearn.html">sklearn</a>
+    </li>
+    <li>
+      <a href="keras.html">keras</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="matplotlib.html">matplotlib</a>
+    </li>
+    <li>
+      <a href="seaborn.html">seaborn</a>
+    </li>
+    <li>
+      <a href="folium.html">folium</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="boto3.html">boto3</a>
+    </li>
+    <li>
+      <a href="pyhocon.html">pyhocon</a>
+    </li>
+    <li>
+      <a href="requests.html">requests</a>
+    </li>
+    <li>
+      <a href="xmltodict.html">xmltodict</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="beautifulsoup.html">beautifulsoup</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    misc
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="apis.html">apis</a>
+    </li>
+    <li>
+      <a href="databases.html">databases</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    envs
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="pip.html">pip</a>
+    </li>
+    <li>
+      <a href="conda.html">conda</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="pyenv.html">pyenv</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="pycharm.html">pycharm</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="ipython.html">ipython</a>
+    </li>
+    <li>
+      <a href="jupyter.html">jupyter notebook</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    how2
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://dkidney.github.io/how2-cli/">how2-cli</a>
+    </li>
+    <li>
+      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
+    </li>
+    <li>
+      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="https://github.com/dkidney/how2-py">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://uk.linkedin.com/in/darren-kidney-495b8a103/">
+    <span class="fa fa-linkedin fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">documentation</h1>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#links">links</a></li>
+<li><a href="#comments">Comments</a>
+<ul>
+<li><a href="#tags">tags</a></li>
+<li><a href="#type-hints">type hints</a></li>
+<li><a href="#docstring-basics">docstring basics</a></li>
+</ul></li>
+<li><a href="#docstring-types">docstring types</a>
+<ul>
+<li><a href="#class-docstrings">class docstrings</a></li>
+<li><a href="#function-module-and-package-docstrings">function, module and package docstrings</a></li>
+<li><a href="#script-docstrings">script docstrings</a></li>
+</ul></li>
+<li><a href="#docstring-formats">docstring formats</a>
+<ul>
+<li><a href="#numpyscipy">NumPy/SciPy</a></li>
+<li><a href="#google">Google</a></li>
+</ul></li>
+<li><a href="#documenting-projects">documenting projects</a></li>
+</ul>
+</div>
+
+<!-- ********************************************************************* -->
+<!-- > Headline -->
+<!-- ********************************************************************* -->
+<!-- ## faqs -->
+<hr />
+<div id="links" class="section level2">
+<h2>links</h2>
+<ul>
+<li><a href="https://realpython.com/documenting-python-code/" class="uri">https://realpython.com/documenting-python-code/</a><br />
+</li>
+<li><a href="https://www.datacamp.com/community/tutorials/docstrings-python" class="uri">https://www.datacamp.com/community/tutorials/docstrings-python</a><br />
+</li>
+<li><a href="https://www.python.org/dev/peps/pep-0257/" class="uri">https://www.python.org/dev/peps/pep-0257/</a></li>
+</ul>
+<hr />
+</div>
+<div id="comments" class="section level2">
+<h2>Comments</h2>
+<p>Limit line length for comments and docstrings to 72 characters (<a href="https://pep8.org/#maximum-line-length" class="uri">https://pep8.org/#maximum-line-length</a>)</p>
+<div id="tags" class="section level3">
+<h3>tags</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: asdf</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="co"># </span><span class="al">BUG</span><span class="co">: asdf</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="co"># </span><span class="al">FIXME</span><span class="co">: asdf</span></span></code></pre></div>
+</div>
+<div id="type-hints" class="section level3">
+<h3>type hints</h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=2xWhaALHTvU" class="uri">https://www.youtube.com/watch?v=2xWhaALHTvU</a></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">def</span> hello(name: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>    <span class="cf">return</span>(<span class="ss">f&quot;Hello </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<hr />
+</div>
+<div id="docstring-basics" class="section level3">
+<h3>docstring basics</h3>
+<p>Always use triple double quote string format, even if it’s just one line.</p>
+<p>The built-in function <code>help()</code> prints out the objects docstring to the console.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">def</span> myfun():</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;A summary line</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="co">    </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="co">    Further elaboration of the docstring.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="co">    Can be multiple lines.</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="co">    &quot;&quot;&quot;</span>    </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>    </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&quot;hello&quot;</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a>myfun.__doc__</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a><span class="co">#  &#39;A summary line\n    \n    Further elaboration of the docstring.\n    Can be multiple lines.\n    &#39;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a><span class="bu">help</span>(myfun)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a><span class="co">#  Help on function myfun in module __main__:</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true"></a><span class="co">#  </span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true"></a><span class="co">#  myfun()</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true"></a><span class="co">#      A summary line</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true"></a><span class="co">#      </span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true"></a><span class="co">#      Further elaboration of the docstring.</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true"></a><span class="co">#      Can be multiple lines.</span></span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="docstring-types" class="section level2">
+<h2>docstring types</h2>
+<div id="class-docstrings" class="section level3">
+<h3>class docstrings</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="kw">class</span> MyClass:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="co">    Brief summary of purpose and behaviour</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="co">    ...</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="co">    Attributes</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="co">    ----------</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="co">    attribute1 : str</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a><span class="co">        an attribute</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a><span class="co">    attribute2 : str</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a><span class="co">        another attribute</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a><span class="co">    Methods</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a><span class="co">    -------</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a><span class="co">    a_method</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a><span class="co">        Prints attribute2</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true"></a>    attribute1 <span class="op">=</span> <span class="st">&quot;asdf&quot;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true"></a>    </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true"></a>    <span class="kw">def</span> __init_(<span class="va">self</span>, attribute2: <span class="bu">str</span>):</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true"></a>        <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true"></a><span class="co">        Parameters</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true"></a><span class="co">        ----------</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true"></a><span class="co">        attribute2 : str</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true"></a><span class="co">            another attribute</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true"></a><span class="co">            </span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true"></a><span class="co">        Raises</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true"></a><span class="co">        ------</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true"></a><span class="co">        NotImplementedError</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true"></a><span class="co">            If no sound is set for the animal or passed in as a</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true"></a><span class="co">            parameter.</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true"></a><span class="co">            </span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true"></a><span class="co">        &quot;&quot;&quot;</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true"></a>        </span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true"></a>        <span class="va">self</span>.attribute2 <span class="op">=</span> attribute2</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true"></a></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true"></a>    <span class="kw">def</span> a_method(<span class="va">self</span>):</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true"></a>        <span class="co">&quot;&quot;&quot;Prints attribute2&quot;&quot;&quot;</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true"></a></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true"></a>        <span class="bu">print</span>(<span class="va">self</span>.attribute1)</span></code></pre></div>
+</div>
+<div id="function-module-and-package-docstrings" class="section level3">
+<h3>function, module and package docstrings</h3>
+<div id="function" class="section level4">
+<h4>function</h4>
+<ul>
+<li>should include the same items as a class method:
+<ul>
+<li>a brief description of what the function is and what it’s used for<br />
+</li>
+<li>any arguments (both required and optional) that are passed including keyword arguments<br />
+</li>
+<li>label any arguments that are considered optional<br />
+</li>
+<li>any side effects that occur when executing the function<br />
+</li>
+<li>any exceptions that are raised<br />
+</li>
+<li>any restrictions on when the function can be called</li>
+</ul></li>
+</ul>
+</div>
+<div id="module" class="section level4">
+<h4>module</h4>
+<ul>
+<li>similar to class docstrings<br />
+</li>
+<li>placed at the top of the file even before any imports<br />
+</li>
+<li>should include:
+<ul>
+<li>a brief description of the module and its purpose<br />
+</li>
+<li>a list of any classes, exception, functions, and any other objects exported by the module</li>
+</ul></li>
+</ul>
+</div>
+<div id="package" class="section level4">
+<h4>package</h4>
+<ul>
+<li>should be placed at the top of the package’s <code>__init__.py</code> file<br />
+</li>
+<li>should list the modules and sub-packages that are exported by the package</li>
+</ul>
+</div>
+</div>
+<div id="script-docstrings" class="section level3">
+<h3>script docstrings</h3>
+<ul>
+<li>placed at the top of the file<br />
+</li>
+<li>should be documented well enough for users to be able to have a sufficient understanding of how to use the script<br />
+</li>
+<li>should be usable for its “usage” message, when the user incorrectly passes in a parameter or uses the -h option</li>
+</ul>
+<p><code>hello.py</code></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="co">&quot;&quot;&quot;One-line summary of what the script does</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="co">Blah</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="co">Blah</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="co">This file can also be imported as a module and contains the following</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="co">functions:</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a><span class="co">    * hello - prints hello (name}</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a><span class="co">    * main - the main function of the script</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a><span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true"></a><span class="im">import</span> sys </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true"></a><span class="kw">def</span> hello(name):</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Prints hello (name}</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true"></a><span class="co">    Parameters</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true"></a><span class="co">    ----------</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true"></a><span class="co">    name : str</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true"></a><span class="co">        The name to print</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&quot;hello&quot;</span>, name)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true"></a><span class="kw">def</span> main():</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true"></a>    hello(sys.argv[<span class="dv">1</span>])</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true"></a>    main()</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">python</span> hello.py you</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="co">#  hello you</span></span></code></pre></div>
+<p>This bit doesn’t work…</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">python</span> hello.py -h</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="co">#  hello -h</span></span></code></pre></div>
+<div id="argparse" class="section level4">
+<h4>argparse</h4>
+<ul>
+<li>if you use <code>argparse</code> you can omit parameter-specific documentation
+<ul>
+<li>make sure you document it filly in the <code>argparser.parser.add_argument</code> function<br />
+</li>
+<li>recommended to use the <code>__doc__</code> for the description parameter within <code>argparse.ArgumentParser</code> constructor.</li>
+<li>any custom or third-party imports should be listed to allow users to know which packages may be required for running the script</li>
+</ul></li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="docstring-formats" class="section level2">
+<h2>docstring formats</h2>
+<div id="numpyscipy" class="section level3">
+<h3>NumPy/SciPy</h3>
+</div>
+<div id="google" class="section level3">
+<h3>Google</h3>
+<hr />
+</div>
+</div>
+<div id="documenting-projects" class="section level2">
+<h2>documenting projects</h2>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

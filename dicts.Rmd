@@ -9,18 +9,70 @@ editor_options:
 
 *********************************************************************
 
-## construction
+> An associative array, where arbitrary keys are mapped to values.
 
-```{python}
+*********************************************************************
+
+## faqs
+
+* [create from a list of keys and a list of values](#create-from-two-lists)  
+* [create by merging two dicts](#create-by-merging-two-dicts)  
+
+*********************************************************************
+
+## links
+
+* https://realpython.com/iterate-through-dictionary-python/  
+
+*********************************************************************
+
+## basics
+
+* dictionaries have no inherent order  
+* keys can be any hashable object - e.g. strings, 
+* values can be of any type  
+
+*********************************************************************
+
+## create
+
+```python
 {}
 {'a':1, 'b':2, 'c':3}
 {1:'a', 2:'b', 3:'c'} # keys don't have to be strings
 {1:'a', '2':'b', 3:'c'} # keys don't even need to be the same class
+
+dict()
+dict(a=1, b=2, c=3)
+```
+
+### from a list of keys and a list of values {#create-from-two-lists}
+
+```python
+# using the fromkeys method
+keys = ['a', 'b', 'c']
+values = [1, 2, 3]
+dict.fromkeys(x, y)
+
+# using dict comprehension
+keys = ['a', 'b', 'c']
+values = [1, 2, 3]
+{key: value for key, value in zip(keys, values)}
+```
+
+### by merging two dicts {#create-by-merging-two-dicts}
+
+```python
+# using the update method
+x.update(y)
+
+# using the unpacking operator
+{**x, **y}
 ```
 
 *********************************************************************
 
-## assertions
+## membership tests
 
 ```{python}
 mydict = {'a':1, 'b':2, 'c':3}
@@ -29,35 +81,111 @@ mydict = {'a':1, 'b':2, 'c':3}
 
 *********************************************************************
 
-## indexing
+## index
 
-```{python}
+```python
 mydict = {'a':1, 'b':2, 'c':3}
-# mydict[0] # cant't use positional indexing as there is no inherent order
+mydict[0] # fails
 mydict['a']
 mydict['d'] = 4
-mydict
-mydict['d'] = None
-mydict
+mydict['d'] = None # doesn't remove the key
 ```
 
 *********************************************************************
 
 ## methods
 
+method | description
+------ | -------------
+`.clear()` | remove all items (in-place)
+`.copy()` | shallow copy
+`.fromkeys(keys, values)` | create from keys and values
+`.get(key, default)` | return the value for key if key is in the dictionary, else default
+`.items()` | get a list of (key, value) tuples
+`.keys()` | get a list of keys
+`.pop(key)` | remove key (in-place)
+`.popitem()` | remove the item that was last inserted
+`.setdefault(key, default)` | return the value if key exists, otherwise insert and return the default
+`.update(items)` | append new items 
+`.values()` | get a list of values
+
+*********************************************************************
+
+## functions
+
+### sorted
+
+```python
+# return a list of keys in order 
+# keys need to be the same class for this to work
+sorted(mydict) 
+```
+
+### map
+
+Transform values
+
 ```{python}
-mydict = {'a':1, 'b':2, 'c':3, 'd':4}
-# mydict.append('d') # no append method
-mydict.keys()
-mydict.values()
-mydict.items() # each element is a (key, value) tuple
+def multiply_items_by_two(item):
+    return (item[0], item[1] * 2)
+mydict = dict(a=1, b=2, c=3)
+dict(map(multiply_items_by_two, mydict.items()))
+```
+
+### filter
+
+Filter values
+
+```{python}
+def multiply_items_by_two(item):
+    return (item[0], item[1] * 2)
+mydict = dict(a=1, b=2, c=3)
+dict(map(multiply_items_by_two, mydict.items()))
+```
+
+*********************************************************************
+
+## iterate
+
+### keys
+
+```python
+# implicitly loop over keys
+for key in mydict:
+    print(key)
+    
+# explicitly loop over keys
+for key in mydict.keys():
+    print(key)
+```
+
+### values
+
+```python
+for value in mydict.values():
+    print(value)
+```
+
+### items
+
+```python
+# loop over items as tuples
 for item in mydict.items():
     print(item)
-for item in mydict.items():
-    print("key =", item[0], "value =", item[1])
+    print(item[0])  # key
+    print(item[1])  # value
+
+# loop over unpacked items
 for key, value in mydict.items():
-    print("key =", key, "value =", value)
-mydict.pop('a') # modifies in place
-mydict
-sorted(mydict) # returns a list of keys in order (keys need to be the same class for this to work)
+    print(key)
+    print(value)
+```
+
+*********************************************************************
+
+## apppedix: all methods
+
+```{python}
+from pprint import pprint
+pprint(dir(dict))
 ```

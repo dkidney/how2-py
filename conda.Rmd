@@ -1,0 +1,231 @@
+---
+title: conda
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+> an open source package management system and environment management system
+
+*********************************************************************
+
+## faqs
+
+* [find the latest available version of python](#search)  
+* [update python version for the current environment](#environments)  
+
+*********************************************************************
+
+## links
+
+* [conda docs](https://docs.conda.io)  
+* [conda cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)  
+
+datacamp:
+
+* [installing-anaconda-mac-os-x](https://www.datacamp.com/community/tutorials/installing-anaconda-mac-os-x)  
+
+*********************************************************************
+
+## setup
+
+### install
+
+```sh
+# installs to ~/usr/local/anaconda3/ by default
+brew cask install anaconda
+```
+
+### configure 
+
+add the following to your `.zshrc` / `.bash_profile`
+
+```
+export PATH=/usr/local/anaconda3/bin:"$PATH"
+```
+
+initialize your `.zshrc` / `.bash_profile`
+
+```sh
+conda init zsh
+conda init bash
+```
+
+### info
+
+```sh
+conda --version
+which conda # doesn't work...
+conda info
+
+# get help
+conda --help
+conda install --help
+```
+
+### upgrade
+
+*warning: this will delete all your conda environments!*
+
+```sh
+brew cask upgrade anaconda
+```
+
+### uninstall
+
+```sh
+# remove the configs
+conda install anaconda-clean
+anaconda-clean --yes 
+
+# creates a backup folder which you can also remove if you want to
+rm -rf ~/.anaconda_backup
+
+# uninstall anaconda
+brew cask uninstall anaconda
+```
+
+If you installed via a method other than brew cask you may need to manually remove the anaconda install folder and 
+
+```sh
+rm -rf ~/anaconda3
+```
+
+You will also need to remove the `>>> conda init >>>` section in `~/.bash_profile` and `~/.zshrc`.
+
+*********************************************************************
+
+## environments {#environments}
+
+```sh
+# main directory for current env
+echo $CONDA_PREFIX
+
+# list all environments
+conda env list
+conda info --envs
+
+# create new environments (see also note below)
+conda create -y --name py2 python=2.7.12 
+conda create -y --name py3 python=3.7.4
+
+# clone an existing environment
+conda create -y --clone py35 --name py35v2
+
+# activate an environment
+conda activate py3
+
+# update python version for the current environment
+conda update python
+
+# deactivate an environment
+conda deactivate
+
+# delete an environment
+conda env remove --name py2
+```
+
+If you want to use a specific environment by default you can add something like this to your `.zshrc`/`.bash_profile`
+
+```sh
+echo 'conda activate py3' >> ~/.zshrc
+echo 'conda activate py3' >> ~/.bash_profile
+```
+
+*********************************************************************
+
+## packages {#packages}
+
+```sh
+# list all package versions installed in active environment
+conda list
+
+# install a package or packages to the active environment
+conda install numpy
+
+# install a package version to the active environment
+conda install numpy==1.11 
+
+# update a package in the active environment
+conda update numpy
+
+# update all packages in the active environment
+conda update --all
+
+# install a package or packages to a named environment
+conda install --name py3 \
+#airflow \
+#binarytree \
+#boto3 \
+#graphviz \
+#ipykernel \
+keras \
+matplotlib \
+numpy \
+pandas \
+#parquet-cpp \
+#pyarrow \
+pyhocon \
+pymysql \
+#python-graphviz \
+seaborn \
+#selenium \
+scikit-learn \
+scipy \
+#snowflake-connector-python \
+statsmodels \
+xmltodict
+
+# update all packages in a named environment
+conda update --all --name py3
+```
+
+### channels
+
+```sh
+# allow installation of conda-forge packages
+conda config --add channels conda-forge
+```
+
+examples
+
+```sh
+conda install --name py3  -c conda-forge airflow
+conda install --name py3  -c conda-forge binarytree
+conda install --name py3  -c conda-forge jira
+conda install --name py3  -c conda-forge pyspark
+#conda install --name py3  -c conda-forge snowflake-connector-python
+conda install --name py3  -c conda-forge xgboost
+```
+
+### requirements
+
+```sh
+conda install --name py3 -c conda-forge --file requirements.txt
+```
+
+*********************************************************************
+
+## misc
+
+### search {#search}
+
+```sh
+# latest available python version
+conda search python | tail -1
+conda search python | tail -1 | grep -Eo "\d+\.\d+\.\d+"
+```
+
+### CondaHTTPError
+
+Note: if you get a **CondaHTTPError: HTTP 000 CONNECTION FAILED** error, try running this:
+
+```sh
+conda config --set ssl_verify no
+```
+
+

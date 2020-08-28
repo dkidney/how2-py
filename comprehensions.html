@@ -25,6 +25,93 @@
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
 
 
 <style type="text/css">
@@ -289,32 +376,17 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">functions</a>
-    </li>
-    <li>
-      <a href="_todo.html">args and kwargs</a>
+      <a href="documentation.html">documentation</a>
     </li>
     <li class="divider"></li>
-    <li>
-      <a href="_todo.html">constants</a>
-    </li>
     <li>
       <a href="files.html">files</a>
     </li>
     <li>
-      <a href="_todo.html">exceptions</a>
+      <a href="exceptions.html">exceptions</a>
     </li>
     <li>
       <a href="oop.html">oop</a>
-    </li>
-    <li>
-      <a href="_todo.html">profiling</a>
-    </li>
-    <li>
-      <a href="_todo.html">scripting</a>
-    </li>
-    <li>
-      <a href="_todo.html">testing</a>
     </li>
   </ul>
 </li>
@@ -326,7 +398,7 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="_todo.html">argparse</a>
+      <a href="argparse.html">argparse</a>
     </li>
     <li>
       <a href="collections.html">collections</a>
@@ -350,13 +422,16 @@ $(document).ready(function () {
       <a href="sqlite.html">sqlite</a>
     </li>
     <li>
+      <a href="statistics.html">statistics</a>
+    </li>
+    <li>
       <a href="subprocess.html">subprocess</a>
     </li>
     <li>
       <a href="sys.html">sys</a>
     </li>
     <li>
-      <a href="_todo.html">xml</a>
+      <a href="urllib.html">urllib</a>
     </li>
   </ul>
 </li>
@@ -395,19 +470,20 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">boto3</a>
+      <a href="boto3.html">boto3</a>
     </li>
     <li>
-      <a href="_todo.html">hocon</a>
+      <a href="pyhocon.html">pyhocon</a>
     </li>
     <li>
-      <a href="_todo.html">pyarrow</a>
-    </li>
-    <li>
-      <a href="_todo.html">requests</a>
+      <a href="requests.html">requests</a>
     </li>
     <li>
       <a href="xmltodict.html">xmltodict</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="beautifulsoup.html">beautifulsoup</a>
     </li>
   </ul>
 </li>
@@ -424,15 +500,6 @@ $(document).ready(function () {
     <li>
       <a href="databases.html">databases</a>
     </li>
-    <li>
-      <a href="_todo.html">flask</a>
-    </li>
-    <li>
-      <a href="_todo.html">packages</a>
-    </li>
-    <li>
-      <a href="_todo.html">sphinx</a>
-    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -443,24 +510,18 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="_todo.html">pip</a>
+      <a href="pip.html">pip</a>
     </li>
     <li>
-      <a href="_todo.html">conda</a>
+      <a href="conda.html">conda</a>
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">pyenv</a>
-    </li>
-    <li>
-      <a href="_todo.html">venv</a>
+      <a href="pyenv.html">pyenv</a>
     </li>
     <li class="divider"></li>
     <li>
       <a href="pycharm.html">pycharm</a>
-    </li>
-    <li>
-      <a href="_todo.html">spyder</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -468,15 +529,6 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="jupyter.html">jupyter notebook</a>
-    </li>
-    <li>
-      <a href="_todo.html">jupyter lab</a>
-    </li>
-    <li>
-      <a href="_todo.html">zepplin</a>
-    </li>
-    <li>
-      <a href="_todo.html">databricks</a>
     </li>
   </ul>
 </li>
@@ -525,8 +577,90 @@ $(document).ready(function () {
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#links">links</a></li>
+<li><a href="#lists">lists</a>
+<ul>
+<li><a href="#conditionals">conditionals</a></li>
+<li><a href="#nesting">nesting</a></li>
+</ul></li>
+<li><a href="#dicts">dicts</a>
+<ul>
+<li><a href="#conditionals-1">conditionals</a></li>
+</ul></li>
+<li><a href="#tuples">tuples</a></li>
+<li><a href="#sets">sets</a></li>
+</ul>
+</div>
 
+<!-- ********************************************************************* -->
+<!-- > Headline -->
+<!-- ********************************************************************* -->
+<!-- ## faqs -->
 <hr />
+<div id="links" class="section level2">
+<h2>links</h2>
+<ul>
+<li><a href="https://docs.python.org/3.3/tutorial/datastructures.html#list-comprehensions" class="uri">https://docs.python.org/3.3/tutorial/datastructures.html#list-comprehensions</a><br />
+</li>
+<li><a href="https://realpython.com/list-comprehension-python/" class="uri">https://realpython.com/list-comprehension-python/</a><br />
+</li>
+<li><a href="https://www.datacamp.com/community/tutorials/python-dictionary-comprehension" class="uri">https://www.datacamp.com/community/tutorials/python-dictionary-comprehension</a></li>
+</ul>
+<hr />
+</div>
+<div id="lists" class="section level2">
+<h2>lists</h2>
+<p>Provide a concise way to create lists.</p>
+<p><code>new_list = [expression for member in iterable]</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>[x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="co">#  [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span></span></code></pre></div>
+<div id="conditionals" class="section level3">
+<h3>conditionals</h3>
+<p>conditionals are important because they allow list comprehensions to filter out unwanted values</p>
+<p><code>new_list = [expression for member in iterable (if conditional)]</code></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>[x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>) <span class="cf">if</span> x<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="co">#  [0, 4, 16, 36, 64]</span></span></code></pre></div>
+<p><code>new_list = [expression (if conditional) for member in iterable]</code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>[x <span class="cf">if</span> x<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="co">#  [0, 0, 2, 0, 4, 0, 6, 0, 8, 0]</span></span></code></pre></div>
+</div>
+<div id="nesting" class="section level3">
+<h3>nesting</h3>
+<hr />
+</div>
+</div>
+<div id="dicts" class="section level2">
+<h2>dicts</h2>
+<ul>
+<li>transform one dictionary into another dictionary</li>
+</ul>
+<p><code>new_dict = {v: k for k, v in some_dict.items()}</code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>fahrenheit <span class="op">=</span> {<span class="st">&#39;t1&#39;</span>: <span class="op">-</span><span class="dv">30</span>,<span class="st">&#39;t2&#39;</span>: <span class="op">-</span><span class="dv">20</span>,<span class="st">&#39;t3&#39;</span>: <span class="op">-</span><span class="dv">10</span>,<span class="st">&#39;t4&#39;</span>: <span class="dv">0</span>}</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>celsius <span class="op">=</span> {k:(<span class="bu">float</span>(<span class="dv">5</span>)<span class="op">/</span><span class="dv">9</span>)<span class="op">*</span>(v<span class="op">-</span><span class="dv">32</span>) <span class="cf">for</span> (k,v) <span class="kw">in</span> fahrenheit.items()}</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>celsius</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="co">#  {&#39;t1&#39;: -34.44444444444444, &#39;t2&#39;: -28.88888888888889, &#39;t3&#39;: -23.333333333333336, &#39;t4&#39;: -17.77777777777778}</span></span></code></pre></div>
+<div id="conditionals-1" class="section level3">
+<h3>conditionals</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>dict1 <span class="op">=</span> {<span class="st">&#39;a&#39;</span>: <span class="dv">1</span>, <span class="st">&#39;b&#39;</span>: <span class="dv">2</span>, <span class="st">&#39;c&#39;</span>: <span class="dv">3</span>, <span class="st">&#39;d&#39;</span>: <span class="dv">4</span>, <span class="st">&#39;e&#39;</span>: <span class="dv">5</span>}</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>dict2 <span class="op">=</span> {k:v <span class="cf">for</span> (k,v) <span class="kw">in</span> dict1.items() <span class="cf">if</span> v<span class="op">&gt;</span><span class="dv">2</span>}</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>dict2</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="co">#  {&#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: 5}</span></span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="tuples" class="section level2">
+<h2>tuples</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+<hr />
+</div>
+<div id="sets" class="section level2">
+<h2>sets</h2>
+<p><code>new_set = {expression for member in iterable}</code></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>{x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)}</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="co">#  {0, 1, 64, 4, 36, 9, 16, 49, 81, 25}</span></span></code></pre></div>
+</div>
 
 
 

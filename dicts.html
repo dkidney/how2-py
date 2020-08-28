@@ -376,32 +376,17 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">functions</a>
-    </li>
-    <li>
-      <a href="_todo.html">args and kwargs</a>
+      <a href="documentation.html">documentation</a>
     </li>
     <li class="divider"></li>
-    <li>
-      <a href="_todo.html">constants</a>
-    </li>
     <li>
       <a href="files.html">files</a>
     </li>
     <li>
-      <a href="_todo.html">exceptions</a>
+      <a href="exceptions.html">exceptions</a>
     </li>
     <li>
       <a href="oop.html">oop</a>
-    </li>
-    <li>
-      <a href="_todo.html">profiling</a>
-    </li>
-    <li>
-      <a href="_todo.html">scripting</a>
-    </li>
-    <li>
-      <a href="_todo.html">testing</a>
     </li>
   </ul>
 </li>
@@ -413,7 +398,7 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="_todo.html">argparse</a>
+      <a href="argparse.html">argparse</a>
     </li>
     <li>
       <a href="collections.html">collections</a>
@@ -437,13 +422,16 @@ $(document).ready(function () {
       <a href="sqlite.html">sqlite</a>
     </li>
     <li>
+      <a href="statistics.html">statistics</a>
+    </li>
+    <li>
       <a href="subprocess.html">subprocess</a>
     </li>
     <li>
       <a href="sys.html">sys</a>
     </li>
     <li>
-      <a href="_todo.html">xml</a>
+      <a href="urllib.html">urllib</a>
     </li>
   </ul>
 </li>
@@ -482,19 +470,20 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">boto3</a>
+      <a href="boto3.html">boto3</a>
     </li>
     <li>
-      <a href="_todo.html">hocon</a>
+      <a href="pyhocon.html">pyhocon</a>
     </li>
     <li>
-      <a href="_todo.html">pyarrow</a>
-    </li>
-    <li>
-      <a href="_todo.html">requests</a>
+      <a href="requests.html">requests</a>
     </li>
     <li>
       <a href="xmltodict.html">xmltodict</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="beautifulsoup.html">beautifulsoup</a>
     </li>
   </ul>
 </li>
@@ -511,15 +500,6 @@ $(document).ready(function () {
     <li>
       <a href="databases.html">databases</a>
     </li>
-    <li>
-      <a href="_todo.html">flask</a>
-    </li>
-    <li>
-      <a href="_todo.html">packages</a>
-    </li>
-    <li>
-      <a href="_todo.html">sphinx</a>
-    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -530,24 +510,18 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="_todo.html">pip</a>
+      <a href="pip.html">pip</a>
     </li>
     <li>
-      <a href="_todo.html">conda</a>
+      <a href="conda.html">conda</a>
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">pyenv</a>
-    </li>
-    <li>
-      <a href="_todo.html">venv</a>
+      <a href="pyenv.html">pyenv</a>
     </li>
     <li class="divider"></li>
     <li>
       <a href="pycharm.html">pycharm</a>
-    </li>
-    <li>
-      <a href="_todo.html">spyder</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -555,15 +529,6 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="jupyter.html">jupyter notebook</a>
-    </li>
-    <li>
-      <a href="_todo.html">jupyter lab</a>
-    </li>
-    <li>
-      <a href="_todo.html">zepplin</a>
-    </li>
-    <li>
-      <a href="_todo.html">databricks</a>
     </li>
   </ul>
 </li>
@@ -614,81 +579,278 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#construction">construction</a></li>
-<li><a href="#assertions">assertions</a></li>
-<li><a href="#indexing">indexing</a></li>
+<li><a href="#faqs">faqs</a></li>
+<li><a href="#links">links</a></li>
+<li><a href="#basics">basics</a></li>
+<li><a href="#create">create</a>
+<ul>
+<li><a href="#create-from-two-lists">from a list of keys and a list of values</a></li>
+<li><a href="#create-by-merging-two-dicts">by merging two dicts</a></li>
+</ul></li>
+<li><a href="#membership-tests">membership tests</a></li>
+<li><a href="#index">index</a></li>
 <li><a href="#methods">methods</a></li>
+<li><a href="#functions">functions</a>
+<ul>
+<li><a href="#sorted">sorted</a></li>
+<li><a href="#map">map</a></li>
+<li><a href="#filter">filter</a></li>
+</ul></li>
+<li><a href="#iterate">iterate</a>
+<ul>
+<li><a href="#keys">keys</a></li>
+<li><a href="#values">values</a></li>
+<li><a href="#items">items</a></li>
+</ul></li>
+<li><a href="#apppedix-all-methods">apppedix: all methods</a></li>
 </ul>
 </div>
 
 <hr />
-<div id="construction" class="section level2">
-<h2>construction</h2>
+<blockquote>
+<p>An associative array, where arbitrary keys are mapped to values.</p>
+</blockquote>
+<hr />
+<div id="faqs" class="section level2">
+<h2>faqs</h2>
+<ul>
+<li><a href="#create-from-two-lists">create from a list of keys and a list of values</a><br />
+</li>
+<li><a href="#create-by-merging-two-dicts">create by merging two dicts</a></li>
+</ul>
+<hr />
+</div>
+<div id="links" class="section level2">
+<h2>links</h2>
+<ul>
+<li><a href="https://realpython.com/iterate-through-dictionary-python/" class="uri">https://realpython.com/iterate-through-dictionary-python/</a></li>
+</ul>
+<hr />
+</div>
+<div id="basics" class="section level2">
+<h2>basics</h2>
+<ul>
+<li>dictionaries have no inherent order<br />
+</li>
+<li>keys can be any hashable object - e.g. strings,</li>
+<li>values can be of any type</li>
+</ul>
+<hr />
+</div>
+<div id="create" class="section level2">
+<h2>create</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>{}</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="co">#  {}</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>{<span class="st">&#39;a&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;b&#39;</span>:<span class="dv">2</span>, <span class="st">&#39;c&#39;</span>:<span class="dv">3</span>}</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="co">#  {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3}</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>{<span class="dv">1</span>:<span class="st">&#39;a&#39;</span>, <span class="dv">2</span>:<span class="st">&#39;b&#39;</span>, <span class="dv">3</span>:<span class="st">&#39;c&#39;</span>} <span class="co"># keys don&#39;t have to be strings</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="co">#  {1: &#39;a&#39;, 2: &#39;b&#39;, 3: &#39;c&#39;}</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>{<span class="dv">1</span>:<span class="st">&#39;a&#39;</span>, <span class="st">&#39;2&#39;</span>:<span class="st">&#39;b&#39;</span>, <span class="dv">3</span>:<span class="st">&#39;c&#39;</span>} <span class="co"># keys don&#39;t even need to be the same class</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="co">#  {1: &#39;a&#39;, &#39;2&#39;: &#39;b&#39;, 3: &#39;c&#39;}</span></span></code></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>{<span class="st">&#39;a&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;b&#39;</span>:<span class="dv">2</span>, <span class="st">&#39;c&#39;</span>:<span class="dv">3</span>}</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>{<span class="dv">1</span>:<span class="st">&#39;a&#39;</span>, <span class="dv">2</span>:<span class="st">&#39;b&#39;</span>, <span class="dv">3</span>:<span class="st">&#39;c&#39;</span>} <span class="co"># keys don&#39;t have to be strings</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>{<span class="dv">1</span>:<span class="st">&#39;a&#39;</span>, <span class="st">&#39;2&#39;</span>:<span class="st">&#39;b&#39;</span>, <span class="dv">3</span>:<span class="st">&#39;c&#39;</span>} <span class="co"># keys don&#39;t even need to be the same class</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="bu">dict</span>()</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="bu">dict</span>(a<span class="op">=</span><span class="dv">1</span>, b<span class="op">=</span><span class="dv">2</span>, c<span class="op">=</span><span class="dv">3</span>)</span></code></pre></div>
+<div id="create-from-two-lists" class="section level3">
+<h3>from a list of keys and a list of values</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="co"># using the fromkeys method</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>keys <span class="op">=</span> [<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>values <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="bu">dict</span>.fromkeys(x, y)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a><span class="co"># using dict comprehension</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>keys <span class="op">=</span> [<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>]</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>values <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>{key: value <span class="cf">for</span> key, value <span class="kw">in</span> <span class="bu">zip</span>(keys, values)}</span></code></pre></div>
+</div>
+<div id="create-by-merging-two-dicts" class="section level3">
+<h3>by merging two dicts</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="co"># using the update method</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>x.update(y)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="co"># using the unpacking operator</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>{<span class="op">**</span>x, <span class="op">**</span>y}</span></code></pre></div>
 <hr />
 </div>
-<div id="assertions" class="section level2">
-<h2>assertions</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>mydict <span class="op">=</span> {<span class="st">&#39;a&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;b&#39;</span>:<span class="dv">2</span>, <span class="st">&#39;c&#39;</span>:<span class="dv">3</span>}</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="co">&#39;b&#39;</span> <span class="kw">in</span> mydict</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="co">#  True</span></span></code></pre></div>
+</div>
+<div id="membership-tests" class="section level2">
+<h2>membership tests</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>mydict <span class="op">=</span> {<span class="st">&#39;a&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;b&#39;</span>:<span class="dv">2</span>, <span class="st">&#39;c&#39;</span>:<span class="dv">3</span>}</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="co">&#39;b&#39;</span> <span class="kw">in</span> mydict</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="co">#  True</span></span></code></pre></div>
 <hr />
 </div>
-<div id="indexing" class="section level2">
-<h2>indexing</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>mydict <span class="op">=</span> {<span class="st">&#39;a&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;b&#39;</span>:<span class="dv">2</span>, <span class="st">&#39;c&#39;</span>:<span class="dv">3</span>}</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="co"># mydict[0] # cant&#39;t use positional indexing as there is no inherent order</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>mydict[<span class="st">&#39;a&#39;</span>]</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="co">#  1</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>mydict[<span class="st">&#39;d&#39;</span>] <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>mydict</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="co">#  {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4}</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a>mydict[<span class="st">&#39;d&#39;</span>] <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a>mydict</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a><span class="co">#  {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: None}</span></span></code></pre></div>
+<div id="index" class="section level2">
+<h2>index</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>mydict <span class="op">=</span> {<span class="st">&#39;a&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;b&#39;</span>:<span class="dv">2</span>, <span class="st">&#39;c&#39;</span>:<span class="dv">3</span>}</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>mydict[<span class="dv">0</span>] <span class="co"># fails</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>mydict[<span class="st">&#39;a&#39;</span>]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>mydict[<span class="st">&#39;d&#39;</span>] <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>mydict[<span class="st">&#39;d&#39;</span>] <span class="op">=</span> <span class="va">None</span> <span class="co"># doesn&#39;t remove the key</span></span></code></pre></div>
 <hr />
 </div>
 <div id="methods" class="section level2">
 <h2>methods</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>mydict <span class="op">=</span> {<span class="st">&#39;a&#39;</span>:<span class="dv">1</span>, <span class="st">&#39;b&#39;</span>:<span class="dv">2</span>, <span class="st">&#39;c&#39;</span>:<span class="dv">3</span>, <span class="st">&#39;d&#39;</span>:<span class="dv">4</span>}</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="co"># mydict.append(&#39;d&#39;) # no append method</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>mydict.keys()</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="co">#  dict_keys([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>mydict.values()</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="co">#  dict_values([1, 2, 3, 4])</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>mydict.items() <span class="co"># each element is a (key, value) tuple</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="co">#  dict_items([(&#39;a&#39;, 1), (&#39;b&#39;, 2), (&#39;c&#39;, 3), (&#39;d&#39;, 4)])</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a><span class="cf">for</span> item <span class="kw">in</span> mydict.items():</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a>    <span class="bu">print</span>(item)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a><span class="co">#  (&#39;a&#39;, 1)</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a><span class="co">#  (&#39;b&#39;, 2)</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a><span class="co">#  (&#39;c&#39;, 3)</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a><span class="co">#  (&#39;d&#39;, 4)</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a><span class="cf">for</span> item <span class="kw">in</span> mydict.items():</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&quot;key =&quot;</span>, item[<span class="dv">0</span>], <span class="st">&quot;value =&quot;</span>, item[<span class="dv">1</span>])</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a><span class="co">#  key = a value = 1</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a><span class="co">#  key = b value = 2</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true"></a><span class="co">#  key = c value = 3</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true"></a><span class="co">#  key = d value = 4</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true"></a><span class="cf">for</span> key, value <span class="kw">in</span> mydict.items():</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&quot;key =&quot;</span>, key, <span class="st">&quot;value =&quot;</span>, value)</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true"></a><span class="co">#  key = a value = 1</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true"></a><span class="co">#  key = b value = 2</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true"></a><span class="co">#  key = c value = 3</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true"></a><span class="co">#  key = d value = 4</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true"></a>mydict.pop(<span class="st">&#39;a&#39;</span>) <span class="co"># modifies in place</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true"></a><span class="co">#  1</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true"></a>mydict</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true"></a><span class="co">#  {&#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4}</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true"></a><span class="bu">sorted</span>(mydict) <span class="co"># returns a list of keys in order (keys need to be the same class for this to work)</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true"></a><span class="co">#  [&#39;b&#39;, &#39;c&#39;, &#39;d&#39;]</span></span></code></pre></div>
+<table>
+<colgroup>
+<col width="31%" />
+<col width="68%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>method</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>.clear()</code></td>
+<td>remove all items (in-place)</td>
+</tr>
+<tr class="even">
+<td><code>.copy()</code></td>
+<td>shallow copy</td>
+</tr>
+<tr class="odd">
+<td><code>.fromkeys(keys, values)</code></td>
+<td>create from keys and values</td>
+</tr>
+<tr class="even">
+<td><code>.get(key, default)</code></td>
+<td>return the value for key if key is in the dictionary, else default</td>
+</tr>
+<tr class="odd">
+<td><code>.items()</code></td>
+<td>get a list of (key, value) tuples</td>
+</tr>
+<tr class="even">
+<td><code>.keys()</code></td>
+<td>get a list of keys</td>
+</tr>
+<tr class="odd">
+<td><code>.pop(key)</code></td>
+<td>remove key (in-place)</td>
+</tr>
+<tr class="even">
+<td><code>.popitem()</code></td>
+<td>remove the item that was last inserted</td>
+</tr>
+<tr class="odd">
+<td><code>.setdefault(key, default)</code></td>
+<td>return the value if key exists, otherwise insert and return the default</td>
+</tr>
+<tr class="even">
+<td><code>.update(items)</code></td>
+<td>append new items</td>
+</tr>
+<tr class="odd">
+<td><code>.values()</code></td>
+<td>get a list of values</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="functions" class="section level2">
+<h2>functions</h2>
+<div id="sorted" class="section level3">
+<h3>sorted</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="co"># return a list of keys in order </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="co"># keys need to be the same class for this to work</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="bu">sorted</span>(mydict) </span></code></pre></div>
+</div>
+<div id="map" class="section level3">
+<h3>map</h3>
+<p>Transform values</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="kw">def</span> multiply_items_by_two(item):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>    <span class="cf">return</span> (item[<span class="dv">0</span>], item[<span class="dv">1</span>] <span class="op">*</span> <span class="dv">2</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>mydict <span class="op">=</span> <span class="bu">dict</span>(a<span class="op">=</span><span class="dv">1</span>, b<span class="op">=</span><span class="dv">2</span>, c<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="bu">dict</span>(<span class="bu">map</span>(multiply_items_by_two, mydict.items()))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="co">#  {&#39;a&#39;: 2, &#39;b&#39;: 4, &#39;c&#39;: 6}</span></span></code></pre></div>
+</div>
+<div id="filter" class="section level3">
+<h3>filter</h3>
+<p>Filter values</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="kw">def</span> multiply_items_by_two(item):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>    <span class="cf">return</span> (item[<span class="dv">0</span>], item[<span class="dv">1</span>] <span class="op">*</span> <span class="dv">2</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>mydict <span class="op">=</span> <span class="bu">dict</span>(a<span class="op">=</span><span class="dv">1</span>, b<span class="op">=</span><span class="dv">2</span>, c<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a><span class="bu">dict</span>(<span class="bu">map</span>(multiply_items_by_two, mydict.items()))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a><span class="co">#  {&#39;a&#39;: 2, &#39;b&#39;: 4, &#39;c&#39;: 6}</span></span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="iterate" class="section level2">
+<h2>iterate</h2>
+<div id="keys" class="section level3">
+<h3>keys</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="co"># implicitly loop over keys</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="cf">for</span> key <span class="kw">in</span> mydict:</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>    <span class="bu">print</span>(key)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>    </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a><span class="co"># explicitly loop over keys</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a><span class="cf">for</span> key <span class="kw">in</span> mydict.keys():</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>    <span class="bu">print</span>(key)</span></code></pre></div>
+</div>
+<div id="values" class="section level3">
+<h3>values</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="cf">for</span> value <span class="kw">in</span> mydict.values():</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>    <span class="bu">print</span>(value)</span></code></pre></div>
+</div>
+<div id="items" class="section level3">
+<h3>items</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="co"># loop over items as tuples</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="cf">for</span> item <span class="kw">in</span> mydict.items():</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>    <span class="bu">print</span>(item)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>    <span class="bu">print</span>(item[<span class="dv">0</span>])  <span class="co"># key</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>    <span class="bu">print</span>(item[<span class="dv">1</span>])  <span class="co"># value</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a><span class="co"># loop over unpacked items</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a><span class="cf">for</span> key, value <span class="kw">in</span> mydict.items():</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true"></a>    <span class="bu">print</span>(key)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true"></a>    <span class="bu">print</span>(value)</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="apppedix-all-methods" class="section level2">
+<h2>apppedix: all methods</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>pprint(<span class="bu">dir</span>(<span class="bu">dict</span>))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a><span class="co">#  [&#39;__class__&#39;,</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a><span class="co">#   &#39;__contains__&#39;,</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a><span class="co">#   &#39;__delattr__&#39;,</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a><span class="co">#   &#39;__delitem__&#39;,</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a><span class="co">#   &#39;__dir__&#39;,</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a><span class="co">#   &#39;__doc__&#39;,</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true"></a><span class="co">#   &#39;__eq__&#39;,</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true"></a><span class="co">#   &#39;__format__&#39;,</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true"></a><span class="co">#   &#39;__ge__&#39;,</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true"></a><span class="co">#   &#39;__getattribute__&#39;,</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true"></a><span class="co">#   &#39;__getitem__&#39;,</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true"></a><span class="co">#   &#39;__gt__&#39;,</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true"></a><span class="co">#   &#39;__hash__&#39;,</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true"></a><span class="co">#   &#39;__init__&#39;,</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true"></a><span class="co">#   &#39;__init_subclass__&#39;,</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true"></a><span class="co">#   &#39;__iter__&#39;,</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true"></a><span class="co">#   &#39;__le__&#39;,</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true"></a><span class="co">#   &#39;__len__&#39;,</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true"></a><span class="co">#   &#39;__lt__&#39;,</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true"></a><span class="co">#   &#39;__ne__&#39;,</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true"></a><span class="co">#   &#39;__new__&#39;,</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true"></a><span class="co">#   &#39;__reduce__&#39;,</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true"></a><span class="co">#   &#39;__reduce_ex__&#39;,</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true"></a><span class="co">#   &#39;__repr__&#39;,</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true"></a><span class="co">#   &#39;__reversed__&#39;,</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true"></a><span class="co">#   &#39;__setattr__&#39;,</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true"></a><span class="co">#   &#39;__setitem__&#39;,</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true"></a><span class="co">#   &#39;__sizeof__&#39;,</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true"></a><span class="co">#   &#39;__str__&#39;,</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true"></a><span class="co">#   &#39;__subclasshook__&#39;,</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true"></a><span class="co">#   &#39;clear&#39;,</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true"></a><span class="co">#   &#39;copy&#39;,</span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true"></a><span class="co">#   &#39;fromkeys&#39;,</span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true"></a><span class="co">#   &#39;get&#39;,</span></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true"></a><span class="co">#   &#39;items&#39;,</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true"></a><span class="co">#   &#39;keys&#39;,</span></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true"></a><span class="co">#   &#39;pop&#39;,</span></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true"></a><span class="co">#   &#39;popitem&#39;,</span></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true"></a><span class="co">#   &#39;setdefault&#39;,</span></span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true"></a><span class="co">#   &#39;update&#39;,</span></span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true"></a><span class="co">#   &#39;values&#39;]</span></span></code></pre></div>
 </div>
 
 

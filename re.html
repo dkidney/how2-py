@@ -21,7 +21,6 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -377,32 +376,17 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">functions</a>
-    </li>
-    <li>
-      <a href="_todo.html">args and kwargs</a>
+      <a href="documentation.html">documentation</a>
     </li>
     <li class="divider"></li>
-    <li>
-      <a href="_todo.html">constants</a>
-    </li>
     <li>
       <a href="files.html">files</a>
     </li>
     <li>
-      <a href="_todo.html">exceptions</a>
+      <a href="exceptions.html">exceptions</a>
     </li>
     <li>
       <a href="oop.html">oop</a>
-    </li>
-    <li>
-      <a href="_todo.html">profiling</a>
-    </li>
-    <li>
-      <a href="_todo.html">scripting</a>
-    </li>
-    <li>
-      <a href="_todo.html">testing</a>
     </li>
   </ul>
 </li>
@@ -414,7 +398,7 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="_todo.html">argparse</a>
+      <a href="argparse.html">argparse</a>
     </li>
     <li>
       <a href="collections.html">collections</a>
@@ -438,6 +422,9 @@ $(document).ready(function () {
       <a href="sqlite.html">sqlite</a>
     </li>
     <li>
+      <a href="statistics.html">statistics</a>
+    </li>
+    <li>
       <a href="subprocess.html">subprocess</a>
     </li>
     <li>
@@ -445,9 +432,6 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="urllib.html">urllib</a>
-    </li>
-    <li>
-      <a href="_todo.html">xml</a>
     </li>
   </ul>
 </li>
@@ -486,19 +470,20 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">boto3</a>
+      <a href="boto3.html">boto3</a>
     </li>
     <li>
-      <a href="_todo.html">hocon</a>
+      <a href="pyhocon.html">pyhocon</a>
     </li>
     <li>
-      <a href="_todo.html">pyarrow</a>
-    </li>
-    <li>
-      <a href="_todo.html">requests</a>
+      <a href="requests.html">requests</a>
     </li>
     <li>
       <a href="xmltodict.html">xmltodict</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="beautifulsoup.html">beautifulsoup</a>
     </li>
   </ul>
 </li>
@@ -515,15 +500,6 @@ $(document).ready(function () {
     <li>
       <a href="databases.html">databases</a>
     </li>
-    <li>
-      <a href="_todo.html">flask</a>
-    </li>
-    <li>
-      <a href="_todo.html">packages</a>
-    </li>
-    <li>
-      <a href="_todo.html">sphinx</a>
-    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -534,27 +510,18 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="_todo.html">pip</a>
+      <a href="pip.html">pip</a>
     </li>
     <li>
-      <a href="_todo.html">conda</a>
+      <a href="conda.html">conda</a>
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">pipenv</a>
-    </li>
-    <li>
       <a href="pyenv.html">pyenv</a>
-    </li>
-    <li>
-      <a href="_todo.html">venv</a>
     </li>
     <li class="divider"></li>
     <li>
       <a href="pycharm.html">pycharm</a>
-    </li>
-    <li>
-      <a href="_todo.html">spyder</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -562,15 +529,6 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="jupyter.html">jupyter notebook</a>
-    </li>
-    <li>
-      <a href="_todo.html">jupyter lab</a>
-    </li>
-    <li>
-      <a href="_todo.html">zepplin</a>
-    </li>
-    <li>
-      <a href="_todo.html">databricks</a>
     </li>
   </ul>
 </li>
@@ -650,6 +608,75 @@ $(document).ready(function () {
 </div>
 <div id="regex" class="section level2">
 <h2>regex</h2>
+<ul>
+<li><a href="https://docs.python.org/3/howto/regex.html" class="uri">https://docs.python.org/3/howto/regex.html</a></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>expression</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>^</code></td>
+<td>Matches the beginning of a line</td>
+</tr>
+<tr class="even">
+<td><code>$</code></td>
+<td>Matches the end of the line</td>
+</tr>
+<tr class="odd">
+<td><code>.</code></td>
+<td>Matches any character</td>
+</tr>
+<tr class="even">
+<td><code>\s</code></td>
+<td>Matches whitespace</td>
+</tr>
+<tr class="odd">
+<td><code>\S</code></td>
+<td>Matches any non-whitespace character</td>
+</tr>
+<tr class="even">
+<td><code>*</code></td>
+<td>Repeats a character zero or more times</td>
+</tr>
+<tr class="odd">
+<td><code>*?</code></td>
+<td>Repeats a character zero or more times (non-greedy)</td>
+</tr>
+<tr class="even">
+<td><code>+</code></td>
+<td>Repeats a character one or more times</td>
+</tr>
+<tr class="odd">
+<td><code>+?</code></td>
+<td>Repeats a character one or more times (non-greedy)</td>
+</tr>
+<tr class="even">
+<td><code>[aeiou]</code></td>
+<td>Matches a single character in the listed set</td>
+</tr>
+<tr class="odd">
+<td><code>[^XYZ]</code></td>
+<td>Matches a single character not in the listed set</td>
+</tr>
+<tr class="even">
+<td><code>[a-z0-9]</code></td>
+<td>The set of characters can include a range</td>
+</tr>
+<tr class="odd">
+<td><code>(</code></td>
+<td>Indicates where string extraction is to start</td>
+</tr>
+<tr class="even">
+<td><code>)</code></td>
+<td>Indicates where string extraction is to end</td>
+</tr>
+</tbody>
+</table>
 <hr />
 </div>
 <div id="methods" class="section level2">
@@ -668,7 +695,7 @@ $(document).ready(function () {
 </tr>
 <tr class="even">
 <td><code>re.search(pattern, string)</code></td>
-<td>returns a <code>Match</code> object</td>
+<td>returns a <code>Match</code> object (which is truthy)</td>
 </tr>
 <tr class="odd">
 <td><code>re.split(pattern, string, maxsplit=0)</code></td>
@@ -682,109 +709,125 @@ $(document).ready(function () {
 </table>
 <div id="findall" class="section level3">
 <h3>findall</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> re</span>
-<span id="cb1-2"><a href="#cb1-2"></a>alphabet <span class="op">=</span> <span class="st">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>re.findall(<span class="st">&#39;[aeiou]&#39;</span>, alphabet)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co">#  [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;]</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>re.findall(<span class="st">&#39;[aeiou].+[aeiou]&#39;</span>, alphabet)  <span class="co"># greedy</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co">#  [&#39;abcdefghijklmnopqrstu&#39;]</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>re.findall(<span class="st">&#39;[aeiou].+?[aeiou]&#39;</span>, alphabet)  <span class="co"># non-greedy</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#  [&#39;abcde&#39;, &#39;ijklmno&#39;]</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="im">import</span> re</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>alphabet <span class="op">=</span> <span class="st">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>re.findall(<span class="st">&#39;[aeiou]&#39;</span>, alphabet)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="co">#  [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;]</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>re.findall(<span class="st">&#39;[aeiou].+[aeiou]&#39;</span>, alphabet)  <span class="co"># greedy</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="co">#  [&#39;abcdefghijklmnopqrstu&#39;]</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>re.findall(<span class="st">&#39;[aeiou].+?[aeiou]&#39;</span>, alphabet)  <span class="co"># non-greedy</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="co">#  [&#39;abcde&#39;, &#39;ijklmno&#39;]</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="im">import</span> re</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>re.findall(<span class="st">&#39;[aeiou]&#39;</span>, <span class="st">&#39;abcde&#39;</span>) <span class="co"># returns a list of all sub-strings matching the regular expression</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="co">#  [&#39;a&#39;, &#39;e&#39;]</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>re.findall(<span class="st">&#39;.+:&#39;</span>, <span class="st">&#39;a:b:c:d:e&#39;</span>) <span class="co"># greedy (prefers the longest match)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="co">#  [&#39;a:b:c:d:&#39;]</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>re.findall(<span class="st">&#39;.+?:&#39;</span>, <span class="st">&#39;a:b:c:d:e&#39;</span>) <span class="co"># non-greedy (prefers the shortest match)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="co">#  [&#39;a:&#39;, &#39;b:&#39;, &#39;c:&#39;, &#39;d:&#39;]</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="im">import</span> re</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>re.findall(<span class="st">&#39;From \S+@\S+&#39;</span>, <span class="st">&#39;From name@domain blah blah&#39;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="co">#  [&#39;From name@domain&#39;]</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>re.findall(<span class="st">&#39;From (\S+@\S+)&#39;</span>, <span class="st">&#39;From name@domain blah blah&#39;</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="co">#  [&#39;name@domain&#39;]</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>re.findall(<span class="st">&#39;\S+?@\S+&#39;</span>, <span class="st">&#39;From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008&#39;</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="co">#  [&#39;stephen.marquard@uct.ac.za&#39;]</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a>re.findall(<span class="st">&#39;\S+@\S+&#39;</span>, <span class="st">&#39;From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008&#39;</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a><span class="co">#  [&#39;stephen.marquard@uct.ac.za&#39;]</span></span></code></pre></div>
 </div>
 <div id="search" class="section level3">
 <h3>search</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> re</span>
-<span id="cb2-2"><a href="#cb2-2"></a>alphabet <span class="op">=</span> <span class="st">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>re.search(<span class="st">&#39;[^aeiou]+&#39;</span>, alphabet)                                                                                  </span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#  &lt;re.Match object; span=(1, 4), match=&#39;bcd&#39;&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="im">import</span> re</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>alphabet <span class="op">=</span> <span class="st">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>re.search(<span class="st">&#39;[^aeiou]+&#39;</span>, alphabet)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="co">#  &lt;re.Match object; span=(1, 4), match=&#39;bcd&#39;&gt;</span></span></code></pre></div>
 </div>
 <div id="split" class="section level3">
 <h3>split</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> re</span>
-<span id="cb3-2"><a href="#cb3-2"></a>alphabet <span class="op">=</span> <span class="st">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>re.split(<span class="st">&#39;[aeiou]&#39;</span>, alphabet)</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#  [&#39;&#39;, &#39;bcd&#39;, &#39;fgh&#39;, &#39;jklmn&#39;, &#39;pqrst&#39;, &#39;vwxyz&#39;]</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>re.split(<span class="st">&#39;[^aeiou]+&#39;</span>, alphabet)</span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#  [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;, &#39;&#39;]</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>re.split(<span class="st">&#39;[^aeiou]+&#39;</span>, alphabet, maxsplit<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#  [&#39;a&#39;, &#39;efghijklmnopqrstuvwxyz&#39;]</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="im">import</span> re</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>alphabet <span class="op">=</span> <span class="st">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>re.split(<span class="st">&#39;[aeiou]&#39;</span>, alphabet)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="co">#  [&#39;&#39;, &#39;bcd&#39;, &#39;fgh&#39;, &#39;jklmn&#39;, &#39;pqrst&#39;, &#39;vwxyz&#39;]</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>re.split(<span class="st">&#39;[^aeiou]+&#39;</span>, alphabet)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="co">#  [&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;, &#39;u&#39;, &#39;&#39;]</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>re.split(<span class="st">&#39;[^aeiou]+&#39;</span>, alphabet, maxsplit<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a><span class="co">#  [&#39;a&#39;, &#39;efghijklmnopqrstuvwxyz&#39;]</span></span></code></pre></div>
 </div>
 <div id="sub" class="section level3">
 <h3>sub</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> re</span>
-<span id="cb4-2"><a href="#cb4-2"></a>alphabet <span class="op">=</span> <span class="st">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>re.sub(<span class="st">&#39;[aeiou]&#39;</span>, <span class="st">&quot;_&quot;</span>, alphabet)</span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#  &#39;_bcd_fgh_jklmn_pqrst_vwxyz&#39;</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>re.sub(<span class="st">&#39;[^aeiou]&#39;</span>, <span class="st">&quot;_&quot;</span>, alphabet)</span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#  &#39;a___e___i_____o_____u_____&#39;</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>re.sub(<span class="st">&#39;[^aeiou]+&#39;</span>, <span class="st">&quot;_&quot;</span>, alphabet)</span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#  &#39;a_e_i_o_u_&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="im">import</span> re</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>alphabet <span class="op">=</span> <span class="st">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>re.sub(<span class="st">&#39;[aeiou]&#39;</span>, <span class="st">&quot;_&quot;</span>, alphabet)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="co">#  &#39;_bcd_fgh_jklmn_pqrst_vwxyz&#39;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>re.sub(<span class="st">&#39;[^aeiou]&#39;</span>, <span class="st">&quot;_&quot;</span>, alphabet)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a><span class="co">#  &#39;a___e___i_____o_____u_____&#39;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a>re.sub(<span class="st">&#39;[^aeiou]+&#39;</span>, <span class="st">&quot;_&quot;</span>, alphabet)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a><span class="co">#  &#39;a_e_i_o_u_&#39;</span></span></code></pre></div>
 <hr />
 </div>
 </div>
 <div id="appendix-dir" class="section level2">
 <h2>appendix: dir</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> re</span>
-<span id="cb5-3"><a href="#cb5-3"></a>pprint(<span class="bu">dir</span>(re))</span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#  [&#39;A&#39;,</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#   &#39;ASCII&#39;,</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#   &#39;DEBUG&#39;,</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#   &#39;DOTALL&#39;,</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#   &#39;I&#39;,</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#   &#39;IGNORECASE&#39;,</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#   &#39;L&#39;,</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#   &#39;LOCALE&#39;,</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#   &#39;M&#39;,</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#   &#39;MULTILINE&#39;,</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#   &#39;Match&#39;,</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#   &#39;Pattern&#39;,</span></span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="co">#   &#39;RegexFlag&#39;,</span></span>
-<span id="cb5-17"><a href="#cb5-17"></a><span class="co">#   &#39;S&#39;,</span></span>
-<span id="cb5-18"><a href="#cb5-18"></a><span class="co">#   &#39;Scanner&#39;,</span></span>
-<span id="cb5-19"><a href="#cb5-19"></a><span class="co">#   &#39;T&#39;,</span></span>
-<span id="cb5-20"><a href="#cb5-20"></a><span class="co">#   &#39;TEMPLATE&#39;,</span></span>
-<span id="cb5-21"><a href="#cb5-21"></a><span class="co">#   &#39;U&#39;,</span></span>
-<span id="cb5-22"><a href="#cb5-22"></a><span class="co">#   &#39;UNICODE&#39;,</span></span>
-<span id="cb5-23"><a href="#cb5-23"></a><span class="co">#   &#39;VERBOSE&#39;,</span></span>
-<span id="cb5-24"><a href="#cb5-24"></a><span class="co">#   &#39;X&#39;,</span></span>
-<span id="cb5-25"><a href="#cb5-25"></a><span class="co">#   &#39;_MAXCACHE&#39;,</span></span>
-<span id="cb5-26"><a href="#cb5-26"></a><span class="co">#   &#39;__all__&#39;,</span></span>
-<span id="cb5-27"><a href="#cb5-27"></a><span class="co">#   &#39;__builtins__&#39;,</span></span>
-<span id="cb5-28"><a href="#cb5-28"></a><span class="co">#   &#39;__cached__&#39;,</span></span>
-<span id="cb5-29"><a href="#cb5-29"></a><span class="co">#   &#39;__doc__&#39;,</span></span>
-<span id="cb5-30"><a href="#cb5-30"></a><span class="co">#   &#39;__file__&#39;,</span></span>
-<span id="cb5-31"><a href="#cb5-31"></a><span class="co">#   &#39;__loader__&#39;,</span></span>
-<span id="cb5-32"><a href="#cb5-32"></a><span class="co">#   &#39;__name__&#39;,</span></span>
-<span id="cb5-33"><a href="#cb5-33"></a><span class="co">#   &#39;__package__&#39;,</span></span>
-<span id="cb5-34"><a href="#cb5-34"></a><span class="co">#   &#39;__spec__&#39;,</span></span>
-<span id="cb5-35"><a href="#cb5-35"></a><span class="co">#   &#39;__version__&#39;,</span></span>
-<span id="cb5-36"><a href="#cb5-36"></a><span class="co">#   &#39;_cache&#39;,</span></span>
-<span id="cb5-37"><a href="#cb5-37"></a><span class="co">#   &#39;_compile&#39;,</span></span>
-<span id="cb5-38"><a href="#cb5-38"></a><span class="co">#   &#39;_compile_repl&#39;,</span></span>
-<span id="cb5-39"><a href="#cb5-39"></a><span class="co">#   &#39;_expand&#39;,</span></span>
-<span id="cb5-40"><a href="#cb5-40"></a><span class="co">#   &#39;_locale&#39;,</span></span>
-<span id="cb5-41"><a href="#cb5-41"></a><span class="co">#   &#39;_pickle&#39;,</span></span>
-<span id="cb5-42"><a href="#cb5-42"></a><span class="co">#   &#39;_special_chars_map&#39;,</span></span>
-<span id="cb5-43"><a href="#cb5-43"></a><span class="co">#   &#39;_subx&#39;,</span></span>
-<span id="cb5-44"><a href="#cb5-44"></a><span class="co">#   &#39;compile&#39;,</span></span>
-<span id="cb5-45"><a href="#cb5-45"></a><span class="co">#   &#39;copyreg&#39;,</span></span>
-<span id="cb5-46"><a href="#cb5-46"></a><span class="co">#   &#39;enum&#39;,</span></span>
-<span id="cb5-47"><a href="#cb5-47"></a><span class="co">#   &#39;error&#39;,</span></span>
-<span id="cb5-48"><a href="#cb5-48"></a><span class="co">#   &#39;escape&#39;,</span></span>
-<span id="cb5-49"><a href="#cb5-49"></a><span class="co">#   &#39;findall&#39;,</span></span>
-<span id="cb5-50"><a href="#cb5-50"></a><span class="co">#   &#39;finditer&#39;,</span></span>
-<span id="cb5-51"><a href="#cb5-51"></a><span class="co">#   &#39;fullmatch&#39;,</span></span>
-<span id="cb5-52"><a href="#cb5-52"></a><span class="co">#   &#39;functools&#39;,</span></span>
-<span id="cb5-53"><a href="#cb5-53"></a><span class="co">#   &#39;match&#39;,</span></span>
-<span id="cb5-54"><a href="#cb5-54"></a><span class="co">#   &#39;purge&#39;,</span></span>
-<span id="cb5-55"><a href="#cb5-55"></a><span class="co">#   &#39;search&#39;,</span></span>
-<span id="cb5-56"><a href="#cb5-56"></a><span class="co">#   &#39;split&#39;,</span></span>
-<span id="cb5-57"><a href="#cb5-57"></a><span class="co">#   &#39;sre_compile&#39;,</span></span>
-<span id="cb5-58"><a href="#cb5-58"></a><span class="co">#   &#39;sre_parse&#39;,</span></span>
-<span id="cb5-59"><a href="#cb5-59"></a><span class="co">#   &#39;sub&#39;,</span></span>
-<span id="cb5-60"><a href="#cb5-60"></a><span class="co">#   &#39;subn&#39;,</span></span>
-<span id="cb5-61"><a href="#cb5-61"></a><span class="co">#   &#39;template&#39;]</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="im">import</span> re</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>pprint(<span class="bu">dir</span>(re))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="co">#  [&#39;A&#39;,</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="co">#   &#39;ASCII&#39;,</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a><span class="co">#   &#39;DEBUG&#39;,</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="co">#   &#39;DOTALL&#39;,</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a><span class="co">#   &#39;I&#39;,</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a><span class="co">#   &#39;IGNORECASE&#39;,</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a><span class="co">#   &#39;L&#39;,</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a><span class="co">#   &#39;LOCALE&#39;,</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true"></a><span class="co">#   &#39;M&#39;,</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true"></a><span class="co">#   &#39;MULTILINE&#39;,</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true"></a><span class="co">#   &#39;Match&#39;,</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true"></a><span class="co">#   &#39;Pattern&#39;,</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true"></a><span class="co">#   &#39;RegexFlag&#39;,</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true"></a><span class="co">#   &#39;S&#39;,</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true"></a><span class="co">#   &#39;Scanner&#39;,</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true"></a><span class="co">#   &#39;T&#39;,</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true"></a><span class="co">#   &#39;TEMPLATE&#39;,</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true"></a><span class="co">#   &#39;U&#39;,</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true"></a><span class="co">#   &#39;UNICODE&#39;,</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true"></a><span class="co">#   &#39;VERBOSE&#39;,</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true"></a><span class="co">#   &#39;X&#39;,</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true"></a><span class="co">#   &#39;_MAXCACHE&#39;,</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true"></a><span class="co">#   &#39;__all__&#39;,</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true"></a><span class="co">#   &#39;__builtins__&#39;,</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true"></a><span class="co">#   &#39;__cached__&#39;,</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true"></a><span class="co">#   &#39;__doc__&#39;,</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true"></a><span class="co">#   &#39;__file__&#39;,</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true"></a><span class="co">#   &#39;__loader__&#39;,</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true"></a><span class="co">#   &#39;__name__&#39;,</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true"></a><span class="co">#   &#39;__package__&#39;,</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true"></a><span class="co">#   &#39;__spec__&#39;,</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true"></a><span class="co">#   &#39;__version__&#39;,</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true"></a><span class="co">#   &#39;_cache&#39;,</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true"></a><span class="co">#   &#39;_compile&#39;,</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true"></a><span class="co">#   &#39;_compile_repl&#39;,</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true"></a><span class="co">#   &#39;_expand&#39;,</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true"></a><span class="co">#   &#39;_locale&#39;,</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true"></a><span class="co">#   &#39;_pickle&#39;,</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true"></a><span class="co">#   &#39;_special_chars_map&#39;,</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true"></a><span class="co">#   &#39;_subx&#39;,</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true"></a><span class="co">#   &#39;compile&#39;,</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true"></a><span class="co">#   &#39;copyreg&#39;,</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true"></a><span class="co">#   &#39;enum&#39;,</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true"></a><span class="co">#   &#39;error&#39;,</span></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true"></a><span class="co">#   &#39;escape&#39;,</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true"></a><span class="co">#   &#39;findall&#39;,</span></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true"></a><span class="co">#   &#39;finditer&#39;,</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true"></a><span class="co">#   &#39;fullmatch&#39;,</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true"></a><span class="co">#   &#39;functools&#39;,</span></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true"></a><span class="co">#   &#39;match&#39;,</span></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true"></a><span class="co">#   &#39;purge&#39;,</span></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true"></a><span class="co">#   &#39;search&#39;,</span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true"></a><span class="co">#   &#39;split&#39;,</span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true"></a><span class="co">#   &#39;sre_compile&#39;,</span></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true"></a><span class="co">#   &#39;sre_parse&#39;,</span></span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true"></a><span class="co">#   &#39;sub&#39;,</span></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true"></a><span class="co">#   &#39;subn&#39;,</span></span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true"></a><span class="co">#   &#39;template&#39;]</span></span></code></pre></div>
 </div>
 
 

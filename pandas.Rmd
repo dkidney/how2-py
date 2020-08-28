@@ -575,6 +575,7 @@ df.rename(index={'oldname': 'newname'})
 
 ```python
 df['col1'].replace(np.nan, df['col1'].mean())
+df['Gender'].replace(to_replace=['male','female'], value=[0,1], inplace=True)
 ```
 
 ### reset_index
@@ -624,6 +625,12 @@ df
 df['c1'].str.split(',', expand=True)
 ```
 
+### to_datetime
+
+```python
+# TODO
+```
+
 ### to_string
 
 ```python
@@ -650,6 +657,7 @@ df['col1'].unique()
 
 ```python
 df['col1'].value_counts()
+df['col1'].value_counts(normalize=True)
 df['col1'].value_counts().to_frame() # convert series to dataframe
 ```
 

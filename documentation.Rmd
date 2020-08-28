@@ -1,0 +1,186 @@
+---
+title: documentation
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+<!-- ********************************************************************* -->
+
+<!-- > Headline -->
+
+<!-- ********************************************************************* -->
+
+<!-- ## faqs -->
+
+*********************************************************************
+
+## links
+
+* https://realpython.com/documenting-python-code/  
+* https://www.datacamp.com/community/tutorials/docstrings-python  
+* https://www.python.org/dev/peps/pep-0257/  
+
+*********************************************************************
+
+## Comments
+
+Limit line length for comments and docstrings to 72 characters (https://pep8.org/#maximum-line-length)
+
+### tags
+
+```python
+# TODO: asdf
+# BUG: asdf
+# FIXME: asdf
+```
+
+### type hints
+
+* https://www.youtube.com/watch?v=2xWhaALHTvU
+
+```python
+def hello(name: str) -> str:
+    return(f"Hello {name}")
+```
+
+*********************************************************************
+
+### docstring basics
+
+Always use triple double quote string format, even if it's just one line.
+
+The built-in function `help()` prints out the objects docstring to the console.
+
+```{python}
+def myfun():
+    """A summary line
+    
+    Further elaboration of the docstring.
+    Can be multiple lines.
+    """    
+    
+    print("hello")
+
+myfun.__doc__
+help(myfun)
+```
+
+*********************************************************************
+
+## docstring types
+
+### class docstrings
+
+```python
+class MyClass:
+    """
+    Brief summary of purpose and behaviour
+    ...
+
+    Attributes
+    ----------
+    attribute1 : str
+        an attribute
+    attribute2 : str
+        another attribute
+
+    Methods
+    -------
+    a_method
+        Prints attribute2
+    """
+
+    attribute1 = "asdf"
+    
+    def __init_(self, attribute2: str):
+        """
+        Parameters
+        ----------
+        attribute2 : str
+            another attribute
+            
+        Raises
+        ------
+        NotImplementedError
+            If no sound is set for the animal or passed in as a
+            parameter.
+            
+        """
+        
+        self.attribute2 = attribute2
+
+    def a_method(self):
+        """Prints attribute2"""
+
+        print(self.attribute1)
+```
+
+### function, module and package docstrings
+
+#### function
+
+* should include the same items as a class method:
+  * a brief description of what the function is and what it’s used for  
+  * any arguments (both required and optional) that are passed including keyword arguments  
+  * label any arguments that are considered optional  
+  * any side effects that occur when executing the function  
+  * any exceptions that are raised  
+  * any restrictions on when the function can be called  
+
+#### module
+
+* similar to class docstrings  
+* placed at the top of the file even before any imports  
+* should include:  
+  * a brief description of the module and its purpose  
+  * a list of any classes, exception, functions, and any other objects exported by the module
+
+#### package
+
+* should be placed at the top of the package’s `__init__.py` file  
+* should list the modules and sub-packages that are exported by the package
+
+### script docstrings
+
+* placed at the top of the file  
+* should be documented well enough for users to be able to have a sufficient understanding of how to use the script  
+* should be usable for its “usage” message, when the user incorrectly passes in a parameter or uses the -h option
+
+```{r, opts.label="cat_file"}
+cat_file("hello.py")
+```
+
+```{sh}
+python hello.py you
+```
+
+This bit doesn't work...
+
+```{sh}
+python hello.py -h
+```
+
+#### argparse
+
+* if you use `argparse` you can omit parameter-specific documentation  
+  * make sure you document it filly in the `argparser.parser.add_argument` function  
+  * recommended to use the `__doc__` for the description parameter within `argparse.ArgumentParser` constructor. 
+  * any custom or third-party imports should be listed to allow users to know which packages may be required for running the script
+  
+*********************************************************************
+
+## docstring formats
+
+### NumPy/SciPy
+
+### Google
+
+*********************************************************************
+
+## documenting projects
+
+
+

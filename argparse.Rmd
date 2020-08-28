@@ -1,0 +1,42 @@
+---
+title: argparse
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+<!-- ********************************************************************* -->
+
+<!-- > Headline -->
+
+<!-- ********************************************************************* -->
+
+<!-- ## faqs -->
+
+*********************************************************************
+
+## links
+
+realpython:
+
+* [comparing-python-command-line-parsing-libraries](https://realpython.com/comparing-python-command-line-parsing-libraries-argparse-docopt-click)
+
+<!-- ********************************************************************* -->
+
+<!-- ## setup -->
+
+<!-- ```python -->
+<!-- # TODO -->
+<!-- ``` -->
+
+<!-- ********************************************************************* -->
+
+<!-- ## basics -->
+
+<!-- ```python -->
+<!-- # TODO -->
+<!-- ``` -->
+
+

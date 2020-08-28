@@ -18,15 +18,18 @@ output:
 
 ## todo
 
+* json
+* datetime
+* time
 * sets
 * comprehensions
 * args and kwargs
+* scripting
 * testing
 * collections
 * xml
 * sklearn
 * matplotlib
-* boto3
-* hocon
+* pyhocon
 * pyarrow
 * requests

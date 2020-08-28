@@ -21,7 +21,6 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -377,32 +376,17 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">functions</a>
-    </li>
-    <li>
-      <a href="_todo.html">args and kwargs</a>
+      <a href="documentation.html">documentation</a>
     </li>
     <li class="divider"></li>
-    <li>
-      <a href="_todo.html">constants</a>
-    </li>
     <li>
       <a href="files.html">files</a>
     </li>
     <li>
-      <a href="_todo.html">exceptions</a>
+      <a href="exceptions.html">exceptions</a>
     </li>
     <li>
       <a href="oop.html">oop</a>
-    </li>
-    <li>
-      <a href="_todo.html">profiling</a>
-    </li>
-    <li>
-      <a href="_todo.html">scripting</a>
-    </li>
-    <li>
-      <a href="_todo.html">testing</a>
     </li>
   </ul>
 </li>
@@ -414,7 +398,7 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="_todo.html">argparse</a>
+      <a href="argparse.html">argparse</a>
     </li>
     <li>
       <a href="collections.html">collections</a>
@@ -438,6 +422,9 @@ $(document).ready(function () {
       <a href="sqlite.html">sqlite</a>
     </li>
     <li>
+      <a href="statistics.html">statistics</a>
+    </li>
+    <li>
       <a href="subprocess.html">subprocess</a>
     </li>
     <li>
@@ -445,9 +432,6 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="urllib.html">urllib</a>
-    </li>
-    <li>
-      <a href="_todo.html">xml</a>
     </li>
   </ul>
 </li>
@@ -486,19 +470,20 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">boto3</a>
+      <a href="boto3.html">boto3</a>
     </li>
     <li>
-      <a href="_todo.html">hocon</a>
+      <a href="pyhocon.html">pyhocon</a>
     </li>
     <li>
-      <a href="_todo.html">pyarrow</a>
-    </li>
-    <li>
-      <a href="_todo.html">requests</a>
+      <a href="requests.html">requests</a>
     </li>
     <li>
       <a href="xmltodict.html">xmltodict</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="beautifulsoup.html">beautifulsoup</a>
     </li>
   </ul>
 </li>
@@ -515,15 +500,6 @@ $(document).ready(function () {
     <li>
       <a href="databases.html">databases</a>
     </li>
-    <li>
-      <a href="_todo.html">flask</a>
-    </li>
-    <li>
-      <a href="_todo.html">packages</a>
-    </li>
-    <li>
-      <a href="_todo.html">sphinx</a>
-    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -534,24 +510,18 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="_todo.html">pip</a>
+      <a href="pip.html">pip</a>
     </li>
     <li>
-      <a href="_todo.html">conda</a>
+      <a href="conda.html">conda</a>
     </li>
     <li class="divider"></li>
     <li>
-      <a href="_todo.html">pyenv</a>
-    </li>
-    <li>
-      <a href="_todo.html">venv</a>
+      <a href="pyenv.html">pyenv</a>
     </li>
     <li class="divider"></li>
     <li>
       <a href="pycharm.html">pycharm</a>
-    </li>
-    <li>
-      <a href="_todo.html">spyder</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -559,15 +529,6 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="jupyter.html">jupyter notebook</a>
-    </li>
-    <li>
-      <a href="_todo.html">jupyter lab</a>
-    </li>
-    <li>
-      <a href="_todo.html">zepplin</a>
-    </li>
-    <li>
-      <a href="_todo.html">databricks</a>
     </li>
   </ul>
 </li>
@@ -629,6 +590,10 @@ $(document).ready(function () {
 <li><a href="#shortcuts">shortcuts</a></li>
 <li><a href="#other">other</a></li>
 <li><a href="#window-layout">window layout</a></li>
+<li><a href="#console">console</a></li>
+<li><a href="#code-style">code style</a></li>
+<li><a href="#plugins">plugins</a></li>
+<li><a href="#default-interpreter">default interpreter</a></li>
 </ul></li>
 <li><a href="#run-configurations">run configurations</a></li>
 <li><a href="#todo">todo</a>
@@ -662,7 +627,7 @@ $(document).ready(function () {
 <hr />
 <div id="install" class="section level2">
 <h2>install</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">brew</span> cask install pycharm-ce</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">brew</span> cask install pycharm-ce</span></code></pre></div>
 <hr />
 </div>
 <div id="projects" class="section level2">
@@ -863,6 +828,37 @@ $(document).ready(function () {
 <p><code>Window &gt; Use current layout as default</code></p>
 <hr />
 </div>
+<div id="console" class="section level3">
+<h3>console</h3>
+<p>Use IPython if available (i.e. installed in your python env)</p>
+<ul>
+<li>Go to <code>Preferences &gt; Build, Execution, Deployment &gt; Console</code><br />
+</li>
+<li>then check <code>Use IPython if available</code></li>
+</ul>
+</div>
+<div id="code-style" class="section level3">
+<h3>code style</h3>
+<p>Add visual guidelines:</p>
+<ul>
+<li>72 (docstrings/comments)</li>
+<li>79 (code)</li>
+</ul>
+<p>See <a href="https://pep8.org/#maximum-line-length" class="uri">https://pep8.org/#maximum-line-length</a></p>
+<p><code>Preferences &gt; Editor &gt; Code Style &gt; General &gt; Visual guides:</code> 72,79 <code>columns</code></p>
+</div>
+<div id="plugins" class="section level3">
+<h3>plugins</h3>
+<p><code>Preferences &gt; Plugins</code></p>
+<ul>
+<li>Markdown</li>
+<li></li>
+</ul>
+</div>
+<div id="default-interpreter" class="section level3">
+<h3>default interpreter</h3>
+<p><code>File &gt; Other settings &gt; Project Interpreter</code></p>
+</div>
 </div>
 <div id="run-configurations" class="section level2">
 <h2>run configurations</h2>
@@ -875,7 +871,7 @@ $(document).ready(function () {
 <h2>todo</h2>
 <div id="make-a-new-py-file" class="section level3">
 <h3>make a new py file</h3>
-<p>within the project, right click on the project folder and then click <code>New &gt; Python file</code></p>
+<p>within the project, right click on the project folder wand then click <code>New &gt; Python file</code></p>
 </div>
 <div id="set-the-interpreter-1" class="section level3">
 <h3>set the interpreter</h3>

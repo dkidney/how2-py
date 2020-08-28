@@ -22,29 +22,33 @@ navbar:
         - text: "comprehensions"
           href: comprehensions.html
         - text: "---------"
-        - text: "functions"
-          href: _todo.html
-        - text: "args and kwargs"
-          href: _todo.html
+        # - text: "functions"
+        #   href: _todo.html
+        - text: "documentation"
+          href: documentation.html
+        # - text: "args and kwargs"
+        #   href: _todo.html
+        # - text: "decorators"
+        #   href: _todo.html
         - text: "---------"
-        - text: "constants"
-          href: _todo.html
+        # - text: "constants"
+        #   href: _todo.html
         - text: "files"
           href: files.html
         - text: "exceptions"
-          href: _todo.html
+          href: exceptions.html
         - text: "oop"
           href: oop.html
-        - text: "profiling"
-          href: _todo.html
-        - text: "scripting"
-          href: _todo.html
-        - text: "testing"
-          href: _todo.html
+        # - text: "profiling"
+        #   href: _todo.html
+        # - text: "scripting"
+        #   href: _todo.html
+        # - text: "testing"
+        #   href: _todo.html
     - text: "std lib"
       menu:
         - text: "argparse"
-          href: _todo.html
+          href: argparse.html
         - text: "collections"
           href: collections.html
         - text: "datetime"
@@ -59,14 +63,16 @@ navbar:
           href: re.html
         - text: "sqlite"
           href: sqlite.html
+        - text: "statistics"
+          href: statistics.html
         - text: "subprocess"
           href: subprocess.html
         - text: "sys"
           href: sys.html
         - text: "urllib"
           href: urllib.html
-        - text: "xml"
-          href: _todo.html
+        # - text: "xml"
+        #   href: _todo.html
     - text: "ds"
       menu:
         - text: "numpy"
@@ -89,56 +95,59 @@ navbar:
           href: folium.html
         - text: "---------"
         - text: "boto3"
-          href: _todo.html
-        - text: "hocon"
-          href: _todo.html
-        - text: "pyarrow"
-          href: _todo.html
+          href: boto3.html
+        - text: "pyhocon"
+          href: pyhocon.html
+        # - text: "pyarrow"
+        #   href: _todo.html
         - text: "requests"
-          href: _todo.html
+          href: requests.html
         - text: "xmltodict"
           href: xmltodict.html
+        - text: "---------"
+        - text: "beautifulsoup"
+          href: beautifulsoup.html
     - text: "misc"
       menu:
         - text: "apis"
           href: apis.html
         - text: "databases"
           href: databases.html
-        - text: "flask"
-          href: _todo.html
-        - text: "packages"
-          href: _todo.html
-        - text: "sphinx"
-          href: _todo.html
+        # - text: "flask"
+        #   href: _todo.html
+        # - text: "packages"
+        #   href: _todo.html
+        # - text: "sphinx"
+        #   href: _todo.html
     - text: "envs"
       menu:
         - text: "pip"
-          href: _todo.html
+          href: pip.html
         - text: "conda"
-          href: _todo.html
+          href: conda.html
         - text: "---------"
-        - text: "pipenv"
-          href: _todo.html
+        # - text: "pipenv"
+        #   href: _todo.html
         - text: "pyenv"
           href: pyenv.html
-        - text: "venv"
-          href: _todo.html
+        # - text: "venv"
+        #   href: _todo.html
         - text: "---------"
         - text: "pycharm"
           href: pycharm.html
-        - text: "spyder"
-          href: _todo.html
+        # - text: "spyder"
+        #   href: _todo.html
         - text: "---------"
         - text: "ipython"
           href: ipython.html
         - text: "jupyter notebook"
           href: jupyter.html
-        - text: "jupyter lab"
-          href: _todo.html
-        - text: "zepplin"
-          href: _todo.html
-        - text: "databricks"
-          href: _todo.html
+        # - text: "jupyter lab"
+        #   href: _todo.html
+        # - text: "zepplin"
+        #   href: _todo.html
+        # - text: "databricks"
+        #   href: _todo.html
   right:
     - text: "how2"
       menu:

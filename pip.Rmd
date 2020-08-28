@@ -1,0 +1,84 @@
+---
+title: pip
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+> 'preferred installer program' the standard package manager for python
+
+*********************************************************************
+
+## links 
+
+realpython:
+
+* [what-is-pip](https://realpython.com/what-is-pip/)  
+
+datacamp:
+
+* [python-developer-set-up](https://www.datacamp.com/community/tutorials/python-developer-set-up)  
+
+*********************************************************************
+
+## faqs
+
+* [upgrade pip](#upgrade-pip)  
+* [install packages from requirements.txt](#requirements)  
+
+*********************************************************************
+
+## setup
+
+### install
+
+if you have python installed you should alredy have `pip`
+
+see the link below if you dont have it installed:
+
+* https://pip.pypa.io/en/stable/installing/
+
+### info
+
+```{sh}
+which pip
+pip --version
+```
+
+### upgrade {#upgrade-pip}
+
+```sh
+pip install --upgrade pip
+pip install -U pip
+```
+
+### help
+
+```sh
+pip help
+```
+
+*********************************************************************
+
+## basics
+
+### install/uninstall
+
+```sh
+pip install package-name
+pip install package-name==1.0
+pip install -U package-name # upgrade if already installed
+pip list # show all installed packages
+pip uninstall package-name
+```
+
+### requirements {#requirements}
+
+```sh
+pip install -U -r requirements.txt
+pip freeze # create a requirements.txt file
+```

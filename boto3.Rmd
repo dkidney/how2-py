@@ -1,0 +1,63 @@
+---
+title: boto3
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+> the Amazon Web Services (AWS) SDK for Python - enables Python developers to create, configure, and manage AWS services, such as EC2 and S3
+
+*********************************************************************
+
+## links
+
+* [s3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html)  
+* [ec2](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2.html)  
+
+*********************************************************************
+
+## S3
+
+### download/upload files
+
+```python
+import boto3
+import pandas as pd
+
+file = "my_file.csv"
+key = "my_folder/" + file
+bucket = "my_bucket"
+
+# download
+s3 = boto3.client("s3")
+obj = s3.get_object(Bucket=bucket, Key=key)
+df = pd.read_csv(obj['Body'])
+
+# upload
+s3 = boto3.resource("s3")
+df.to_csv(file, index=False)
+s3.meta.client.upload_file(file, Bucket=bucket, Key=key)
+```
+
+
+### list objects
+
+```python
+s3.list_objects_v2(
+    Bucket,
+    Prefix,
+    Delimiter,
+    Maxkey
+)
+```
+
+*********************************************************************
+
+## EC2
+
+### instance info
+

@@ -59,7 +59,6 @@ len(html)
 re.findall("Latest Python 3 Release - Python (3\.\d+\.\d+)", html)[0]
 ```
 
-
 *********************************************************************
 
 ## error

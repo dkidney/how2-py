@@ -18,7 +18,7 @@ title: jupyter
 
 *********************************************************************
 
-## installation 
+## setup 
 
 jupyter notebook is included in the anaconda distribution - see notes on [conda](https://dkidney.github.io/how2/conda.html)
 

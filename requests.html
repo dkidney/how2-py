@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>requests</title>
+
+<script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="_style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">how2-py</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    programming
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="basics.html">basics</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="strings.html">strings</a>
+    </li>
+    <li>
+      <a href="lists.html">lists</a>
+    </li>
+    <li>
+      <a href="dicts.html">dicts</a>
+    </li>
+    <li>
+      <a href="tuples.html">tuples</a>
+    </li>
+    <li>
+      <a href="sets.html">sets</a>
+    </li>
+    <li>
+      <a href="comprehensions.html">comprehensions</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="documentation.html">documentation</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="files.html">files</a>
+    </li>
+    <li>
+      <a href="exceptions.html">exceptions</a>
+    </li>
+    <li>
+      <a href="oop.html">oop</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    std lib
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="argparse.html">argparse</a>
+    </li>
+    <li>
+      <a href="collections.html">collections</a>
+    </li>
+    <li>
+      <a href="datetime.html">datetime</a>
+    </li>
+    <li>
+      <a href="json.html">json</a>
+    </li>
+    <li>
+      <a href="os.html">os</a>
+    </li>
+    <li>
+      <a href="random.html">random</a>
+    </li>
+    <li>
+      <a href="re.html">re</a>
+    </li>
+    <li>
+      <a href="sqlite.html">sqlite</a>
+    </li>
+    <li>
+      <a href="statistics.html">statistics</a>
+    </li>
+    <li>
+      <a href="subprocess.html">subprocess</a>
+    </li>
+    <li>
+      <a href="sys.html">sys</a>
+    </li>
+    <li>
+      <a href="urllib.html">urllib</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    ds
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="numpy.html">numpy</a>
+    </li>
+    <li>
+      <a href="pandas.html">pandas</a>
+    </li>
+    <li>
+      <a href="scipy.html">scipy</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="sklearn.html">sklearn</a>
+    </li>
+    <li>
+      <a href="keras.html">keras</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="matplotlib.html">matplotlib</a>
+    </li>
+    <li>
+      <a href="seaborn.html">seaborn</a>
+    </li>
+    <li>
+      <a href="folium.html">folium</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="boto3.html">boto3</a>
+    </li>
+    <li>
+      <a href="pyhocon.html">pyhocon</a>
+    </li>
+    <li>
+      <a href="requests.html">requests</a>
+    </li>
+    <li>
+      <a href="xmltodict.html">xmltodict</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="beautifulsoup.html">beautifulsoup</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    misc
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="apis.html">apis</a>
+    </li>
+    <li>
+      <a href="databases.html">databases</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    envs
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="pip.html">pip</a>
+    </li>
+    <li>
+      <a href="conda.html">conda</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="pyenv.html">pyenv</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="pycharm.html">pycharm</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="ipython.html">ipython</a>
+    </li>
+    <li>
+      <a href="jupyter.html">jupyter notebook</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    how2
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://dkidney.github.io/how2-cli/">how2-cli</a>
+    </li>
+    <li>
+      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
+    </li>
+    <li>
+      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="https://github.com/dkidney/how2-py">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://uk.linkedin.com/in/darren-kidney-495b8a103/">
+    <span class="fa fa-linkedin fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">requests</h1>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#requests">Requests</a>
+<ul>
+<li><a href="#request-headers">Request headers</a></li>
+<li><a href="#request-body">Request body</a></li>
+<li><a href="#request-querys">Request querys</a></li>
+<li><a href="#request-authentication">Request authentication</a></li>
+</ul></li>
+<li><a href="#responses">Responses</a>
+<ul>
+<li><a href="#response-status">Response status</a></li>
+<li><a href="#response-content">Response content</a></li>
+<li><a href="#response-headers">Response headers</a></li>
+</ul></li>
+</ul>
+</div>
+
+<hr />
+<blockquote>
+<p>the de facto standard for making HTTP requests in Python</p>
+</blockquote>
+<hr />
+<ul>
+<li><a href="http://docs.python-requests.org/en/master/" class="uri">http://docs.python-requests.org/en/master/</a></li>
+<li><a href="https://realpython.com/python-requests/" class="uri">https://realpython.com/python-requests/</a></li>
+<li><a href="https://www.w3schools.com/tags/ref_httpmethods.asp" class="uri">https://www.w3schools.com/tags/ref_httpmethods.asp</a></li>
+</ul>
+<hr />
+<div id="requests" class="section level2">
+<h2>Requests</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="im">import</span> requests</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="co"># make a GET request to GitHub’s Root REST API</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>response <span class="op">=</span> requests.get(<span class="st">&#39;https://api.github.com&#39;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="co"># view the request url</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>response.request.url</span></code></pre></div>
+<div id="request-headers" class="section level3">
+<h3>Request headers</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">header key</th>
+<th align="left">definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>Content-type</code></td>
+<td align="left">specifies the data/body type of the request</td>
+</tr>
+<tr class="even">
+<td align="left"><code>Accept</code></td>
+<td align="left">specifies the content type of the response</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="left">header value</th>
+<th align="left">definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>application/json</code></td>
+<td align="left">asdf</td>
+</tr>
+<tr class="even">
+<td align="left"><code>application/json; charset=utf-8</code></td>
+<td align="left">asdf</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>application/x-www-form-urlencoded</code></td>
+<td align="left">asdf</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>response <span class="op">=</span> requests.get(<span class="st">&#39;https://....&#39;</span>, headers<span class="op">=</span>{<span class="st">&#39;key&#39;</span>: <span class="st">&#39;value&#39;</span>})</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="co"># view all the request headers (as a CaseInsensitiveDict)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>response.request.headers</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a><span class="co"># access a specific request header (key is case insenstitive)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>response.request.headers[<span class="st">&#39;Content-Type&#39;</span>]</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>response.request.headers[<span class="st">&#39;content-type&#39;</span>]</span></code></pre></div>
+</div>
+<div id="request-body" class="section level3">
+<h3>Request body</h3>
+<p>Also called the request <code>data</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="co"># using a dictionary or a list of tuples</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>response <span class="op">=</span> requests.post(<span class="st">&#39;https://httpbin.org/post&#39;</span>, data<span class="op">=</span>{<span class="st">&#39;key&#39;</span>:<span class="st">&#39;value&#39;</span>})</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>response <span class="op">=</span> requests.post(<span class="st">&#39;https://httpbin.org/post&#39;</span>, data<span class="op">=</span>[(<span class="st">&#39;key&#39;</span>, <span class="st">&#39;value&#39;</span>)])</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="co"># view the request body</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>response.request.body</span></code></pre></div>
+<p>Alternatively, if you need to send JSON data you can use the <code>json</code> parameter (in which case <code>requests</code> will serialize your data and add the correct Content-Type header for you).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>response <span class="op">=</span> requests.post(<span class="st">&#39;https://httpbin.org/post&#39;</span>, json<span class="op">=</span>{<span class="st">&#39;key&#39;</span>:<span class="st">&#39;value&#39;</span>})</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>json_response <span class="op">=</span> response.json()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>json_response[<span class="st">&#39;data&#39;</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>json_response[<span class="st">&#39;headers&#39;</span>][<span class="st">&#39;Content-Type&#39;</span>]</span></code></pre></div>
+</div>
+<div id="request-querys" class="section level3">
+<h3>Request querys</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="co"># e.g. search GitHub&#39;s repositories for requests</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>response <span class="op">=</span> requests.get(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>    <span class="st">&#39;https://api.github.com/search/repositories&#39;</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>    params<span class="op">=</span>{<span class="st">&#39;q&#39;</span>: <span class="st">&#39;requests+language:python&#39;</span>},</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="co"># same as above, but using a list of tuples</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a>response <span class="op">=</span> requests.get(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a>    <span class="st">&#39;https://api.github.com/search/repositories&#39;</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a>    params<span class="op">=</span>[(<span class="st">&#39;q&#39;</span>, <span class="st">&#39;requests+language:python&#39;</span>)]</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true"></a><span class="co"># same as above, but using bytes</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true"></a>response <span class="op">=</span> requests.get(</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true"></a>    <span class="st">&#39;https://api.github.com/search/repositories&#39;</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true"></a>    params<span class="op">=</span>b<span class="st">&#39;q=requests+language:python&#39;</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true"></a>)</span></code></pre></div>
+</div>
+<div id="request-authentication" class="section level3">
+<h3>Request authentication</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>requests.get(<span class="st">&#39;https://api.github.com/user&#39;</span>, auth<span class="op">=</span>(<span class="st">&#39;username&#39;</span>, <span class="st">&#39;password&#39;</span>))</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="responses" class="section level2">
+<h2>Responses</h2>
+<div id="response-status" class="section level3">
+<h3>Response status</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Code</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>200</td>
+<td>successful</td>
+</tr>
+<tr class="even">
+<td>204</td>
+<td>successful, but no content returned</td>
+</tr>
+<tr class="odd">
+<td>400</td>
+<td>bad request</td>
+</tr>
+<tr class="even">
+<td>401</td>
+<td>unauthorized</td>
+</tr>
+<tr class="odd">
+<td>404</td>
+<td>resource not found</td>
+</tr>
+</tbody>
+</table>
+<p>(see <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes" class="uri">https://en.wikipedia.org/wiki/List_of_HTTP_status_codes</a>)</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="co"># get the status code</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>response.status_code</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="co"># check that the request was successful</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="cf">if</span> <span class="kw">not</span> response:</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&#39;An error has occurred.&#39;</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a><span class="co"># alternatively, raise an exception if the request was unsuccessful</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a>response.raise_for_status()</span></code></pre></div>
+</div>
+<div id="response-content" class="section level3">
+<h3>Response content</h3>
+<p>Also known as a payload.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="co"># see the response&#39;s content in bytes</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>response.content</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a><span class="co"># see the response&#39;s content as a string</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>response.text</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a><span class="co"># you can view/set the encoding used for converting they bytes to a string</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a>response.encoding</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a><span class="co"># see the response&#39;s content (as a dict)</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true"></a>response.json()</span></code></pre></div>
+</div>
+<div id="response-headers" class="section level3">
+<h3>Response headers</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="co"># view all the response headers (as a CaseInsensitiveDict)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>response.headers</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a><span class="co"># access a specific response header (key is case insenstitive)</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a>response.headers[<span class="st">&#39;Content-Type&#39;</span>]</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a>response.headers[<span class="st">&#39;content-type&#39;</span>]</span></code></pre></div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -95,6 +95,35 @@ Run | Bottom Right
 
 *********************************************************************
 
+### console
+
+Use IPython if available (i.e. installed in your python env)
+
+* Go to `Preferences > Build, Execution, Deployment > Console`  
+* then check `Use IPython if available`
+
+### code style
+
+Add visual guidelines:
+
+* 72 (docstrings/comments) 
+* 79 (code)  
+
+See https://pep8.org/#maximum-line-length
+
+`Preferences > Editor > Code Style > General > Visual guides:` 72,79 `columns`
+
+### plugins
+
+`Preferences > Plugins`
+
+* Markdown
+* 
+
+### default interpreter
+
+`File > Other settings > Project Interpreter`
+
 ## run configurations
 
 * select `Emulate termnal in output console` to see `progress` progress bars.
@@ -106,7 +135,7 @@ Run | Bottom Right
 
 ### make a new py file
 
-within the project, right click on the project folder and then click `New > Python file`
+within the project, right click on the project folder wand then click `New > Python file`
 
 ### set the interpreter 
 
