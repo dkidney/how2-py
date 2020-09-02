@@ -9,27 +9,39 @@ output:
 
 *********************************************************************
 
-## links
+## resources
 
-* https://www.python.org/  
-* [Latest version (Mac OS)](https://www.python.org/downloads/mac-osx/)  
+* [python.org](https://www.python.org/)  
 * [Built-in Module Index](https://docs.python.org/3/py-modindex.html)  
 * [PEP 8 Style Guide](https://www.python.org/dev/peps/pep-0008/)  
+* [Latest version (Mac OS)](https://www.python.org/downloads/mac-osx/)  
+
+## tutorials
+
+* [realpython](https://realpython.com/)  
+* [datacamp](https://www.datacamp.com/community/tutorials?tag=python)  
+
+## blogs
+
+* [planetpython](https://planetpython.org/titles_only.html)  
+
+## podcasts
+
+* [dataskeptic](https://dataskeptic.com/)  
 
 ## todo
 
-* json
+* args and kwargs
 * datetime
-* time
+* json
 * sets
 * comprehensions
-* args and kwargs
-* scripting
-* testing
-* collections
-* xml
-* sklearn
-* matplotlib
-* pyhocon
 * pyarrow
+* sklearn
+* collections
+* matplotlib
 * requests
+* scripts
+* tests
+* packages
+* documentation

@@ -216,8 +216,13 @@ conda install --name py3 -c conda-forge --file requirements.txt
 
 ```sh
 # latest available python version
-conda search python | tail -1
-conda search python | tail -1 | grep -Eo "\d+\.\d+\.\d+"
+conda search python
+conda search python | grep pkgs/main | tail -1
+conda search python | grep pkgs/main | tail -1 | grep -Eo "\d+\.\d+\.\d+"
+
+# latest available python package versions
+conda search pandas | grep pkgs/main | tail -1 | grep -Eo "\d+\.\d+\.\d+"
+conda search scikit-learn | grep pkgs/main | tail -1 | grep -Eo "\d+\.\d+\.\d+"
 ```
 
 ### CondaHTTPError

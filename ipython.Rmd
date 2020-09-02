@@ -41,6 +41,27 @@ ipython
 
 *********************************************************************
 
+## magic
+
+* https://ipython.readthedocs.io/en/stable/interactive/magics.html  
+* `%` denotes line magic  
+* `%%` denotes cellular magic  
+
+### `timeit`
+
+* default is 1000 loops
+
+```python
+%%timeit -n 100
+# code goes here
+```
+
+### other
+
+* `%precision 2` - set floating point precision for printing to 2.d.p.
+
+*********************************************************************
+
 ## extensions
 
 ### sql

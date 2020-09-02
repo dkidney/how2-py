@@ -32,3 +32,12 @@ mystring.split()
 mystring.split("LL")
 mystring.strip("h")
 ```
+
+*********************************************************************
+
+## membership operators
+
+```{python}
+'abc' in 'abcdefghijklmnopqrstuvwxyz'
+'ABC' not in 'abcdefghijklmnopqrstuvwxyz'
+```

@@ -158,6 +158,13 @@ Type
 indicates the class the instance belongs to
 
 
+******************************************************************************************
 
+## csv
 
+```python
+import csv
+with open('file.csv') as fh:
+    list_of_dicts = list(csv.DictReader(fh))
+```
 

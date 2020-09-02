@@ -1,12 +1,25 @@
 env_name=how2-py
-latest_version=$(conda search python | tail -1 | grep -E-o '([0-9]+\.[0-9]+\.[0-9]+){1}') ; echo $latest_version
-light_red='\033[1;31m'
-light_green='\033[1;32m'
-none='\033[0m'
+# conda activate base
+# conda env remove --name $env_name
+# py_version=$(conda search python | tail -1  | grep pkgs/main | grep -Eo '(\d+\.\d+\.\d+){1}') ; echo $py_version
+# conda create -y --name $env_name python=$py_version
+conda activate $env_name
+# conda update -y python
+python --version && which python
+pip install -U pip
+pip install -U -r _requirements.txt
+pip list
+
+
+
+# latest_version=$(conda search python | tail -1 | grep -E-o '([0-9]+\.[0-9]+\.[0-9]+){1}') ; echo $latest_version
+# light_red='\033[1;31m'
+# light_green='\033[1;32m'
+# none='\033[0m'
 
 # # check if env already exists
 # n=$(conda env list | grep $env_name | wc -l) ; echo $n
-# 
+#
 # # remove env if version less than py_version
 # if [[ n -eq 1 ]]
 # then
@@ -34,10 +47,12 @@ none='\033[0m'
 #   conda create -y --name $env_name python=$py_version
 # fi
 
-# activate env and check dependencies
-conda activate $env_name
-echo ${light_green}'updating dependencies'${none}
-cat _requirements.txt
-pip install -U pip
-pip install -U -r _requirements.txt
-python --version && which python && pip list
+# # activate env and check dependencies
+# conda activate $env_name
+# conda update -y python
+# python --version && which python
+# # echo ${light_green}'updating dependencies'${none}
+# # cat _requirements.txt
+# pip install -U pip
+# pip install -U -r _requirements.txt
+# pip list

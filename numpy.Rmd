@@ -100,18 +100,24 @@ x.data # memory address
 
 *********************************************************************
 
-## indexing
+## indexing and slicing
 
-Similar tostandrd list indexing.
+* similar to standard list indexing, however:  
+  * basic slicing **always** returns a view  
+  * fancy slicing **never** returns a view - i.e. always returns a copy  
+  * whereas list slicing always returns a copy  
+  * see [views-and-copies-in-numpy-and-pandas](https://realpython.com/pandas-settingwithcopywarning/#views-and-copies-in-numpy-and-pandas)  
 
-### individual elements
+### basic
+
+individual elements:
 
 ```python
 x[0,0] # 1st row, 1st column
 x[1,1] # 2nd row, 2nd column
 ```
 
-### sub-arrays
+sub-arrays:
 
 ```{python}
 import numpy as np
@@ -120,12 +126,16 @@ x
 x[:2, 1:3]
 ```
 
-Note that array slices return **views** rather than copies of the array. This is different to list slicing (where slices are copies).
-
 To make a copy use `.copy`
 
 ```python
 y = x[:2, 1:3].copy()
+```
+
+### fancy
+
+```python
+# TODO
 ```
 
 *********************************************************************

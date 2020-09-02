@@ -17,14 +17,12 @@ editor_options:
 
 ### DataFrame 
 
-* subset columns
-  * [subset columns by name](#subset-columns-by-name)   
-  * [subset columns by position](#subset-columns-by-position)   
-  * [subset columns by boolean](#subset-columns-by-boolean) 
-* subset rows 
-  * [subset rows by index](#subset-rows-by-index)  
-  * [subset rows by position](#subset-rows-by-position)   
-  * [subset rows by boolean](#subset-rows-by-boolean) 
+* subset columns and rows
+  * [subset columns by name](#subset-df-columns-by-name)   
+  * [subset columns by position](#subset-df-columns-by-position)   
+  * [subset rows by index](#vsubset-rows-by-index)  
+  * [subset rows by position](#subset-df-rows-by-position)   
+  * [boolean masking](#df-boolean-masking) 
 * order  
   * [order rows by column values](#sort-values)
 * group  
@@ -38,9 +36,9 @@ editor_options:
 ### Series
 
 * subset  
-  * [subset index](#subset-by-index)  
-  * [subset by position](#subset-by-position)   
-  * [subset by boolean](#subset-by-boolean) 
+  * [subset index](#subset-ser-by-index)  
+  * [subset by position](#subset-ser-by-position)   
+  * [boolean masking](#ser-boolean-masking) 
 
 *********************************************************************
 
@@ -83,34 +81,32 @@ pd.__version__
 `pd.Series(data, index, dtype, copy)`
 
 ```python
-ser = pd.Series() # empty series
+pd.Series() # empty series, dtype float64 by default
+
+# from scalar
+pd.Series(0) # dtype int64, integer index by default 
+pd.Series(0, ['e0', 'e1', 'e2']) # broadcasts the scalar across all elemnts
+
+# from list
+pd.Series([1, 2, 3])
+pd.Series([1, 2, 3], ['e0', 'e1', 'e2']) 
+
+# from dict
+pd.Series({'e0': 1, 'e1': 2, 'e2': 3}) # keys as index by default
+pd.Series({'e0': 1, 'e1': 2, 'e2': 3}, ['e0', 'e1']) # ignore e2
+pd.Series({'e0': 1, 'e1': 2, 'e2': 3}, ['e0', 'e1', 'e2', 'e3']) # include e3 as NaN
+
+# from ndarray
+pd.Series(np.array([1, 2, 3]), ['e0', 'e1', 'e2']) 
 ```
 
-#### from scalar
+Things to note:
 
-```python
-ser = pd.Series(0) 
-ser = pd.Series(0, ['e1', 'e2', 'e3']) 
-```
-
-#### from list
-
-```python
-ser = pd.Series([1, 2, 3])
-ser = pd.Series([1, 2, 3], ['e1', 'e2', 'e3']) 
-```
-
-#### from dict
-
-```python
-ser = pd.Series({'e1': 1, 'e2': 2, 'e3': 3})
-```
-
-#### from ndarray
-
-```python
-ser = pd.Series(np.array([1, 2, 3]), ['e1', 'e2', 'e3']) 
-```
+* you can use a mixture of types for the values and/or index within the same series - if you mixture of types for the values then the dtype of the series will be set to `object`   
+* you can use any hashable values for the index  
+* index values don't have to be unique  
+* `None` gets converted to `NaN` for dtype `float` and dtype `int`  
+* `None` stays as `None` for dtype `object`  
 
 ### attributes
 
@@ -124,43 +120,37 @@ len(ser)
 
 ### indexing and slicing
 
-by location
+#### subset by index {#subset-ser-by-index}
+
+* can use square brackets - e.g. `ser['e0']` - but it's safer to be explicit and use `ser.loc`
+
 ```python
-ser[0] # first (returns scalar)
-ser[-1] # last (returns scalar)
-ser[[0]] # first
-ser[[-1]] # last
-ser[[0,2]] # first and third
-ser[1:] # everything but the first
-ser[:-1] # everything but the first
-ser[:1] # first
-ser[-1:] # last
+ser.loc['e0'] # returns a scalar (if the index value is unique)
+ser.loc[['e0']]
+ser.loc[['e0','e2']] 
+ser.loc[:'e1'] # up to and INCLUDING 'e1'
+ser.loc['e1':] # from and including 'e1'
 ```
 
-by index
+#### subset by position {#subset-ser-by-position}
+
+* can use square brackets - e.g. `ser[0]` - but it's safer to be explicit and use `ser.iloc`
+
 ```python
-ser['e1'] # first (returns scalar)
-ser['e3'] # last (returns scalar)
-ser[['e1']] # first
-ser[['e3']] # last
-ser[['e1','e3']] # first and third
-ser['e2':] # everything but the first
-ser[:'e2'] # everything but the last
-ser[:'e1'] # first
-ser['e3':] # last
+ser.iloc[0] # returns a scalar
+ser.iloc[-1] # returns a scalar
+ser.iloc[[0]]
+ser.iloc[[-1]]
+ser.iloc[[0, 2]] 
+ser.iloc[:2] # up to and EXCLUDING position 2 (i.e. 0 and 1 only)
+ser.iloc[2:] # from and including position 2 (i.e. 2 onward)
 ```
 
-#### subset by index {#subset-by-index}
+#### subset by boolean mask {#subset-ser-by-boolean-mask}
 
-TODO
-
-#### subset by position {#subset-by-position}
-
-TODO
-
-#### subset boolean {#subset-by-boolean}
-
-TODO
+```python
+# TODO
+```
 
 ### casting
 
@@ -193,33 +183,44 @@ df = pd.DataFrame()
 
 #### from dict
 
-```python
-# create from dict of lists - each key is a column
-df = pd.DataFrame({'c1': ['x', 'y', 'z'],
-                  'c2': [1, 2, 3]},
-                 index=['r1', 'r2', 'r3'])
+each key is a column
 
-# create from dict of series - each key is a column
-df = pd.DataFrame({'c1': pd.Series(['x', 'y', 'z'], index=['r1', 'r2', 'r3']),
-                  'c2': pd.Series([1, 2, 3], index=['r1', 'r2', 'r3'])})
+```python
+# from dict of lists - each key is a column
+pd.DataFrame({'c1': ['x', 'y', 'z'], 'c2': [1, 2, 3]},
+             index=['r1', 'r2', 'r3'])
+
+# from dict of series - each key is a column
+pd.DataFrame({'c1': pd.Series(['x', 'y', 'z'], index=['r1', 'r2', 'r3']),
+              'c2': pd.Series([1, 2, 3], index=['r1', 'r2', 'r3'])})
 ```
 
 #### from list
 
+each element is a row
+
 ```python
-df = pd.DataFrame([1, 2, 3])
-df = pd.DataFrame([1, 2, 3], columns=['c1'])
+pd.DataFrame([1, 2, 3])
+pd.DataFrame([1, 2, 3], columns=['c1'])
 
-# create from list of lists - each sublist is a row
-df = pd.DataFrame([['x', 1], ['y', 2], ['z', 3]],
-                 index=['r1', 'r2', 'r3'],
-                 columns=['c1', 'c2'])
+# from list of lists
+pd.DataFrame([['x', 1], 
+              ['y', 2], 
+              ['z', 3]],
+             index=['r1', 'r2', 'r3'],
+             columns=['c1', 'c2'])
 
-# create from list of dicts - each sublist is a row
-df = pd.DataFrame([{'c1': 'x', 'c2': 1},
-                  {'c1': 'y', 'c2': 2},
-                  {'c1': 'z', 'c2': 3}],
-                 index=['r1', 'r2', 'r3'])
+# from list of series
+pd.DataFrame([pd.Series(['x', 1], ['c1', 'c2']),
+              pd.Series(['y', 2], ['c1', 'c2']),
+              pd.Series(['z', 3], ['c1', 'c2'])],
+             index=['r1', 'r2', 'r3'])
+             
+# from list of dicts
+pd.DataFrame([{'c1': 'x', 'c2': 1},
+              {'c1': 'y', 'c2': 2},
+              {'c1': 'z', 'c2': 3}],
+              index=['r1', 'r2', 'r3'])
 ```
 
 ### attributes
@@ -251,7 +252,10 @@ datetime
 
 ### indexing and slicing
 
-#### subset columns by name {#subset-columns-by-name}
+#### subset columns by name {#subset-df-columns-by-name}
+
+* simple square bracket indexing is reserved for column selection  
+* always label-based since columns in a df will always have a label  
 
 ```python
 df['c1'] # returns a series
@@ -259,7 +263,7 @@ df[['c1']]
 df[['c1', 'c2']]
 ```
 
-Equivalently,
+Equivalently (and less ambiguously),
 
 ```python
 df.loc[:, 'c1']  # returns a series
@@ -267,7 +271,7 @@ df.loc[:, ['c1']]
 df.loc[:, ['c1', 'c2']]
 ```
 
-#### subset columns by position {#subset-columns-by-position}
+#### subset columns by position {#subset-df-columns-by-position}
 
 ```python
 df.iloc[:, 0]  # returns a series
@@ -275,14 +279,7 @@ df.iloc[:, [0]]
 df.iloc[:, [0, 1]]
 ```
 
-#### subset columns by boolean {#subset-columns-by-boolean}
-
-```python
-df.loc[:, [True, False]]
-df.loc[:, [True, True]]
-```
-
-#### subset rows by index {#subset-rows-by-index}
+#### subset rows by index {#subset-df-rows-by-index}
 
 ```python
 df.loc['r1'] # first row - returns a series
@@ -291,7 +288,7 @@ df.loc[['r1']] # first row
 df.loc[['r3']] # last row
 ```
 
-#### subset rows by position {#subset-rows-by-position}
+#### subset rows by position {#subset-df-rows-by-position}
 
 ```python
 df.iloc[0] # first row - returns a series
@@ -300,16 +297,51 @@ df.iloc[[0]] # first row
 df.iloc[[-1]] # last row
 ```
 
-#### subset rows by boolean {#subset-rows-by-boolean}
+#### boolean masking {#subset-df-columns-by-boolean}
+
+list of booleans:
 
 ```python
-df[df['c1'] == "x"]
+df.loc[:, [True, False]]
+df.loc[:, [True, True]]
 ```
 
-Or a more generalisable form,
+boolean series:
 
 ```python
+# filter rows
+df[df['c1'] == "x"] 
+df[(df['c1'] == "x") | (df['c1'] == "y")] # bitwise boolean OR operator 
 df.loc[df['c1'].isin(['x', 'y'])]
+```
+
+### multi-level indexing
+
+```python
+# TODO
+```
+
+
+*********************************************************************
+
+## view vs copy
+
+* https://realpython.com/pandas-settingwithcopywarning/  
+
+```python
+x = df['c2'] # returns a view
+x.to_numpy().flags.owndata # returns False
+x[1] = 99999 # triggers a SettingWithCopyWarning warning
+df # has been modified...
+```
+
+* operator chaining tends to return a copy of the df instead of a view
+
+```python
+y = df['c2'][['r1', 'r2', 'r3']] # returns a copy
+y.to_numpy().flags.owndata # returns True
+y[1] = -99999 # no warnings
+df # has not been modified
 ```
 
 *********************************************************************
@@ -318,35 +350,75 @@ df.loc[df['c1'].isin(['x', 'y'])]
 
 * https://www.datacamp.com/community/tutorials/joining-dataframes-pandas  
 
-### left join {#left-join}
+### merge
+
+defaults:  
+* `how='inner'`  
+* `on=None`  
+* `left_on=None`  
+* `right_on=None`  
+* `left_index=False`  
+* `right_index=False`  
 
 ```python
-pd.merge(df1, df2, on='column-name', how='left')
+pd.merge(df1, df2, on='c1', how='left')
+pd.merge(df1, df2, on='c1', how='right')
+pd.merge(df1, df2, on='c1', how='inner')
+pd.merge(df1, df2, on='c1', how='outer')
+
+# e.g. inner join on different column names
+pd.merge(df1, df2, left_on='c1', right_on='c2')
+
+# e.g. inner join on two column names
+pd.merge(df1, df2, left_on=['c1', 'c2'], right_on=['c1', 'c2'])
+
+# e.g. inner join on indexes
+pd.merge(df1, df2, left_index=True, right_index=True)
 ```
-
-### right join {#right-join}
-
-### inner join {#inner-join}
-
-### outer join {#outer-join}
 
 ### stack
 
-### concatenate
+### concat
 
-### merge
 
 *********************************************************************
 
 ## wrangling and eda
 
-### apply
+### append
 
 ```python
-# TODO
+s1 = pd.Series([1,2,3])
+s2 = pd.Series([4,5,6])
+s1.append(s2) # does not modify in-place
+```
+
+### apply
+
+* can be applied to Series or DataFrame  
+
+```python
+# e.g. apply a function element-wise
+ser.apply(np.sqrt)
+df.apply(np.sqrt)
+```
+
+```python
+# e.g. apply a function row/column-wise
+df.apply(np.sum) # column sums (i.e. apply across rows)
+df.apply(np.sum, axis=1) # row sums (i.e. apply across columns)
+```
+
+```python
+# e.g. list-like results
+df.apply(lambda x: [1, 2], axis=1) # returns a list column
+df.apply(lambda x: [1, 2], axis=1, result_type='expand') # expands results as columns
 ```
 
 ### applymap
+
+* can only be applied to DataFrames  
+* function is applied on every element individually  
 
 ```python
 # TODO
@@ -355,7 +427,7 @@ pd.merge(df1, df2, on='column-name', how='left')
 ### astype
 
 ```python
-df['col1'] = df['col1'].astype(int)
+df['c1'] = df['c1'].astype(int)
 df[["col1", "col2"]] = df[["col1", "col2"]].astype(float)
 ```
 
@@ -372,8 +444,8 @@ df[["col1", "col2"]].corr()
 
 ```python
 labels = ['high', 'med', 'low']
-bins = np.linspace(df['col1'].min(), df['col1'].max(), len(labels) + 1)
-df['binned'] = pd.cut(df['col1'], bins, labels=labels, include_lowest=True)
+bins = np.linspace(df['c1'].min(), df['c1'].max(), len(labels) + 1)
+df['binned'] = pd.cut(df['c1'], bins, labels=labels, include_lowest=True)
 
 from matplotlib import pyplot
 pyplot.bar(labels, df["binned"].value_counts())
@@ -388,22 +460,29 @@ df.describe(include_all=True)
 
 ### drop
 
+defaults:  
+* `axis=0`  
+* `inplace=False`  
+
 ```python
-df.drop('r1', axis = 0, inplace=True)
+df.drop('r1')
+df.drop('c1', axis = 1)
 df.drop('c1', axis = 1, inplace=True)
 ```
 
 ### dropna
 
+defaults:  
+* `axis=0`  
+* `inplace=False`  
+* `how='any'`
+
 ```python
-# drop all rows with missing values
-df.dropna(axis=0, inplace=True)
-
-# drop all columns with missing values
-df.dropna(axis=1, inplace=True)
-
-# drop rows with missing values in a single column
-df.dropna(subset=["col1"], axis=0, inplace=True)
+df.dropna() # drop rows with any missing
+df.dropna(subset=['c1', 'c2']) # drop rows with any missing in column subset
+df.dropna(axis=1) # drop columns with any missing
+df.dropna(axis=1, how='all') # drop columns with all missing
+df.dropna(axis=1, how='all', inplace=True)
 ```
 
 ### drop_duplicates
@@ -419,7 +498,7 @@ df.drop_duplicates(keep='last')
 df.drop_duplicates(keep=False)
 
 # remove duplicate rows based on specific columns
-df.drop_duplicates(subset=['col1', 'col2'])
+df.drop_duplicates(subset=['c1', 'c2'])
 
 # modify in-place
 df.drop_duplicates(inplace=True)
@@ -429,14 +508,16 @@ df.drop_duplicates(inplace=True)
 
 ```python
 df.fillna(0)
+df.fillna(method='bfill', axis=0) # fill using previous non-missing in row
+df.fillna(method='ffill', axis=1) # fill using next non-missing in column
 ```
 
 ### get_dummies
 
 ```python
-dummies = pd.get_dummies(df['col1'])
+dummies = pd.get_dummies(df['c1'])
 df = pd.concat([df, dummies], axis=1)
-df.drop('col1', axis = 1, inplace=True)
+df.drop('c1', axis = 1, inplace=True)
 df
 ```
 
@@ -444,8 +525,8 @@ df
 
 ```python
 # e.g. group by col1 and col2 and get the grouped means of col3 and col4
-df=df[['col1', 'col2', 'col3', 'col3']]
-df.groupby(['col1', 'col2'], as_index=False).mean()
+df=df[['c1', 'c2', 'c3', 'c3']]
+df.groupby(['c1', 'c2'], as_index=False).mean()
 ```
 
 attributes:
@@ -469,6 +550,8 @@ grouped_df.get_group("b")
 
 ### map
 
+* can only be applied to Series objects
+
 ```{python}
 import pandas as pd
 df = pd.DataFrame(dict(c1=[1,2,3]))
@@ -490,8 +573,8 @@ I.e. pivot wider (spread)
 
 ```python
 # e.g. col1 as rownames, col2 as colnames, col3 as values
-df=df[['col1', 'col2', 'col3']]
-df.pivot(index='col1', columns='col2')
+df=df[['c1', 'c2', 'c3']]
+df.pivot(index='c1', columns='c2')
 ```
 
 ### pivot_table
@@ -566,54 +649,76 @@ ax.set_xlabel('xlabel')
 
 ### rename {#rename}
 
+defaults:  
+* `axis=0`  
+* `inplace=False`  
+
 ```python
-df.rename(columns={'oldname': 'newname'})
-df.rename(index={'oldname': 'newname'})
+df.rename(dict(r1='r99')) # maps rows by default
+df.rename(columns=dict(c1='c999'))
+df.rename(mapper=dict(c1='c999'), axis=1)
 ```
+
 
 ### replace
 
 ```python
-df['col1'].replace(np.nan, df['col1'].mean())
+df['c1'].replace(np.nan, df['c1'].mean())
 df['Gender'].replace(to_replace=['male','female'], value=[0,1], inplace=True)
+```
+
+### rename_axis
+
+Add/replace axis name.
+
+```python
+df.rename_axis('new_index_name') 
+df.rename_axis('new_index_name', inplace=True) 
+df.rename_axis('new_column_name', axis=1) 
+df.rename_axis('new_column_name', axis=1, inplace=True) 
 ```
 
 ### reset_index
 
-Set the index to 0, 1, 2, etc.
+Set the index to 0, 1, 2, ...
 
 ```python
-# add the old index as a new column
-df = df.reset_index()
-
-# rename then add the old index as a new column
-df = df.rename_axis('foo').reset_index()
-
-# doesn't add the old index as a new column, modifies in-place
+df.reset_index() # adds the old index as a new column
+df.reset_index(inplace=True)
+df.reset_index(drop=True) # doesn't add the old index as a new column
 df.reset_index(drop=True, inplace=True)
 ```
 
 ### set_index
 
-Use a column as the index
+Use a column/columns as the index
 
 ```python
-df.set_index('col1', inplace=True)
+df.set_index('c1') # destroys the old index
+df.set_index('c1', drop=False) # doesn't destroy the old index
+df.set_index('c1', inplace=True)
+```
+
+multi-level indexing:
+
+```python
+df.set_index([df.index, 'c1'])
+df.set_index(['c1', 'c2'])
 ```
 
 ### sort_values {#sort-values}
 
 ```python
-df.sort_values(by='col1')
-df.sort_values(by='col1', ascending=False)
-df.sort_values(by='col1', ascending=False, na_position='first')
-df.sort_values(by='col1', ascending=False, na_position='first', inplace=True)
+df.sort_values(by='c1')
+df.sort_values(by='c1', ascending=False)
+df.sort_values(by='c1', ascending=False, na_position='first')
+df.sort_values(by='c1', ascending=False, na_position='first', inplace=True)
 ```
 
 Multiple columns
 
 ```python
-df.sort_values(['col1', 'col2'], ascending=[True, False])
+df.sort_values(['c1', 'c2'], ascending=[True, False])
 ```
 
 ### str.split
@@ -644,21 +749,30 @@ df.to_string(float_format='{:.6f}'.format, # e.g. print floats using 6dp
 cols to rows and rows to cols
 
 ```python
-df.unique()
+df.transpose() # method
+df.T # an attribute
 ```
 
 ### unique
 
 ```python
-df['col1'].unique()
+df['c1'].unique()
 ```
 
 ### value_counts
 
 ```python
-df['col1'].value_counts()
-df['col1'].value_counts(normalize=True)
-df['col1'].value_counts().to_frame() # convert series to dataframe
+df['c1'].value_counts()
+df['c1'].value_counts(normalize=True)
+df['c1'].value_counts().to_frame() # convert series to dataframe
+```
+
+### where
+
+```python
+df.where(condition) # replace with NaN where condition is False
+df.where(df['c1'] > 10)
+df.where(df['c1'] > 10, inplace=True)
 ```
 
 ### wide_to_long
@@ -678,8 +792,10 @@ df['col1'].value_counts().to_frame() # convert series to dataframe
 * https://www.datacamp.com/community/tutorials/pandas-read-csv  
 
 ```python
-df = pd.read_csv("file.csv")
-df = pd.read_csv("file.csv", header=None, names=['c1', 'c2', 'c3'])
+pd.read_csv("file.csv")
+pd.read_csv('file.csv', skiprows=1) # ignore first row and use row 2 for column names
+pd.read_csv("file.csv", header=None, names=['c1', 'c2', 'c3'])
+pd.read_csv('file.csv', index_col = 0) # use first col as index
 ```
 
 #### chunking

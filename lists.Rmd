@@ -50,8 +50,30 @@ mylist[:-5]
 
 ## methods
 
+### append
+
 ```{python}
 mylist = ['a', 'b', 'c']
 mylist.append('d')
 mylist
 ```
+
+### sort
+
+sort elements
+
+```{python}
+mylist = ['c', 'b', 'a']
+mylist.sort()
+mylist
+```
+
+sort using a function of the elements
+
+```{python}
+mylist = [[3,2,1], [2,1,3], [1,2,2]]
+mylist.sort(key = lambda x: x[2])
+mylist
+```
+
+
