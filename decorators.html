@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>decorators</title>
+
+<script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="_style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">how2-py</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    programming
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="basics.html">basics</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="strings.html">strings</a>
+    </li>
+    <li>
+      <a href="lists.html">lists</a>
+    </li>
+    <li>
+      <a href="dicts.html">dicts</a>
+    </li>
+    <li>
+      <a href="tuples.html">tuples</a>
+    </li>
+    <li>
+      <a href="sets.html">sets</a>
+    </li>
+    <li>
+      <a href="comprehensions.html">comprehensions</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="documentation.html">documentation</a>
+    </li>
+    <li>
+      <a href="args_and_kwargs.html">args and kwargs</a>
+    </li>
+    <li>
+      <a href="decorators.html">decorators</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="files.html">files</a>
+    </li>
+    <li>
+      <a href="exceptions.html">exceptions</a>
+    </li>
+    <li>
+      <a href="oop.html">oop</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    std lib
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="argparse.html">argparse</a>
+    </li>
+    <li>
+      <a href="collections.html">collections</a>
+    </li>
+    <li>
+      <a href="configparser.html">configparser</a>
+    </li>
+    <li>
+      <a href="datetime.html">datetime</a>
+    </li>
+    <li>
+      <a href="json.html">json</a>
+    </li>
+    <li>
+      <a href="os.html">os</a>
+    </li>
+    <li>
+      <a href="random.html">random</a>
+    </li>
+    <li>
+      <a href="re.html">re</a>
+    </li>
+    <li>
+      <a href="sqlite.html">sqlite</a>
+    </li>
+    <li>
+      <a href="statistics.html">statistics</a>
+    </li>
+    <li>
+      <a href="subprocess.html">subprocess</a>
+    </li>
+    <li>
+      <a href="sys.html">sys</a>
+    </li>
+    <li>
+      <a href="urllib.html">urllib</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    ds
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="numpy.html">numpy</a>
+    </li>
+    <li>
+      <a href="pandas.html">pandas</a>
+    </li>
+    <li>
+      <a href="scipy.html">scipy</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="sklearn.html">sklearn</a>
+    </li>
+    <li>
+      <a href="keras.html">keras</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="matplotlib.html">matplotlib</a>
+    </li>
+    <li>
+      <a href="seaborn.html">seaborn</a>
+    </li>
+    <li>
+      <a href="folium.html">folium</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="boto3.html">boto3</a>
+    </li>
+    <li>
+      <a href="pyhocon.html">pyhocon</a>
+    </li>
+    <li>
+      <a href="requests.html">requests</a>
+    </li>
+    <li>
+      <a href="xmltodict.html">xmltodict</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="beautifulsoup.html">beautifulsoup</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    misc
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="apis.html">apis</a>
+    </li>
+    <li>
+      <a href="databases.html">databases</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    envs
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="pip.html">pip</a>
+    </li>
+    <li>
+      <a href="conda.html">conda</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="pyenv.html">pyenv</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="pycharm.html">pycharm</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="ipython.html">ipython</a>
+    </li>
+    <li>
+      <a href="jupyter.html">jupyter notebook</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    how2
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://dkidney.github.io/how2-cli/">how2-cli</a>
+    </li>
+    <li>
+      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
+    </li>
+    <li>
+      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="https://github.com/dkidney/how2-py">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://uk.linkedin.com/in/darren-kidney-495b8a103/">
+    <span class="fa fa-linkedin fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">decorators</h1>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#links">links</a></li>
+<li><a href="#basics">basics</a></li>
+<li><a href="#examples">examples</a>
+<ul>
+<li><a href="#timer">timer</a></li>
+<li><a href="#debug">debug</a></li>
+</ul></li>
+</ul>
+</div>
+
+<!-- ********************************************************************* -->
+<!-- > Headline -->
+<!-- ********************************************************************* -->
+<!-- ## faqs -->
+<hr />
+<div id="links" class="section level2">
+<h2>links</h2>
+<ul>
+<li><a href="https://wiki.python.org/moin/PythonDecorators" class="uri">https://wiki.python.org/moin/PythonDecorators</a><br />
+</li>
+<li><a href="https://www.python.org/dev/peps/pep-0318/" class="uri">https://www.python.org/dev/peps/pep-0318/</a><br />
+</li>
+<li><a href="https://realpython.com/primer-on-python-decorators/" class="uri">https://realpython.com/primer-on-python-decorators/</a><br />
+</li>
+<li><a href="https://www.datacamp.com/community/tutorials/decorators-python" class="uri">https://www.datacamp.com/community/tutorials/decorators-python</a></li>
+</ul>
+<hr />
+</div>
+<div id="basics" class="section level2">
+<h2>basics</h2>
+<ul>
+<li>the <code>@functools.wraps</code> decorator preserves information about the original function (which would otherwise get lost after being decorated)</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> functools</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">def</span> a_decorator(func):</span>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="at">@functools.wraps</span>(func)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="kw">def</span> wrapper_decorator(<span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb1-6"><a href="#cb1-6"></a>        <span class="co"># Do something before</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>        value <span class="op">=</span> func(<span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
+<span id="cb1-8"><a href="#cb1-8"></a>        <span class="co"># Do something after</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>        <span class="cf">return</span> value</span>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="cf">return</span> wrapper_decorator</span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="at">@a_decorator</span>    </span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="kw">def</span> a_function():</span>
+<span id="cb1-14"><a href="#cb1-14"></a>    <span class="cf">pass</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>    </span>
+<span id="cb1-16"><a href="#cb1-16"></a>a_function()</span></code></pre></div>
+<hr />
+</div>
+<div id="examples" class="section level2">
+<h2>examples</h2>
+<div id="timer" class="section level3">
+<h3>timer</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> functools</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> time</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">def</span> timer(func):</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    <span class="co">&quot;&quot;&quot;Print the runtime of the decorated function&quot;&quot;&quot;</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="at">@functools.wraps</span>(func)</span>
+<span id="cb2-7"><a href="#cb2-7"></a>    <span class="kw">def</span> wrapper_timer(<span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb2-8"><a href="#cb2-8"></a>        start_time <span class="op">=</span> time.perf_counter()    <span class="co"># 1</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>        value <span class="op">=</span> func(<span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
+<span id="cb2-10"><a href="#cb2-10"></a>        end_time <span class="op">=</span> time.perf_counter()      <span class="co"># 2</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>        run_time <span class="op">=</span> end_time <span class="op">-</span> start_time    <span class="co"># 3</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Finished </span><span class="sc">{</span>func<span class="sc">.</span><span class="va">__name__</span><span class="sc">!r}</span><span class="ss"> in </span><span class="sc">{</span>run_time<span class="sc">:.4f}</span><span class="ss"> secs&quot;</span>)</span>
+<span id="cb2-13"><a href="#cb2-13"></a>        <span class="cf">return</span> value</span>
+<span id="cb2-14"><a href="#cb2-14"></a>    <span class="cf">return</span> wrapper_timer</span>
+<span id="cb2-15"><a href="#cb2-15"></a></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="at">@timer</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="kw">def</span> waste_some_time(num_times):</span>
+<span id="cb2-18"><a href="#cb2-18"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(num_times):</span>
+<span id="cb2-19"><a href="#cb2-19"></a>        <span class="bu">sum</span>([i<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>)])</span>
+<span id="cb2-20"><a href="#cb2-20"></a></span>
+<span id="cb2-21"><a href="#cb2-21"></a>waste_some_time(<span class="dv">10</span>)</span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="co">#  Finished &#39;waste_some_time&#39; in 0.0322 secs</span></span></code></pre></div>
+</div>
+<div id="debug" class="section level3">
+<h3>debug</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> functools</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">def</span> debug(func):</span>
+<span id="cb3-4"><a href="#cb3-4"></a>    <span class="co">&quot;&quot;&quot;Print the function signature and return value&quot;&quot;&quot;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>    <span class="at">@functools.wraps</span>(func)</span>
+<span id="cb3-6"><a href="#cb3-6"></a>    <span class="kw">def</span> wrapper_debug(<span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb3-7"><a href="#cb3-7"></a>        args_repr <span class="op">=</span> [<span class="bu">repr</span>(a) <span class="cf">for</span> a <span class="kw">in</span> args]                      <span class="co"># 1</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>        kwargs_repr <span class="op">=</span> [<span class="ss">f&quot;</span><span class="sc">{k}</span><span class="ss">=</span><span class="sc">{v!r}</span><span class="ss">&quot;</span> <span class="cf">for</span> k, v <span class="kw">in</span> kwargs.items()]  <span class="co"># 2</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>        signature <span class="op">=</span> <span class="st">&quot;, &quot;</span>.join(args_repr <span class="op">+</span> kwargs_repr)           <span class="co"># 3</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Calling </span><span class="sc">{</span>func<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">(</span><span class="sc">{</span>signature<span class="sc">}</span><span class="ss">)&quot;</span>)</span>
+<span id="cb3-11"><a href="#cb3-11"></a>        value <span class="op">=</span> func(<span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
+<span id="cb3-12"><a href="#cb3-12"></a>        <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>func<span class="sc">.</span><span class="va">__name__</span><span class="sc">!r}</span><span class="ss"> returned </span><span class="sc">{</span>value<span class="sc">!r}</span><span class="ss">&quot;</span>)           <span class="co"># 4</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>        <span class="cf">return</span> value</span>
+<span id="cb3-14"><a href="#cb3-14"></a>    <span class="cf">return</span> wrapper_debug</span>
+<span id="cb3-15"><a href="#cb3-15"></a>    </span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="at">@debug</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="kw">def</span> waste_some_time(num_times):</span>
+<span id="cb3-18"><a href="#cb3-18"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(num_times):</span>
+<span id="cb3-19"><a href="#cb3-19"></a>        <span class="bu">sum</span>([i<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>)])</span>
+<span id="cb3-20"><a href="#cb3-20"></a></span>
+<span id="cb3-21"><a href="#cb3-21"></a>waste_some_time(<span class="dv">10</span>)</span>
+<span id="cb3-22"><a href="#cb3-22"></a><span class="co">#  Calling waste_some_time(10)</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a><span class="co">#  &#39;waste_some_time&#39; returned None</span></span></code></pre></div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

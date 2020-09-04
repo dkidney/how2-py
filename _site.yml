@@ -26,10 +26,10 @@ navbar:
         #   href: _todo.html
         - text: "documentation"
           href: documentation.html
-        # - text: "args and kwargs"
-        #   href: _todo.html
-        # - text: "decorators"
-        #   href: _todo.html
+        - text: "args and kwargs"
+          href: args_and_kwargs.html
+        - text: "decorators"
+          href: decorators.html
         - text: "---------"
         # - text: "constants"
         #   href: _todo.html
@@ -51,6 +51,8 @@ navbar:
           href: argparse.html
         - text: "collections"
           href: collections.html
+        - text: "configparser"
+          href: configparser.html
         - text: "datetime"
           href: datetime.html
         - text: "json"
@@ -72,7 +74,7 @@ navbar:
         - text: "urllib"
           href: urllib.html
         # - text: "xml"
-        #   href: _todo.html
+        #   href: xml.html
     - text: "ds"
       menu:
         - text: "numpy"

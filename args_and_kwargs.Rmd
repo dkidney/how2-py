@@ -1,0 +1,122 @@
+---
+title: '*args and **kwargs'
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+## links
+
+realpython:  
+
+* [python-kwargs-and-args](https://realpython.com/python-kwargs-and-args)  
+
+datacamp:  
+
+* [usage-asterisks-python](https://www.datacamp.com/community/tutorials/usage-asterisks-python)  
+
+*********************************************************************
+
+## packing and unpacking
+
+* unpacking operators unpack the values from iterable objects  
+* single asterisks can be used on any iterable  
+* double asterisks can only be used on dictionaries  
+
+### lists, tuples, sets
+
+```{python}
+nums = (1, 2, 3, 4) # e.g. a tuple, but could also be a list or set
+print(*nums) # same as print(a, b, c, d)
+a, b, c, d = nums # unpack into separate variables
+a, *b = nums # partial unpacking
+print(a, b) # b is a list even though nums was a tuple..
+```
+
+#### combining iterables
+
+```{python}
+nums1 = [1, 2, 3] # list
+nums2 = (4, 5, 6) # tuple 
+nums3 = {7, 8, 9} # set
+type([*nums1, *nums2, *nums3])
+type((*nums1, *nums2, *nums3))
+type({*nums1, *nums2, *nums3})
+```
+
+#### nested unpacking
+
+```{python}
+languages = ["Python", "Is", "Great"] 
+[[first_letter_first_word, *remain_letters_first_word], *other_words] = languages 
+first_letter_first_word
+remain_letters_first_word
+other_words
+```
+
+### dicts
+
+TODO
+
+*********************************************************************
+
+## *args
+
+* the unpacking operator (*) produces a `tuple`
+ 
+```python
+def print_args(*args):
+    print(type(args))
+    print(args)
+    for arg in args:
+        print(arg)
+print_args("Python", "Is", "Great")
+```
+
+*********************************************************************
+
+## **kwargs
+
+* the unpacking operator (**) produces a `dict`  
+* iterate over keys using `kwargs`  
+* iterate over values using `kwargs.values`  
+
+```python
+def print_kwargs_keys(**kwargs):
+    print(type(kwargs))
+    print(kwargs)
+    for key in kwargs:
+        print(key)
+    for val in kwargs.values():
+        print(val)
+print_kwargs_keys(a="Python", b="Is", c="Great")
+```
+
+### argument order
+
+* non-default arguments  
+* default arguments  
+* *args  
+* **kwargs  
+
+* `*args` allows you to pass a varying number of positional arguments
+  * the unpacking operator (*) 
+
+Bear in mind that the iterable object you’ll get using the unpacking operator * is not a list but a tuple
+
+*args allows you to pass a varying number of positional arguments
+
+```python
+def add(*args):
+    result = 0
+    for x in args:
+        result += x
+    return result
+print(add(1, 2, 3))
+```
+
+*********************************************************************
