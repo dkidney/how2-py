@@ -194,12 +194,12 @@ conda config --add channels conda-forge
 examples
 
 ```sh
-conda install --name py3  -c conda-forge airflow
-conda install --name py3  -c conda-forge binarytree
-conda install --name py3  -c conda-forge jira
-conda install --name py3  -c conda-forge pyspark
-#conda install --name py3  -c conda-forge snowflake-connector-python
-conda install --name py3  -c conda-forge xgboost
+conda install --name py3 -c conda-forge airflow
+conda install --name py3 -c conda-forge binarytree
+conda install --name py3 -c conda-forge jira
+conda install --name py3 -c conda-forge pyspark
+#conda install --name py3 -c conda-forge snowflake-connector-python
+conda install --name py3 -c conda-forge xgboost
 ```
 
 ### requirements
@@ -217,12 +217,12 @@ conda install --name py3 -c conda-forge --file requirements.txt
 ```sh
 # latest available python version
 conda search python
-conda search python | grep pkgs/main | tail -1
-conda search python | grep pkgs/main | tail -1 | grep -Eo "\d+\.\d+\.\d+"
+conda search python | grep 'pkgs/main' | tail -1
+conda search python | grep 'pkgs/main' | tail -1 | grep -Eo "\d+\.\d+\.\d+"
 
 # latest available python package versions
-conda search pandas | grep pkgs/main | tail -1 | grep -Eo "\d+\.\d+\.\d+"
-conda search scikit-learn | grep pkgs/main | tail -1 | grep -Eo "\d+\.\d+\.\d+"
+conda search pandas | grep 'pkgs/main' | tail -1 | grep -Eo "\d+\.\d+\.\d+"
+conda search scikit-learn | grep 'pkgs/main' | tail -1 | grep -Eo "\d+\.\d+\.\d+"
 ```
 
 ### CondaHTTPError
@@ -232,5 +232,3 @@ Note: if you get a **CondaHTTPError: HTTP 000 CONNECTION FAILED** error, try run
 ```sh
 conda config --set ssl_verify no
 ```
-
-
