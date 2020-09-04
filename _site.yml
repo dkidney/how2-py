@@ -30,6 +30,8 @@ navbar:
           href: args_and_kwargs.html
         - text: "decorators"
           href: decorators.html
+        - text: "underscores"
+          href: underscores.html
         - text: "---------"
         # - text: "constants"
         #   href: _todo.html
