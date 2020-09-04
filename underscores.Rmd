@@ -1,0 +1,228 @@
+---
+title: underscores
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+<!-- ********************************************************************* -->
+
+<!-- > Headline -->
+
+<!-- ********************************************************************* -->
+
+<!-- ## faqs -->
+
+*********************************************************************
+
+## links
+
+* https://dbader.org/blog/meaning-of-underscores-in-python  
+* https://dbader.org/blog/python-dunder-methods  
+* https://www.datacamp.com/community/tutorials/role-underscore-python  
+
+*********************************************************************
+
+## single underscore: `_`
+
+* by convention, used to indicate that a variable is temporary/insignificant  
+* also represents the last expression evaluated in the interpreter (if not already bound to a value)  
+
+```python
+for _ in range(10):
+    print("hello")
+```
+
+```python
+partially_interesting = ("boring", "interesting")
+_, x = partially_interesting
+x
+```
+
+```{python}
+2 * 2
+_
+```
+
+*********************************************************************
+
+## single leading underscore: `_blah`
+
+* by convention, used to indicate that a function/variable is intended for internal use only  
+* class methods/attributes with names starting with a single underscore are still accessible by the user  
+* functions/variables in a module with names starting with a single underscore will not get imported if you use the `from module import *` method (unless the module defines an `__all__` list that includes them)  
+
+*********************************************************************
+
+## single trailing underscore: `blah_`
+
+* by convention, used to avoid naming conflicts with python keywords  
+
+*********************************************************************
+
+## double leading underscores: `__blah`
+
+* used for class methods/attributes 
+* causes the names to get expanded using the suffix `_<class_name>` (referred to as *name mangling*)  
+* prevents them from being overridden in subclasses    
+* they can be referred to with the class definition without the prefix  
+
+```{python}
+class MyClass():
+
+  def __init__(self):
+    self.__an_instance_attribute = "blah"
+
+  def __a_method(self):
+    pass
+
+  __a_class_attribute = "asdf"
+  
+  def get_instance_attribute(self):
+    return self.__an_instance_attribute
+
+an_instance = MyClass()
+for i in range(3):
+  print(dir(an_instance)[i])
+an_instance._MyClass__an_instance_attribute
+an_instance.get_instance_attribute()
+```
+  
+*********************************************************************
+
+## double leading and trailing underscores: `__blah__`
+
+* aka 'dunder methods', 'dunders'  or 'magic methods'  
+* reserved for special methods that are predefined in the python language     
+* let you emulate the behaviour of built-in types  
+* avoid making your own dunders..  
+
+see also:
+
+* https://docs.python.org/3/library/operator.html  
+
+```{python}
+class Rectangle():
+  """docstring for Rectangle()"""
+
+  # instance constructor function
+  def __init__(self, width=0, length=0):
+    self.width = width
+    self.length = length
+
+  # official string representation
+  def __repr__(self):
+    return f'Rectangle(width={self.width!r}, length={self.length!r})'
+    
+  # unofficial string representation
+  def __str__(self):
+    return f'({self.width!r} x {self.length!r})'
+    
+  def __len__(self):
+    return self.length
+    
+  def __getitem__(self, index):
+    if index == 0:
+      return self.width
+    elif index == 1:
+      return self.length
+    else:
+      raise IndexError('can only accept index of 0 or 1')
+    
+  def __setitem__(self, index, value):
+    if index == 0:
+      self.width = value
+    elif index == 1:
+      self.length = value
+    else:
+      raise IndexError('can only accept index of 0 or 1')
+
+  def __eq__(self, other):
+    return self.area() == other.area()
+
+  def __lt__(self, other):
+    return self.area() < other.area()
+
+  def __gt__(self, other):
+    return self.area() > other.area()
+    
+  def __le__(self, other):
+    return self.area() <= other.area()
+
+  def __ge__(self, other):
+    return self.area() >= other.area()
+    
+  def __ne__(self, other):
+    return self.area() != other.area()
+    
+  def __add__(self, other):
+    new = Rectangle()
+    new.width = self.width + other.width
+    new.length = self.length + other.length
+    return new
+
+  def area(self):
+    """docstring for area()"""
+    return self.width * self.length
+
+  def __call__(self):
+    return "Hello, I'm a rectangle"
+
+
+x = Rectangle(8, 12)
+x.__class__
+x.__class__.__name__
+x.__doc__
+x
+print(x)
+x[0], x[1]
+x[0] = 9
+x[0], x[1]
+len(x)
+x.area.__name__
+x.area.__doc__
+x.area()
+x()
+
+y = Rectangle(6, 10)
+x == y, x < y, x > y, x <= y, x >= y, x != y
+x + y
+```
+
+asdf | asdf
+------------- | -------------
+`__init__` | asdf
+`__repr__` | asdf
+`__str__` | asdf
+`__len__` | asdf
+`__name__` | asdf
+`__doc__` | asdf
+`__call__` | makes the instance callable
+
+
+`__add__`, `__sub__`, `__mul__`, `__truediv__`, `__mod__`
+
+
+asdf | asdf
+------------- | -------------
+`__eq__` | asdf
+`__lt__` | asdf
+`__gt__` | asdf
+`__le__` | asdf
+`__ge__` | asdf
+
+`__iter__`, `__next__` for iterable objects
+
+`__enter__`, `__exit__` for context manager support
+
+<!-- ********************************************************************* -->
+
+<!-- ## appendix: dir -->
+
+<!-- ```{python} -->
+<!-- from pprint import pprint -->
+<!-- import todo -->
+<!-- pprint(dir(todo)) -->
+<!-- ``` -->
