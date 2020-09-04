@@ -1,21 +1,25 @@
 ---
-title: virtualenv
+title: statsmodels
+editor_options: 
+  chunk_output_type: console
 ---
 
-```{css css_custom, code=readLines("_css_custom.css"), echo=FALSE}
-```
 ```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
 ```
 
 ******************************************************************************************
 
-## Links
+## links
 
-https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/
+* http://www.statsmodels.org/stable/index.html
 
 ******************************************************************************************
 
-```sh
-pip install virtualenv
-```
+
+
+
+
+
+
+
 

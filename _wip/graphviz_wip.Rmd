@@ -1,9 +1,9 @@
 ---
 title: grahpviz
+editor_options: 
+  chunk_output_type: console
 ---
 
-```{css css_custom, code=readLines("_css_custom.css"), echo=FALSE}
-```
 ```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
 ```
 

@@ -1,17 +1,9 @@
 ---
 title: pandas
-html_document:
-    highlight: haddock
-    theme: cosmo
-    toc: true
-    toc_depth: 4
-    toc_float:
-      collapsed: true
-      smooth_scroll: true
+editor_options: 
+  chunk_output_type: console
 ---
 
-```{css css_custom, code=readLines("../_css_custom.css"), echo=FALSE}
-```
 ```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
 ```
 

@@ -1,10 +1,9 @@
 ---
 title: basics
-subtitle: python
+editor_options: 
+  chunk_output_type: console
 ---
 
-```{css css_custom, code=readLines("~/github/how2/_css_custom.css"), echo=FALSE}
-```
 ```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
 ```
 
@@ -21,7 +20,6 @@ datacamp tutorials:
 * https://www.datacamp.com/community/tutorials/python-data-type-conversion  
 * https://www.datacamp.com/community/tutorials/setup-data-science-environment  
 * https://www.datacamp.com/community/tutorials/python-developer-set-up  
-* https://www.datacamp.com/community/tutorials/usage-asterisks-python  
 * https://www.datacamp.com/community/tutorials/argument-parsing-in-python  
 * https://www.datacamp.com/community/tutorials/functions-python-tutorial  
 * https://www.datacamp.com/community/tutorials/fuzzy-string-python  
@@ -607,126 +605,6 @@ clear; python my_python_script.py
 # run as a standalone executable
 # uses the interpreter specified by the shebang line in the script - e.g. #! usr/bin/python
 my_python_script.py
-```
-
-*********************************************************************
-
-## packing and unpacking
-
-* https://www.datacamp.com/community/tutorials/usage-asterisks-python  
-* unpacking operators unpack the values from iterable objects  
-* single asterisks can be used on any iterable  
-* double asterisks can only be used on dictionaries  
-
-### tuples
-
-```{python}
-nums = (1, 2, 3, 4)
-print(nums)
-print(*nums)
-a, b, c, d = nums
-print(a, b, c, d)
-a, *b = nums 
-print(a, b)
-```
-
-### lists
-
-```{python}
-nums = [1, 2, 3, 4]
-print(nums)
-print(*nums)
-a, b, c, d = nums
-print(a, b, c, d)
-a, *b = nums 
-print(a, b)
-```
-
-### combining iterables
-
-```{python}
-nums1 = [1, 2, 3] # list
-nums2 = (4, 5, 6) # tuple 
-nums3 = {7, 8, 9} # set
-type([*nums1, *nums2, *nums3])
-type((*nums1, *nums2, *nums3))
-type({*nums1, *nums2, *nums3})
-```
-
-### nested unpacking
-
-```{python}
-languages = ["Python", "Is", "Great"] 
-[[first_letter_first_word, *remain_letters_first_word], *other_words] = languages 
-first_letter_first_word
-remain_letters_first_word
-other_words
-```
-
-### dicts
-
-TODO
-
-*********************************************************************
-
-## *args and **kwargs
-
-* https://realpython.com/python-kwargs-and-args/  
-* https://www.datacamp.com/community/tutorials/usage-asterisks-python  
-
-allow you to pass multiple arguments or keyword arguments to a function
-
-### *args
-
-* the unpacking operator (*) produces a `tuple`
- 
-```{python}
-def print_args(*args):
-    print(type(args))
-    print(args)
-    for arg in args:
-        print(arg)
-print_args("Python", "Is", "Great")
-```
-
-### **kwargs
-
-* the unpacking operator (**) produces a `dict`  
-* iterate over keys using `kwargs`  
-* iterate over values using `kwargs.values`  
-
-```{python}
-def print_kwargs_keys(**kwargs):
-    print(type(kwargs))
-    print(kwargs)
-    for key in kwargs:
-        print(key)
-    for val in kwargs.values():
-        print(val)
-print_kwargs_keys(a="Python", b="Is", c="Great")
-```
-
-### argument order
-
-* non-default arguments  
-* default arguments  
-* *args  
-* **kwargs  
-
-* `*args` allows you to pass a varying number of positional arguments
-  * the unpacking operator (*) 
-
-Bear in mind that the iterable object you’ll get using the unpacking operator * is not a list but a tuple
-
-*args allows you to pass a varying number of positional arguments
-
-```{python}
-def add(*args):
-    result = 0
-    for x in args:
-        result += x
-    return result
-print(add(1, 2, 3))
 ```
 
 *********************************************************************

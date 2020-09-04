@@ -1,10 +1,9 @@
 ---
 title: object-oriented programming
-subtitle: python
+editor_options: 
+  chunk_output_type: console
 ---
 
-```{css css_custom, code=readLines("_css_custom.css"), echo=FALSE}
-```
 ```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
 ```
 
@@ -372,10 +371,9 @@ an_instance.another_attribute
 
 *********************************************************************
 
-## decorators
+## class decorators
 
-* https://www.datacamp.com/community/tutorials/decorators-python
-
+* https://www.datacamp.com/community/tutorials/decorators-python  
 * special functions that con modify other functions  
 * keywords start with `@`  
 
@@ -385,7 +383,7 @@ an_instance.another_attribute
 
 see [class methods](#classmethods)
 
-#### `@propterty` 
+#### `@property` 
 
 *TODO*
 
