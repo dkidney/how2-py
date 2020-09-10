@@ -79,6 +79,15 @@ pip uninstall package-name
 ### requirements {#requirements}
 
 ```sh
-pip install -U -r requirements.txt
-pip freeze # create a requirements.txt file
+pip freeze # print requirements
+pip freeze > requirements.txt # create a requirements.txt file with pkg==version
+pip install -r requirements.txt # install from requirements.txt
+pip install -U -r requirements.txt # install requirements.txt and upgrade packages (if possible)
+```
+
+### list
+
+```sh
+pip list # list all packages 
+pip list --outdated # list all outdated packages 
 ```

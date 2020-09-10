@@ -11,9 +11,17 @@ editor_options:
 
 > Fast implementation of the datetime type
 
-<!-- ********************************************************************* -->
+*********************************************************************
 
-<!-- ## faqs -->
+## faqs
+
+datetime:
+
+* [unix to posix](#datetime-unix-to-posix)  
+* [string to posix](#datetime-string-to-posix)  
+* [posix to unix](#datetime-posix-to-unix)  
+* [posix to string](#datetime-posix-to-string)  
+* [change timezone](#datetime-change-timezone)  
 
 *********************************************************************
 
@@ -55,6 +63,8 @@ a_time.isoformat()
 a_time.strftime("%H:%M:%S")
 ```
 
+### iso time to posix
+
 ```{python}
 import datetime as dt
 dt.time.fromisoformat("23:59:59") # ISO to POSIX
@@ -67,12 +77,12 @@ dt.time.fromisoformat("23:59:59:999999") # ISO to POSIX
 
 ```{python}
 import datetime as dt
-a_datetime = dt.datetime(year=2020, month=12, day=31, hour=23, minute=59, second=59, microsecond=999999)
+a_datetime = dt.datetime(year=2020, month=12, day=31, 
+                         hour=23, minute=59, second=59, 
+                         microsecond=999999)
 a_datetime
 a_datetime.year, a_datetime.month, a_datetime.day
 a_datetime.hour, a_datetime.minute, a_datetime.second, a_datetime.microsecond
-a_datetime.isoformat()
-a_datetime.strftime("%Y-%m-%d %H:%M:%S")
 ```
 
 ```{python}
@@ -80,17 +90,39 @@ import datetime as dt
 dt.datetime.now()
 ```
 
-### conversions
+### conversions 
+
+#### unix to posix {#datetime-unix-to-posix}
 
 ```{python}
 import datetime as dt
-import time as tm
-timestamp = tm.time() # time in seconds since 1970-01-01
-timestamp
-a_datetime = dt.datetime.fromtimestamp(timestamp) # Unix to POSIX
-a_datetime
-dt.datetime.timestamp(a_datetime) # POSIX to Unix
-dt.datetime.fromisoformat("2020-12-31T23:59:59:999999") # ISO to POSIX
+timestamp = 1599605723.4624178
+dt.datetime.fromtimestamp(timestamp)
+```
+
+#### string to posix {#datetime-string-to-posix}
+
+```{python}
+import datetime as dt
+dt.datetime.fromisoformat("2020-12-31T23:59:59:999999")
+dt.datetime.strptime("2020-12-31 23:59:59", "%Y-%m-%d %H:%M:%S")
+```
+
+#### posix to unix {#datetime-posix-to-unix}
+
+```{python}
+import datetime as dt
+a_datetime = dt.datetime.now()
+a_datetime.timestamp()
+```
+
+#### posix to string {#datetime-posix-to-string}
+
+```{python}
+import datetime as dt
+a_datetime = dt.datetime.now()
+a_datetime.isoformat()
+a_datetime.strftime("%Y-%m-%d %H:%M:%S")
 ```
 
 ### timezones
@@ -101,6 +133,16 @@ from dateutil import tz
 dt.datetime.now(tz=tz.tzlocal())
 dt.datetime.now(tz=tz.gettz("Europe/London")).tzname()
 dt.datetime.now(tz=tz.gettz("America/New_York")).isoformat()
+```
+
+#### change timezone {#datetime-change-timezone}
+
+```{python}
+import datetime as dt
+from dateutil import tz
+a_datetime = dt.datetime.now(tz=tz.tzlocal())
+a_datetime.isoformat()
+a_datetime.astimezone(tz.gettz("America/New_York")).isoformat()
 ```
 
 *********************************************************************

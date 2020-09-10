@@ -1,0 +1,114 @@
+---
+title: airflow
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+> A platform to programmatically author, schedule and monitor workflows
+
+<!-- ********************************************************************* -->
+
+<!-- ## faqs -->
+
+*********************************************************************
+
+## links
+
+* https://airflow.apache.org/  
+* https://airflow.apache.org/docs/stable/  
+* https://airflow-tutorial.readthedocs.io/en/latest/index.html  
+
+*********************************************************************
+
+## setup
+
+```sh
+# install to default $AIRFLOW_HOME folder ~/airflow
+pip install apache-airflow
+
+# initialize the database
+airflow initdb
+
+# start the web server, default port is 8080
+airflow webserver -p 8080
+
+# start the scheduler
+airflow scheduler
+
+# visit localhost:8080 in the browser and enable the example dag in the home page
+```
+
+```{python}
+import airflow
+airflow.__version__
+```
+
+
+*********************************************************************
+
+## basics
+
+### terms
+
+* **task/operator** - a defined unit of work  
+* **task instance** - an individual run of a single task  
+* **dag** - directed acyclic graph - a set of tasks with explicit execution order  
+* **dag run** - individual execution/run of a DAG  
+
+### components
+
+* **web server** - a gui where you can track job status and read logs from a remote file store  
+* **scheduler** - responsible for scheduling jobs  
+* **executor** - the mechanism that gets the tasks done  
+* **metadata database** - powers how the other components interact and stores the Airflow states  
+
+
+*********************************************************************
+
+## operators
+
+### PythonOperator
+
+```python
+def print_context(ds, **kwargs):
+    pprint(kwargs)
+    print(ds)
+    return 'Whatever you return gets printed in the logs'
+
+run_this = PythonOperator(
+    task_id='print_the_context',
+    provide_context=True,
+    python_callable=print_context,
+    dag=dag,
+)
+```
+
+### BashOperator
+
+```python
+t1 = BashOperator(task_id='print_date',
+    bash_command='date,
+    dag=dag) 
+```
+
+### EmailOperator
+
+### SimpleHttpOperator
+
+### MySqlOperator
+
+
+<!-- ********************************************************************* -->
+
+<!-- ## appendix: dir -->
+
+<!-- ```{python} -->
+<!-- from pprint import pprint -->
+<!-- import todo -->
+<!-- pprint(dir(todo)) -->
+<!-- ``` -->

@@ -78,7 +78,7 @@ assert (condition), 'whoops...'
 * `try` - 
 * `except` - 
 * `else` - 
-* `inally` - 
+* `finally` - 
 
 ```python
 try:

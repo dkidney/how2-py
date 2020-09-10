@@ -57,6 +57,10 @@ datacamp:
 * [data-preparation-with-pandas](https://www.datacamp.com/community/tutorials/data-preparation-with-pandas)  
 * [moving-averages-in-pandas](https://www.datacamp.com/community/tutorials/moving-averages-in-pandas)  
 
+stackoverflow:
+
+* [questions tagged pandas](https://stackoverflow.com/questions/tagged/pandas?pageSize=15&sort=votes)  
+
 *********************************************************************
 
 ## setup
@@ -187,7 +191,8 @@ each key is a column
 
 ```python
 # from dict of lists - each key is a column
-pd.DataFrame({'c1': ['x', 'y', 'z'], 'c2': [1, 2, 3]},
+pd.DataFrame({'c1': ['x', 'y', 'z'], 
+              'c2': [1, 2, 3]},
              index=['r1', 'r2', 'r3'])
 
 # from dict of series - each key is a column
@@ -403,16 +408,27 @@ ser.apply(np.sqrt)
 df.apply(np.sqrt)
 ```
 
+e.g. apply a function row/column-wise that returns a scalar
+
 ```python
-# e.g. apply a function row/column-wise
 df.apply(np.sum) # column sums (i.e. apply across rows)
 df.apply(np.sum, axis=1) # row sums (i.e. apply across columns)
 ```
 
+e.g. apply a function row-wise that returns a list
+
 ```python
-# e.g. list-like results
-df.apply(lambda x: [1, 2], axis=1) # returns a list column
-df.apply(lambda x: [1, 2], axis=1, result_type='expand') # expands results as columns
+fun = lambda x: [1, 2]
+df.apply(fun, axis=1)
+df.apply(fun, axis=1, result_type='expand') # expands results as unnamed columns
+```
+
+e.g. apply a function row-wise that returns a dict
+
+```python
+fun = lambda x: dict(i=x[0], j=x[1])
+df.apply(fun, axis=1)
+df.apply(fun, axis=1, result_type='expand') # expands results as named columns
 ```
 
 ### applymap
@@ -523,23 +539,62 @@ df
 
 ### groupby
 
-```python
-# e.g. group by col1 and col2 and get the grouped means of col3 and col4
-df=df[['c1', 'c2', 'c3', 'c3']]
-df.groupby(['c1', 'c2'], as_index=False).mean()
+* create a grouped object that can be iterated upon  
+  * items are tuples:  
+    * first element is group condition  
+    * second element is data frame chunk  
+
+```{python}
+import pandas as pd
+df = pd.DataFrame({'c1': ['x', 'y', 'z', 'z'], 
+                   'c2': [1, 2, 3, 4],
+                   'c3': [2, 3, 4, 5]},
+                  index=['r1', 'r2', 'r3', 'r4'])
+df_grouped = df.groupby(['c1'])
+list(df_grouped.groups.keys())
+df_grouped.get_group("x")
+df_grouped.get_group("y")
+df_grouped.get_group("z")
+for group, frame in df_grouped:
+  print(group, ":", frame.shape)
 ```
 
-attributes:
+#### aggregate
+
+groupings as index:
 
 ```python
-grouped_df = df.groupby(['col'])
+df_grouped = df.groupby(['c1'])
 
-# list all grouping levels
-list(grouped_df.groups.keys())
+# returns df of group means for all columns
+df_grouped.mean() 
+df_grouped.agg("mean")
+df_grouped.agg(np.mean)
 
-# group by col which has levels a and b
-grouped_df.get_group("a")
-grouped_df.get_group("b")
+# returns df of group means for specified columns
+df_grouped.agg({'c2': np.mean}) # returns df
+df_grouped[['c2']].mean() # returns df
+df_grouped['c2'].mean() # returns series
+df_grouped['c2'].agg("mean") # returns series
+```
+
+default integer index and groupings to remain as columns:
+
+```python
+df_grouped = df.groupby(['c1'], as_index=False)
+# as above
+```
+
+#### misc
+
+```python
+# where fun is a function that gets applied to the index values of df
+def fun(item):
+  if item > 5:
+    return 'group1'
+  else:
+    return 'group2'
+df.groupby(fun) 
 ```
 
 ### idxmax

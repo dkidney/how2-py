@@ -47,7 +47,7 @@ navbar:
         #   href: _todo.html
         # - text: "testing"
         #   href: _todo.html
-    - text: "std lib"
+    - text: "std"
       menu:
         - text: "argparse"
           href: argparse.html
@@ -113,6 +113,8 @@ navbar:
           href: beautifulsoup.html
     - text: "misc"
       menu:
+        - text: "airflow"
+          href: airflow.html
         - text: "apis"
           href: apis.html
         - text: "databases"
