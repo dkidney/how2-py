@@ -1,8 +1,11 @@
 env_name=how2-py
 conda deactivate
+conda deactivate
+conda update -y --name base conda
+conda env list
 conda env remove --name ${env_name}
-py_version=$(conda search python | tail -1  | grep pkgs/main | grep -Eo '(\d+\.\d+\.\d+){1}') ; echo $py_version
-conda create -y --name ${env_name} python=${py_version}
+latest=$(conda search python | grep 'pkgs/main' | tail -1 | grep -Eo '(\d+\.\d+\.\d+){1}') ; echo ${latest}
+conda create -y --name ${env_name} python=${latest}
 conda activate ${env_name}
 conda update -y python
 python --version && which python
@@ -10,6 +13,13 @@ pip install -U pip
 pip install -U -r _requirements.txt
 pip list
 
+env_name=airflow
+conda create -y --name ${env_name} python=${latest}
+conda activate ${env_name}
+conda update -y python
+pip install -U pip
+pip install -U apache-airflow
+pip list
 
 
 # latest_version=$(conda search python | tail -1 | grep -E-o '([0-9]+\.[0-9]+\.[0-9]+){1}') ; echo $latest_version

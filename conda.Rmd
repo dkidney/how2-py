@@ -69,7 +69,12 @@ conda install --help
 
 ### upgrade
 
-*warning: this will delete all your conda environments!*
+```sh
+conda deactivate
+conda update -y --name base conda
+```
+
+*warning: don't upgrade anaconda via homebrew cask - this will delete all your conda environments!!*
 
 ```sh
 brew cask upgrade anaconda
