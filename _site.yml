@@ -75,8 +75,8 @@ navbar:
           href: sys.html
         - text: "urllib"
           href: urllib.html
-        # - text: "xml"
-        #   href: xml.html
+        - text: "xml"
+          href: xml.html
     - text: "ds"
       menu:
         - text: "numpy"

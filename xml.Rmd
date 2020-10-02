@@ -1,0 +1,51 @@
+---
+title: xml
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+## links
+
+* https://www.w3schools.com/xml/  
+* https://docs.python.org/3/library/xml.etree.elementtree.html  
+* https://www.datacamp.com/community/tutorials/python-xml-elementtree  
+
+
+*********************************************************************
+
+## basics
+
+```{sh, cache=FALSE}
+echo "<?xml version='1.0' encoding='UTF-8'?>
+<root-element-tag>
+  <words attribute_1='value_1' attribute_2='value_2'>
+    <word>abc</word>
+    <word>xyz</word>
+  </words>
+  <numbers>
+    <number>123</number>
+    <number>456</number>
+  </numbers>
+</root-element-tag>" > temp.xml
+```
+
+```{python, cache=FALSE}
+from xml.etree import ElementTree
+tree = ElementTree.parse('temp.xml')
+root = tree.getroot()
+root.tag
+elements = list(root)
+[x.tag for x in elements]
+[x.attrib for x in elements]
+words = root.find('words')
+words.attrib
+words.attrib['attribute_1']
+word_elements = words.findall('word')
+[x.tag for x in word_elements]
+[x.text for x in word_elements]
+```
