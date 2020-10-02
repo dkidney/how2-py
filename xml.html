@@ -599,9 +599,14 @@ $(document).ready(function () {
 <ul>
 <li><a href="#links">links</a></li>
 <li><a href="#basics">basics</a></li>
+<li><a href="#xpath">xpath</a></li>
 </ul>
 </div>
 
+<hr />
+<blockquote>
+<p>XML processing modules</p>
+</blockquote>
 <hr />
 <div id="links" class="section level2">
 <h2>links</h2>
@@ -632,21 +637,43 @@ $(document).ready(function () {
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>root <span class="op">=</span> tree.getroot()</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>root.tag</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="co">#  &#39;root-element-tag&#39;</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>elements <span class="op">=</span> <span class="bu">list</span>(root)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>[x.tag <span class="cf">for</span> x <span class="kw">in</span> elements]</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a><span class="co">#  [&#39;words&#39;, &#39;numbers&#39;]</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>[x.attrib <span class="cf">for</span> x <span class="kw">in</span> elements]</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a><span class="co">#  [{&#39;attribute_1&#39;: &#39;value_1&#39;, &#39;attribute_2&#39;: &#39;value_2&#39;}, {}]</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a>words <span class="op">=</span> root.find(<span class="st">&#39;words&#39;</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a>words.attrib</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a><span class="co">#  {&#39;attribute_1&#39;: &#39;value_1&#39;, &#39;attribute_2&#39;: &#39;value_2&#39;}</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a>words.attrib[<span class="st">&#39;attribute_1&#39;</span>]</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a><span class="co">#  &#39;value_1&#39;</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true"></a>word_elements <span class="op">=</span> words.findall(<span class="st">&#39;word&#39;</span>)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true"></a>[x.tag <span class="cf">for</span> x <span class="kw">in</span> word_elements]</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true"></a><span class="co">#  [&#39;word&#39;, &#39;word&#39;]</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true"></a>[x.text <span class="cf">for</span> x <span class="kw">in</span> word_elements]</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true"></a><span class="co">#  [&#39;abc&#39;, &#39;xyz&#39;]</span></span></code></pre></div>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>[x.tag <span class="cf">for</span> x <span class="kw">in</span> root.<span class="bu">iter</span>()]  <span class="co"># all element names</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="co">#  [&#39;root-element-tag&#39;, &#39;words&#39;, &#39;word&#39;, &#39;word&#39;, &#39;numbers&#39;, &#39;number&#39;, &#39;number&#39;]</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>elements <span class="op">=</span> <span class="bu">list</span>(root)  <span class="co"># first level elements</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>[x.tag <span class="cf">for</span> x <span class="kw">in</span> elements]</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a><span class="co">#  [&#39;words&#39;, &#39;numbers&#39;]</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a>[x.attrib <span class="cf">for</span> x <span class="kw">in</span> elements]</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a><span class="co">#  [{&#39;attribute_1&#39;: &#39;value_1&#39;, &#39;attribute_2&#39;: &#39;value_2&#39;}, {}]</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a>words <span class="op">=</span> root.find(<span class="st">&#39;words&#39;</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a>words.attrib</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a><span class="co">#  {&#39;attribute_1&#39;: &#39;value_1&#39;, &#39;attribute_2&#39;: &#39;value_2&#39;}</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true"></a>words.attrib[<span class="st">&#39;attribute_1&#39;</span>]</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true"></a><span class="co">#  &#39;value_1&#39;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true"></a>word_elements <span class="op">=</span> words.findall(<span class="st">&#39;word&#39;</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true"></a>[x.tag <span class="cf">for</span> x <span class="kw">in</span> word_elements]</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true"></a><span class="co">#  [&#39;word&#39;, &#39;word&#39;]</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true"></a>[x.text <span class="cf">for</span> x <span class="kw">in</span> word_elements]</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true"></a><span class="co">#  [&#39;abc&#39;, &#39;xyz&#39;]</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true"></a><span class="cf">for</span> number <span class="kw">in</span> root.<span class="bu">iter</span>(<span class="st">&#39;number&#39;</span>):</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true"></a>    <span class="bu">print</span>(number.text)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true"></a><span class="co">#  123</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true"></a><span class="co">#  456</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true"></a><span class="bu">print</span>(ElementTree.tostring(root, encoding<span class="op">=</span><span class="st">&#39;utf8&#39;</span>).decode(<span class="st">&#39;utf8&#39;</span>))</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true"></a><span class="co">#  &lt;?xml version=&#39;1.0&#39; encoding=&#39;utf8&#39;?&gt;</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true"></a><span class="co">#  &lt;root-element-tag&gt;</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true"></a><span class="co">#    &lt;words attribute_1=&quot;value_1&quot; attribute_2=&quot;value_2&quot;&gt;</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true"></a><span class="co">#      &lt;word&gt;abc&lt;/word&gt;</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true"></a><span class="co">#      &lt;word&gt;xyz&lt;/word&gt;</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true"></a><span class="co">#    &lt;/words&gt;</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true"></a><span class="co">#    &lt;numbers&gt;</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true"></a><span class="co">#      &lt;number&gt;123&lt;/number&gt;</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true"></a><span class="co">#      &lt;number&gt;456&lt;/number&gt;</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true"></a><span class="co">#    &lt;/numbers&gt;</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true"></a><span class="co">#  &lt;/root-element-tag&gt;</span></span></code></pre></div>
+<hr />
+</div>
+<div id="xpath" class="section level2">
+<h2>xpath</h2>
 </div>
 
 

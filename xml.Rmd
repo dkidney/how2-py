@@ -9,6 +9,10 @@ editor_options:
 
 *********************************************************************
 
+> XML processing modules
+
+*********************************************************************
+
 ## links
 
 * https://www.w3schools.com/xml/  
@@ -39,7 +43,8 @@ from xml.etree import ElementTree
 tree = ElementTree.parse('temp.xml')
 root = tree.getroot()
 root.tag
-elements = list(root)
+[x.tag for x in root.iter()]  # all element names
+elements = list(root)  # first level elements
 [x.tag for x in elements]
 [x.attrib for x in elements]
 words = root.find('words')
@@ -48,4 +53,12 @@ words.attrib['attribute_1']
 word_elements = words.findall('word')
 [x.tag for x in word_elements]
 [x.text for x in word_elements]
+for number in root.iter('number'):
+    print(number.text)
+print(ElementTree.tostring(root, encoding='utf8').decode('utf8'))
 ```
+
+*********************************************************************
+
+## xpath
+
