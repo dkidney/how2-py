@@ -5,7 +5,6 @@
 .ipynb_checkpoints/
 .DS_Store
 
-*.html
 temp.config
 temp.txt
 temp.xml
