@@ -32,10 +32,8 @@ output:
 ## todo
 
 * args and kwargs
-* json
 * sets
 * comprehensions
-* pyarrow
 * sklearn
 * collections
 * matplotlib

@@ -9,11 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Darren Kidney" />
 
-<meta name="date" content="2020-10-05" />
 
-<title>How to do stuff in python</title>
+<title>pyarrow</title>
 
 <script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -27,6 +25,93 @@
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
 
 
 <style type="text/css">
@@ -509,61 +594,42 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">How to do stuff in python</h1>
-<h4 class="author">Darren Kidney</h4>
-<h4 class="date">05 Oct 2020</h4>
+<h1 class="title toc-ignore">pyarrow</h1>
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#links">links</a></li>
+<li><a href="#setup">setup</a></li>
+<li><a href="#basics">basics</a></li>
+</ul>
+</div>
 
 <hr />
-<div id="resources" class="section level2">
-<h2>resources</h2>
+<blockquote>
+<p>Python library for Apache Arrow</p>
+</blockquote>
+<hr />
+<div id="links" class="section level2">
+<h2>links</h2>
 <ul>
-<li><a href="https://www.python.org/">python.org</a><br />
-</li>
-<li><a href="https://docs.python.org/3/py-modindex.html">Built-in Module Index</a><br />
-</li>
-<li><a href="https://www.python.org/dev/peps/pep-0008/">PEP 8 Style Guide</a><br />
-</li>
-<li><a href="https://www.python.org/downloads/mac-osx/">Latest version (Mac OS)</a></li>
+<li><a href="https://arrow.apache.org/" class="uri">https://arrow.apache.org/</a></li>
 </ul>
+<hr />
 </div>
-<div id="tutorials" class="section level2">
-<h2>tutorials</h2>
-<ul>
-<li><a href="https://realpython.com/">realpython</a><br />
-</li>
-<li><a href="https://www.datacamp.com/community/tutorials?tag=python">datacamp</a></li>
-</ul>
+<div id="setup" class="section level2">
+<h2>setup</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">pip</span> install pyarrow</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="im">import</span> pyarrow <span class="im">as</span> pa</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>pa.__version__</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="co">#  &#39;1.0.1&#39;</span></span></code></pre></div>
+<hr />
 </div>
-<div id="blogs" class="section level2">
-<h2>blogs</h2>
-<ul>
-<li><a href="https://planetpython.org/titles_only.html">planetpython</a></li>
-</ul>
-</div>
-<div id="podcasts" class="section level2">
-<h2>podcasts</h2>
-<ul>
-<li><a href="https://dataskeptic.com/">dataskeptic</a></li>
-</ul>
-</div>
-<div id="todo" class="section level2">
-<h2>todo</h2>
-<ul>
-<li>args and kwargs</li>
-<li>sets</li>
-<li>comprehensions</li>
-<li>sklearn</li>
-<li>collections</li>
-<li>matplotlib</li>
-<li>requests</li>
-<li>scripts</li>
-<li>tests</li>
-<li>packages</li>
-<li>documentation</li>
-</ul>
+<div id="basics" class="section level2">
+<h2>basics</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="im">import</span> pyarrow.parquet <span class="im">as</span> pq</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>df <span class="op">=</span> pq.read_table(<span class="st">&#39;example.parquet&#39;</span>).to_pandas()</span></code></pre></div>
 </div>
 
 

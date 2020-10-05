@@ -100,10 +100,10 @@ navbar:
         - text: "---------"
         - text: "boto3"
           href: boto3.html
+        - text: "pyarrow"
+          href: pyarrow.html
         - text: "pyhocon"
           href: pyhocon.html
-        # - text: "pyarrow"
-        #   href: _todo.html
         - text: "requests"
           href: requests.html
         - text: "xmltodict"

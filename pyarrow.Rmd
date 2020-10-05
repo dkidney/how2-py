@@ -1,0 +1,40 @@
+---
+title: pyarrow
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+> Python library for Apache Arrow
+
+*********************************************************************
+
+## links
+
+* https://arrow.apache.org/
+
+*********************************************************************
+
+## setup
+
+```sh
+pip install pyarrow
+```
+
+```{python}
+import pyarrow as pa
+pa.__version__
+```
+
+*********************************************************************
+
+## basics
+
+```python
+import pyarrow.parquet as pq
+df = pq.read_table('example.parquet').to_pandas()
+```
