@@ -6,5 +6,8 @@
 .DS_Store
 
 temp.config
+temp.json
+temp.py
+temp.sh
 temp.txt
 temp.xml

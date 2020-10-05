@@ -9,9 +9,70 @@ editor_options:
 
 *********************************************************************
 
-## read
+## serialise
 
+### object to string
+
+```{python}
+import json
+a_dict = dict(
+    top = dict(
+        z = 1,
+        x = [1,2,3],
+        y = dict(c=1, b=2, a=3)
+    )
+)
+print(json.dumps(a_dict))
+print(json.dumps(a_dict, separators=(", ", " = ")))
+print(json.dumps(a_dict, sort_keys=True))
+print(json.dumps(a_dict, indent=4))
+```
+
+### object to file
+
+```{python, cache=FALSE}
+import json
+a_dict = dict(top = dict(z = 1, x = [1,2,3], y = dict(c=1, b=2, a=3)))
+with open("temp.json", "w") as fh:
+    json.dump(a_dict, fh, indent=4)
+with open("temp.json", "r") as fh:
+    print(fh.read())
+```
 
 *********************************************************************
 
-## write
+## deserialise
+
+### string to object
+
+```{python}
+import json
+a_string = '{"top": {"z": 1, "x": [1, 2, 3], "y": {"c": 1, "b": 2, "a": 3}}}'
+print(json.loads(a_string))
+```
+
+### file to object
+
+```{python}
+import json
+with open("temp.json", "r") as fh:
+    print(json.load(fh))
+```
+
+*********************************************************************
+
+## example data
+
+* https://jsonplaceholder.typicode.com/
+
+```{python}
+import json
+import requests
+from pprint import pprint
+response = requests.get("https://jsonplaceholder.typicode.com/users")
+pprint(json.loads(response.text))
+```
+
+
+
+
