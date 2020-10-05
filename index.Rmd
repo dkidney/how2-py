@@ -32,7 +32,6 @@ output:
 ## todo
 
 * args and kwargs
-* datetime
 * json
 * sets
 * comprehensions
