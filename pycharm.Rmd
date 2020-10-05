@@ -118,7 +118,7 @@ See https://pep8.org/#maximum-line-length
 `Preferences > Plugins`
 
 * Markdown
-* 
+* One Dark theme
 
 ### default interpreter
 
