@@ -107,7 +107,7 @@ Use IPython if available (i.e. installed in your python env)
 Add visual guidelines:
 
 * 72 (docstrings/comments) 
-* 79 (code)  
+* 80 (code)  
 
 See https://pep8.org/#maximum-line-length
 
@@ -117,8 +117,10 @@ See https://pep8.org/#maximum-line-length
 
 `Preferences > Plugins`
 
-* Markdown
-* One Dark theme
+I use these:
+
+* Markdown  
+* One Dark Theme (3rd party?)  
 
 ### default interpreter
 
