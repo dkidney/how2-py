@@ -36,5 +36,5 @@ pa.__version__
 
 ```python
 import pyarrow.parquet as pq
-df = pq.read_table('example.parquet').to_pandas()
+df = pq.read_table('example.parquet').read_pandas().to_pandas()
 ```

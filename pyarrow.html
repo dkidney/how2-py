@@ -629,7 +629,7 @@ $(document).ready(function () {
 <div id="basics" class="section level2">
 <h2>basics</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="im">import</span> pyarrow.parquet <span class="im">as</span> pq</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>df <span class="op">=</span> pq.read_table(<span class="st">&#39;example.parquet&#39;</span>).to_pandas()</span></code></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>df <span class="op">=</span> pq.read_table(<span class="st">&#39;example.parquet&#39;</span>).read_pandas().to_pandas()</span></code></pre></div>
 </div>
 
 
