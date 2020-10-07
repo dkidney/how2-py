@@ -915,18 +915,16 @@ df.to_excel("file.xlsx")
 
 *********************************************************************
 
-## display
+## option_context
 
 ```python
 with pd.option_context(
-
+        'display.max_rows', 10,
+        'display.max_columns', 5,
+        'display.max_colwidth', -1
 ):
   print(df)
-# TODO
 ```
-
-<!-- df.to.options.display.max_colwidth = 100 -->
-<!-- pd.options.display.max_colwidth = 100 -->
 
 *********************************************************************
 
