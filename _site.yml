@@ -64,6 +64,8 @@ navbar:
           href: datetime.html
         - text: "json"
           href: json.html
+        - text: "logging"
+          href: logging.html
         - text: "os"
           href: os.html
         - text: "random"
@@ -80,6 +82,8 @@ navbar:
           href: subprocess.html
         - text: "sys"
           href: sys.html
+        - text: "unittest"
+          href: unittest.html
         - text: "urllib"
           href: urllib.html
         - text: "xml"
@@ -134,11 +138,13 @@ navbar:
         #   href: _todo.html
     - text: "envs"
       menu:
-        - text: "pip"
-          href: pip.html
         - text: "conda"
           href: conda.html
+        - text: "pip"
+          href: pip.html
         - text: "---------"
+        - text: "docker"
+          href: docker.html
         # - text: "pipenv"
         #   href: _todo.html
         - text: "pyenv"

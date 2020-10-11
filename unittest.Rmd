@@ -1,0 +1,87 @@
+---
+title: unittest
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+> Unit testing framework
+
+<!-- ********************************************************************* -->
+
+<!-- ## faqs -->
+
+*********************************************************************
+
+## links
+
+* https://docs.python.org/3.8/library/unittest.html  
+* https://realpython.com/python-testing/  
+* https://www.datacamp.com/community/tutorials/unit-testing-python  
+
+<!-- ********************************************************************* -->
+
+<!-- ## setup -->
+
+<!-- ```sh -->
+<!-- pip install todo -->
+<!-- ``` -->
+
+<!-- ```{python} -->
+<!-- import todo -->
+<!-- todo.__version__ -->
+<!-- ``` -->
+
+
+*********************************************************************
+
+## simple example
+
+```python
+import unittest
+
+
+class TestSum(unittest.TestCase):
+
+    def test_sum(self):
+        self.assertEqual(sum([1, 2, 3]), 6, "Should be 6")
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+```sh
+python test_sum_unittest.py
+```
+
+*********************************************************************
+
+## methods
+
+method | equivalent
+------------- | -------------
+`.assertEqual(a, b)` | `a == b`
+`.assertTrue(x)` | `bool(x) is True`
+`.assertFalse(x)` | `bool(x) is False`
+`.assertIs(a, b)` | `a is b`
+`.assertIsNone(x)` | `x is None`
+`.assertIn(a, b)` | `a in b`
+`.assertIsInstance(a, b)` | `isinstance(a, b)`
+`.assertIs()` | `a is not b`
+`.assertIsNone()` | `x is not None`
+`.assertIn()` |  `a not in b`
+`.assertIsInstance()` | `not isinstance(a, b)`
+
+<!-- ********************************************************************* -->
+
+<!-- ## appendix: dir -->
+
+<!-- ```{python} -->
+<!-- from pprint import pprint -->
+<!-- import todo -->
+<!-- pprint(dir(todo)) -->
+<!-- ``` -->

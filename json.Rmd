@@ -11,7 +11,7 @@ editor_options:
 
 ## serialise
 
-### object to string
+### object to string (`dumps`)
 
 ```{python}
 import json
@@ -28,7 +28,7 @@ print(json.dumps(a_dict, sort_keys=True))
 print(json.dumps(a_dict, indent=4))
 ```
 
-### object to file
+### object to file (`dump`)
 
 ```{python, cache=FALSE}
 import json
@@ -43,7 +43,7 @@ with open("temp.json", "r") as fh:
 
 ## deserialise
 
-### string to object
+### string to object (`loads`)
 
 ```{python}
 import json
@@ -51,7 +51,7 @@ a_string = '{"top": {"z": 1, "x": [1, 2, 3], "y": {"c": 1, "b": 2, "a": 3}}}'
 print(json.loads(a_string))
 ```
 
-### file to object
+### file to object (`load`)
 
 ```{python}
 import json

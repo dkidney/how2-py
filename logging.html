@@ -11,7 +11,7 @@
 
 
 
-<title>sys</title>
+<title>logging</title>
 
 <script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -347,7 +347,7 @@ $(document).ready(function () {
       <ul class="nav navbar-nav">
         <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    programming
+    topics
      
     <span class="caret"></span>
   </a>
@@ -356,6 +356,41 @@ $(document).ready(function () {
       <a href="basics.html">basics</a>
     </li>
     <li class="divider"></li>
+    <li>
+      <a href="args_and_kwargs.html">args and kwargs</a>
+    </li>
+    <li>
+      <a href="decorators.html">decorators</a>
+    </li>
+    <li>
+      <a href="documentation.html">documentation</a>
+    </li>
+    <li>
+      <a href="underscores.html">underscores</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="comprehensions.html">comprehensions</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="exceptions.html">exceptions</a>
+    </li>
+    <li>
+      <a href="files.html">files</a>
+    </li>
+    <li>
+      <a href="oop.html">oop</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    data
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
     <li>
       <a href="strings.html">strings</a>
     </li>
@@ -371,31 +406,9 @@ $(document).ready(function () {
     <li>
       <a href="sets.html">sets</a>
     </li>
-    <li>
-      <a href="comprehensions.html">comprehensions</a>
-    </li>
     <li class="divider"></li>
     <li>
-      <a href="documentation.html">documentation</a>
-    </li>
-    <li>
-      <a href="args_and_kwargs.html">args and kwargs</a>
-    </li>
-    <li>
-      <a href="decorators.html">decorators</a>
-    </li>
-    <li>
-      <a href="underscores.html">underscores</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="files.html">files</a>
-    </li>
-    <li>
-      <a href="exceptions.html">exceptions</a>
-    </li>
-    <li>
-      <a href="oop.html">oop</a>
+      <a href="collections.html">collections</a>
     </li>
   </ul>
 </li>
@@ -410,9 +423,6 @@ $(document).ready(function () {
       <a href="argparse.html">argparse</a>
     </li>
     <li>
-      <a href="collections.html">collections</a>
-    </li>
-    <li>
       <a href="configparser.html">configparser</a>
     </li>
     <li>
@@ -422,6 +432,9 @@ $(document).ready(function () {
       <a href="json.html">json</a>
     </li>
     <li>
+      <a href="logging.html">logging</a>
+    </li>
+    <li>
       <a href="os.html">os</a>
     </li>
     <li>
@@ -429,6 +442,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="re.html">re</a>
+    </li>
+    <li>
+      <a href="shutil.html">shutil</a>
     </li>
     <li>
       <a href="sqlite.html">sqlite</a>
@@ -441,6 +457,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="sys.html">sys</a>
+    </li>
+    <li>
+      <a href="unittest.html">unittest</a>
     </li>
     <li>
       <a href="urllib.html">urllib</a>
@@ -531,12 +550,15 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="pip.html">pip</a>
-    </li>
-    <li>
       <a href="conda.html">conda</a>
     </li>
+    <li>
+      <a href="pip.html">pip</a>
+    </li>
     <li class="divider"></li>
+    <li>
+      <a href="docker.html">docker</a>
+    </li>
     <li>
       <a href="pyenv.html">pyenv</a>
     </li>
@@ -594,101 +616,115 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">sys</h1>
+<h1 class="title toc-ignore">logging</h1>
 
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#command-line-args">command line args</a></li>
-<li><a href="#path">path</a></li>
-<li><a href="#python-version">python version</a></li>
-<li><a href="#os">os</a></li>
-<li><a href="#misc">misc</a></li>
+<li><a href="#links">links</a></li>
+<li><a href="#basics">basics</a>
+<ul>
+<li><a href="#formating">formating</a></li>
+</ul></li>
+<li><a href="#exception-handling">exception handling</a></li>
+<li><a href="#send-logs-to-multiple-places">send logs to multiple places</a></li>
 </ul>
 </div>
 
 <hr />
 <blockquote>
-<p>System-specific parameters and functions</p>
+<p>Logging facility for Python</p>
 </blockquote>
+<!-- ********************************************************************* -->
+<!-- ## faqs -->
 <hr />
+<div id="links" class="section level2">
+<h2>links</h2>
 <ul>
-<li><a href="https://python.readthedocs.io/en/latest/library/sys.html" class="uri">https://python.readthedocs.io/en/latest/library/sys.html</a></li>
+<li><a href="https://docs.python.org/3/library/logging" class="uri">https://docs.python.org/3/library/logging</a><br />
+</li>
+<li><a href="https://realpython.com/python-logging" class="uri">https://realpython.com/python-logging</a><br />
+</li>
+<li><a href="https://www.datacamp.com/community/tutorials/logging-in-python" class="uri">https://www.datacamp.com/community/tutorials/logging-in-python</a><br />
+</li>
+<li><a href="https://docs.python-guide.org/writing/logging" class="uri">https://docs.python-guide.org/writing/logging</a></li>
 </ul>
 <hr />
-<div id="command-line-args" class="section level2">
-<h2>command line args</h2>
-<p>The list of command line arguments passed to a Python script.</p>
-<p>argv[0] is the script name (it is operating system dependent whether this is a full pathname or not). If the command was executed using the -c command line option to the interpreter, argv[0] is set to the string ‘-c’. If no script name was passed to the Python interpreter, argv[0] is the empty string.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&#39;import sys</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="st">for i in range(len(sys.argv)):</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="st">    print(&quot;sys.argv[&quot; + str(i) + &quot;] = \&quot;&quot; + sys.argv[i] + &quot;\&quot;&quot;)</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="st">&#39;</span> <span class="op">&gt;</span> <span class="st">&#39;temp.py&#39;</span></span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">python</span> temp.py a b</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="co">#  sys.argv[0] = &quot;temp.py&quot;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="co">#  sys.argv[1] = &quot;a&quot;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="co">#  sys.argv[2] = &quot;b&quot;</span></span></code></pre></div>
+</div>
+<div id="basics" class="section level2">
+<h2>basics</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="im">import</span> logging</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>logging.basicConfig(level<span class="op">=</span>logging.INFO)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>logging.debug(<span class="st">&#39;This is a debug message&#39;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>logging.info(<span class="st">&#39;This is an info message&#39;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>logging.warning(<span class="st">&#39;This is a warning message&#39;</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>logging.error(<span class="st">&#39;This is an error message&#39;</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>logging.critical(<span class="st">&#39;This is a critical message&#39;</span>)</span></code></pre></div>
+<pre><code>INFO:root:This is an info warning
+WARNING:root:This is a warning message
+ERROR:root:This is an error message
+CRITICAL:root:This is a critical message</code></pre>
+<div id="formating" class="section level3">
+<h3>formating</h3>
+<p>You can format the messages using the <code>format</code> argument in <code>basicConfig</code> - see here for more info: <a href="https://docs.python.org/3/library/logging.html#logrecord-attributes" class="uri">https://docs.python.org/3/library/logging.html#logrecord-attributes</a></p>
+<p>e.g. </p>
+<p><code>format='%(name)s - %(funcName)s - %(levelname)s - %(message)s')</code></p>
 <hr />
 </div>
-<div id="path" class="section level2">
-<h2>path</h2>
-<ul>
-<li><code>path</code>: the list of directories Python searches through to find for modules and files</li>
-<li>stored as a list in <code>sys.path</code> - can therefore use list methods to modify it</li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="im">import</span> sys</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="bu">type</span>(sys.path)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="co">#  &lt;class &#39;list&#39;&gt;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>pprint(sys.path)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="co">#  [&#39;&#39;,</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="co">#   &#39;/usr/local/anaconda3/envs/how2-py/bin&#39;,</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a><span class="co">#   &#39;/usr/local/anaconda3/envs/how2-py/lib/python38.zip&#39;,</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a><span class="co">#   &#39;/usr/local/anaconda3/envs/how2-py/lib/python3.8&#39;,</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a><span class="co">#   &#39;/usr/local/anaconda3/envs/how2-py/lib/python3.8/lib-dynload&#39;,</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a><span class="co">#   &#39;/usr/local/anaconda3/envs/how2-py/lib/python3.8/site-packages&#39;,</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a><span class="co">#   &#39;/Library/Frameworks/R.framework/Versions/4.0/Resources/library/reticulate/python&#39;]</span></span></code></pre></div>
-<p>E.g.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>sys.path.append(<span class="st">&#39;extrapath&#39;</span>) </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>sys.path.extend([<span class="st">&#39;extrapath&#39;</span>])</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>sys.path.insert(<span class="dv">0</span>, <span class="st">&#39;extrapath&#39;</span>)</span></code></pre></div>
-<p>where <code>extrapath</code> is the path to a py file or a folder containing a py file?</p>
+</div>
+<div id="exception-handling" class="section level2">
+<h2>exception handling</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="im">import</span> logging</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>logging.basicConfig(level<span class="op">=</span>logging.INFO)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="cf">try</span>:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>    <span class="dv">1</span> <span class="op">/</span> <span class="dv">0</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>    logging.error(<span class="st">&quot;Exception occurred&quot;</span>, exc_info<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
+<pre><code>ERROR:root:Exception occurred
+Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 2, in &lt;module&gt;
+ZeroDivisionError: division by zero</code></pre>
+<p><code>logging.exception("Exception occurred")</code> gives the same result</p>
 <hr />
 </div>
-<div id="python-version" class="section level2">
-<h2>python version</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="im">import</span> sys</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>sys.version</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="co">#  &#39;3.8.5 (default, Sep  4 2020, 02:23:17) \n[Clang 10.0.0 ]&#39;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>sys.version_info</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="co">#  sys.version_info(major=3, minor=8, micro=5, releaselevel=&#39;final&#39;, serial=0)</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>sys.prefix</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="co">#  &#39;/usr/local/anaconda3/envs/how2-py&#39;</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a>sys.executable</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a><span class="co">#  &#39;/usr/local/anaconda3/envs/how2-py/bin/python&#39;</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a>sys.implementation.name</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a><span class="co">#  &#39;cpython&#39;</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a>sys.implementation.version</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true"></a><span class="co">#  sys.version_info(major=3, minor=8, micro=5, releaselevel=&#39;final&#39;, serial=0)</span></span></code></pre></div>
-<hr />
-</div>
-<div id="os" class="section level2">
-<h2>os</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="im">import</span> sys</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>sys.platform</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="co">#  &#39;darwin&#39;</span></span></code></pre></div>
-<p><code>linux</code> = Linux<br />
-<code>win32</code> = Windows<br />
-<code>cygwin</code> = Windows/Cygwin<br />
-<code>darwin</code> = Mac OS X</p>
-<hr />
-</div>
-<div id="misc" class="section level2">
-<h2>misc</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="im">import</span> sys</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>sys.float_info.<span class="bu">max</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="co">#  1.7976931348623157e+308</span></span></code></pre></div>
+<div id="send-logs-to-multiple-places" class="section level2">
+<h2>send logs to multiple places</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="im">import</span> logging</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="co"># create a custom logger</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>logger <span class="op">=</span> logging.getLogger(<span class="va">__name__</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="co"># create handlers</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>strm_handler <span class="op">=</span> logging.StreamHandler()</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a>file_handler <span class="op">=</span> logging.FileHandler(<span class="st">&#39;temp.log&#39;</span>, mode<span class="op">=</span><span class="st">&#39;w&#39;</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a>strm_handler.setLevel(logging.INFO)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a>file_handler.setLevel(logging.ERROR)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a><span class="co"># create formatters and add it to handlers</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true"></a>strm_format <span class="op">=</span> logging.Formatter(<span class="st">&#39;</span><span class="sc">%(name)s</span><span class="st"> - </span><span class="sc">%(funcName)s</span><span class="st"> - </span><span class="sc">%(levelname)s</span><span class="st"> - </span><span class="sc">%(message)s</span><span class="st">&#39;</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true"></a>file_format <span class="op">=</span> logging.Formatter(<span class="st">&#39;</span><span class="sc">%(asctime)s</span><span class="st"> - </span><span class="sc">%(name)s</span><span class="st"> - </span><span class="sc">%(levelname)s</span><span class="st"> - </span><span class="sc">%(message)s</span><span class="st">&#39;</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true"></a>strm_handler.setFormatter(strm_format)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true"></a>file_handler.setFormatter(file_format)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true"></a><span class="co"># add handlers to the logger</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true"></a>logger.addHandler(strm_handler)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true"></a>logger.addHandler(file_handler)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true"></a>logger.debug(<span class="st">&#39;This is a debug message&#39;</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true"></a>logging.info(<span class="st">&#39;This is an info message&#39;</span>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true"></a>logger.warning(<span class="st">&#39;This is a warning message&#39;</span>)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true"></a><span class="co">#  __main__ - &lt;module&gt; - </span><span class="al">WARNING</span><span class="co"> - This is a warning message</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true"></a><span class="co">#  </span><span class="al">WARNING</span><span class="co">:__main__:This is a warning message</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true"></a>logger.error(<span class="st">&#39;This is an error message&#39;</span>)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true"></a><span class="co">#  __main__ - &lt;module&gt; - ERROR - This is an error message</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true"></a><span class="co">#  ERROR:__main__:This is an error message</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true"></a>logger.critical(<span class="st">&#39;This is a critical message&#39;</span>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true"></a><span class="co">#  __main__ - &lt;module&gt; - CRITICAL - This is a critical message</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true"></a><span class="co">#  CRITICAL:__main__:This is a critical message</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">cat</span> temp.log</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="co">#  2020-10-11 22:29:51,794 - __main__ - ERROR - This is an error message</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="co">#  2020-10-11 22:29:51,810 - __main__ - CRITICAL - This is a critical message</span></span></code></pre></div>
 </div>
 
 

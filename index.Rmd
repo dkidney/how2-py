@@ -18,27 +18,29 @@ output:
 
 ## tutorials
 
-* [realpython](https://realpython.com/)  
+* [realpython](https://realpython.com/tutorials/all/)  
 * [datacamp](https://www.datacamp.com/community/tutorials?tag=python)  
 
 ## blogs
 
-* [planetpython](https://planetpython.org/titles_only.html)  
+* [planet python](https://planetpython.org/titles_only.html)  
+* [mouse vs python](https://www.blog.pythonlibrary.org/)
 
-## podcasts
+<!-- ## podcasts -->
 
-* [dataskeptic](https://dataskeptic.com/)  
+<!-- * [dataskeptic](https://dataskeptic.com/)   -->
 
 ## todo
 
+* unittest
+* docker 
+* matplotlib
+* packages
+* sklearn
+* collections
+* requests
 * args and kwargs
 * sets
 * comprehensions
-* sklearn
-* collections
-* matplotlib
-* requests
 * scripts
-* tests
-* packages
 * documentation

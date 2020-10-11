@@ -1,0 +1,281 @@
+---
+title: docker
+editor_options: 
+  chunk_output_type: console
+---
+
+*********************************************************************
+
+> Provides a way to run applications securely isolated in a container, packaged with all its dependencies and libraries
+
+*********************************************************************
+
+## links
+
+* https://docs.docker.com/  
+* https://docker-curriculum.com/  
+* https://colinfay.me/docker-r-reproducibility/  
+* https://towardsdatascience.com/learn-enough-docker-to-be-useful-b7ba70caeb4b  
+* https://medium.com/@kelvin_sp/docker-introduction-what-you-need-to-know-to-start-creating-containers-8ffaf064930a  
+
+*********************************************************************
+
+## setup
+
+```sh
+brew install docker # docker cli
+brew cask install docker # docker.app
+
+# i needed to open the docker.app and login before the command line tools would work
+docker --version
+which docker
+docker info
+docker run -rm hello-world
+```
+
+*********************************************************************
+
+## basics
+
+* A container is launched by running an image  
+  * An **image** is an executable package that includes everything needed to run an application--the code, a runtime, libraries, environment variables, and configuration files  
+  * A **container** is a runtime instance of an image  
+
+```sh
+docker images # list your images
+docker ps -a # list your containers
+docker rmi <image_id> # delete an image
+docker rm <container_id> # delete a container
+```
+
+*********************************************************************
+
+## run python in a container candidate
+
+* https://realpython.com/python-versions-docker/  
+
+```sh
+docker run -it --rm python:3.6.3 # specific version
+docker run -it --rm python:rc # release candidate = latest development version
+```
+
+* `-it`: interactive  
+* `-rm`: clean up your container after use  
+
+```python
+import sys
+print(sys.version_info)
+# sys.version_info(major=3, minor=9, micro=0, releaselevel='candidate', serial=2)
+exit() # also exits the container
+```
+
+### set up python env
+
+Save the following in a file called `Dockerfile`:
+
+```
+FROM python:rc
+RUN python -m pip install \
+        numpy \
+        pandas
+```        
+
+then run:
+
+```sh
+docker build -t my_test .
+docker run -it --rm my_test
+```
+
+```python
+import pandas as pd
+pd.__version__
+```
+
+to run a script:
+
+```sh
+docker run --rm -v /path/to/mount:blah my_test python blah/my_script.py
+```
+
+* `-v`: mount a directory as a volume
+
+e.g. `-v /path/to/mount:blah` mounts `/path/to/mount` as `blah` inside the container
+
+To copy the script to the container use this in your Dockerfile:
+
+```
+FROM python:rc
+WORKDIR /usr/src/app
+RUN python -m pip install \
+        numpy \
+        pandas
+COPY my_script.py .
+CMD ["python", "my_script.py"]
+```
+
+Then you just need to do 
+
+```sh
+docker build -t my_test .
+docker run --rm my_test
+```
+
+*********************************************************************
+
+## dockerfile
+
+* the configuration file
+* e.g. describes 
+  * the template docker image you are building from one
+  * how to configure the OS
+  * what happens when you run the container
+* contains statements:
+  * `FROM`
+  * `RUN`
+  * `ARG` (optional)
+  * `COPY` (optional?)
+  * `CMD`
+
+### FROM
+
+* Describes image dependencies  
+* Describes what image the image is being built from - e.g. local or official  
+* asdf
+
+**rocker**
+
+https://www.rocker-project.org/
+
+* A collection of Docker images for R  
+  * `rocker/r-base` is the basic image  
+  * `rocker/r-ver` are images containing a fixed version of R - e.g. `rocker/r-ver:3.4.4`
+
+### RUN
+
+* Commands which mimic command line commands  
+* e.g. 
+  * `RUN mkdir ~/analysis`  
+  * `RUN R -e "some R code"`  
+
+### ARG
+
+* Create variables whose values will get set using the `--build-arg` flag (see [docker build](#docker-build))
+
+### COPY
+
+* Instructions to copy files from local into the container
+
+*********************************************************************
+
+## commands
+
+### docker container {#docker-container}
+
+```sh
+docker container
+```
+
+### docker build {#docker-build}
+
+```sh
+docker build --build-arg WHEN=2019-01-06 -t analysis .
+```
+
+### docker image {#docker-image}
+
+```sh
+# list images - e.g. see if the hello-world image was downloaded onto your machine
+docker image ls
+
+# same as above
+docker images
+
+# show image ids only
+docker images -q
+```
+
+### docker login {#docker-login}
+
+```sh
+docker login
+```
+
+### docker ps {#docker-ps}
+
+```sh
+# show running containers
+docker ps
+
+# show all containers
+docker ps -a
+
+# show all containers (numeric ids only)
+docker ps -a -q
+```
+
+### docker pull {#docker-pull}
+
+```sh
+docker pull
+```
+
+### docker rm {#docker-rm}
+
+```sh
+# remove all containers
+docker rm $(docker ps -a -q)
+
+# remove a particular image
+docker rmi image-id
+```
+
+### docker run {#docker-run}
+
+```sh
+docker run --help
+
+# test that your installation works by running this image
+docker run hello-world
+```
+```sh
+# create a local folder to recieve the results
+mkdir ~/mydocker/results 
+docker run -v ~/mydocker/results:/home/results analysis
+```
+
+### docker stop {#docker-stop}
+
+```sh
+# stop all containers
+docker stop $(docker ps -a -q)
+```
+
+*********************************************************************
+
+## examples
+
+```
+FROM rocker/r-ver:3.4.4
+
+ARG WHEN
+
+RUN mkdir /home/analysis
+
+RUN R -e "options(repos = \
+  list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/${WHEN}')); \
+  install.packages('apackage')"
+
+COPY myscript.R /home/analysis/myscript.R
+
+CMD cd /home/analysis \
+  && R -e "source('myscript.R')" \
+  && mv /home/analysis/p.csv /home/results/p.csv
+```
+
+Instead of using the snbapshot as defined by `WHEN`, you could install specific package versions - e.g.
+
+```
+RUN R -e "install.packages('remotes'); \
+  remotes::install_version('apackage', '0.1.2')"
+```

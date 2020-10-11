@@ -11,7 +11,7 @@
 
 
 
-<title>sys</title>
+<title>docker</title>
 
 <script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -443,6 +443,9 @@ $(document).ready(function () {
       <a href="sys.html">sys</a>
     </li>
     <li>
+      <a href="unittest.html">unittest</a>
+    </li>
+    <li>
       <a href="urllib.html">urllib</a>
     </li>
     <li>
@@ -521,6 +524,9 @@ $(document).ready(function () {
     <li>
       <a href="databases.html">databases</a>
     </li>
+    <li>
+      <a href="docker.html">docker</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -594,101 +600,274 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">sys</h1>
+<h1 class="title toc-ignore">docker</h1>
 
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#command-line-args">command line args</a></li>
-<li><a href="#path">path</a></li>
-<li><a href="#python-version">python version</a></li>
-<li><a href="#os">os</a></li>
-<li><a href="#misc">misc</a></li>
+<li><a href="#links">links</a></li>
+<li><a href="#setup">setup</a></li>
+<li><a href="#basics">basics</a></li>
+<li><a href="#run-python-in-a-container-candidate">run python in a container candidate</a>
+<ul>
+<li><a href="#set-up-python-env">set up python env</a></li>
+</ul></li>
+<li><a href="#dockerfile">dockerfile</a>
+<ul>
+<li><a href="#from">FROM</a></li>
+<li><a href="#run">RUN</a></li>
+<li><a href="#arg">ARG</a></li>
+<li><a href="#copy">COPY</a></li>
+</ul></li>
+<li><a href="#commands">commands</a>
+<ul>
+<li><a href="#docker-container">docker container</a></li>
+<li><a href="#docker-build">docker build</a></li>
+<li><a href="#docker-image">docker image</a></li>
+<li><a href="#docker-login">docker login</a></li>
+<li><a href="#docker-ps">docker ps</a></li>
+<li><a href="#docker-pull">docker pull</a></li>
+<li><a href="#docker-rm">docker rm</a></li>
+<li><a href="#docker-run">docker run</a></li>
+<li><a href="#docker-stop">docker stop</a></li>
+</ul></li>
+<li><a href="#examples">examples</a></li>
 </ul>
 </div>
 
 <hr />
 <blockquote>
-<p>System-specific parameters and functions</p>
+<p>Provides a way to run applications securely isolated in a container, packaged with all its dependencies and libraries</p>
 </blockquote>
 <hr />
+<div id="links" class="section level2">
+<h2>links</h2>
 <ul>
-<li><a href="https://python.readthedocs.io/en/latest/library/sys.html" class="uri">https://python.readthedocs.io/en/latest/library/sys.html</a></li>
+<li><a href="https://docs.docker.com/" class="uri">https://docs.docker.com/</a><br />
+</li>
+<li><a href="https://docker-curriculum.com/" class="uri">https://docker-curriculum.com/</a><br />
+</li>
+<li><a href="https://colinfay.me/docker-r-reproducibility/" class="uri">https://colinfay.me/docker-r-reproducibility/</a><br />
+</li>
+<li><a href="https://towardsdatascience.com/learn-enough-docker-to-be-useful-b7ba70caeb4b" class="uri">https://towardsdatascience.com/learn-enough-docker-to-be-useful-b7ba70caeb4b</a><br />
+</li>
+<li><a href="https://medium.com/@kelvin_sp/docker-introduction-what-you-need-to-know-to-start-creating-containers-8ffaf064930a" class="uri">https://medium.com/@kelvin_sp/docker-introduction-what-you-need-to-know-to-start-creating-containers-8ffaf064930a</a></li>
 </ul>
 <hr />
-<div id="command-line-args" class="section level2">
-<h2>command line args</h2>
-<p>The list of command line arguments passed to a Python script.</p>
-<p>argv[0] is the script name (it is operating system dependent whether this is a full pathname or not). If the command was executed using the -c command line option to the interpreter, argv[0] is set to the string ‘-c’. If no script name was passed to the Python interpreter, argv[0] is the empty string.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&#39;import sys</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="st">for i in range(len(sys.argv)):</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="st">    print(&quot;sys.argv[&quot; + str(i) + &quot;] = \&quot;&quot; + sys.argv[i] + &quot;\&quot;&quot;)</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="st">&#39;</span> <span class="op">&gt;</span> <span class="st">&#39;temp.py&#39;</span></span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">python</span> temp.py a b</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="co">#  sys.argv[0] = &quot;temp.py&quot;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="co">#  sys.argv[1] = &quot;a&quot;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="co">#  sys.argv[2] = &quot;b&quot;</span></span></code></pre></div>
+</div>
+<div id="setup" class="section level2">
+<h2>setup</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">brew</span> install docker # docker cli</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">brew</span> cask install docker # docker.app</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="co"># i needed to open the docker.app and login before the command line tools would work</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="ex">docker</span> --version</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="fu">which</span> docker</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="ex">docker</span> info</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="ex">docker</span> run -rm hello-world</span></code></pre></div>
 <hr />
 </div>
-<div id="path" class="section level2">
-<h2>path</h2>
+<div id="basics" class="section level2">
+<h2>basics</h2>
 <ul>
-<li><code>path</code>: the list of directories Python searches through to find for modules and files</li>
-<li>stored as a list in <code>sys.path</code> - can therefore use list methods to modify it</li>
+<li>A container is launched by running an image
+<ul>
+<li>An <strong>image</strong> is an executable package that includes everything needed to run an application–the code, a runtime, libraries, environment variables, and configuration files<br />
+</li>
+<li>A <strong>container</strong> is a runtime instance of an image</li>
+</ul></li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="im">import</span> sys</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="bu">type</span>(sys.path)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="co">#  &lt;class &#39;list&#39;&gt;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>pprint(sys.path)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="co">#  [&#39;&#39;,</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="co">#   &#39;/usr/local/anaconda3/envs/how2-py/bin&#39;,</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a><span class="co">#   &#39;/usr/local/anaconda3/envs/how2-py/lib/python38.zip&#39;,</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a><span class="co">#   &#39;/usr/local/anaconda3/envs/how2-py/lib/python3.8&#39;,</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a><span class="co">#   &#39;/usr/local/anaconda3/envs/how2-py/lib/python3.8/lib-dynload&#39;,</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a><span class="co">#   &#39;/usr/local/anaconda3/envs/how2-py/lib/python3.8/site-packages&#39;,</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a><span class="co">#   &#39;/Library/Frameworks/R.framework/Versions/4.0/Resources/library/reticulate/python&#39;]</span></span></code></pre></div>
-<p>E.g.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>sys.path.append(<span class="st">&#39;extrapath&#39;</span>) </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>sys.path.extend([<span class="st">&#39;extrapath&#39;</span>])</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>sys.path.insert(<span class="dv">0</span>, <span class="st">&#39;extrapath&#39;</span>)</span></code></pre></div>
-<p>where <code>extrapath</code> is the path to a py file or a folder containing a py file?</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">docker</span> images # list your images</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">docker</span> ps -a # list your containers</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="ex">docker</span> rmi <span class="op">&lt;</span>image_id<span class="op">&gt;</span> # delete an image</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="ex">docker</span> rm <span class="op">&lt;</span>container_id<span class="op">&gt;</span> # delete a container</span></code></pre></div>
 <hr />
 </div>
-<div id="python-version" class="section level2">
-<h2>python version</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="im">import</span> sys</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>sys.version</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="co">#  &#39;3.8.5 (default, Sep  4 2020, 02:23:17) \n[Clang 10.0.0 ]&#39;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>sys.version_info</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="co">#  sys.version_info(major=3, minor=8, micro=5, releaselevel=&#39;final&#39;, serial=0)</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>sys.prefix</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="co">#  &#39;/usr/local/anaconda3/envs/how2-py&#39;</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a>sys.executable</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a><span class="co">#  &#39;/usr/local/anaconda3/envs/how2-py/bin/python&#39;</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a>sys.implementation.name</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a><span class="co">#  &#39;cpython&#39;</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a>sys.implementation.version</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true"></a><span class="co">#  sys.version_info(major=3, minor=8, micro=5, releaselevel=&#39;final&#39;, serial=0)</span></span></code></pre></div>
+<div id="run-python-in-a-container-candidate" class="section level2">
+<h2>run python in a container candidate</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">docker</span> run -it --rm python:3.6.3 # specific version</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">docker</span> run -it --rm python:rc # release candidate = latest development version</span></code></pre></div>
+<ul>
+<li><code>-it</code>: interactive<br />
+</li>
+<li><code>-rm</code>: clean up your container after use</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="im">import</span> sys</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="bu">print</span>(sys.version_info)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="co"># sys.version_info(major=3, minor=9, micro=0, releaselevel=&#39;candidate&#39;, serial=2)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>exit() <span class="co"># also exits the container</span></span></code></pre></div>
+<div id="set-up-python-env" class="section level3">
+<h3>set up python env</h3>
+<p>Save the following in a file called <code>Dockerfile</code>:</p>
+<pre><code>FROM python:rc
+RUN python -m pip install \
+        numpy \
+        pandas</code></pre>
+<p>then run:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">docker</span> build -t my_test .</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="ex">docker</span> run -it --rm my_test</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>pd.__version__</span></code></pre></div>
+<p>to run a script:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">docker</span> run --rm -v /path/to/mount my_test python my_script.py</span></code></pre></div>
+<ul>
+<li><code>-v</code>: mount a directory as a volume</li>
+</ul>
 <hr />
 </div>
-<div id="os" class="section level2">
-<h2>os</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="im">import</span> sys</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>sys.platform</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="co">#  &#39;darwin&#39;</span></span></code></pre></div>
-<p><code>linux</code> = Linux<br />
-<code>win32</code> = Windows<br />
-<code>cygwin</code> = Windows/Cygwin<br />
-<code>darwin</code> = Mac OS X</p>
+</div>
+<div id="dockerfile" class="section level2">
+<h2>dockerfile</h2>
+<ul>
+<li>the configuration file</li>
+<li>e.g. describes
+<ul>
+<li>the template docker image you are building from one</li>
+<li>how to configure the OS</li>
+<li>what happens when you run the container</li>
+</ul></li>
+<li>contains statements:
+<ul>
+<li><code>FROM</code></li>
+<li><code>RUN</code></li>
+<li><code>ARG</code> (optional)</li>
+<li><code>COPY</code> (optional?)</li>
+<li><code>CMD</code></li>
+</ul></li>
+</ul>
+<div id="from" class="section level3">
+<h3>FROM</h3>
+<ul>
+<li>Describes image dependencies<br />
+</li>
+<li>Describes what image the image is being built from - e.g. local or official<br />
+</li>
+<li>asdf</li>
+</ul>
+<p><strong>rocker</strong></p>
+<p><a href="https://www.rocker-project.org/" class="uri">https://www.rocker-project.org/</a></p>
+<ul>
+<li>A collection of Docker images for R
+<ul>
+<li><code>rocker/r-base</code> is the basic image<br />
+</li>
+<li><code>rocker/r-ver</code> are images containing a fixed version of R - e.g. <code>rocker/r-ver:3.4.4</code></li>
+</ul></li>
+</ul>
+</div>
+<div id="run" class="section level3">
+<h3>RUN</h3>
+<ul>
+<li>Commands which mimic command line commands<br />
+</li>
+<li>e.g. 
+<ul>
+<li><code>RUN mkdir ~/analysis</code><br />
+</li>
+<li><code>RUN R -e "some R code"</code></li>
+</ul></li>
+</ul>
+</div>
+<div id="arg" class="section level3">
+<h3>ARG</h3>
+<ul>
+<li>Create variables whose values will get set using the <code>--build-arg</code> flag (see <a href="#docker-build">docker build</a>)</li>
+</ul>
+</div>
+<div id="copy" class="section level3">
+<h3>COPY</h3>
+<ul>
+<li>Instructions to copy files from local into the container</li>
+</ul>
 <hr />
 </div>
-<div id="misc" class="section level2">
-<h2>misc</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="im">import</span> sys</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>sys.float_info.<span class="bu">max</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="co">#  1.7976931348623157e+308</span></span></code></pre></div>
+</div>
+<div id="commands" class="section level2">
+<h2>commands</h2>
+<div id="docker-container" class="section level3">
+<h3>docker container</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">docker</span> container</span></code></pre></div>
+</div>
+<div id="docker-build" class="section level3">
+<h3>docker build</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="ex">docker</span> build --build-arg WHEN=2019-01-06 -t analysis .</span></code></pre></div>
+</div>
+<div id="docker-image" class="section level3">
+<h3>docker image</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="co"># list images - e.g. see if the hello-world image was downloaded onto your machine</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="ex">docker</span> image ls</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="co"># same as above</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a><span class="ex">docker</span> images</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a><span class="co"># show image ids only</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a><span class="ex">docker</span> images -q</span></code></pre></div>
+</div>
+<div id="docker-login" class="section level3">
+<h3>docker login</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="ex">docker</span> login</span></code></pre></div>
+</div>
+<div id="docker-ps" class="section level3">
+<h3>docker ps</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="co"># show running containers</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="ex">docker</span> ps</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="co"># show all containers</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a><span class="ex">docker</span> ps -a</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a><span class="co"># show all containers (numeric ids only)</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a><span class="ex">docker</span> ps -a -q</span></code></pre></div>
+</div>
+<div id="docker-pull" class="section level3">
+<h3>docker pull</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="ex">docker</span> pull</span></code></pre></div>
+</div>
+<div id="docker-rm" class="section level3">
+<h3>docker rm</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="co"># remove all containers</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a><span class="ex">docker</span> rm <span class="va">$(</span><span class="ex">docker</span> ps -a -q<span class="va">)</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a><span class="co"># remove a particular image</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a><span class="ex">docker</span> rmi image-id</span></code></pre></div>
+</div>
+<div id="docker-run" class="section level3">
+<h3>docker run</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="ex">docker</span> run --help</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a><span class="co"># test that your installation works by running this image</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a><span class="ex">docker</span> run hello-world</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="co"># create a local folder to recieve the results</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="fu">mkdir</span> ~/mydocker/results </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a><span class="ex">docker</span> run -v ~/mydocker/results:/home/results analysis</span></code></pre></div>
+</div>
+<div id="docker-stop" class="section level3">
+<h3>docker stop</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="co"># stop all containers</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a><span class="ex">docker</span> stop <span class="va">$(</span><span class="ex">docker</span> ps -a -q<span class="va">)</span></span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="examples" class="section level2">
+<h2>examples</h2>
+<pre><code>FROM rocker/r-ver:3.4.4
+
+ARG WHEN
+
+RUN mkdir /home/analysis
+
+RUN R -e &quot;options(repos = \
+  list(CRAN = &#39;http://mran.revolutionanalytics.com/snapshot/${WHEN}&#39;)); \
+  install.packages(&#39;apackage&#39;)&quot;
+
+COPY myscript.R /home/analysis/myscript.R
+
+CMD cd /home/analysis \
+  &amp;&amp; R -e &quot;source(&#39;myscript.R&#39;)&quot; \
+  &amp;&amp; mv /home/analysis/p.csv /home/results/p.csv</code></pre>
+<p>Instead of using the snbapshot as defined by <code>WHEN</code>, you could install specific package versions - e.g.</p>
+<pre><code>RUN R -e &quot;install.packages(&#39;remotes&#39;); \
+  remotes::install_version(&#39;apackage&#39;, &#39;0.1.2&#39;)&quot;</code></pre>
 </div>
 
 

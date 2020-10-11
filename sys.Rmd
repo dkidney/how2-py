@@ -69,6 +69,7 @@ where `extrapath` is the path to a py file or a folder containing a py file?
 ```{python}
 import sys
 sys.version
+sys.version_info
 sys.prefix
 sys.executable
 sys.implementation.name
