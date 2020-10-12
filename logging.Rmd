@@ -40,7 +40,7 @@ logging.critical('This is a critical message')
 ```
 
 ```
-INFO:root:This is an info warning
+INFO:root:This is an info message
 WARNING:root:This is a warning message
 ERROR:root:This is an error message
 CRITICAL:root:This is a critical message
@@ -83,27 +83,23 @@ ZeroDivisionError: division by zero
 ```{python, cache=FALSE}
 import logging
 
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(name)s - %(funcName)s - %(levelname)s - %(message)s')
+
 # create a custom logger
 logger = logging.getLogger(__name__)
 
-# create handlers
-strm_handler = logging.StreamHandler()
+# add a file handler
 file_handler = logging.FileHandler('temp.log', mode='w')
-strm_handler.setLevel(logging.INFO)
 file_handler.setLevel(logging.ERROR)
-
-# create formatters and add it to handlers
-strm_format = logging.Formatter('%(name)s - %(funcName)s - %(levelname)s - %(message)s')
 file_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-strm_handler.setFormatter(strm_format)
 file_handler.setFormatter(file_format)
-
-# add handlers to the logger
-logger.addHandler(strm_handler)
 logger.addHandler(file_handler)
 
+# write some logs
 logger.debug('This is a debug message')
-logging.info('This is an info message')
+logger.info('This is an info message')
 logger.warning('This is a warning message')
 logger.error('This is an error message')
 logger.critical('This is a critical message')
