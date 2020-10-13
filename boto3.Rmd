@@ -13,51 +13,180 @@ editor_options:
 
 *********************************************************************
 
-## links
+## faqs
 
-* [s3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html)  
-* [ec2](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2.html)  
+s3:
+
+* download a file
+* upload a file
+
+*********************************************************************
+
+## setup
+
+```sh
+pip install boto3
+```
+
+```{python}
+import boto3
+boto3.__version__
+```
+
+*********************************************************************
+
+## basics
+
+* calls the AWS APIs  
+* two options for accessing the APIS - client and resource
+
+client | resource
+------------- | -------------
+low-level | high-level
+faster | slower
+harder to read | easier to read
+
+However you can access all the client methods from the resource via `resource.meta.client`. 
 
 *********************************************************************
 
 ## S3
 
-### download/upload files
+* https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3
+* https://realpython.com/python-boto3-aws-s3  
 
-```python
+### basics
+
+```{python}
 import boto3
-import pandas as pd
-
-file = "my_file.csv"
-key = "my_folder/" + file
-bucket = "my_bucket"
-
-# download
-s3 = boto3.client("s3")
-obj = s3.get_object(Bucket=bucket, Key=key)
-df = pd.read_csv(obj['Body'])
-
-# upload
-s3 = boto3.resource("s3")
-df.to_csv(file, index=False)
-s3.meta.client.upload_file(file, Bucket=bucket, Key=key)
+s3 = boto3.resource('s3')
+session = boto3.session.Session()
+session.region_name
+[bucket.name for bucket in s3.buckets.all()] # get bucket names
 ```
 
+### upload files
+
+```{sh}
+echo 'v1,v2\n1,1\n' > temp1.csv
+echo 'v1,v2\n2,2\n' > temp2.csv
+echo 'v1,v2\n3,3\n' > temp3.csv
+```
+
+From the client
+
+```{python}
+import boto3
+s3 = boto3.client('s3')
+s3.upload_file(Filename='./temp1.csv', Bucket='kidneypy', Key='temp1.csv')
+```
+
+From a bucket instance
+
+```{python}
+import boto3
+s3 = boto3.resource('s3')
+bucket_instance = s3.Bucket('kidneypy')
+bucket_instance.upload_file(Filename='./temp2.csv', Key='temp2.csv')
+```
+
+From an object instance
+
+```{python}
+import boto3
+s3 = boto3.resource('s3')
+object_instance = s3.Object('kidneypy', key='temp3.csv')
+object_instance.upload_file(Filename='./temp3.csv')
+```
+
+### download files
+
+From the client
+
+```{python}
+import boto3
+s3 = boto3.client('s3')
+s3.download_file(Bucket='kidneypy', Key='temp1.csv', Filename='/tmp/temp1.csv')
+```
+
+```{sh}
+cat /tmp/temp1.csv
+```
+
+From a bucket instance
+
+```{python}
+import boto3
+s3 = boto3.resource('s3')
+bucket_instance = s3.Bucket('kidneypy')
+bucket_instance.download_file(Key='temp2.csv', Filename='/tmp/temp2.csv')
+```
+
+```{sh}
+cat /tmp/temp2.csv
+```
+
+From an object instance
+
+```{python}
+import boto3
+s3 = boto3.resource('s3')
+object_instance = s3.Object('kidneypy', key='temp3.csv')
+object_instance.download_file('/tmp/temp3.csv')
+```
+
+```{sh}
+cat /tmp/temp3.csv
+```
+
+### read files
+
+```{python}
+import boto3
+from pprint import pprint
+s3 = boto3.client("s3")
+obj = s3.get_object(Bucket='kidneypy', Key='temp1.csv')
+obj['Body'].read().decode('utf-8') 
+```
+
+```{python}
+import boto3
+import pandas as pd
+s3 = boto3.client("s3")
+obj = s3.get_object(Bucket='kidneypy', Key='temp2.csv')
+pd.read_csv(obj['Body'])
+```
 
 ### list objects
 
-```python
-s3.list_objects_v2(
-    Bucket,
-    Prefix,
-    Delimiter,
-    Maxkey
-)
+```{python}
+import boto3
+from pprint import pprint
+s3 = boto3.client('s3')
+obj = s3.list_objects_v2(Bucket='kidneypy')
+type(obj['Contents'])
+len(obj['Contents'])
+pprint(obj['Contents'][0])
+pprint([x['Key'] for x in obj['Contents']])
+pprint([x['LastModified'] for x in obj['Contents']])
+pprint([x['Size'] for x in obj['Contents']])
+```
+
+```{python}
+import boto3
+s3 = boto3.resource('s3')
+bucket_instance = s3.Bucket('kidneypy')
+obj = bucket_instance.objects.all()
+pprint([x.key for x in obj])
+pprint([x.last_modified for x in obj])
+pprint([x.size for x in obj])
 ```
 
 *********************************************************************
 
 ## EC2
+
+* https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2
 
 ### instance info
 

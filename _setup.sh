@@ -1,11 +1,13 @@
-env_name=how2-py
+# update conda
 conda deactivate
 conda deactivate
 conda update -y --name base conda
+conda search python
 conda env list
-conda env remove --name ${env_name}
-latest=$(conda search python | grep 'pkgs/main' | tail -1 | grep -Eo '(\d+\.\d+\.\d+){1}') ; echo ${latest}
-conda create -y --name ${env_name} python=${latest}
+
+env_name=how2-py
+# conda env remove --name ${env_name}
+# conda create -y --name ${env_name} python=3.9
 conda activate ${env_name}
 conda update -y python
 python --version && which python
@@ -14,7 +16,8 @@ pip install -U -r _requirements.txt
 pip list
 
 env_name=airflow
-conda create -y --name ${env_name} python=${latest}
+# conda env remove --name ${env_name}
+# conda create -y --name ${env_name} python=3.9
 conda activate ${env_name}
 conda update -y python
 pip install -U pip
