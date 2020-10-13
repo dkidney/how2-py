@@ -71,9 +71,16 @@ config = pyhocon.HOCONConverter.convert(
     indent=2,
     compact=False
 )
+
 # write file
-with open("temp.config", 'w') as f:
-    f.write(config)
+with open("temp.config", 'w') as fh:
+    fh.write(config)
+```
+
+```python
+# or save directly?
+with open("temp.config", "w+") as fh:
+    fd.write(pyhocon.HOCONConverter.to_hocon(config, indent=4))
 ```
 
 *********************************************************************

@@ -6,3 +6,8 @@ for (i in 1:length(files)) { # i=1
 }
 writeLines(files[sapply(result, inherits, "try-error")])
 
+if (0) {
+  files = c(
+    "decorators.Rmd"
+  )
+}

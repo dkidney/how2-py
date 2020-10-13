@@ -69,7 +69,9 @@ what | where
 Custom font | `Preferences > Appearance & Behaviour > Appearance`
 Default project directory | `Preferences > Appearance & Behaviour > System Settings`
 Don't open previous projects | `Preferences > Appearance & Behaviour > System Settings > Reopen last project on startup`
-Soft wrap | `Preferences > General > Console`
+Don's show quick documentation on mouse move | `Preferences > Editor > Code Editing`
+Soft wrap files | `Preferences > Editor > General`
+Soft wrap console | `Preferences > Editor > General > Console`
 Custom font | `Preferences > Editor > Font`
 Vertical guidelines | `Preferences > Editor > Code Style > General > Visual guides:` 72,79 `columns`
 Templates  | `Preferences > Editor > File and Code Templates`
@@ -119,8 +121,9 @@ See https://pep8.org/#maximum-line-length
 
 I use these:
 
-* Markdown  
-* One Dark Theme (3rd party?)  
+* Markdown (bundled)  
+* One Dark Theme (3rd party)  
+* Rainbow CSV (3rd party)  
 
 ### default interpreter
 

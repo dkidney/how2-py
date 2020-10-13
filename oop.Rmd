@@ -9,6 +9,13 @@ editor_options:
 
 *********************************************************************
 
+## links
+
+* https://realpython.com/python-super/  
+* https://www.datac]=amp.com/community/tutorials/super-multiple-inheritance-diamond-problem  
+
+*********************************************************************
+
 ## glossary
 
 term | description
