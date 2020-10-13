@@ -785,15 +785,15 @@ $(document).ready(function () {
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true"></a>pprint(obj[<span class="st">&#39;Contents&#39;</span>][<span class="dv">0</span>])</span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true"></a><span class="co">#  {&#39;ETag&#39;: &#39;&quot;ab6e706bcd362e93a69434fb227ba382&quot;&#39;,</span></span>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true"></a><span class="co">#   &#39;Key&#39;: &#39;temp1.csv&#39;,</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true"></a><span class="co">#   &#39;LastModified&#39;: datetime.datetime(2020, 10, 13, 22, 45, 28, tzinfo=tzutc()),</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true"></a><span class="co">#   &#39;LastModified&#39;: datetime.datetime(2020, 10, 13, 22, 51, 39, tzinfo=tzutc()),</span></span>
 <span id="cb16-13"><a href="#cb16-13" aria-hidden="true"></a><span class="co">#   &#39;Size&#39;: 11,</span></span>
 <span id="cb16-14"><a href="#cb16-14" aria-hidden="true"></a><span class="co">#   &#39;StorageClass&#39;: &#39;STANDARD&#39;}</span></span>
 <span id="cb16-15"><a href="#cb16-15" aria-hidden="true"></a>pprint([x[<span class="st">&#39;Key&#39;</span>] <span class="cf">for</span> x <span class="kw">in</span> obj[<span class="st">&#39;Contents&#39;</span>]])</span>
 <span id="cb16-16"><a href="#cb16-16" aria-hidden="true"></a><span class="co">#  [&#39;temp1.csv&#39;, &#39;temp2.csv&#39;, &#39;temp3.csv&#39;]</span></span>
 <span id="cb16-17"><a href="#cb16-17" aria-hidden="true"></a>pprint([x[<span class="st">&#39;LastModified&#39;</span>] <span class="cf">for</span> x <span class="kw">in</span> obj[<span class="st">&#39;Contents&#39;</span>]])</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true"></a><span class="co">#  [datetime.datetime(2020, 10, 13, 22, 45, 28, tzinfo=tzutc()),</span></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true"></a><span class="co">#   datetime.datetime(2020, 10, 13, 22, 45, 29, tzinfo=tzutc()),</span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true"></a><span class="co">#   datetime.datetime(2020, 10, 13, 22, 45, 30, tzinfo=tzutc())]</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true"></a><span class="co">#  [datetime.datetime(2020, 10, 13, 22, 51, 39, tzinfo=tzutc()),</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true"></a><span class="co">#   datetime.datetime(2020, 10, 13, 22, 51, 40, tzinfo=tzutc()),</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true"></a><span class="co">#   datetime.datetime(2020, 10, 13, 22, 51, 41, tzinfo=tzutc())]</span></span>
 <span id="cb16-21"><a href="#cb16-21" aria-hidden="true"></a>pprint([x[<span class="st">&#39;Size&#39;</span>] <span class="cf">for</span> x <span class="kw">in</span> obj[<span class="st">&#39;Contents&#39;</span>]])</span>
 <span id="cb16-22"><a href="#cb16-22" aria-hidden="true"></a><span class="co">#  [11, 11, 11]</span></span></code></pre></div>
 <div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="im">import</span> boto3</span>
@@ -803,9 +803,9 @@ $(document).ready(function () {
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a>pprint([x.key <span class="cf">for</span> x <span class="kw">in</span> obj])</span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true"></a><span class="co">#  [&#39;temp1.csv&#39;, &#39;temp2.csv&#39;, &#39;temp3.csv&#39;]</span></span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true"></a>pprint([x.last_modified <span class="cf">for</span> x <span class="kw">in</span> obj])</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true"></a><span class="co">#  [datetime.datetime(2020, 10, 13, 22, 45, 28, tzinfo=tzutc()),</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true"></a><span class="co">#   datetime.datetime(2020, 10, 13, 22, 45, 29, tzinfo=tzutc()),</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true"></a><span class="co">#   datetime.datetime(2020, 10, 13, 22, 45, 30, tzinfo=tzutc())]</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true"></a><span class="co">#  [datetime.datetime(2020, 10, 13, 22, 51, 39, tzinfo=tzutc()),</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true"></a><span class="co">#   datetime.datetime(2020, 10, 13, 22, 51, 40, tzinfo=tzutc()),</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true"></a><span class="co">#   datetime.datetime(2020, 10, 13, 22, 51, 41, tzinfo=tzutc())]</span></span>
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true"></a>pprint([x.size <span class="cf">for</span> x <span class="kw">in</span> obj])</span>
 <span id="cb17-12"><a href="#cb17-12" aria-hidden="true"></a><span class="co">#  [11, 11, 11]</span></span></code></pre></div>
 <hr />

@@ -99,6 +99,10 @@ object_instance = s3.Object('kidneypy', key='temp3.csv')
 object_instance.upload_file(Filename='./temp3.csv')
 ```
 
+```{sh, echo=FALSE, results='hide'}
+rm temp1.csv temp2.csv temp3.csv
+```
+
 ### download files
 
 From the client
