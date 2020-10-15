@@ -22,8 +22,8 @@ navbar:
         - text: "---------"
         - text: "comprehensions"
           href: comprehensions.html
-        # - text: "generators"
-        #   href: _todo.html
+        - text: "generators"
+          href: generators.html
         - text: "---------"
         # - text: "constants"
         #   href: _todo.html
@@ -62,12 +62,16 @@ navbar:
           href: configparser.html
         - text: "datetime"
           href: datetime.html
+        - text: "itertools"
+          href: itertools.html
         - text: "json"
           href: json.html
         - text: "logging"
           href: logging.html
         - text: "os"
           href: os.html
+        - text: "pickle"
+          href: pickle.html
         - text: "random"
           href: random.html
         - text: "re"
@@ -115,6 +119,8 @@ navbar:
           href: pyarrow.html
         - text: "pyhocon"
           href: pyhocon.html
+        - text: "pyspark"
+          href: pyspark.html
         - text: "requests"
           href: requests.html
         - text: "xmltodict"

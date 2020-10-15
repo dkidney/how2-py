@@ -347,7 +347,7 @@ $(document).ready(function () {
       <ul class="nav navbar-nav">
         <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    programming
+    topics
      
     <span class="caret"></span>
   </a>
@@ -356,6 +356,44 @@ $(document).ready(function () {
       <a href="basics.html">basics</a>
     </li>
     <li class="divider"></li>
+    <li>
+      <a href="args_and_kwargs.html">args and kwargs</a>
+    </li>
+    <li>
+      <a href="decorators.html">decorators</a>
+    </li>
+    <li>
+      <a href="documentation.html">documentation</a>
+    </li>
+    <li>
+      <a href="underscores.html">underscores</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="comprehensions.html">comprehensions</a>
+    </li>
+    <li>
+      <a href="generators.html">generators</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="exceptions.html">exceptions</a>
+    </li>
+    <li>
+      <a href="files.html">files</a>
+    </li>
+    <li>
+      <a href="oop.html">oop</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    data
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
     <li>
       <a href="strings.html">strings</a>
     </li>
@@ -371,31 +409,9 @@ $(document).ready(function () {
     <li>
       <a href="sets.html">sets</a>
     </li>
-    <li>
-      <a href="comprehensions.html">comprehensions</a>
-    </li>
     <li class="divider"></li>
     <li>
-      <a href="documentation.html">documentation</a>
-    </li>
-    <li>
-      <a href="args_and_kwargs.html">args and kwargs</a>
-    </li>
-    <li>
-      <a href="decorators.html">decorators</a>
-    </li>
-    <li>
-      <a href="underscores.html">underscores</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="files.html">files</a>
-    </li>
-    <li>
-      <a href="exceptions.html">exceptions</a>
-    </li>
-    <li>
-      <a href="oop.html">oop</a>
+      <a href="collections.html">collections</a>
     </li>
   </ul>
 </li>
@@ -410,25 +426,34 @@ $(document).ready(function () {
       <a href="argparse.html">argparse</a>
     </li>
     <li>
-      <a href="collections.html">collections</a>
-    </li>
-    <li>
       <a href="configparser.html">configparser</a>
     </li>
     <li>
       <a href="datetime.html">datetime</a>
     </li>
     <li>
+      <a href="itertools.html">itertools</a>
+    </li>
+    <li>
       <a href="json.html">json</a>
     </li>
     <li>
+      <a href="logging.html">logging</a>
+    </li>
+    <li>
       <a href="os.html">os</a>
+    </li>
+    <li>
+      <a href="pickle.html">pickle</a>
     </li>
     <li>
       <a href="random.html">random</a>
     </li>
     <li>
       <a href="re.html">re</a>
+    </li>
+    <li>
+      <a href="shutil.html">shutil</a>
     </li>
     <li>
       <a href="sqlite.html">sqlite</a>
@@ -497,6 +522,9 @@ $(document).ready(function () {
       <a href="pyhocon.html">pyhocon</a>
     </li>
     <li>
+      <a href="pyspark.html">pyspark</a>
+    </li>
+    <li>
       <a href="requests.html">requests</a>
     </li>
     <li>
@@ -524,9 +552,6 @@ $(document).ready(function () {
     <li>
       <a href="databases.html">databases</a>
     </li>
-    <li>
-      <a href="docker.html">docker</a>
-    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -537,12 +562,15 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="pip.html">pip</a>
-    </li>
-    <li>
       <a href="conda.html">conda</a>
     </li>
+    <li>
+      <a href="pip.html">pip</a>
+    </li>
     <li class="divider"></li>
+    <li>
+      <a href="docker.html">docker</a>
+    </li>
     <li>
       <a href="pyenv.html">pyenv</a>
     </li>
@@ -686,6 +714,9 @@ $(document).ready(function () {
 </div>
 <div id="run-python-in-a-container-candidate" class="section level2">
 <h2>run python in a container candidate</h2>
+<ul>
+<li><a href="https://realpython.com/python-versions-docker/" class="uri">https://realpython.com/python-versions-docker/</a></li>
+</ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">docker</span> run -it --rm python:3.6.3 # specific version</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">docker</span> run -it --rm python:rc # release candidate = latest development version</span></code></pre></div>
 <ul>
@@ -710,10 +741,22 @@ RUN python -m pip install \
 <div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>pd.__version__</span></code></pre></div>
 <p>to run a script:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">docker</span> run --rm -v /path/to/mount my_test python my_script.py</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">docker</span> run --rm -v /path/to/mount:blah my_test python blah/my_script.py</span></code></pre></div>
 <ul>
 <li><code>-v</code>: mount a directory as a volume</li>
 </ul>
+<p>e.g. <code>-v /path/to/mount:blah</code> mounts <code>/path/to/mount</code> as <code>blah</code> inside the container</p>
+<p>To copy the script to the container use this in your Dockerfile:</p>
+<pre><code>FROM python:rc
+WORKDIR /usr/src/app
+RUN python -m pip install \
+        numpy \
+        pandas
+COPY my_script.py .
+CMD [&quot;python&quot;, &quot;my_script.py&quot;]</code></pre>
+<p>Then you just need to do</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="ex">docker</span> build -t my_test .</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="ex">docker</span> run --rm my_test</span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -787,64 +830,64 @@ RUN python -m pip install \
 <h2>commands</h2>
 <div id="docker-container" class="section level3">
 <h3>docker container</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">docker</span> container</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="ex">docker</span> container</span></code></pre></div>
 </div>
 <div id="docker-build" class="section level3">
 <h3>docker build</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="ex">docker</span> build --build-arg WHEN=2019-01-06 -t analysis .</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="ex">docker</span> build --build-arg WHEN=2019-01-06 -t analysis .</span></code></pre></div>
 </div>
 <div id="docker-image" class="section level3">
 <h3>docker image</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="co"># list images - e.g. see if the hello-world image was downloaded onto your machine</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="ex">docker</span> image ls</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="co"># same as above</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a><span class="ex">docker</span> images</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a><span class="co"># show image ids only</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a><span class="ex">docker</span> images -q</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="co"># list images - e.g. see if the hello-world image was downloaded onto your machine</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="ex">docker</span> image ls</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="co"># same as above</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a><span class="ex">docker</span> images</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a><span class="co"># show image ids only</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a><span class="ex">docker</span> images -q</span></code></pre></div>
 </div>
 <div id="docker-login" class="section level3">
 <h3>docker login</h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="ex">docker</span> login</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="ex">docker</span> login</span></code></pre></div>
 </div>
 <div id="docker-ps" class="section level3">
 <h3>docker ps</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="co"># show running containers</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="ex">docker</span> ps</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="co"># show all containers</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a><span class="ex">docker</span> ps -a</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a><span class="co"># show all containers (numeric ids only)</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a><span class="ex">docker</span> ps -a -q</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="co"># show running containers</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a><span class="ex">docker</span> ps</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a><span class="co"># show all containers</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a><span class="ex">docker</span> ps -a</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true"></a><span class="co"># show all containers (numeric ids only)</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true"></a><span class="ex">docker</span> ps -a -q</span></code></pre></div>
 </div>
 <div id="docker-pull" class="section level3">
 <h3>docker pull</h3>
-<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="ex">docker</span> pull</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="ex">docker</span> pull</span></code></pre></div>
 </div>
 <div id="docker-rm" class="section level3">
 <h3>docker rm</h3>
-<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="co"># remove all containers</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a><span class="ex">docker</span> rm <span class="va">$(</span><span class="ex">docker</span> ps -a -q<span class="va">)</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a><span class="co"># remove a particular image</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a><span class="ex">docker</span> rmi image-id</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="co"># remove all containers</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="ex">docker</span> rm <span class="va">$(</span><span class="ex">docker</span> ps -a -q<span class="va">)</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a><span class="co"># remove a particular image</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a><span class="ex">docker</span> rmi image-id</span></code></pre></div>
 </div>
 <div id="docker-run" class="section level3">
 <h3>docker run</h3>
-<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="ex">docker</span> run --help</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a><span class="co"># test that your installation works by running this image</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a><span class="ex">docker</span> run hello-world</span></code></pre></div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="co"># create a local folder to recieve the results</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="fu">mkdir</span> ~/mydocker/results </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a><span class="ex">docker</span> run -v ~/mydocker/results:/home/results analysis</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="ex">docker</span> run --help</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a><span class="co"># test that your installation works by running this image</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a><span class="ex">docker</span> run hello-world</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a><span class="co"># create a local folder to recieve the results</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a><span class="fu">mkdir</span> ~/mydocker/results </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a><span class="ex">docker</span> run -v ~/mydocker/results:/home/results analysis</span></code></pre></div>
 </div>
 <div id="docker-stop" class="section level3">
 <h3>docker stop</h3>
-<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="co"># stop all containers</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a><span class="ex">docker</span> stop <span class="va">$(</span><span class="ex">docker</span> ps -a -q<span class="va">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a><span class="co"># stop all containers</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a><span class="ex">docker</span> stop <span class="va">$(</span><span class="ex">docker</span> ps -a -q<span class="va">)</span></span></code></pre></div>
 <hr />
 </div>
 </div>
