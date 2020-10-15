@@ -25,6 +25,93 @@
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
 
 
 <style type="text/css">
@@ -270,44 +357,6 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="args_and_kwargs.html">args and kwargs</a>
-    </li>
-    <li>
-      <a href="decorators.html">decorators</a>
-    </li>
-    <li>
-      <a href="documentation.html">documentation</a>
-    </li>
-    <li>
-      <a href="underscores.html">underscores</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="comprehensions.html">comprehensions</a>
-    </li>
-    <li>
-      <a href="generators.html">generators</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="exceptions.html">exceptions</a>
-    </li>
-    <li>
-      <a href="files.html">files</a>
-    </li>
-    <li>
-      <a href="oop.html">oop</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    data
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
       <a href="strings.html">strings</a>
     </li>
     <li>
@@ -324,7 +373,32 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="collections.html">collections</a>
+      <a href="comprehensions.html">comprehensions</a>
+    </li>
+    <li>
+      <a href="generators.html">generators</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="args_and_kwargs.html">args and kwargs</a>
+    </li>
+    <li>
+      <a href="decorators.html">decorators</a>
+    </li>
+    <li>
+      <a href="documentation.html">documentation</a>
+    </li>
+    <li>
+      <a href="exceptions.html">exceptions</a>
+    </li>
+    <li>
+      <a href="files.html">files</a>
+    </li>
+    <li>
+      <a href="oop.html">oop</a>
+    </li>
+    <li>
+      <a href="underscores.html">underscores</a>
     </li>
   </ul>
 </li>
@@ -339,10 +413,16 @@ $(document).ready(function () {
       <a href="argparse.html">argparse</a>
     </li>
     <li>
+      <a href="collections.html">collections</a>
+    </li>
+    <li>
       <a href="configparser.html">configparser</a>
     </li>
     <li>
       <a href="datetime.html">datetime</a>
+    </li>
+    <li>
+      <a href="enum.html">enum</a>
     </li>
     <li>
       <a href="itertools.html">itertools</a>
@@ -545,8 +625,98 @@ $(document).ready(function () {
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#links">links</a></li>
+<li><a href="#chainmap">ChainMap</a></li>
+<li><a href="#counter">Counter</a></li>
+<li><a href="#defaultdict">defaultdict</a></li>
+<li><a href="#deque">deque</a></li>
+<li><a href="#namedtuple">namedtuple</a></li>
+<li><a href="#ordereddict">OrderedDict</a></li>
+<li><a href="#userdict">UserDict</a></li>
+<li><a href="#userlist">UserList</a></li>
+<li><a href="#userstring">UserString</a></li>
+</ul>
+</div>
 
 <hr />
+<blockquote>
+<p>Container datatypes</p>
+</blockquote>
+<hr />
+<div id="links" class="section level2">
+<h2>links</h2>
+<ul>
+<li><a href="https://docs.python.org/3/library/collections" class="uri">https://docs.python.org/3/library/collections</a></li>
+</ul>
+<hr />
+</div>
+<div id="chainmap" class="section level2">
+<h2>ChainMap</h2>
+<p>dict-like class for creating a single view of multiple mappings</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+<hr />
+</div>
+<div id="counter" class="section level2">
+<h2>Counter</h2>
+<p>dict subclass for counting hashable objects</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>Counter(<span class="st">&#39;helloworld&#39;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="co">#  Counter({&#39;l&#39;: 3, &#39;o&#39;: 2, &#39;h&#39;: 1, &#39;e&#39;: 1, &#39;w&#39;: 1, &#39;r&#39;: 1, &#39;d&#39;: 1})</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>Counter(<span class="st">&#39;helloworld&#39;</span>).most_common(<span class="dv">3</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="co">#  [(&#39;l&#39;, 3), (&#39;o&#39;, 2), (&#39;h&#39;, 1)]</span></span></code></pre></div>
+<hr />
+</div>
+<div id="defaultdict" class="section level2">
+<h2>defaultdict</h2>
+<p>dict subclass that calls a factory function to supply missing values</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+<hr />
+</div>
+<div id="deque" class="section level2">
+<h2>deque</h2>
+<p>list-like container with fast appends and pops on either end</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+<hr />
+</div>
+<div id="namedtuple" class="section level2">
+<h2>namedtuple</h2>
+<p>factory function for creating tuple subclasses with named fields</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="im">from</span> collections <span class="im">import</span> namedtuple</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>Car <span class="op">=</span> namedtuple(<span class="st">&#39;Car&#39;</span>, <span class="st">&#39;color mileage&#39;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>my_car <span class="op">=</span> Car(<span class="st">&#39;red&#39;</span>, <span class="fl">3812.4</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>my_car</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="co">#  Car(color=&#39;red&#39;, mileage=3812.4)</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>my_car.color</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="co">#  &#39;red&#39;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a>my_car.mileage</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a><span class="co">#  3812.4</span></span></code></pre></div>
+<hr />
+</div>
+<div id="ordereddict" class="section level2">
+<h2>OrderedDict</h2>
+<p>dict subclass that remembers the order entries were added</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+<hr />
+</div>
+<div id="userdict" class="section level2">
+<h2>UserDict</h2>
+<p>wrapper around dictionary objects for easier dict subclassing</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+<hr />
+</div>
+<div id="userlist" class="section level2">
+<h2>UserList</h2>
+<p>wrapper around list objects for easier list subclassing</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+<hr />
+</div>
+<div id="userstring" class="section level2">
+<h2>UserString</h2>
+<p>wrapper around string objects for easier string subclassing</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+</div>
 
 
 
