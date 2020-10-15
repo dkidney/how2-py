@@ -1,0 +1,27 @@
+---
+title: enum
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+> Support for enumerations
+
+*********************************************************************
+
+## links
+
+* https://docs.python.org/3/library/enum  
+
+*********************************************************************
+
+## basics
+
+```python
+# TODO
+```
+
