@@ -1,5 +1,5 @@
 ---
-title: TODO
+title: generators
 editor_options: 
   chunk_output_type: console
 ---
@@ -15,9 +15,11 @@ editor_options:
 
 <!-- ## faqs -->
 
-<!-- ********************************************************************* -->
+*********************************************************************
 
-<!-- ## links -->
+## links
+
+* https://www.datacamp.com/community/tutorials/python-iterator-tutorial  
 
 <!-- ********************************************************************* -->
 
