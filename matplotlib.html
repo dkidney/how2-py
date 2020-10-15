@@ -357,44 +357,6 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="args_and_kwargs.html">args and kwargs</a>
-    </li>
-    <li>
-      <a href="decorators.html">decorators</a>
-    </li>
-    <li>
-      <a href="documentation.html">documentation</a>
-    </li>
-    <li>
-      <a href="underscores.html">underscores</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="comprehensions.html">comprehensions</a>
-    </li>
-    <li>
-      <a href="generators.html">generators</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="exceptions.html">exceptions</a>
-    </li>
-    <li>
-      <a href="files.html">files</a>
-    </li>
-    <li>
-      <a href="oop.html">oop</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    data
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
       <a href="strings.html">strings</a>
     </li>
     <li>
@@ -411,7 +373,32 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="collections.html">collections</a>
+      <a href="comprehensions.html">comprehensions</a>
+    </li>
+    <li>
+      <a href="generators.html">generators</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="args_and_kwargs.html">args and kwargs</a>
+    </li>
+    <li>
+      <a href="decorators.html">decorators</a>
+    </li>
+    <li>
+      <a href="documentation.html">documentation</a>
+    </li>
+    <li>
+      <a href="exceptions.html">exceptions</a>
+    </li>
+    <li>
+      <a href="files.html">files</a>
+    </li>
+    <li>
+      <a href="oop.html">oop</a>
+    </li>
+    <li>
+      <a href="underscores.html">underscores</a>
     </li>
   </ul>
 </li>
@@ -426,10 +413,16 @@ $(document).ready(function () {
       <a href="argparse.html">argparse</a>
     </li>
     <li>
+      <a href="collections.html">collections</a>
+    </li>
+    <li>
       <a href="configparser.html">configparser</a>
     </li>
     <li>
       <a href="datetime.html">datetime</a>
+    </li>
+    <li>
+      <a href="enum.html">enum</a>
     </li>
     <li>
       <a href="itertools.html">itertools</a>
@@ -701,7 +694,7 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">pip</span> install matplotlib</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>mpl.__version__</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="co">#  &#39;3.3.0&#39;</span></span></code></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="co">#  &#39;1.3.1&#39;</span></span></code></pre></div>
 <hr />
 </div>
 <div id="basics" class="section level2">
@@ -907,154 +900,153 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a><span class="cf">for</span> name, <span class="bu">hex</span> <span class="kw">in</span> mpl.colors.cnames.items():</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a>    <span class="bu">print</span>(name, <span class="bu">hex</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a><span class="co">#  aliceblue #F0F8FF</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a><span class="co">#  antiquewhite #FAEBD7</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true"></a><span class="co">#  aqua #00FFFF</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true"></a><span class="co">#  aquamarine #7FFFD4</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true"></a><span class="co">#  azure #F0FFFF</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true"></a><span class="co">#  beige #F5F5DC</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true"></a><span class="co">#  bisque #FFE4C4</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true"></a><span class="co">#  black #000000</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true"></a><span class="co">#  blanchedalmond #FFEBCD</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true"></a><span class="co">#  blue #0000FF</span></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true"></a><span class="co">#  blueviolet #8A2BE2</span></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true"></a><span class="co">#  brown #A52A2A</span></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true"></a><span class="co">#  burlywood #DEB887</span></span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true"></a><span class="co">#  cadetblue #5F9EA0</span></span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true"></a><span class="co">#  chartreuse #7FFF00</span></span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true"></a><span class="co">#  chocolate #D2691E</span></span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true"></a><span class="co">#  coral #FF7F50</span></span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true"></a><span class="co">#  cornflowerblue #6495ED</span></span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true"></a><span class="co">#  cornsilk #FFF8DC</span></span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true"></a><span class="co">#  crimson #DC143C</span></span>
-<span id="cb19-24"><a href="#cb19-24" aria-hidden="true"></a><span class="co">#  cyan #00FFFF</span></span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true"></a><span class="co">#  darkblue #00008B</span></span>
-<span id="cb19-26"><a href="#cb19-26" aria-hidden="true"></a><span class="co">#  darkcyan #008B8B</span></span>
-<span id="cb19-27"><a href="#cb19-27" aria-hidden="true"></a><span class="co">#  darkgoldenrod #B8860B</span></span>
-<span id="cb19-28"><a href="#cb19-28" aria-hidden="true"></a><span class="co">#  darkgray #A9A9A9</span></span>
-<span id="cb19-29"><a href="#cb19-29" aria-hidden="true"></a><span class="co">#  darkgreen #006400</span></span>
-<span id="cb19-30"><a href="#cb19-30" aria-hidden="true"></a><span class="co">#  darkgrey #A9A9A9</span></span>
-<span id="cb19-31"><a href="#cb19-31" aria-hidden="true"></a><span class="co">#  darkkhaki #BDB76B</span></span>
-<span id="cb19-32"><a href="#cb19-32" aria-hidden="true"></a><span class="co">#  darkmagenta #8B008B</span></span>
-<span id="cb19-33"><a href="#cb19-33" aria-hidden="true"></a><span class="co">#  darkolivegreen #556B2F</span></span>
-<span id="cb19-34"><a href="#cb19-34" aria-hidden="true"></a><span class="co">#  darkorange #FF8C00</span></span>
-<span id="cb19-35"><a href="#cb19-35" aria-hidden="true"></a><span class="co">#  darkorchid #9932CC</span></span>
-<span id="cb19-36"><a href="#cb19-36" aria-hidden="true"></a><span class="co">#  darkred #8B0000</span></span>
-<span id="cb19-37"><a href="#cb19-37" aria-hidden="true"></a><span class="co">#  darksalmon #E9967A</span></span>
-<span id="cb19-38"><a href="#cb19-38" aria-hidden="true"></a><span class="co">#  darkseagreen #8FBC8F</span></span>
-<span id="cb19-39"><a href="#cb19-39" aria-hidden="true"></a><span class="co">#  darkslateblue #483D8B</span></span>
-<span id="cb19-40"><a href="#cb19-40" aria-hidden="true"></a><span class="co">#  darkslategray #2F4F4F</span></span>
-<span id="cb19-41"><a href="#cb19-41" aria-hidden="true"></a><span class="co">#  darkslategrey #2F4F4F</span></span>
-<span id="cb19-42"><a href="#cb19-42" aria-hidden="true"></a><span class="co">#  darkturquoise #00CED1</span></span>
-<span id="cb19-43"><a href="#cb19-43" aria-hidden="true"></a><span class="co">#  darkviolet #9400D3</span></span>
-<span id="cb19-44"><a href="#cb19-44" aria-hidden="true"></a><span class="co">#  deeppink #FF1493</span></span>
-<span id="cb19-45"><a href="#cb19-45" aria-hidden="true"></a><span class="co">#  deepskyblue #00BFFF</span></span>
-<span id="cb19-46"><a href="#cb19-46" aria-hidden="true"></a><span class="co">#  dimgray #696969</span></span>
-<span id="cb19-47"><a href="#cb19-47" aria-hidden="true"></a><span class="co">#  dimgrey #696969</span></span>
-<span id="cb19-48"><a href="#cb19-48" aria-hidden="true"></a><span class="co">#  dodgerblue #1E90FF</span></span>
-<span id="cb19-49"><a href="#cb19-49" aria-hidden="true"></a><span class="co">#  firebrick #B22222</span></span>
-<span id="cb19-50"><a href="#cb19-50" aria-hidden="true"></a><span class="co">#  floralwhite #FFFAF0</span></span>
-<span id="cb19-51"><a href="#cb19-51" aria-hidden="true"></a><span class="co">#  forestgreen #228B22</span></span>
-<span id="cb19-52"><a href="#cb19-52" aria-hidden="true"></a><span class="co">#  fuchsia #FF00FF</span></span>
-<span id="cb19-53"><a href="#cb19-53" aria-hidden="true"></a><span class="co">#  gainsboro #DCDCDC</span></span>
-<span id="cb19-54"><a href="#cb19-54" aria-hidden="true"></a><span class="co">#  ghostwhite #F8F8FF</span></span>
-<span id="cb19-55"><a href="#cb19-55" aria-hidden="true"></a><span class="co">#  gold #FFD700</span></span>
-<span id="cb19-56"><a href="#cb19-56" aria-hidden="true"></a><span class="co">#  goldenrod #DAA520</span></span>
-<span id="cb19-57"><a href="#cb19-57" aria-hidden="true"></a><span class="co">#  gray #808080</span></span>
-<span id="cb19-58"><a href="#cb19-58" aria-hidden="true"></a><span class="co">#  green #008000</span></span>
-<span id="cb19-59"><a href="#cb19-59" aria-hidden="true"></a><span class="co">#  greenyellow #ADFF2F</span></span>
-<span id="cb19-60"><a href="#cb19-60" aria-hidden="true"></a><span class="co">#  grey #808080</span></span>
-<span id="cb19-61"><a href="#cb19-61" aria-hidden="true"></a><span class="co">#  honeydew #F0FFF0</span></span>
-<span id="cb19-62"><a href="#cb19-62" aria-hidden="true"></a><span class="co">#  hotpink #FF69B4</span></span>
-<span id="cb19-63"><a href="#cb19-63" aria-hidden="true"></a><span class="co">#  indianred #CD5C5C</span></span>
-<span id="cb19-64"><a href="#cb19-64" aria-hidden="true"></a><span class="co">#  indigo #4B0082</span></span>
-<span id="cb19-65"><a href="#cb19-65" aria-hidden="true"></a><span class="co">#  ivory #FFFFF0</span></span>
-<span id="cb19-66"><a href="#cb19-66" aria-hidden="true"></a><span class="co">#  khaki #F0E68C</span></span>
-<span id="cb19-67"><a href="#cb19-67" aria-hidden="true"></a><span class="co">#  lavender #E6E6FA</span></span>
-<span id="cb19-68"><a href="#cb19-68" aria-hidden="true"></a><span class="co">#  lavenderblush #FFF0F5</span></span>
-<span id="cb19-69"><a href="#cb19-69" aria-hidden="true"></a><span class="co">#  lawngreen #7CFC00</span></span>
-<span id="cb19-70"><a href="#cb19-70" aria-hidden="true"></a><span class="co">#  lemonchiffon #FFFACD</span></span>
-<span id="cb19-71"><a href="#cb19-71" aria-hidden="true"></a><span class="co">#  lightblue #ADD8E6</span></span>
-<span id="cb19-72"><a href="#cb19-72" aria-hidden="true"></a><span class="co">#  lightcoral #F08080</span></span>
-<span id="cb19-73"><a href="#cb19-73" aria-hidden="true"></a><span class="co">#  lightcyan #E0FFFF</span></span>
-<span id="cb19-74"><a href="#cb19-74" aria-hidden="true"></a><span class="co">#  lightgoldenrodyellow #FAFAD2</span></span>
-<span id="cb19-75"><a href="#cb19-75" aria-hidden="true"></a><span class="co">#  lightgray #D3D3D3</span></span>
-<span id="cb19-76"><a href="#cb19-76" aria-hidden="true"></a><span class="co">#  lightgreen #90EE90</span></span>
-<span id="cb19-77"><a href="#cb19-77" aria-hidden="true"></a><span class="co">#  lightgrey #D3D3D3</span></span>
-<span id="cb19-78"><a href="#cb19-78" aria-hidden="true"></a><span class="co">#  lightpink #FFB6C1</span></span>
-<span id="cb19-79"><a href="#cb19-79" aria-hidden="true"></a><span class="co">#  lightsalmon #FFA07A</span></span>
-<span id="cb19-80"><a href="#cb19-80" aria-hidden="true"></a><span class="co">#  lightseagreen #20B2AA</span></span>
-<span id="cb19-81"><a href="#cb19-81" aria-hidden="true"></a><span class="co">#  lightskyblue #87CEFA</span></span>
-<span id="cb19-82"><a href="#cb19-82" aria-hidden="true"></a><span class="co">#  lightslategray #778899</span></span>
-<span id="cb19-83"><a href="#cb19-83" aria-hidden="true"></a><span class="co">#  lightslategrey #778899</span></span>
-<span id="cb19-84"><a href="#cb19-84" aria-hidden="true"></a><span class="co">#  lightsteelblue #B0C4DE</span></span>
-<span id="cb19-85"><a href="#cb19-85" aria-hidden="true"></a><span class="co">#  lightyellow #FFFFE0</span></span>
-<span id="cb19-86"><a href="#cb19-86" aria-hidden="true"></a><span class="co">#  lime #00FF00</span></span>
-<span id="cb19-87"><a href="#cb19-87" aria-hidden="true"></a><span class="co">#  limegreen #32CD32</span></span>
-<span id="cb19-88"><a href="#cb19-88" aria-hidden="true"></a><span class="co">#  linen #FAF0E6</span></span>
-<span id="cb19-89"><a href="#cb19-89" aria-hidden="true"></a><span class="co">#  magenta #FF00FF</span></span>
-<span id="cb19-90"><a href="#cb19-90" aria-hidden="true"></a><span class="co">#  maroon #800000</span></span>
-<span id="cb19-91"><a href="#cb19-91" aria-hidden="true"></a><span class="co">#  mediumaquamarine #66CDAA</span></span>
-<span id="cb19-92"><a href="#cb19-92" aria-hidden="true"></a><span class="co">#  mediumblue #0000CD</span></span>
-<span id="cb19-93"><a href="#cb19-93" aria-hidden="true"></a><span class="co">#  mediumorchid #BA55D3</span></span>
-<span id="cb19-94"><a href="#cb19-94" aria-hidden="true"></a><span class="co">#  mediumpurple #9370DB</span></span>
-<span id="cb19-95"><a href="#cb19-95" aria-hidden="true"></a><span class="co">#  mediumseagreen #3CB371</span></span>
-<span id="cb19-96"><a href="#cb19-96" aria-hidden="true"></a><span class="co">#  mediumslateblue #7B68EE</span></span>
-<span id="cb19-97"><a href="#cb19-97" aria-hidden="true"></a><span class="co">#  mediumspringgreen #00FA9A</span></span>
-<span id="cb19-98"><a href="#cb19-98" aria-hidden="true"></a><span class="co">#  mediumturquoise #48D1CC</span></span>
-<span id="cb19-99"><a href="#cb19-99" aria-hidden="true"></a><span class="co">#  mediumvioletred #C71585</span></span>
-<span id="cb19-100"><a href="#cb19-100" aria-hidden="true"></a><span class="co">#  midnightblue #191970</span></span>
-<span id="cb19-101"><a href="#cb19-101" aria-hidden="true"></a><span class="co">#  mintcream #F5FFFA</span></span>
-<span id="cb19-102"><a href="#cb19-102" aria-hidden="true"></a><span class="co">#  mistyrose #FFE4E1</span></span>
-<span id="cb19-103"><a href="#cb19-103" aria-hidden="true"></a><span class="co">#  moccasin #FFE4B5</span></span>
-<span id="cb19-104"><a href="#cb19-104" aria-hidden="true"></a><span class="co">#  navajowhite #FFDEAD</span></span>
-<span id="cb19-105"><a href="#cb19-105" aria-hidden="true"></a><span class="co">#  navy #000080</span></span>
-<span id="cb19-106"><a href="#cb19-106" aria-hidden="true"></a><span class="co">#  oldlace #FDF5E6</span></span>
-<span id="cb19-107"><a href="#cb19-107" aria-hidden="true"></a><span class="co">#  olive #808000</span></span>
-<span id="cb19-108"><a href="#cb19-108" aria-hidden="true"></a><span class="co">#  olivedrab #6B8E23</span></span>
-<span id="cb19-109"><a href="#cb19-109" aria-hidden="true"></a><span class="co">#  orange #FFA500</span></span>
-<span id="cb19-110"><a href="#cb19-110" aria-hidden="true"></a><span class="co">#  orangered #FF4500</span></span>
-<span id="cb19-111"><a href="#cb19-111" aria-hidden="true"></a><span class="co">#  orchid #DA70D6</span></span>
-<span id="cb19-112"><a href="#cb19-112" aria-hidden="true"></a><span class="co">#  palegoldenrod #EEE8AA</span></span>
-<span id="cb19-113"><a href="#cb19-113" aria-hidden="true"></a><span class="co">#  palegreen #98FB98</span></span>
-<span id="cb19-114"><a href="#cb19-114" aria-hidden="true"></a><span class="co">#  paleturquoise #AFEEEE</span></span>
-<span id="cb19-115"><a href="#cb19-115" aria-hidden="true"></a><span class="co">#  palevioletred #DB7093</span></span>
-<span id="cb19-116"><a href="#cb19-116" aria-hidden="true"></a><span class="co">#  papayawhip #FFEFD5</span></span>
-<span id="cb19-117"><a href="#cb19-117" aria-hidden="true"></a><span class="co">#  peachpuff #FFDAB9</span></span>
-<span id="cb19-118"><a href="#cb19-118" aria-hidden="true"></a><span class="co">#  peru #CD853F</span></span>
-<span id="cb19-119"><a href="#cb19-119" aria-hidden="true"></a><span class="co">#  pink #FFC0CB</span></span>
-<span id="cb19-120"><a href="#cb19-120" aria-hidden="true"></a><span class="co">#  plum #DDA0DD</span></span>
-<span id="cb19-121"><a href="#cb19-121" aria-hidden="true"></a><span class="co">#  powderblue #B0E0E6</span></span>
-<span id="cb19-122"><a href="#cb19-122" aria-hidden="true"></a><span class="co">#  purple #800080</span></span>
-<span id="cb19-123"><a href="#cb19-123" aria-hidden="true"></a><span class="co">#  rebeccapurple #663399</span></span>
-<span id="cb19-124"><a href="#cb19-124" aria-hidden="true"></a><span class="co">#  red #FF0000</span></span>
-<span id="cb19-125"><a href="#cb19-125" aria-hidden="true"></a><span class="co">#  rosybrown #BC8F8F</span></span>
-<span id="cb19-126"><a href="#cb19-126" aria-hidden="true"></a><span class="co">#  royalblue #4169E1</span></span>
-<span id="cb19-127"><a href="#cb19-127" aria-hidden="true"></a><span class="co">#  saddlebrown #8B4513</span></span>
-<span id="cb19-128"><a href="#cb19-128" aria-hidden="true"></a><span class="co">#  salmon #FA8072</span></span>
-<span id="cb19-129"><a href="#cb19-129" aria-hidden="true"></a><span class="co">#  sandybrown #F4A460</span></span>
-<span id="cb19-130"><a href="#cb19-130" aria-hidden="true"></a><span class="co">#  seagreen #2E8B57</span></span>
-<span id="cb19-131"><a href="#cb19-131" aria-hidden="true"></a><span class="co">#  seashell #FFF5EE</span></span>
-<span id="cb19-132"><a href="#cb19-132" aria-hidden="true"></a><span class="co">#  sienna #A0522D</span></span>
-<span id="cb19-133"><a href="#cb19-133" aria-hidden="true"></a><span class="co">#  silver #C0C0C0</span></span>
-<span id="cb19-134"><a href="#cb19-134" aria-hidden="true"></a><span class="co">#  skyblue #87CEEB</span></span>
-<span id="cb19-135"><a href="#cb19-135" aria-hidden="true"></a><span class="co">#  slateblue #6A5ACD</span></span>
-<span id="cb19-136"><a href="#cb19-136" aria-hidden="true"></a><span class="co">#  slategray #708090</span></span>
-<span id="cb19-137"><a href="#cb19-137" aria-hidden="true"></a><span class="co">#  slategrey #708090</span></span>
-<span id="cb19-138"><a href="#cb19-138" aria-hidden="true"></a><span class="co">#  snow #FFFAFA</span></span>
-<span id="cb19-139"><a href="#cb19-139" aria-hidden="true"></a><span class="co">#  springgreen #00FF7F</span></span>
-<span id="cb19-140"><a href="#cb19-140" aria-hidden="true"></a><span class="co">#  steelblue #4682B4</span></span>
-<span id="cb19-141"><a href="#cb19-141" aria-hidden="true"></a><span class="co">#  tan #D2B48C</span></span>
-<span id="cb19-142"><a href="#cb19-142" aria-hidden="true"></a><span class="co">#  teal #008080</span></span>
-<span id="cb19-143"><a href="#cb19-143" aria-hidden="true"></a><span class="co">#  thistle #D8BFD8</span></span>
-<span id="cb19-144"><a href="#cb19-144" aria-hidden="true"></a><span class="co">#  tomato #FF6347</span></span>
-<span id="cb19-145"><a href="#cb19-145" aria-hidden="true"></a><span class="co">#  turquoise #40E0D0</span></span>
-<span id="cb19-146"><a href="#cb19-146" aria-hidden="true"></a><span class="co">#  violet #EE82EE</span></span>
-<span id="cb19-147"><a href="#cb19-147" aria-hidden="true"></a><span class="co">#  wheat #F5DEB3</span></span>
-<span id="cb19-148"><a href="#cb19-148" aria-hidden="true"></a><span class="co">#  white #FFFFFF</span></span>
-<span id="cb19-149"><a href="#cb19-149" aria-hidden="true"></a><span class="co">#  whitesmoke #F5F5F5</span></span>
-<span id="cb19-150"><a href="#cb19-150" aria-hidden="true"></a><span class="co">#  yellow #FFFF00</span></span>
-<span id="cb19-151"><a href="#cb19-151" aria-hidden="true"></a><span class="co">#  yellowgreen #9ACD32</span></span></code></pre></div>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a><span class="co">#  (&#39;indigo&#39;, &#39;#4B0082&#39;)</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a><span class="co">#  (&#39;gold&#39;, &#39;#FFD700&#39;)</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true"></a><span class="co">#  (&#39;hotpink&#39;, &#39;#FF69B4&#39;)</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true"></a><span class="co">#  (&#39;firebrick&#39;, &#39;#B22222&#39;)</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true"></a><span class="co">#  (&#39;indianred&#39;, &#39;#CD5C5C&#39;)</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true"></a><span class="co">#  (&#39;yellow&#39;, &#39;#FFFF00&#39;)</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true"></a><span class="co">#  (&#39;mistyrose&#39;, &#39;#FFE4E1&#39;)</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true"></a><span class="co">#  (&#39;darkolivegreen&#39;, &#39;#556B2F&#39;)</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true"></a><span class="co">#  (&#39;olive&#39;, &#39;#808000&#39;)</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true"></a><span class="co">#  (&#39;darkseagreen&#39;, &#39;#8FBC8F&#39;)</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true"></a><span class="co">#  (&#39;pink&#39;, &#39;#FFC0CB&#39;)</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true"></a><span class="co">#  (&#39;tomato&#39;, &#39;#FF6347&#39;)</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true"></a><span class="co">#  (&#39;lightcoral&#39;, &#39;#F08080&#39;)</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true"></a><span class="co">#  (&#39;orangered&#39;, &#39;#FF4500&#39;)</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true"></a><span class="co">#  (&#39;navajowhite&#39;, &#39;#FFDEAD&#39;)</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true"></a><span class="co">#  (&#39;lime&#39;, &#39;#00FF00&#39;)</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true"></a><span class="co">#  (&#39;palegreen&#39;, &#39;#98FB98&#39;)</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true"></a><span class="co">#  (&#39;darkslategrey&#39;, &#39;#2F4F4F&#39;)</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true"></a><span class="co">#  (&#39;greenyellow&#39;, &#39;#ADFF2F&#39;)</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true"></a><span class="co">#  (&#39;burlywood&#39;, &#39;#DEB887&#39;)</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true"></a><span class="co">#  (&#39;seashell&#39;, &#39;#FFF5EE&#39;)</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true"></a><span class="co">#  (&#39;mediumspringgreen&#39;, &#39;#00FA9A&#39;)</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true"></a><span class="co">#  (&#39;fuchsia&#39;, &#39;#FF00FF&#39;)</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true"></a><span class="co">#  (&#39;papayawhip&#39;, &#39;#FFEFD5&#39;)</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true"></a><span class="co">#  (&#39;blanchedalmond&#39;, &#39;#FFEBCD&#39;)</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true"></a><span class="co">#  (&#39;chartreuse&#39;, &#39;#7FFF00&#39;)</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true"></a><span class="co">#  (&#39;dimgray&#39;, &#39;#696969&#39;)</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true"></a><span class="co">#  (&#39;black&#39;, &#39;#000000&#39;)</span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true"></a><span class="co">#  (&#39;peachpuff&#39;, &#39;#FFDAB9&#39;)</span></span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true"></a><span class="co">#  (&#39;springgreen&#39;, &#39;#00FF7F&#39;)</span></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true"></a><span class="co">#  (&#39;aquamarine&#39;, &#39;#7FFFD4&#39;)</span></span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true"></a><span class="co">#  (&#39;white&#39;, &#39;#FFFFFF&#39;)</span></span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true"></a><span class="co">#  (&#39;orange&#39;, &#39;#FFA500&#39;)</span></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true"></a><span class="co">#  (&#39;lightsalmon&#39;, &#39;#FFA07A&#39;)</span></span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true"></a><span class="co">#  (&#39;darkslategray&#39;, &#39;#2F4F4F&#39;)</span></span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true"></a><span class="co">#  (&#39;brown&#39;, &#39;#A52A2A&#39;)</span></span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true"></a><span class="co">#  (&#39;ivory&#39;, &#39;#FFFFF0&#39;)</span></span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true"></a><span class="co">#  (&#39;dodgerblue&#39;, &#39;#1E90FF&#39;)</span></span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true"></a><span class="co">#  (&#39;peru&#39;, &#39;#CD853F&#39;)</span></span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true"></a><span class="co">#  (&#39;darkgrey&#39;, &#39;#A9A9A9&#39;)</span></span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true"></a><span class="co">#  (&#39;lawngreen&#39;, &#39;#7CFC00&#39;)</span></span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true"></a><span class="co">#  (&#39;chocolate&#39;, &#39;#D2691E&#39;)</span></span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true"></a><span class="co">#  (&#39;crimson&#39;, &#39;#DC143C&#39;)</span></span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true"></a><span class="co">#  (&#39;forestgreen&#39;, &#39;#228B22&#39;)</span></span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true"></a><span class="co">#  (&#39;slateblue&#39;, &#39;#6A5ACD&#39;)</span></span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true"></a><span class="co">#  (&#39;lightseagreen&#39;, &#39;#20B2AA&#39;)</span></span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true"></a><span class="co">#  (&#39;cyan&#39;, &#39;#00FFFF&#39;)</span></span>
+<span id="cb19-51"><a href="#cb19-51" aria-hidden="true"></a><span class="co">#  (&#39;mintcream&#39;, &#39;#F5FFFA&#39;)</span></span>
+<span id="cb19-52"><a href="#cb19-52" aria-hidden="true"></a><span class="co">#  (&#39;silver&#39;, &#39;#C0C0C0&#39;)</span></span>
+<span id="cb19-53"><a href="#cb19-53" aria-hidden="true"></a><span class="co">#  (&#39;antiquewhite&#39;, &#39;#FAEBD7&#39;)</span></span>
+<span id="cb19-54"><a href="#cb19-54" aria-hidden="true"></a><span class="co">#  (&#39;mediumorchid&#39;, &#39;#BA55D3&#39;)</span></span>
+<span id="cb19-55"><a href="#cb19-55" aria-hidden="true"></a><span class="co">#  (&#39;skyblue&#39;, &#39;#87CEEB&#39;)</span></span>
+<span id="cb19-56"><a href="#cb19-56" aria-hidden="true"></a><span class="co">#  (&#39;gray&#39;, &#39;#808080&#39;)</span></span>
+<span id="cb19-57"><a href="#cb19-57" aria-hidden="true"></a><span class="co">#  (&#39;darkturquoise&#39;, &#39;#00CED1&#39;)</span></span>
+<span id="cb19-58"><a href="#cb19-58" aria-hidden="true"></a><span class="co">#  (&#39;goldenrod&#39;, &#39;#DAA520&#39;)</span></span>
+<span id="cb19-59"><a href="#cb19-59" aria-hidden="true"></a><span class="co">#  (&#39;darkgreen&#39;, &#39;#006400&#39;)</span></span>
+<span id="cb19-60"><a href="#cb19-60" aria-hidden="true"></a><span class="co">#  (&#39;floralwhite&#39;, &#39;#FFFAF0&#39;)</span></span>
+<span id="cb19-61"><a href="#cb19-61" aria-hidden="true"></a><span class="co">#  (&#39;darkviolet&#39;, &#39;#9400D3&#39;)</span></span>
+<span id="cb19-62"><a href="#cb19-62" aria-hidden="true"></a><span class="co">#  (&#39;darkgray&#39;, &#39;#A9A9A9&#39;)</span></span>
+<span id="cb19-63"><a href="#cb19-63" aria-hidden="true"></a><span class="co">#  (&#39;moccasin&#39;, &#39;#FFE4B5&#39;)</span></span>
+<span id="cb19-64"><a href="#cb19-64" aria-hidden="true"></a><span class="co">#  (&#39;saddlebrown&#39;, &#39;#8B4513&#39;)</span></span>
+<span id="cb19-65"><a href="#cb19-65" aria-hidden="true"></a><span class="co">#  (&#39;grey&#39;, &#39;#808080&#39;)</span></span>
+<span id="cb19-66"><a href="#cb19-66" aria-hidden="true"></a><span class="co">#  (&#39;darkslateblue&#39;, &#39;#483D8B&#39;)</span></span>
+<span id="cb19-67"><a href="#cb19-67" aria-hidden="true"></a><span class="co">#  (&#39;lightskyblue&#39;, &#39;#87CEFA&#39;)</span></span>
+<span id="cb19-68"><a href="#cb19-68" aria-hidden="true"></a><span class="co">#  (&#39;lightpink&#39;, &#39;#FFB6C1&#39;)</span></span>
+<span id="cb19-69"><a href="#cb19-69" aria-hidden="true"></a><span class="co">#  (&#39;mediumvioletred&#39;, &#39;#C71585&#39;)</span></span>
+<span id="cb19-70"><a href="#cb19-70" aria-hidden="true"></a><span class="co">#  (&#39;slategrey&#39;, &#39;#708090&#39;)</span></span>
+<span id="cb19-71"><a href="#cb19-71" aria-hidden="true"></a><span class="co">#  (&#39;red&#39;, &#39;#FF0000&#39;)</span></span>
+<span id="cb19-72"><a href="#cb19-72" aria-hidden="true"></a><span class="co">#  (&#39;deeppink&#39;, &#39;#FF1493&#39;)</span></span>
+<span id="cb19-73"><a href="#cb19-73" aria-hidden="true"></a><span class="co">#  (&#39;limegreen&#39;, &#39;#32CD32&#39;)</span></span>
+<span id="cb19-74"><a href="#cb19-74" aria-hidden="true"></a><span class="co">#  (&#39;darkmagenta&#39;, &#39;#8B008B&#39;)</span></span>
+<span id="cb19-75"><a href="#cb19-75" aria-hidden="true"></a><span class="co">#  (&#39;palegoldenrod&#39;, &#39;#EEE8AA&#39;)</span></span>
+<span id="cb19-76"><a href="#cb19-76" aria-hidden="true"></a><span class="co">#  (&#39;plum&#39;, &#39;#DDA0DD&#39;)</span></span>
+<span id="cb19-77"><a href="#cb19-77" aria-hidden="true"></a><span class="co">#  (&#39;turquoise&#39;, &#39;#40E0D0&#39;)</span></span>
+<span id="cb19-78"><a href="#cb19-78" aria-hidden="true"></a><span class="co">#  (&#39;lightgrey&#39;, &#39;#D3D3D3&#39;)</span></span>
+<span id="cb19-79"><a href="#cb19-79" aria-hidden="true"></a><span class="co">#  (&#39;lightgoldenrodyellow&#39;, &#39;#FAFAD2&#39;)</span></span>
+<span id="cb19-80"><a href="#cb19-80" aria-hidden="true"></a><span class="co">#  (&#39;darkgoldenrod&#39;, &#39;#B8860B&#39;)</span></span>
+<span id="cb19-81"><a href="#cb19-81" aria-hidden="true"></a><span class="co">#  (&#39;lavender&#39;, &#39;#E6E6FA&#39;)</span></span>
+<span id="cb19-82"><a href="#cb19-82" aria-hidden="true"></a><span class="co">#  (&#39;maroon&#39;, &#39;#800000&#39;)</span></span>
+<span id="cb19-83"><a href="#cb19-83" aria-hidden="true"></a><span class="co">#  (&#39;yellowgreen&#39;, &#39;#9ACD32&#39;)</span></span>
+<span id="cb19-84"><a href="#cb19-84" aria-hidden="true"></a><span class="co">#  (&#39;sandybrown&#39;, &#39;#FAA460&#39;)</span></span>
+<span id="cb19-85"><a href="#cb19-85" aria-hidden="true"></a><span class="co">#  (&#39;thistle&#39;, &#39;#D8BFD8&#39;)</span></span>
+<span id="cb19-86"><a href="#cb19-86" aria-hidden="true"></a><span class="co">#  (&#39;violet&#39;, &#39;#EE82EE&#39;)</span></span>
+<span id="cb19-87"><a href="#cb19-87" aria-hidden="true"></a><span class="co">#  (&#39;navy&#39;, &#39;#000080&#39;)</span></span>
+<span id="cb19-88"><a href="#cb19-88" aria-hidden="true"></a><span class="co">#  (&#39;magenta&#39;, &#39;#FF00FF&#39;)</span></span>
+<span id="cb19-89"><a href="#cb19-89" aria-hidden="true"></a><span class="co">#  (&#39;dimgrey&#39;, &#39;#696969&#39;)</span></span>
+<span id="cb19-90"><a href="#cb19-90" aria-hidden="true"></a><span class="co">#  (&#39;tan&#39;, &#39;#D2B48C&#39;)</span></span>
+<span id="cb19-91"><a href="#cb19-91" aria-hidden="true"></a><span class="co">#  (&#39;rosybrown&#39;, &#39;#BC8F8F&#39;)</span></span>
+<span id="cb19-92"><a href="#cb19-92" aria-hidden="true"></a><span class="co">#  (&#39;olivedrab&#39;, &#39;#6B8E23&#39;)</span></span>
+<span id="cb19-93"><a href="#cb19-93" aria-hidden="true"></a><span class="co">#  (&#39;blue&#39;, &#39;#0000FF&#39;)</span></span>
+<span id="cb19-94"><a href="#cb19-94" aria-hidden="true"></a><span class="co">#  (&#39;lightblue&#39;, &#39;#ADD8E6&#39;)</span></span>
+<span id="cb19-95"><a href="#cb19-95" aria-hidden="true"></a><span class="co">#  (&#39;ghostwhite&#39;, &#39;#F8F8FF&#39;)</span></span>
+<span id="cb19-96"><a href="#cb19-96" aria-hidden="true"></a><span class="co">#  (&#39;honeydew&#39;, &#39;#F0FFF0&#39;)</span></span>
+<span id="cb19-97"><a href="#cb19-97" aria-hidden="true"></a><span class="co">#  (&#39;cornflowerblue&#39;, &#39;#6495ED&#39;)</span></span>
+<span id="cb19-98"><a href="#cb19-98" aria-hidden="true"></a><span class="co">#  (&#39;linen&#39;, &#39;#FAF0E6&#39;)</span></span>
+<span id="cb19-99"><a href="#cb19-99" aria-hidden="true"></a><span class="co">#  (&#39;darkblue&#39;, &#39;#00008B&#39;)</span></span>
+<span id="cb19-100"><a href="#cb19-100" aria-hidden="true"></a><span class="co">#  (&#39;powderblue&#39;, &#39;#B0E0E6&#39;)</span></span>
+<span id="cb19-101"><a href="#cb19-101" aria-hidden="true"></a><span class="co">#  (&#39;seagreen&#39;, &#39;#2E8B57&#39;)</span></span>
+<span id="cb19-102"><a href="#cb19-102" aria-hidden="true"></a><span class="co">#  (&#39;darkkhaki&#39;, &#39;#BDB76B&#39;)</span></span>
+<span id="cb19-103"><a href="#cb19-103" aria-hidden="true"></a><span class="co">#  (&#39;snow&#39;, &#39;#FFFAFA&#39;)</span></span>
+<span id="cb19-104"><a href="#cb19-104" aria-hidden="true"></a><span class="co">#  (&#39;sienna&#39;, &#39;#A0522D&#39;)</span></span>
+<span id="cb19-105"><a href="#cb19-105" aria-hidden="true"></a><span class="co">#  (&#39;mediumblue&#39;, &#39;#0000CD&#39;)</span></span>
+<span id="cb19-106"><a href="#cb19-106" aria-hidden="true"></a><span class="co">#  (&#39;royalblue&#39;, &#39;#4169E1&#39;)</span></span>
+<span id="cb19-107"><a href="#cb19-107" aria-hidden="true"></a><span class="co">#  (&#39;lightcyan&#39;, &#39;#E0FFFF&#39;)</span></span>
+<span id="cb19-108"><a href="#cb19-108" aria-hidden="true"></a><span class="co">#  (&#39;green&#39;, &#39;#008000&#39;)</span></span>
+<span id="cb19-109"><a href="#cb19-109" aria-hidden="true"></a><span class="co">#  (&#39;mediumpurple&#39;, &#39;#9370DB&#39;)</span></span>
+<span id="cb19-110"><a href="#cb19-110" aria-hidden="true"></a><span class="co">#  (&#39;midnightblue&#39;, &#39;#191970&#39;)</span></span>
+<span id="cb19-111"><a href="#cb19-111" aria-hidden="true"></a><span class="co">#  (&#39;cornsilk&#39;, &#39;#FFF8DC&#39;)</span></span>
+<span id="cb19-112"><a href="#cb19-112" aria-hidden="true"></a><span class="co">#  (&#39;paleturquoise&#39;, &#39;#AFEEEE&#39;)</span></span>
+<span id="cb19-113"><a href="#cb19-113" aria-hidden="true"></a><span class="co">#  (&#39;bisque&#39;, &#39;#FFE4C4&#39;)</span></span>
+<span id="cb19-114"><a href="#cb19-114" aria-hidden="true"></a><span class="co">#  (&#39;slategray&#39;, &#39;#708090&#39;)</span></span>
+<span id="cb19-115"><a href="#cb19-115" aria-hidden="true"></a><span class="co">#  (&#39;darkcyan&#39;, &#39;#008B8B&#39;)</span></span>
+<span id="cb19-116"><a href="#cb19-116" aria-hidden="true"></a><span class="co">#  (&#39;khaki&#39;, &#39;#F0E68C&#39;)</span></span>
+<span id="cb19-117"><a href="#cb19-117" aria-hidden="true"></a><span class="co">#  (&#39;wheat&#39;, &#39;#F5DEB3&#39;)</span></span>
+<span id="cb19-118"><a href="#cb19-118" aria-hidden="true"></a><span class="co">#  (&#39;teal&#39;, &#39;#008080&#39;)</span></span>
+<span id="cb19-119"><a href="#cb19-119" aria-hidden="true"></a><span class="co">#  (&#39;darkorchid&#39;, &#39;#9932CC&#39;)</span></span>
+<span id="cb19-120"><a href="#cb19-120" aria-hidden="true"></a><span class="co">#  (&#39;deepskyblue&#39;, &#39;#00BFFF&#39;)</span></span>
+<span id="cb19-121"><a href="#cb19-121" aria-hidden="true"></a><span class="co">#  (&#39;salmon&#39;, &#39;#FA8072&#39;)</span></span>
+<span id="cb19-122"><a href="#cb19-122" aria-hidden="true"></a><span class="co">#  (&#39;darkred&#39;, &#39;#8B0000&#39;)</span></span>
+<span id="cb19-123"><a href="#cb19-123" aria-hidden="true"></a><span class="co">#  (&#39;steelblue&#39;, &#39;#4682B4&#39;)</span></span>
+<span id="cb19-124"><a href="#cb19-124" aria-hidden="true"></a><span class="co">#  (&#39;palevioletred&#39;, &#39;#DB7093&#39;)</span></span>
+<span id="cb19-125"><a href="#cb19-125" aria-hidden="true"></a><span class="co">#  (&#39;lightslategray&#39;, &#39;#778899&#39;)</span></span>
+<span id="cb19-126"><a href="#cb19-126" aria-hidden="true"></a><span class="co">#  (&#39;aliceblue&#39;, &#39;#F0F8FF&#39;)</span></span>
+<span id="cb19-127"><a href="#cb19-127" aria-hidden="true"></a><span class="co">#  (&#39;lightslategrey&#39;, &#39;#778899&#39;)</span></span>
+<span id="cb19-128"><a href="#cb19-128" aria-hidden="true"></a><span class="co">#  (&#39;lightgreen&#39;, &#39;#90EE90&#39;)</span></span>
+<span id="cb19-129"><a href="#cb19-129" aria-hidden="true"></a><span class="co">#  (&#39;orchid&#39;, &#39;#DA70D6&#39;)</span></span>
+<span id="cb19-130"><a href="#cb19-130" aria-hidden="true"></a><span class="co">#  (&#39;gainsboro&#39;, &#39;#DCDCDC&#39;)</span></span>
+<span id="cb19-131"><a href="#cb19-131" aria-hidden="true"></a><span class="co">#  (&#39;mediumseagreen&#39;, &#39;#3CB371&#39;)</span></span>
+<span id="cb19-132"><a href="#cb19-132" aria-hidden="true"></a><span class="co">#  (&#39;lightgray&#39;, &#39;#D3D3D3&#39;)</span></span>
+<span id="cb19-133"><a href="#cb19-133" aria-hidden="true"></a><span class="co">#  (&#39;mediumturquoise&#39;, &#39;#48D1CC&#39;)</span></span>
+<span id="cb19-134"><a href="#cb19-134" aria-hidden="true"></a><span class="co">#  (&#39;lemonchiffon&#39;, &#39;#FFFACD&#39;)</span></span>
+<span id="cb19-135"><a href="#cb19-135" aria-hidden="true"></a><span class="co">#  (&#39;cadetblue&#39;, &#39;#5F9EA0&#39;)</span></span>
+<span id="cb19-136"><a href="#cb19-136" aria-hidden="true"></a><span class="co">#  (&#39;lightyellow&#39;, &#39;#FFFFE0&#39;)</span></span>
+<span id="cb19-137"><a href="#cb19-137" aria-hidden="true"></a><span class="co">#  (&#39;lavenderblush&#39;, &#39;#FFF0F5&#39;)</span></span>
+<span id="cb19-138"><a href="#cb19-138" aria-hidden="true"></a><span class="co">#  (&#39;coral&#39;, &#39;#FF7F50&#39;)</span></span>
+<span id="cb19-139"><a href="#cb19-139" aria-hidden="true"></a><span class="co">#  (&#39;purple&#39;, &#39;#800080&#39;)</span></span>
+<span id="cb19-140"><a href="#cb19-140" aria-hidden="true"></a><span class="co">#  (&#39;aqua&#39;, &#39;#00FFFF&#39;)</span></span>
+<span id="cb19-141"><a href="#cb19-141" aria-hidden="true"></a><span class="co">#  (&#39;whitesmoke&#39;, &#39;#F5F5F5&#39;)</span></span>
+<span id="cb19-142"><a href="#cb19-142" aria-hidden="true"></a><span class="co">#  (&#39;mediumslateblue&#39;, &#39;#7B68EE&#39;)</span></span>
+<span id="cb19-143"><a href="#cb19-143" aria-hidden="true"></a><span class="co">#  (&#39;darkorange&#39;, &#39;#FF8C00&#39;)</span></span>
+<span id="cb19-144"><a href="#cb19-144" aria-hidden="true"></a><span class="co">#  (&#39;mediumaquamarine&#39;, &#39;#66CDAA&#39;)</span></span>
+<span id="cb19-145"><a href="#cb19-145" aria-hidden="true"></a><span class="co">#  (&#39;darksalmon&#39;, &#39;#E9967A&#39;)</span></span>
+<span id="cb19-146"><a href="#cb19-146" aria-hidden="true"></a><span class="co">#  (&#39;beige&#39;, &#39;#F5F5DC&#39;)</span></span>
+<span id="cb19-147"><a href="#cb19-147" aria-hidden="true"></a><span class="co">#  (&#39;blueviolet&#39;, &#39;#8A2BE2&#39;)</span></span>
+<span id="cb19-148"><a href="#cb19-148" aria-hidden="true"></a><span class="co">#  (&#39;azure&#39;, &#39;#F0FFFF&#39;)</span></span>
+<span id="cb19-149"><a href="#cb19-149" aria-hidden="true"></a><span class="co">#  (&#39;lightsteelblue&#39;, &#39;#B0C4DE&#39;)</span></span>
+<span id="cb19-150"><a href="#cb19-150" aria-hidden="true"></a><span class="co">#  (&#39;oldlace&#39;, &#39;#FDF5E6&#39;)</span></span></code></pre></div>
 <hr />
 </div>
 

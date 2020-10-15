@@ -357,44 +357,6 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="args_and_kwargs.html">args and kwargs</a>
-    </li>
-    <li>
-      <a href="decorators.html">decorators</a>
-    </li>
-    <li>
-      <a href="documentation.html">documentation</a>
-    </li>
-    <li>
-      <a href="underscores.html">underscores</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="comprehensions.html">comprehensions</a>
-    </li>
-    <li>
-      <a href="generators.html">generators</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="exceptions.html">exceptions</a>
-    </li>
-    <li>
-      <a href="files.html">files</a>
-    </li>
-    <li>
-      <a href="oop.html">oop</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    data
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
       <a href="strings.html">strings</a>
     </li>
     <li>
@@ -411,7 +373,32 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="collections.html">collections</a>
+      <a href="comprehensions.html">comprehensions</a>
+    </li>
+    <li>
+      <a href="generators.html">generators</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="args_and_kwargs.html">args and kwargs</a>
+    </li>
+    <li>
+      <a href="decorators.html">decorators</a>
+    </li>
+    <li>
+      <a href="documentation.html">documentation</a>
+    </li>
+    <li>
+      <a href="exceptions.html">exceptions</a>
+    </li>
+    <li>
+      <a href="files.html">files</a>
+    </li>
+    <li>
+      <a href="oop.html">oop</a>
+    </li>
+    <li>
+      <a href="underscores.html">underscores</a>
     </li>
   </ul>
 </li>
@@ -426,10 +413,16 @@ $(document).ready(function () {
       <a href="argparse.html">argparse</a>
     </li>
     <li>
+      <a href="collections.html">collections</a>
+    </li>
+    <li>
       <a href="configparser.html">configparser</a>
     </li>
     <li>
       <a href="datetime.html">datetime</a>
+    </li>
+    <li>
+      <a href="enum.html">enum</a>
     </li>
     <li>
       <a href="itertools.html">itertools</a>
@@ -816,7 +809,7 @@ $(document).ready(function () {
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>    <span class="cf">return</span> (item[<span class="dv">0</span>], item[<span class="dv">1</span>] <span class="op">*</span> <span class="dv">2</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>mydict <span class="op">=</span> <span class="bu">dict</span>(a<span class="op">=</span><span class="dv">1</span>, b<span class="op">=</span><span class="dv">2</span>, c<span class="op">=</span><span class="dv">3</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="bu">dict</span>(<span class="bu">map</span>(multiply_items_by_two, mydict.items()))</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="co">#  {&#39;a&#39;: 2, &#39;b&#39;: 4, &#39;c&#39;: 6}</span></span></code></pre></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="co">#  {&#39;a&#39;: 2, &#39;c&#39;: 6, &#39;b&#39;: 4}</span></span></code></pre></div>
 </div>
 <div id="filter" class="section level3">
 <h3>filter</h3>
@@ -825,7 +818,7 @@ $(document).ready(function () {
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>    <span class="cf">return</span> (item[<span class="dv">0</span>], item[<span class="dv">1</span>] <span class="op">*</span> <span class="dv">2</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>mydict <span class="op">=</span> <span class="bu">dict</span>(a<span class="op">=</span><span class="dv">1</span>, b<span class="op">=</span><span class="dv">2</span>, c<span class="op">=</span><span class="dv">3</span>)</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a><span class="bu">dict</span>(<span class="bu">map</span>(multiply_items_by_two, mydict.items()))</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a><span class="co">#  {&#39;a&#39;: 2, &#39;b&#39;: 4, &#39;c&#39;: 6}</span></span></code></pre></div>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a><span class="co">#  {&#39;a&#39;: 2, &#39;c&#39;: 6, &#39;b&#39;: 4}</span></span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -866,10 +859,10 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>pprint(<span class="bu">dir</span>(<span class="bu">dict</span>))</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a><span class="co">#  [&#39;__class__&#39;,</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a><span class="co">#   &#39;__contains__&#39;,</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a><span class="co">#   &#39;__delattr__&#39;,</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a><span class="co">#   &#39;__delitem__&#39;,</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a><span class="co">#   &#39;__dir__&#39;,</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a><span class="co">#   &#39;__cmp__&#39;,</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a><span class="co">#   &#39;__contains__&#39;,</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a><span class="co">#   &#39;__delattr__&#39;,</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a><span class="co">#   &#39;__delitem__&#39;,</span></span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a><span class="co">#   &#39;__doc__&#39;,</span></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true"></a><span class="co">#   &#39;__eq__&#39;,</span></span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true"></a><span class="co">#   &#39;__format__&#39;,</span></span>
@@ -879,33 +872,38 @@ $(document).ready(function () {
 <span id="cb12-14"><a href="#cb12-14" aria-hidden="true"></a><span class="co">#   &#39;__gt__&#39;,</span></span>
 <span id="cb12-15"><a href="#cb12-15" aria-hidden="true"></a><span class="co">#   &#39;__hash__&#39;,</span></span>
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true"></a><span class="co">#   &#39;__init__&#39;,</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true"></a><span class="co">#   &#39;__init_subclass__&#39;,</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true"></a><span class="co">#   &#39;__iter__&#39;,</span></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true"></a><span class="co">#   &#39;__le__&#39;,</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true"></a><span class="co">#   &#39;__len__&#39;,</span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true"></a><span class="co">#   &#39;__lt__&#39;,</span></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true"></a><span class="co">#   &#39;__ne__&#39;,</span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true"></a><span class="co">#   &#39;__new__&#39;,</span></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true"></a><span class="co">#   &#39;__reduce__&#39;,</span></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true"></a><span class="co">#   &#39;__reduce_ex__&#39;,</span></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true"></a><span class="co">#   &#39;__repr__&#39;,</span></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true"></a><span class="co">#   &#39;__reversed__&#39;,</span></span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true"></a><span class="co">#   &#39;__setattr__&#39;,</span></span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true"></a><span class="co">#   &#39;__setitem__&#39;,</span></span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true"></a><span class="co">#   &#39;__sizeof__&#39;,</span></span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true"></a><span class="co">#   &#39;__str__&#39;,</span></span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true"></a><span class="co">#   &#39;__subclasshook__&#39;,</span></span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true"></a><span class="co">#   &#39;clear&#39;,</span></span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true"></a><span class="co">#   &#39;copy&#39;,</span></span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true"></a><span class="co">#   &#39;fromkeys&#39;,</span></span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true"></a><span class="co">#   &#39;get&#39;,</span></span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true"></a><span class="co">#   &#39;items&#39;,</span></span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true"></a><span class="co">#   &#39;keys&#39;,</span></span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true"></a><span class="co">#   &#39;pop&#39;,</span></span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true"></a><span class="co">#   &#39;popitem&#39;,</span></span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true"></a><span class="co">#   &#39;setdefault&#39;,</span></span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true"></a><span class="co">#   &#39;update&#39;,</span></span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true"></a><span class="co">#   &#39;values&#39;]</span></span></code></pre></div>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true"></a><span class="co">#   &#39;__iter__&#39;,</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true"></a><span class="co">#   &#39;__le__&#39;,</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true"></a><span class="co">#   &#39;__len__&#39;,</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true"></a><span class="co">#   &#39;__lt__&#39;,</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true"></a><span class="co">#   &#39;__ne__&#39;,</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true"></a><span class="co">#   &#39;__new__&#39;,</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true"></a><span class="co">#   &#39;__reduce__&#39;,</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true"></a><span class="co">#   &#39;__reduce_ex__&#39;,</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true"></a><span class="co">#   &#39;__repr__&#39;,</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true"></a><span class="co">#   &#39;__setattr__&#39;,</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true"></a><span class="co">#   &#39;__setitem__&#39;,</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true"></a><span class="co">#   &#39;__sizeof__&#39;,</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true"></a><span class="co">#   &#39;__str__&#39;,</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true"></a><span class="co">#   &#39;__subclasshook__&#39;,</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true"></a><span class="co">#   &#39;clear&#39;,</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true"></a><span class="co">#   &#39;copy&#39;,</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true"></a><span class="co">#   &#39;fromkeys&#39;,</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true"></a><span class="co">#   &#39;get&#39;,</span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true"></a><span class="co">#   &#39;has_key&#39;,</span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true"></a><span class="co">#   &#39;items&#39;,</span></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true"></a><span class="co">#   &#39;iteritems&#39;,</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true"></a><span class="co">#   &#39;iterkeys&#39;,</span></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true"></a><span class="co">#   &#39;itervalues&#39;,</span></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true"></a><span class="co">#   &#39;keys&#39;,</span></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true"></a><span class="co">#   &#39;pop&#39;,</span></span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true"></a><span class="co">#   &#39;popitem&#39;,</span></span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true"></a><span class="co">#   &#39;setdefault&#39;,</span></span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true"></a><span class="co">#   &#39;update&#39;,</span></span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true"></a><span class="co">#   &#39;values&#39;,</span></span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true"></a><span class="co">#   &#39;viewitems&#39;,</span></span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true"></a><span class="co">#   &#39;viewkeys&#39;,</span></span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true"></a><span class="co">#   &#39;viewvalues&#39;]</span></span></code></pre></div>
 </div>
 
 

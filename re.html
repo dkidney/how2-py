@@ -357,44 +357,6 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="args_and_kwargs.html">args and kwargs</a>
-    </li>
-    <li>
-      <a href="decorators.html">decorators</a>
-    </li>
-    <li>
-      <a href="documentation.html">documentation</a>
-    </li>
-    <li>
-      <a href="underscores.html">underscores</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="comprehensions.html">comprehensions</a>
-    </li>
-    <li>
-      <a href="generators.html">generators</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="exceptions.html">exceptions</a>
-    </li>
-    <li>
-      <a href="files.html">files</a>
-    </li>
-    <li>
-      <a href="oop.html">oop</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    data
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
       <a href="strings.html">strings</a>
     </li>
     <li>
@@ -411,7 +373,32 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="collections.html">collections</a>
+      <a href="comprehensions.html">comprehensions</a>
+    </li>
+    <li>
+      <a href="generators.html">generators</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="args_and_kwargs.html">args and kwargs</a>
+    </li>
+    <li>
+      <a href="decorators.html">decorators</a>
+    </li>
+    <li>
+      <a href="documentation.html">documentation</a>
+    </li>
+    <li>
+      <a href="exceptions.html">exceptions</a>
+    </li>
+    <li>
+      <a href="files.html">files</a>
+    </li>
+    <li>
+      <a href="oop.html">oop</a>
+    </li>
+    <li>
+      <a href="underscores.html">underscores</a>
     </li>
   </ul>
 </li>
@@ -426,10 +413,16 @@ $(document).ready(function () {
       <a href="argparse.html">argparse</a>
     </li>
     <li>
+      <a href="collections.html">collections</a>
+    </li>
+    <li>
       <a href="configparser.html">configparser</a>
     </li>
     <li>
       <a href="datetime.html">datetime</a>
+    </li>
+    <li>
+      <a href="enum.html">enum</a>
     </li>
     <li>
       <a href="itertools.html">itertools</a>
@@ -794,7 +787,7 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="im">import</span> re</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>alphabet <span class="op">=</span> <span class="st">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>re.search(<span class="st">&#39;[^aeiou]+&#39;</span>, alphabet)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="co">#  &lt;re.Match object; span=(1, 4), match=&#39;bcd&#39;&gt;</span></span></code></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="co">#  &lt;_sre.SRE_Match object at 0x1166b2ed0&gt;</span></span></code></pre></div>
 </div>
 <div id="split" class="section level3">
 <h3>split</h3>
@@ -825,64 +818,56 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="im">import</span> re</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>pprint(<span class="bu">dir</span>(re))</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="co">#  [&#39;A&#39;,</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="co">#   &#39;ASCII&#39;,</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a><span class="co">#   &#39;DEBUG&#39;,</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="co">#   &#39;DOTALL&#39;,</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a><span class="co">#   &#39;I&#39;,</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a><span class="co">#   &#39;IGNORECASE&#39;,</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a><span class="co">#   &#39;L&#39;,</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a><span class="co">#   &#39;LOCALE&#39;,</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true"></a><span class="co">#   &#39;M&#39;,</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true"></a><span class="co">#   &#39;MULTILINE&#39;,</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true"></a><span class="co">#   &#39;Match&#39;,</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true"></a><span class="co">#   &#39;Pattern&#39;,</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true"></a><span class="co">#   &#39;RegexFlag&#39;,</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true"></a><span class="co">#   &#39;S&#39;,</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true"></a><span class="co">#   &#39;Scanner&#39;,</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true"></a><span class="co">#   &#39;T&#39;,</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true"></a><span class="co">#   &#39;TEMPLATE&#39;,</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true"></a><span class="co">#   &#39;U&#39;,</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true"></a><span class="co">#   &#39;UNICODE&#39;,</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true"></a><span class="co">#   &#39;VERBOSE&#39;,</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true"></a><span class="co">#   &#39;X&#39;,</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true"></a><span class="co">#   &#39;_MAXCACHE&#39;,</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true"></a><span class="co">#   &#39;__all__&#39;,</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true"></a><span class="co">#   &#39;__builtins__&#39;,</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true"></a><span class="co">#   &#39;__cached__&#39;,</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true"></a><span class="co">#   &#39;__doc__&#39;,</span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true"></a><span class="co">#   &#39;__file__&#39;,</span></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true"></a><span class="co">#   &#39;__loader__&#39;,</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true"></a><span class="co">#   &#39;__name__&#39;,</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true"></a><span class="co">#   &#39;__package__&#39;,</span></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true"></a><span class="co">#   &#39;__spec__&#39;,</span></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true"></a><span class="co">#   &#39;__version__&#39;,</span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true"></a><span class="co">#   &#39;_cache&#39;,</span></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true"></a><span class="co">#   &#39;_compile&#39;,</span></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true"></a><span class="co">#   &#39;_compile_repl&#39;,</span></span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true"></a><span class="co">#   &#39;_expand&#39;,</span></span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true"></a><span class="co">#   &#39;_locale&#39;,</span></span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true"></a><span class="co">#   &#39;_pickle&#39;,</span></span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true"></a><span class="co">#   &#39;_special_chars_map&#39;,</span></span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true"></a><span class="co">#   &#39;_subx&#39;,</span></span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true"></a><span class="co">#   &#39;compile&#39;,</span></span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true"></a><span class="co">#   &#39;copyreg&#39;,</span></span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true"></a><span class="co">#   &#39;enum&#39;,</span></span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true"></a><span class="co">#   &#39;error&#39;,</span></span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true"></a><span class="co">#   &#39;escape&#39;,</span></span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true"></a><span class="co">#   &#39;findall&#39;,</span></span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true"></a><span class="co">#   &#39;finditer&#39;,</span></span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true"></a><span class="co">#   &#39;fullmatch&#39;,</span></span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true"></a><span class="co">#   &#39;functools&#39;,</span></span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true"></a><span class="co">#   &#39;match&#39;,</span></span>
-<span id="cb7-54"><a href="#cb7-54" aria-hidden="true"></a><span class="co">#   &#39;purge&#39;,</span></span>
-<span id="cb7-55"><a href="#cb7-55" aria-hidden="true"></a><span class="co">#   &#39;search&#39;,</span></span>
-<span id="cb7-56"><a href="#cb7-56" aria-hidden="true"></a><span class="co">#   &#39;split&#39;,</span></span>
-<span id="cb7-57"><a href="#cb7-57" aria-hidden="true"></a><span class="co">#   &#39;sre_compile&#39;,</span></span>
-<span id="cb7-58"><a href="#cb7-58" aria-hidden="true"></a><span class="co">#   &#39;sre_parse&#39;,</span></span>
-<span id="cb7-59"><a href="#cb7-59" aria-hidden="true"></a><span class="co">#   &#39;sub&#39;,</span></span>
-<span id="cb7-60"><a href="#cb7-60" aria-hidden="true"></a><span class="co">#   &#39;subn&#39;,</span></span>
-<span id="cb7-61"><a href="#cb7-61" aria-hidden="true"></a><span class="co">#   &#39;template&#39;]</span></span></code></pre></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="co">#  [&#39;DEBUG&#39;,</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="co">#   &#39;DOTALL&#39;,</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a><span class="co">#   &#39;I&#39;,</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="co">#   &#39;IGNORECASE&#39;,</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a><span class="co">#   &#39;L&#39;,</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a><span class="co">#   &#39;LOCALE&#39;,</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a><span class="co">#   &#39;M&#39;,</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a><span class="co">#   &#39;MULTILINE&#39;,</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true"></a><span class="co">#   &#39;S&#39;,</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true"></a><span class="co">#   &#39;Scanner&#39;,</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true"></a><span class="co">#   &#39;T&#39;,</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true"></a><span class="co">#   &#39;TEMPLATE&#39;,</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true"></a><span class="co">#   &#39;U&#39;,</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true"></a><span class="co">#   &#39;UNICODE&#39;,</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true"></a><span class="co">#   &#39;VERBOSE&#39;,</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true"></a><span class="co">#   &#39;X&#39;,</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true"></a><span class="co">#   &#39;_MAXCACHE&#39;,</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true"></a><span class="co">#   &#39;__all__&#39;,</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true"></a><span class="co">#   &#39;__builtins__&#39;,</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true"></a><span class="co">#   &#39;__doc__&#39;,</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true"></a><span class="co">#   &#39;__file__&#39;,</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true"></a><span class="co">#   &#39;__name__&#39;,</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true"></a><span class="co">#   &#39;__package__&#39;,</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true"></a><span class="co">#   &#39;__version__&#39;,</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true"></a><span class="co">#   &#39;_alphanum&#39;,</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true"></a><span class="co">#   &#39;_cache&#39;,</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true"></a><span class="co">#   &#39;_cache_repl&#39;,</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true"></a><span class="co">#   &#39;_compile&#39;,</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true"></a><span class="co">#   &#39;_compile_repl&#39;,</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true"></a><span class="co">#   &#39;_expand&#39;,</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true"></a><span class="co">#   &#39;_locale&#39;,</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true"></a><span class="co">#   &#39;_pattern_type&#39;,</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true"></a><span class="co">#   &#39;_pickle&#39;,</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true"></a><span class="co">#   &#39;_subx&#39;,</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true"></a><span class="co">#   &#39;compile&#39;,</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true"></a><span class="co">#   &#39;copy_reg&#39;,</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true"></a><span class="co">#   &#39;error&#39;,</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true"></a><span class="co">#   &#39;escape&#39;,</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true"></a><span class="co">#   &#39;findall&#39;,</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true"></a><span class="co">#   &#39;finditer&#39;,</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true"></a><span class="co">#   &#39;match&#39;,</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true"></a><span class="co">#   &#39;purge&#39;,</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true"></a><span class="co">#   &#39;search&#39;,</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true"></a><span class="co">#   &#39;split&#39;,</span></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true"></a><span class="co">#   &#39;sre_compile&#39;,</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true"></a><span class="co">#   &#39;sre_parse&#39;,</span></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true"></a><span class="co">#   &#39;sub&#39;,</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true"></a><span class="co">#   &#39;subn&#39;,</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true"></a><span class="co">#   &#39;sys&#39;,</span></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true"></a><span class="co">#   &#39;template&#39;]</span></span></code></pre></div>
 </div>
 
 

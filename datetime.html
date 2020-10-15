@@ -357,44 +357,6 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="args_and_kwargs.html">args and kwargs</a>
-    </li>
-    <li>
-      <a href="decorators.html">decorators</a>
-    </li>
-    <li>
-      <a href="documentation.html">documentation</a>
-    </li>
-    <li>
-      <a href="underscores.html">underscores</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="comprehensions.html">comprehensions</a>
-    </li>
-    <li>
-      <a href="generators.html">generators</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="exceptions.html">exceptions</a>
-    </li>
-    <li>
-      <a href="files.html">files</a>
-    </li>
-    <li>
-      <a href="oop.html">oop</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    data
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
       <a href="strings.html">strings</a>
     </li>
     <li>
@@ -411,7 +373,32 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="collections.html">collections</a>
+      <a href="comprehensions.html">comprehensions</a>
+    </li>
+    <li>
+      <a href="generators.html">generators</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="args_and_kwargs.html">args and kwargs</a>
+    </li>
+    <li>
+      <a href="decorators.html">decorators</a>
+    </li>
+    <li>
+      <a href="documentation.html">documentation</a>
+    </li>
+    <li>
+      <a href="exceptions.html">exceptions</a>
+    </li>
+    <li>
+      <a href="files.html">files</a>
+    </li>
+    <li>
+      <a href="oop.html">oop</a>
+    </li>
+    <li>
+      <a href="underscores.html">underscores</a>
     </li>
   </ul>
 </li>
@@ -426,10 +413,16 @@ $(document).ready(function () {
       <a href="argparse.html">argparse</a>
     </li>
     <li>
+      <a href="collections.html">collections</a>
+    </li>
+    <li>
       <a href="configparser.html">configparser</a>
     </li>
     <li>
       <a href="datetime.html">datetime</a>
+    </li>
+    <li>
+      <a href="enum.html">enum</a>
     </li>
     <li>
       <a href="itertools.html">itertools</a>
@@ -717,9 +710,9 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>a_date <span class="op">=</span> dt.date.today()</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>a_date.isoformat()</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="co">#  &#39;2020-10-05&#39;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="co">#  &#39;2020-10-15&#39;</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>a_date.strftime(<span class="st">&quot;%a </span><span class="sc">%d</span><span class="st"> %b %Y&quot;</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="co">#  &#39;Mon 05 Oct 2020&#39;</span></span></code></pre></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="co">#  &#39;Thu 15 Oct 2020&#39;</span></span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -759,7 +752,7 @@ $(document).ready(function () {
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true"></a><span class="co">#  (23, 59, 59, 999999)</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>dt.datetime.utcnow()</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="co">#  datetime.datetime(2020, 10, 5, 21, 11, 18, 269117)</span></span></code></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="co">#  datetime.datetime(2020, 10, 15, 21, 5, 49, 421456)</span></span></code></pre></div>
 <div id="timestamp-to-datetime" class="section level3">
 <h3>timestamp to datetime</h3>
 <div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
@@ -780,38 +773,38 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>a_datetime <span class="op">=</span> dt.datetime.utcnow()</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>a_datetime.timestamp()</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="co">#  1601928678.769439</span></span></code></pre></div>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="co">#  1602792349.806646</span></span></code></pre></div>
 </div>
 <div id="datetime-to-string" class="section level3">
 <h3>datetime to string</h3>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>a_datetime <span class="op">=</span> dt.datetime.utcnow()</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>a_datetime.isoformat()</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="co">#  &#39;2020-10-05T21:11:18.968478&#39;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="co">#  &#39;2020-10-15T21:05:49.949623&#39;</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>a_datetime.strftime(<span class="st">&quot;%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S&quot;</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a><span class="co">#  &#39;2020-10-05 21:11:18&#39;</span></span></code></pre></div>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a><span class="co">#  &#39;2020-10-15 21:05:49&#39;</span></span></code></pre></div>
 </div>
 <div id="datetime-to-date" class="section level3">
 <h3>datetime to date</h3>
 <div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>a_datetime <span class="op">=</span> dt.datetime.utcnow()</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>a_datetime.date()</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a><span class="co">#  datetime.date(2020, 10, 5)</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a><span class="co">#  datetime.date(2020, 10, 15)</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a>a_datetime.date().isoformat()</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a><span class="co">#  &#39;2020-10-05&#39;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a><span class="co">#  &#39;2020-10-15&#39;</span></span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a>a_datetime.date().strftime(<span class="st">&quot;%Y%m</span><span class="sc">%d</span><span class="st">&quot;</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a><span class="co">#  &#39;20201005&#39;</span></span></code></pre></div>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a><span class="co">#  &#39;20201015&#39;</span></span></code></pre></div>
 </div>
 <div id="timezones" class="section level3">
 <h3>timezones</h3>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="im">from</span> dateutil <span class="im">import</span> tz</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>dt.datetime.now(tz<span class="op">=</span>tz.tzlocal())</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="co">#  datetime.datetime(2020, 10, 5, 22, 20, 4, 980975, tzinfo=tzlocal())</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="co">#  datetime.datetime(2020, 10, 15, 22, 5, 50, 124823, tzinfo=tzlocal())</span></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a>dt.datetime.now(tz<span class="op">=</span>tz.gettz(<span class="st">&quot;Europe/London&quot;</span>)).tzname()</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a><span class="co">#  &#39;BST&#39;</span></span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a>dt.datetime.now(tz<span class="op">=</span>tz.gettz(<span class="st">&quot;America/New_York&quot;</span>)).isoformat()</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a><span class="co">#  &#39;2020-10-05T17:20:04.992371-04:00&#39;</span></span></code></pre></div>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a><span class="co">#  &#39;2020-10-15T17:05:50.179931-04:00&#39;</span></span></code></pre></div>
 </div>
 <div id="change-timezone" class="section level3">
 <h3>change timezone</h3>
@@ -819,9 +812,9 @@ $(document).ready(function () {
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="im">from</span> dateutil <span class="im">import</span> tz</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>a_datetime <span class="op">=</span> dt.datetime.now(tz<span class="op">=</span>tz.tzlocal())</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a>a_datetime.isoformat()</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a><span class="co">#  &#39;2020-10-05T22:11:19.426953+01:00&#39;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a><span class="co">#  &#39;2020-10-15T22:05:50.308257+01:00&#39;</span></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a>a_datetime.astimezone(tz.gettz(<span class="st">&quot;America/New_York&quot;</span>)).isoformat()</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a><span class="co">#  &#39;2020-10-05T17:11:19.426953-04:00&#39;</span></span></code></pre></div>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a><span class="co">#  &#39;2020-10-15T17:05:50.308257-04:00&#39;</span></span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -832,7 +825,7 @@ $(document).ready(function () {
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>delta</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a><span class="co">#  datetime.timedelta(days=100)</span></span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a>dt.date.today() <span class="op">-</span> delta</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true"></a><span class="co">#  datetime.date(2020, 6, 27)</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true"></a><span class="co">#  datetime.date(2020, 7, 7)</span></span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true"></a>(dt.date.today() <span class="op">-</span> delta) <span class="op">&lt;</span> dt.date.today()</span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true"></a><span class="co">#  True</span></span></code></pre></div>
 <hr />

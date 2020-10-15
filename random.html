@@ -357,44 +357,6 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="args_and_kwargs.html">args and kwargs</a>
-    </li>
-    <li>
-      <a href="decorators.html">decorators</a>
-    </li>
-    <li>
-      <a href="documentation.html">documentation</a>
-    </li>
-    <li>
-      <a href="underscores.html">underscores</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="comprehensions.html">comprehensions</a>
-    </li>
-    <li>
-      <a href="generators.html">generators</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="exceptions.html">exceptions</a>
-    </li>
-    <li>
-      <a href="files.html">files</a>
-    </li>
-    <li>
-      <a href="oop.html">oop</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    data
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
       <a href="strings.html">strings</a>
     </li>
     <li>
@@ -411,7 +373,32 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="collections.html">collections</a>
+      <a href="comprehensions.html">comprehensions</a>
+    </li>
+    <li>
+      <a href="generators.html">generators</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="args_and_kwargs.html">args and kwargs</a>
+    </li>
+    <li>
+      <a href="decorators.html">decorators</a>
+    </li>
+    <li>
+      <a href="documentation.html">documentation</a>
+    </li>
+    <li>
+      <a href="exceptions.html">exceptions</a>
+    </li>
+    <li>
+      <a href="files.html">files</a>
+    </li>
+    <li>
+      <a href="oop.html">oop</a>
+    </li>
+    <li>
+      <a href="underscores.html">underscores</a>
     </li>
   </ul>
 </li>
@@ -426,10 +413,16 @@ $(document).ready(function () {
       <a href="argparse.html">argparse</a>
     </li>
     <li>
+      <a href="collections.html">collections</a>
+    </li>
+    <li>
       <a href="configparser.html">configparser</a>
     </li>
     <li>
       <a href="datetime.html">datetime</a>
+    </li>
+    <li>
+      <a href="enum.html">enum</a>
     </li>
     <li>
       <a href="itertools.html">itertools</a>
@@ -649,15 +642,15 @@ $(document).ready(function () {
 <h2>basics</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="im">import</span> random</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>random.random() <span class="co"># random real between 0 and 1 - like runif(0,1)</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="co">#  0.4268848639120686</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="co">#  0.7219784420898292</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>random.randint(<span class="dv">1</span>, <span class="dv">10</span>) <span class="co"># random integer between 1 an 10 inclusive</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="co">#  7</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="co">#  8</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>random.randrange(<span class="dv">1</span>, <span class="dv">10</span>) <span class="co"># random integer between 1 an 9 (excludes 10)</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="co">#  4</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="co">#  6</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>random.choice([<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>]) <span class="co"># choose one element at random from list</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="co">#  &#39;c&#39;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="co">#  &#39;a&#39;</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>random.sample(<span class="bu">range</span>(<span class="dv">10</span>, <span class="dv">30</span>), <span class="dv">5</span>) <span class="co"># list of 5 random integers between 10 and 29 (range excludes 30)</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a><span class="co">#  [10, 20, 17, 18, 27]</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a><span class="co">#  [11, 19, 25, 27, 26]</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>random.seed(<span class="dv">42</span>) <span class="co"># set random number seed</span></span></code></pre></div>
 </div>
 

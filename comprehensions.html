@@ -357,44 +357,6 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="args_and_kwargs.html">args and kwargs</a>
-    </li>
-    <li>
-      <a href="decorators.html">decorators</a>
-    </li>
-    <li>
-      <a href="documentation.html">documentation</a>
-    </li>
-    <li>
-      <a href="underscores.html">underscores</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="comprehensions.html">comprehensions</a>
-    </li>
-    <li>
-      <a href="generators.html">generators</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="exceptions.html">exceptions</a>
-    </li>
-    <li>
-      <a href="files.html">files</a>
-    </li>
-    <li>
-      <a href="oop.html">oop</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    data
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
       <a href="strings.html">strings</a>
     </li>
     <li>
@@ -411,7 +373,32 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li>
-      <a href="collections.html">collections</a>
+      <a href="comprehensions.html">comprehensions</a>
+    </li>
+    <li>
+      <a href="generators.html">generators</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="args_and_kwargs.html">args and kwargs</a>
+    </li>
+    <li>
+      <a href="decorators.html">decorators</a>
+    </li>
+    <li>
+      <a href="documentation.html">documentation</a>
+    </li>
+    <li>
+      <a href="exceptions.html">exceptions</a>
+    </li>
+    <li>
+      <a href="files.html">files</a>
+    </li>
+    <li>
+      <a href="oop.html">oop</a>
+    </li>
+    <li>
+      <a href="underscores.html">underscores</a>
     </li>
   </ul>
 </li>
@@ -426,10 +413,16 @@ $(document).ready(function () {
       <a href="argparse.html">argparse</a>
     </li>
     <li>
+      <a href="collections.html">collections</a>
+    </li>
+    <li>
       <a href="configparser.html">configparser</a>
     </li>
     <li>
       <a href="datetime.html">datetime</a>
+    </li>
+    <li>
+      <a href="enum.html">enum</a>
     </li>
     <li>
       <a href="itertools.html">itertools</a>
@@ -695,13 +688,13 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>fahrenheit <span class="op">=</span> {<span class="st">&#39;t1&#39;</span>: <span class="op">-</span><span class="dv">30</span>,<span class="st">&#39;t2&#39;</span>: <span class="op">-</span><span class="dv">20</span>,<span class="st">&#39;t3&#39;</span>: <span class="op">-</span><span class="dv">10</span>,<span class="st">&#39;t4&#39;</span>: <span class="dv">0</span>}</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>celsius <span class="op">=</span> {k:(<span class="bu">float</span>(<span class="dv">5</span>)<span class="op">/</span><span class="dv">9</span>)<span class="op">*</span>(v<span class="op">-</span><span class="dv">32</span>) <span class="cf">for</span> (k,v) <span class="kw">in</span> fahrenheit.items()}</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>celsius</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="co">#  {&#39;t1&#39;: -34.44444444444444, &#39;t2&#39;: -28.88888888888889, &#39;t3&#39;: -23.333333333333336, &#39;t4&#39;: -17.77777777777778}</span></span></code></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="co">#  {&#39;t4&#39;: -17.77777777777778, &#39;t2&#39;: -28.88888888888889, &#39;t3&#39;: -23.333333333333336, &#39;t1&#39;: -34.44444444444444}</span></span></code></pre></div>
 <div id="conditionals-1" class="section level3">
 <h3>conditionals</h3>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>dict1 <span class="op">=</span> {<span class="st">&#39;a&#39;</span>: <span class="dv">1</span>, <span class="st">&#39;b&#39;</span>: <span class="dv">2</span>, <span class="st">&#39;c&#39;</span>: <span class="dv">3</span>, <span class="st">&#39;d&#39;</span>: <span class="dv">4</span>, <span class="st">&#39;e&#39;</span>: <span class="dv">5</span>}</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>dict2 <span class="op">=</span> {k:v <span class="cf">for</span> (k,v) <span class="kw">in</span> dict1.items() <span class="cf">if</span> v<span class="op">&gt;</span><span class="dv">2</span>}</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>dict2</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="co">#  {&#39;c&#39;: 3, &#39;d&#39;: 4, &#39;e&#39;: 5}</span></span></code></pre></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="co">#  {&#39;c&#39;: 3, &#39;e&#39;: 5, &#39;d&#39;: 4}</span></span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -714,7 +707,7 @@ $(document).ready(function () {
 <h2>sets</h2>
 <p><code>new_set = {expression for member in iterable}</code></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>{x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)}</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="co">#  {0, 1, 64, 4, 36, 9, 16, 49, 81, 25}</span></span></code></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="co">#  set([0, 1, 4, 81, 64, 9, 16, 49, 25, 36])</span></span></code></pre></div>
 </div>
 
 
