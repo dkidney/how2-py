@@ -1,5 +1,5 @@
 ---
-title: TODO
+title: pickle
 editor_options: 
   chunk_output_type: console
 ---
@@ -7,47 +7,59 @@ editor_options:
 ```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
 ```
 
-<!-- ********************************************************************* -->
+*********************************************************************
 
-<!-- > Headline -->
+> Python object serialization
 
-<!-- ********************************************************************* -->
+*********************************************************************
 
-<!-- ## faqs -->
+## links
 
-<!-- ********************************************************************* -->
+* https://docs.python.org/3/library/pickle  
+* https://realpython.com/python-pickle-module/  
+* https://www.datacamp.com/community/tutorials/pickle-python-tutorial 
 
-<!-- ## links -->
+*********************************************************************
 
-<!-- ********************************************************************* -->
+## serialize (pickle)
 
-<!-- ## setup -->
+### object to string (`dumps`)
 
-<!-- ```sh -->
-<!-- pip install todo -->
-<!-- ``` -->
+```{python}
+import pickle
+a_dict = {"top": {"z": 1, "x": [1, 2, 3], "y": {"c": 1, "b": 2, "a": 3}}}
+a_string = pickle.dumps(a_dict)
+a_string
+```
 
-<!-- ```{python} -->
-<!-- import todo -->
-<!-- todo.__version__ -->
-<!-- ``` -->
+### object to file (`dump`)
 
+```{python, cache=FALSE}
+import pickle
+a_dict = {"top": {"z": 1, "x": [1, 2, 3], "y": {"c": 1, "b": 2, "a": 3}}}
+with open("temp.pickle", "wb") as fh:
+    pickle.dump(a_dict, fh)
+```
 
-<!-- ********************************************************************* -->
+*********************************************************************
 
-<!-- ## basics -->
+## deserialize (unpickle)
 
-<!-- ```python -->
-<!-- # TODO -->
-<!-- ``` -->
+### string to object (`loads`)
 
+```{python}
+import pickle
+a_string = b'\x80\x04\x95<\x00\x00\x00\x00\x00\x00\x00}\x94\x8c\x03top\x94}\x94(\x8c\x01z\x94K\x01\x8c\x01x\x94]\x94(K\x01K\x02K\x03e\x8c\x01y\x94}\x94(\x8c\x01c\x94K\x01\x8c\x01b\x94K\x02\x8c\x01a\x94K\x03uus.'
+a_dict = pickle.loads(a_string)
+a_dict
+```
 
-<!-- ********************************************************************* -->
+### file to object (`load`)
 
-<!-- ## appendix: dir -->
+```{python}
+import pickle
+with open("temp.pickle", "rb") as fh:
+    a_dict = pickle.load(fh)
+a_dict
+```
 
-<!-- ```{python} -->
-<!-- from pprint import pprint -->
-<!-- import todo -->
-<!-- pprint(dir(todo)) -->
-<!-- ``` -->
