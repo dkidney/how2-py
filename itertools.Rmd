@@ -1,5 +1,5 @@
 ---
-title: TODO
+title: itertools
 editor_options: 
   chunk_output_type: console
 ---
@@ -7,47 +7,41 @@ editor_options:
 ```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
 ```
 
-<!-- ********************************************************************* -->
+*********************************************************************
 
-<!-- > Headline -->
+> Functions creating iterators for efficient looping
 
-<!-- ********************************************************************* -->
+*********************************************************************
 
-<!-- ## faqs -->
+## links
 
-<!-- ********************************************************************* -->
+* https://docs.python.org/3/library/itertools  
+* https://realpython.com/python-itertools/  
+* https://www.datacamp.com/community/tutorials/python-iterator-tutorial  
 
-<!-- ## links -->
+*********************************************************************
 
-<!-- ********************************************************************* -->
+## count
 
-<!-- ## setup -->
+```python
+# TODO
+```
 
-<!-- ```sh -->
-<!-- pip install todo -->
-<!-- ``` -->
+*********************************************************************
 
-<!-- ```{python} -->
-<!-- import todo -->
-<!-- todo.__version__ -->
-<!-- ``` -->
+## cycle
 
+```python
+# TODO
+```
 
-<!-- ********************************************************************* -->
+*********************************************************************
 
-<!-- ## basics -->
+## permutations
 
-<!-- ```python -->
-<!-- # TODO -->
-<!-- ``` -->
+```{python}
+import itertools as it
+for x in it.permutations('abc'):
+    print(x)
+```
 
-
-<!-- ********************************************************************* -->
-
-<!-- ## appendix: dir -->
-
-<!-- ```{python} -->
-<!-- from pprint import pprint -->
-<!-- import todo -->
-<!-- pprint(dir(todo)) -->
-<!-- ``` -->
