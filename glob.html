@@ -632,6 +632,7 @@ $(document).ready(function () {
 <ul>
 <li><a href="#links">links</a></li>
 <li><a href="#glob">glob</a></li>
+<li><a href="#iglob">iglob</a></li>
 </ul>
 </div>
 
@@ -653,13 +654,37 @@ $(document).ready(function () {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="im">import</span> os</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>folder <span class="op">=</span> os.getcwd()</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>paths <span class="op">=</span> glob.glob(os.path.join(folder, <span class="st">&quot;*.Rmd&quot;</span>), recursive<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="cf">for</span> path <span class="kw">in</span> <span class="bu">sorted</span>(paths)[<span class="dv">0</span>:<span class="dv">5</span>]:</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>    <span class="bu">print</span>(path)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="co">#  /Users/kida8005/github/how2-py/_todo.Rmd</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a><span class="co">#  /Users/kida8005/github/how2-py/airflow.Rmd</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="co">#  /Users/kida8005/github/how2-py/apis.Rmd</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a><span class="co">#  /Users/kida8005/github/how2-py/argparse.Rmd</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a><span class="co">#  /Users/kida8005/github/how2-py/args_and_kwargs.Rmd</span></span></code></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="bu">type</span>(paths)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="co">#  &lt;class &#39;list&#39;&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="cf">for</span> i, path <span class="kw">in</span> <span class="bu">enumerate</span>(paths):</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>    <span class="cf">if</span> i <span class="op">&gt;=</span> <span class="dv">5</span>:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>        <span class="cf">break</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>    <span class="bu">print</span>(path)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a><span class="co">#  /Users/kida8005/github/how2-py/profiling.Rmd</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a><span class="co">#  /Users/kida8005/github/how2-py/requests.Rmd</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a><span class="co">#  /Users/kida8005/github/how2-py/pickle.Rmd</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a><span class="co">#  /Users/kida8005/github/how2-py/sys.Rmd</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a><span class="co">#  /Users/kida8005/github/how2-py/generators.Rmd</span></span></code></pre></div>
+<hr />
+</div>
+<div id="iglob" class="section level2">
+<h2>iglob</h2>
+<p>Like <code>glob</code> but returns an iterable.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="im">import</span> glob</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="im">import</span> os</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>folder <span class="op">=</span> os.getcwd()</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>paths <span class="op">=</span> glob.iglob(os.path.join(folder, <span class="st">&quot;*.Rmd&quot;</span>), recursive<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="bu">type</span>(paths)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a><span class="co">#  &lt;class &#39;generator&#39;&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="cf">for</span> i, path <span class="kw">in</span> <span class="bu">enumerate</span>(paths):</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>    <span class="cf">if</span> i <span class="op">&gt;=</span> <span class="dv">5</span>:</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>        <span class="cf">break</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a>    <span class="bu">print</span>(path)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a><span class="co">#  /Users/kida8005/github/how2-py/profiling.Rmd</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a><span class="co">#  /Users/kida8005/github/how2-py/requests.Rmd</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a><span class="co">#  /Users/kida8005/github/how2-py/pickle.Rmd</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a><span class="co">#  /Users/kida8005/github/how2-py/sys.Rmd</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a><span class="co">#  /Users/kida8005/github/how2-py/generators.Rmd</span></span></code></pre></div>
 </div>
 
 

@@ -26,8 +26,30 @@ import glob
 import os
 folder = os.getcwd()
 paths = glob.glob(os.path.join(folder, "*.Rmd"), recursive=True)
-for path in sorted(paths)[0:5]:
+type(paths)
+for i, path in enumerate(paths):
+    if i >= 5:
+        break
     print(path)
 ```
+
+*********************************************************************
+
+## iglob
+
+Like `glob` but returns an iterable.
+
+```{python}
+import glob
+import os
+folder = os.getcwd()
+paths = glob.iglob(os.path.join(folder, "*.Rmd"), recursive=True)
+type(paths)
+for i, path in enumerate(paths):
+    if i >= 5:
+        break
+    print(path)
+```
+
 
 
