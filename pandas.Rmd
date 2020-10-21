@@ -919,9 +919,11 @@ df.to_excel("file.xlsx")
 
 ```python
 with pd.option_context(
-        'display.max_rows', 10,
-        'display.max_columns', 5,
-        'display.max_colwidth', -1
+        'display.max_rows', None,
+        'display.max_columns', None,
+        'display.max_colwidth', -1,
+        'display.width', int(__import__('sys').float_info.max),
+        'display.precision', 10
 ):
   print(df)
 ```
