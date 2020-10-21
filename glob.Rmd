@@ -1,0 +1,33 @@
+---
+title: glob
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+*********************************************************************
+
+> Unix style pathname pattern expansion
+
+*********************************************************************
+
+## links
+
+* https://docs.python.org/3/library/glob
+
+*********************************************************************
+
+## glob
+
+```{python}
+import glob
+import os
+folder = os.getcwd()
+paths = glob.glob(os.path.join(folder, "*.Rmd"), recursive=True)
+for path in sorted(paths)[0:5]:
+    print(path)
+```
+
+

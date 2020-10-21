@@ -61,6 +61,8 @@ navbar:
           href: datetime.html
         - text: "enum"
           href: enum.html
+        - text: "glob"
+          href: glob.html
         - text: "itertools"
           href: itertools.html
         - text: "json"
