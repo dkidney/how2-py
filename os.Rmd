@@ -13,6 +13,7 @@ editor_options:
 
 *********************************************************************
 
+* https://docs.python.org/3/library/os  
 * https://python.readthedocs.io/en/latest/library/os.html  
 * https://python.readthedocs.io/en/latest/library/os.path.html  
 
@@ -45,15 +46,22 @@ os.path.isfile('a/b/c')
 
 ## misc
 
+```python
+os.getcwd() # current working directory
+os.listdir() # returns a list of file names
+os.scandir() # returns a posix.ScandirIterator iterable with elements posix.DirEntry
+```
+
 ```{python}
 import os
-os.getcwd()
 os.getenv('HOME')
 os.getenv('BLAH', default='asdf')
+os.getpid()  # process id, e.g. use in parallel processing
 ```
 
 ```python
-os.mkdir('new_dir')
-os.remove('new_file')
+os.mkdir('a')
+os.makedirs('a/b/c', exist_ok=True) # like os.mkdir but recursive, exist_ok=True to avoid FileExistsError
+os.remove('a')
 ```
 
