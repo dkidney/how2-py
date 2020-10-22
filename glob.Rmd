@@ -25,11 +25,9 @@ editor_options:
 import glob
 import os
 folder = os.getcwd()
-paths = glob.glob(os.path.join(folder, "*.Rmd"), recursive=True)
+paths = glob.glob(os.path.join(folder, "a*.Rmd"), recursive=True)
 type(paths)
-for i, path in enumerate(paths):
-    if i >= 5:
-        break
+for path in paths:
     print(path)
 ```
 
@@ -43,11 +41,9 @@ Like `glob` but returns an iterable.
 import glob
 import os
 folder = os.getcwd()
-paths = glob.iglob(os.path.join(folder, "*.Rmd"), recursive=True)
+paths = glob.iglob(os.path.join(folder, "a*.Rmd"), recursive=True)
 type(paths)
-for i, path in enumerate(paths):
-    if i >= 5:
-        break
+for path in paths:
     print(path)
 ```
 
