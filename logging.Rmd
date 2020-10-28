@@ -52,7 +52,17 @@ You can format the messages using the `format` argument in `basicConfig` - see h
 
 e.g. 
 
-`format='%(name)s - %(funcName)s - %(levelname)s - %(message)s')`
+`format=' %(levelname)s: %(filename)s: %(funcName)s: %(lineno)s: %(message)s')`
+
+* `filename` - file name portion of `pathname` including the file extension
+* `funcName` - name of function containing the logging call
+* `levelname` - WARNING, INFO, etc.
+* `lineno` - line number in source code where logging call was made
+* `message` - logged message
+* `module` - name portion of `filename` - i.e. without the file extension
+* `name` - name of the logger (bespoke, default is root)
+* `pathname` - full path of the source file where logging call was made
+
 
 *********************************************************************
 

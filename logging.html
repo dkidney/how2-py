@@ -425,6 +425,9 @@ $(document).ready(function () {
       <a href="enum.html">enum</a>
     </li>
     <li>
+      <a href="glob.html">glob</a>
+    </li>
+    <li>
       <a href="itertools.html">itertools</a>
     </li>
     <li>
@@ -674,7 +677,17 @@ CRITICAL:root:This is a critical message</code></pre>
 <h3>formating</h3>
 <p>You can format the messages using the <code>format</code> argument in <code>basicConfig</code> - see here for more info: <a href="https://docs.python.org/3/library/logging.html#logrecord-attributes" class="uri">https://docs.python.org/3/library/logging.html#logrecord-attributes</a></p>
 <p>e.g. </p>
-<p><code>format='%(name)s - %(funcName)s - %(levelname)s - %(message)s')</code></p>
+<p><code>format=' %(levelname)s: %(filename)s: %(funcName)s: %(lineno)s: %(message)s')</code></p>
+<ul>
+<li><code>filename</code> - file name portion of <code>pathname</code> including the file extension</li>
+<li><code>funcName</code> - name of function containing the logging call</li>
+<li><code>levelname</code> - WARNING, INFO, etc.</li>
+<li><code>lineno</code> - line number in source code where logging call was made</li>
+<li><code>message</code> - logged message</li>
+<li><code>module</code> - name portion of <code>filename</code> - i.e. without the file extension</li>
+<li><code>name</code> - name of the logger (bespoke, default is root)</li>
+<li><code>pathname</code> - full path of the source file where logging call was made</li>
+</ul>
 <hr />
 </div>
 </div>
@@ -722,8 +735,8 @@ ZeroDivisionError: division by zero</code></pre>
 <span id="cb5-25"><a href="#cb5-25" aria-hidden="true"></a>logger.critical(<span class="st">&#39;This is a critical message&#39;</span>)</span>
 <span id="cb5-26"><a href="#cb5-26" aria-hidden="true"></a><span class="co">#  __main__ - &lt;module&gt; - CRITICAL - This is a critical message</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">cat</span> temp.log</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="co">#  2020-10-15 22:11:04,703 - __main__ - ERROR - This is an error message</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="co">#  2020-10-15 22:11:04,707 - __main__ - CRITICAL - This is a critical message</span></span></code></pre></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="co">#  2020-10-22 10:54:53,099 - __main__ - ERROR - This is an error message</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="co">#  2020-10-22 10:54:53,111 - __main__ - CRITICAL - This is a critical message</span></span></code></pre></div>
 </div>
 
 
