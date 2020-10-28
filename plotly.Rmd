@@ -1,0 +1,66 @@
+---
+title: plotly
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+<!-- ********************************************************************* -->
+
+<!-- > Headline -->
+
+<!-- ********************************************************************* -->
+
+<!-- ## faqs -->
+
+<!-- ********************************************************************* -->
+
+<!-- ## links -->
+
+<!-- * https://docs.python.org/3/library/todo -->
+
+<!-- ********************************************************************* -->
+
+<!-- ## setup -->
+
+<!-- ```sh -->
+<!-- pip install todo -->
+<!-- ``` -->
+
+<!-- ```{python} -->
+<!-- import todo -->
+<!-- todo.__version__ -->
+<!-- ``` -->
+
+
+<!-- ********************************************************************* -->
+
+<!-- ## basics -->
+
+<!-- ```python -->
+<!-- # TODO -->
+<!-- ``` -->
+
+
+*********************************************************************
+
+## colours
+
+* https://www.codegrepper.com/code-examples/python/plotly+colours  
+* https://bookdown.org/hneth/ds4psy/D-2-apx-colors-essentials.html  
+
+colour scales:
+
+* https://plotly.com/python/builtin-colorscales/
+
+<!-- ********************************************************************* -->
+
+<!-- ## appendix: dir -->
+
+<!-- ```{python} -->
+<!-- from pprint import pprint -->
+<!-- import todo -->
+<!-- pprint(dir(todo)) -->
+<!-- ``` -->
