@@ -44,6 +44,26 @@ os.path.isfile('a/b/c')
 
 *********************************************************************
 
+## env vars
+
+### set
+
+```{python}
+import os
+os.environ['BLAH'] = 'asdf'
+```
+
+### get
+
+```{python}
+import os
+os.getenv('HOME')
+os.getenv('BLAH')
+os.getenv('BLAHBLAH', default='xyz')
+```
+
+*********************************************************************
+
 ## misc
 
 ```python
@@ -54,8 +74,6 @@ os.scandir() # returns a posix.ScandirIterator iterable with elements posix.DirE
 
 ```{python}
 import os
-os.getenv('HOME')
-os.getenv('BLAH', default='asdf')
 os.getpid()  # process id, e.g. use in parallel processing
 ```
 

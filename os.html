@@ -634,6 +634,11 @@ $(document).ready(function () {
 <ul>
 <li><a href="#predictates">predictates</a></li>
 </ul></li>
+<li><a href="#env-vars">env vars</a>
+<ul>
+<li><a href="#set">set</a></li>
+<li><a href="#get">get</a></li>
+</ul></li>
 <li><a href="#misc">misc</a></li>
 </ul>
 </div>
@@ -682,21 +687,36 @@ $(document).ready(function () {
 <hr />
 </div>
 </div>
-<div id="misc" class="section level2">
-<h2>misc</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>os.getcwd() <span class="co"># current working directory</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>os.listdir() <span class="co"># returns a list of file names</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>os.scandir() <span class="co"># returns a posix.ScandirIterator iterable with elements posix.DirEntry</span></span></code></pre></div>
+<div id="env-vars" class="section level2">
+<h2>env vars</h2>
+<div id="set" class="section level3">
+<h3>set</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="im">import</span> os</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>os.environ[<span class="st">&#39;BLAH&#39;</span>] <span class="op">=</span> <span class="st">&#39;asdf&#39;</span></span></code></pre></div>
+</div>
+<div id="get" class="section level3">
+<h3>get</h3>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="im">import</span> os</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>os.getenv(<span class="st">&#39;HOME&#39;</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="co">#  &#39;/Users/kida8005&#39;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>os.getenv(<span class="st">&#39;BLAH&#39;</span>, default<span class="op">=</span><span class="st">&#39;asdf&#39;</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>os.getenv(<span class="st">&#39;BLAH&#39;</span>)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="co">#  &#39;asdf&#39;</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>os.getpid()  <span class="co"># process id, e.g. use in parallel processing</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="co">#  39175</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>os.mkdir(<span class="st">&#39;a&#39;</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>os.makedirs(<span class="st">&#39;a/b/c&#39;</span>, exist_ok<span class="op">=</span><span class="va">True</span>) <span class="co"># like os.mkdir but recursive, exist_ok=True to avoid FileExistsError</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>os.remove(<span class="st">&#39;a&#39;</span>)</span></code></pre></div>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>os.getenv(<span class="st">&#39;BLAHBLAH&#39;</span>, default<span class="op">=</span><span class="st">&#39;xyz&#39;</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="co">#  &#39;xyz&#39;</span></span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="misc" class="section level2">
+<h2>misc</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>os.getcwd() <span class="co"># current working directory</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>os.listdir() <span class="co"># returns a list of file names</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>os.scandir() <span class="co"># returns a posix.ScandirIterator iterable with elements posix.DirEntry</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="im">import</span> os</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>os.getpid()  <span class="co"># process id, e.g. use in parallel processing</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="co">#  54656</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>os.mkdir(<span class="st">&#39;a&#39;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>os.makedirs(<span class="st">&#39;a/b/c&#39;</span>, exist_ok<span class="op">=</span><span class="va">True</span>) <span class="co"># like os.mkdir but recursive, exist_ok=True to avoid FileExistsError</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>os.remove(<span class="st">&#39;a&#39;</span>)</span></code></pre></div>
 </div>
 
 
