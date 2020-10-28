@@ -329,9 +329,15 @@ df.loc[df['c1'].isin(['x', 'y'])]
 
 *********************************************************************
 
-## view vs copy
+## SettingWithCopyWarning
 
 * https://realpython.com/pandas-settingwithcopywarning/  
+
+To convert these to errors so you can see where they occur in your code use:
+
+```python
+pd.options.mode.chained_assignment = 'raise'
+```
 
 ```python
 x = df['c2'] # returns a view
@@ -348,6 +354,10 @@ y.to_numpy().flags.owndata # returns True
 y[1] = -99999 # no warnings
 df # has not been modified
 ```
+
+
+
+
 
 *********************************************************************
 
