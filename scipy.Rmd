@@ -19,7 +19,9 @@ editor_options:
 
 ## interpolate
 
-* https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.UnivariateSpline
+### UnivariateSpline
+
+* https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.UnivariateSpline.html
 
 ```{python}
 from scipy.interpolate import UnivariateSpline
@@ -43,6 +45,78 @@ plt.plot(xs, sp2(xs), 'b', lw=3)
 plt.show()
 ```
 
+### LSQUnivariateSpline
+
+* https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.LSQUnivariateSpline.html
+
+```{python}
+from scipy.interpolate import LSQUnivariateSpline
+import matplotlib.pyplot as plt
+import numpy as np
+
+# make some data
+x = np.linspace(-3, 3, 50)
+y = np.exp(-x**2) + 0.1 * np.random.randn(50)
+plt.plot(x, y, 'ro', ms=5)
+
+# specify interior knots
+sp1 = LSQUnivariateSpline(x, y, t=[-2, -1, 0, 1, 2])
+xs = np.linspace(-3, 3, 1000)
+plt.plot(xs, sp1(xs), 'g', lw=3)
+
+plt.show()
+```
+
+```{r, eval=FALSE, echo=FALSE}
+get_bspline_knots = function(df, degree=3, xlim=c(0, 1)) {
+  order = degree + 1
+  n_internal = df - order
+  n_total = df + order
+  n_boundary = 2 * order
+  n_unique = n_internal + 2
+  unique = seq(xlim[1], xlim[2], length.out = n_unique)
+  internal = unique[-c(1, n_unique)]
+  boundary = rep(xlim, each = order)
+  all = sort(c(internal, boundary))
+  list(
+    order = order,
+    n_internal = n_internal,
+    n_total = n_total,
+    n_boundary = n_boundary,
+    n_unique = n_unique,
+    unique = unique,
+    internal = internal,
+    boundary = boundary,
+    all = all
+  )
+}
+get_bspline_knots(13)
+
+x = seq(0, 1, length.out = 1000)
+X = splines::bs(x, df=13, intercept=TRUE)
+dim(X)
+head(X)
+for (i in 1:ncol(X)) {
+  if (i == 1) {
+    plot(x, X[,i], type = "l", col = i + 1, main = "v1")
+  } else {
+    lines(x, X[,i], col = i + 1)
+  }
+}
+
+X = splines::bs(x, knots=get_bspline_knots(13)$internal, intercept=TRUE)
+dim(X)
+head(X)
+for (i in 1:ncol(X)) {
+  if (i == 1) {
+    plot(x, X[,i], type = "l", col = i + 1, main = "v2")
+  } else {
+    lines(x, X[,i], col = i + 1)
+  }
+}
+
+```
+
 
 *********************************************************************
 
@@ -58,8 +132,8 @@ E.g. ANOVA
 
 ```python
 f_val, p_val = stats.f_oneway(grouped_df.get_group('level1')['col'], 
-                              grouped_df.get_group('level2')['col'], 
-                              grouped_df.get_group('level3')['col'])  
+grouped_df.get_group('level2')['col'], 
+grouped_df.get_group('level3')['col'])  
 ``` 
 
 ### pearsonr
