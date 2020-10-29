@@ -641,6 +641,7 @@ $(document).ready(function () {
 <li><a href="#installuninstall">install/uninstall</a></li>
 <li><a href="#requirements">requirements</a></li>
 <li><a href="#list">list</a></li>
+<li><a href="#show">show</a></li>
 </ul></li>
 </ul>
 </div>
@@ -675,8 +676,8 @@ $(document).ready(function () {
 <h2>setup</h2>
 <div id="install" class="section level3">
 <h3>install</h3>
-<p>if you have python installed you should alredy have <code>pip</code></p>
-<p>see the link below if you dont have it installed:</p>
+<p>if you have python installed you should already have <code>pip</code></p>
+<p>see the link below if you don’t have it installed:</p>
 <ul>
 <li><a href="https://pip.pypa.io/en/stable/installing/" class="uri">https://pip.pypa.io/en/stable/installing/</a></li>
 </ul>
@@ -706,8 +707,7 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">pip</span> install package-name</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">pip</span> install package-name==1.0</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="ex">pip</span> install -U package-name # upgrade if already installed</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="ex">pip</span> list # show all installed packages</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="ex">pip</span> uninstall package-name</span></code></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="ex">pip</span> uninstall package-name</span></code></pre></div>
 </div>
 <div id="requirements" class="section level3">
 <h3>requirements</h3>
@@ -720,6 +720,10 @@ $(document).ready(function () {
 <h3>list</h3>
 <div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">pip</span> list # list all packages </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="ex">pip</span> list --outdated # list all outdated packages </span></code></pre></div>
+</div>
+<div id="show" class="section level3">
+<h3>show</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">pip</span> show package-name</span></code></pre></div>
 </div>
 </div>
 

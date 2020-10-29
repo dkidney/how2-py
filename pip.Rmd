@@ -36,9 +36,9 @@ datacamp:
 
 ### install
 
-if you have python installed you should alredy have `pip`
+if you have python installed you should already have `pip`
 
-see the link below if you dont have it installed:
+see the link below if you don't have it installed:
 
 * https://pip.pypa.io/en/stable/installing/
 
@@ -72,7 +72,6 @@ pip help
 pip install package-name
 pip install package-name==1.0
 pip install -U package-name # upgrade if already installed
-pip list # show all installed packages
 pip uninstall package-name
 ```
 
@@ -90,4 +89,10 @@ pip install -U -r requirements.txt # install requirements.txt and upgrade packag
 ```sh
 pip list # list all packages 
 pip list --outdated # list all outdated packages 
+```
+
+### show
+
+```sh
+pip show package-name
 ```
