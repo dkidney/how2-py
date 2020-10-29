@@ -156,6 +156,7 @@ a_datetime.date().strftime("%Y%m%d")
 ```{python}
 import datetime as dt
 from dateutil import tz
+dt.datetime.now(tz=dt.timezone.utc)
 dt.datetime.now(tz=tz.tzlocal())
 dt.datetime.now(tz=tz.gettz("Europe/London")).tzname()
 dt.datetime.now(tz=tz.gettz("America/New_York")).isoformat()

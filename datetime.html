@@ -799,12 +799,14 @@ $(document).ready(function () {
 <h3>timezones</h3>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="im">from</span> dateutil <span class="im">import</span> tz</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>dt.datetime.now(tz<span class="op">=</span>tz.tzlocal())</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="co">#  datetime.datetime(2020, 10, 15, 22, 5, 50, 124823, tzinfo=tzlocal())</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a>dt.datetime.now(tz<span class="op">=</span>tz.gettz(<span class="st">&quot;Europe/London&quot;</span>)).tzname()</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a><span class="co">#  &#39;BST&#39;</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a>dt.datetime.now(tz<span class="op">=</span>tz.gettz(<span class="st">&quot;America/New_York&quot;</span>)).isoformat()</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a><span class="co">#  &#39;2020-10-15T17:05:50.179931-04:00&#39;</span></span></code></pre></div>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>dt.datetime.now(tz<span class="op">=</span>dt.timezone.utc)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="co">#  datetime.datetime(2020, 10, 18, 20, 8, 1, 416657, tzinfo=datetime.timezone.utc)</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a>dt.datetime.now(tz<span class="op">=</span>tz.tzlocal())</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a><span class="co">#  datetime.datetime(2020, 10, 18, 21, 8, 1, 423230, tzinfo=tzlocal())</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a>dt.datetime.now(tz<span class="op">=</span>tz.gettz(<span class="st">&quot;Europe/London&quot;</span>)).tzname()</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a><span class="co">#  &#39;BST&#39;</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true"></a>dt.datetime.now(tz<span class="op">=</span>tz.gettz(<span class="st">&quot;America/New_York&quot;</span>)).isoformat()</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true"></a><span class="co">#  &#39;2020-10-18T16:08:01.440801-04:00&#39;</span></span></code></pre></div>
 </div>
 <div id="change-timezone" class="section level3">
 <h3>change timezone</h3>
