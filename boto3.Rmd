@@ -55,16 +55,6 @@ However you can access all the client methods from the resource via `resource.me
 * https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3
 * https://realpython.com/python-boto3-aws-s3  
 
-### basics
-
-```{python}
-import boto3
-s3 = boto3.resource('s3')
-session = boto3.session.Session()
-session.region_name
-[bucket.name for bucket in s3.buckets.all()] # get bucket names
-```
-
 ### upload files
 
 ```{sh}
@@ -73,7 +63,7 @@ echo 'v1,v2\n2,2\n' > temp2.csv
 echo 'v1,v2\n3,3\n' > temp3.csv
 ```
 
-From the client
+#### client
 
 ```{python}
 import boto3
@@ -81,7 +71,9 @@ s3 = boto3.client('s3')
 s3.upload_file(Filename='./temp1.csv', Bucket='kidneypy', Key='temp1.csv')
 ```
 
-From a bucket instance
+#### resource
+
+bucket instance:
 
 ```{python}
 import boto3
@@ -90,7 +82,7 @@ bucket_instance = s3.Bucket('kidneypy')
 bucket_instance.upload_file(Filename='./temp2.csv', Key='temp2.csv')
 ```
 
-From an object instance
+object instance:
 
 ```{python}
 import boto3
@@ -105,7 +97,7 @@ rm temp1.csv temp2.csv temp3.csv
 
 ### download files
 
-From the client
+#### client
 
 ```{python}
 import boto3
@@ -117,7 +109,9 @@ s3.download_file(Bucket='kidneypy', Key='temp1.csv', Filename='/tmp/temp1.csv')
 cat /tmp/temp1.csv
 ```
 
-From a bucket instance
+#### resource 
+
+bucket instance:
 
 ```{python}
 import boto3
@@ -130,7 +124,7 @@ bucket_instance.download_file(Key='temp2.csv', Filename='/tmp/temp2.csv')
 cat /tmp/temp2.csv
 ```
 
-From an object instance
+object instance:
 
 ```{python}
 import boto3
@@ -161,7 +155,41 @@ obj = s3.get_object(Bucket='kidneypy', Key='temp2.csv')
 pd.read_csv(obj['Body'])
 ```
 
+### list buckets
+
+#### resource
+
+```{python}
+import boto3
+s3 = boto3.resource('s3')
+[bucket.name for bucket in s3.buckets.all()]
+```
+
+#### client
+
+```{python}
+import boto3
+from pprint import pprint
+s3 = boto3.client('s3')
+obj = s3.list_buckets()
+pprint(obj['Buckets'])
+[x['Name'] for x in obj['Buckets']]
+```
+
 ### list objects
+
+#### resource
+
+```{python}
+import boto3
+s3 = boto3.resource('s3')
+obj = s3.Bucket('kidneypy').objects.all()
+[x.key for x in obj]
+[x.last_modified for x in obj]
+[x.size for x in obj]
+```
+
+#### client
 
 ```{python}
 import boto3
@@ -174,16 +202,6 @@ pprint(obj['Contents'][0])
 pprint([x['Key'] for x in obj['Contents']])
 pprint([x['LastModified'] for x in obj['Contents']])
 pprint([x['Size'] for x in obj['Contents']])
-```
-
-```{python}
-import boto3
-s3 = boto3.resource('s3')
-bucket_instance = s3.Bucket('kidneypy')
-obj = bucket_instance.objects.all()
-pprint([x.key for x in obj])
-pprint([x.last_modified for x in obj])
-pprint([x.size for x in obj])
 ```
 
 *********************************************************************
