@@ -21,14 +21,18 @@ output:
 * [realpython](https://realpython.com/tutorials/all/)  
 * [datacamp](https://www.datacamp.com/community/tutorials?tag=python)  
 
+## books
+
+* [Python Data Science Handbook (VanderPlas)](https://jakevdp.github.io/PythonDataScienceHandbook/)
+* [Think Python (Downey)](https://greenteapress.com/wp/think-python/) 
+* [IPython Cookbook (Rossant)](https://ipython-books.github.io)  
+* [The Hitchhiker’s Guide to Python! (Reitz & Schlusser)](https://docs.python-guide.org/)
+* [A Byte of Python (Chitlur)](https://python.swaroopch.com)
+
 ## blogs
 
 * [planet python](https://planetpython.org/titles_only.html)  
 * [mouse vs python](https://www.blog.pythonlibrary.org/)
-
-<!-- ## podcasts -->
-
-<!-- * [dataskeptic](https://dataskeptic.com/)   -->
 
 ## todo
 
