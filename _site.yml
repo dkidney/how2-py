@@ -139,10 +139,10 @@ navbar:
           href: databases.html
         # - text: "flask"
         #   href: _todo.html
-        # - text: "packages"
-        #   href: _todo.html
-        # - text: "sphinx"
-        #   href: _todo.html
+        - text: "packages"
+          href: packages.html
+        - text: "sphinx"
+          href: sphinx.html
     - text: "envs"
       menu:
         - text: "conda"
