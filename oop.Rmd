@@ -16,7 +16,7 @@ editor_options:
 
 *********************************************************************
 
-## glossary
+## basics
 
 term | description
 ------------- | -------------
@@ -31,7 +31,60 @@ state | *todo*
 
 *********************************************************************
 
+## decorators
+
+### @staticmethod
+
+### @classmethod
+
+### @property
+
+```{python}
+class MyClass(object):
+    def __init__(self, a_positive_number):
+        self.a_positive_number = a_positive_number
+
+    @property
+    def a_positive_number(self):
+        return self._a_positive_number
+
+    @a_positive_number.setter
+    def a_positive_number(self, value):
+        if not (isinstance(value, int) or isinstance(value, float)):
+            raise TypeError('expecting a int or float')
+        if value <= 0:
+            raise ValueError('expecting a positve number')
+        self._a_positive_number = value
+
+    @a_positive_number.deleter
+    def a_positive_number(self):
+        del self._a_positive_number
+        
+an_instance = MyClass(5)
+an_instance.a_positive_number
+an_instance.a_positive_number = 10
+an_instance.a_positive_number
+try:
+    an_instance.a_positive_number = -1
+except TypeError as e:
+    print(e)
+except ValueError as e:
+    print(e)
+an_instance.a_positive_number
+del an_instance.a_positive_number
+try:
+    print(an_instance.a_positive_number)
+except AttributeError as e:
+    print(e)
+```
+
+*********************************************************************
+
 ## abstract base classes
+
+```python
+# TODO
+```
 
 *********************************************************************
 
