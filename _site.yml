@@ -91,6 +91,8 @@ navbar:
           href: unittest.html
         - text: "urllib"
           href: urllib.html
+        - text: "uuid"
+          href: uuid.html
         - text: "xml"
           href: xml.html
     - text: "ds"
