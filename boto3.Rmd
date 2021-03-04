@@ -204,6 +204,31 @@ pprint([x['LastModified'] for x in obj['Contents']])
 pprint([x['Size'] for x in obj['Contents']])
 ```
 
+List sub-folders
+
+```python
+import boto3
+from pprint import pprint
+
+def get_bucket_and_key(s3_path):
+    bucket, prefix = s3_path.lstrip('s3://').split('/', 1)
+    return bucket, prefix
+
+s3 = boto3.client('s3')
+
+bucket, key = get_bucket_and_key(s3_path)
+
+list = s3.list_objects_v2(Bucket=bucket,
+                          Prefix=key.rstrip('/') + '/',
+                          Delimiter='/',
+                          MaxKeys=int(1e6))['CommonPrefixes']
+
+s3_folders = [os.path.basename(os.path.dirname(x['Prefix']))
+              for x in list]
+
+pprint(s3_folders)
+```
+
 *********************************************************************
 
 ## EC2
