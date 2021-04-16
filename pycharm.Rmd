@@ -30,9 +30,21 @@ brew cask install pycharm-ce
 
 ## projects
 
-### make a new project
+### setting the interpreter
 
-### set the interpreter
+Four ways
+
+#### Project
+
+`Preferences | Project: * | Python Interpreter`
+
+#### Console
+
+`Preferences | Build, Execution, Deployment | Console | Python Console`
+
+#### Run configurations
+
+#### Terminal
 
 *********************************************************************
 
