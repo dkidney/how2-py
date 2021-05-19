@@ -13,6 +13,11 @@ editor_options:
 
 *********************************************************************
 
+* https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3
+* https://realpython.com/python-boto3-aws-s3  
+
+*********************************************************************
+
 ## faqs
 
 s3:
@@ -50,151 +55,37 @@ However you can access all the client methods from the resource via `resource.me
 
 *********************************************************************
 
-## S3
+## S3 client
 
-* https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3
-* https://realpython.com/python-boto3-aws-s3  
-
-### upload files
-
-```{sh}
-echo 'v1,v2\n1,1\n' > temp1.csv
-echo 'v1,v2\n2,2\n' > temp2.csv
-echo 'v1,v2\n3,3\n' > temp3.csv
+```python
+s3 = boto3.client('s3')
 ```
 
-#### client
+### `upload_file`
 
-```{python}
-import boto3
-s3 = boto3.client('s3')
+```python
 s3.upload_file(Filename='./temp1.csv', Bucket='kidneypy', Key='temp1.csv')
 ```
 
-#### resource
+### `download_file`
 
-bucket instance:
-
-```{python}
-import boto3
-s3 = boto3.resource('s3')
-bucket_instance = s3.Bucket('kidneypy')
-bucket_instance.upload_file(Filename='./temp2.csv', Key='temp2.csv')
-```
-
-object instance:
-
-```{python}
-import boto3
-s3 = boto3.resource('s3')
-object_instance = s3.Object('kidneypy', key='temp3.csv')
-object_instance.upload_file(Filename='./temp3.csv')
-```
-
-```{sh, echo=FALSE, results='hide'}
-rm temp1.csv temp2.csv temp3.csv
-```
-
-### download files
-
-#### client
-
-```{python}
-import boto3
-s3 = boto3.client('s3')
+```python
 s3.download_file(Bucket='kidneypy', Key='temp1.csv', Filename='/tmp/temp1.csv')
 ```
 
-```{sh}
-cat /tmp/temp1.csv
-```
+### `list_buckets`
 
-#### resource 
-
-bucket instance:
-
-```{python}
-import boto3
-s3 = boto3.resource('s3')
-bucket_instance = s3.Bucket('kidneypy')
-bucket_instance.download_file(Key='temp2.csv', Filename='/tmp/temp2.csv')
-```
-
-```{sh}
-cat /tmp/temp2.csv
-```
-
-object instance:
-
-```{python}
-import boto3
-s3 = boto3.resource('s3')
-object_instance = s3.Object('kidneypy', key='temp3.csv')
-object_instance.download_file('/tmp/temp3.csv')
-```
-
-```{sh}
-cat /tmp/temp3.csv
-```
-
-### read files
-
-```{python}
-import boto3
-from pprint import pprint
-s3 = boto3.client("s3")
-obj = s3.get_object(Bucket='kidneypy', Key='temp1.csv')
-obj['Body'].read().decode('utf-8') 
-```
-
-```{python}
-import boto3
-import pandas as pd
-s3 = boto3.client("s3")
-obj = s3.get_object(Bucket='kidneypy', Key='temp2.csv')
-pd.read_csv(obj['Body'])
-```
-
-### list buckets
-
-#### resource
-
-```{python}
-import boto3
-s3 = boto3.resource('s3')
-[bucket.name for bucket in s3.buckets.all()]
-```
-
-#### client
-
-```{python}
-import boto3
-from pprint import pprint
-s3 = boto3.client('s3')
+```python
 obj = s3.list_buckets()
 pprint(obj['Buckets'])
 [x['Name'] for x in obj['Buckets']]
 ```
 
-### list objects
+### `list_objects_v2`
 
-#### resource
+#### Files
 
-```{python}
-import boto3
-s3 = boto3.resource('s3')
-obj = s3.Bucket('kidneypy').objects.all()
-[x.key for x in obj]
-[x.last_modified for x in obj]
-[x.size for x in obj]
-```
-
-#### client
-
-```{python}
-import boto3
-from pprint import pprint
-s3 = boto3.client('s3')
+```python
 obj = s3.list_objects_v2(Bucket='kidneypy')
 type(obj['Contents'])
 len(obj['Contents'])
@@ -204,20 +95,9 @@ pprint([x['LastModified'] for x in obj['Contents']])
 pprint([x['Size'] for x in obj['Contents']])
 ```
 
-List sub-folders
+#### Folders
 
 ```python
-import boto3
-from pprint import pprint
-
-def get_bucket_and_key(s3_path):
-    bucket, prefix = s3_path.lstrip('s3://').split('/', 1)
-    return bucket, prefix
-
-s3 = boto3.client('s3')
-
-bucket, key = get_bucket_and_key(s3_path)
-
 list = s3.list_objects_v2(Bucket=bucket,
                           Prefix=key.rstrip('/') + '/',
                           Delimiter='/',
@@ -227,6 +107,75 @@ s3_folders = [os.path.basename(os.path.dirname(x['Prefix']))
               for x in list]
 
 pprint(s3_folders)
+```
+
+### `get_object`
+
+```python
+obj = s3.get_object(Bucket='kidneypy', Key='temp1.csv')
+# as string
+obj['Body'].read().decode('utf-8') 
+# as df
+pd.read_csv(obj['Body'])
+```
+
+
+*********************************************************************
+
+## S3 resource
+
+```python
+s3 = boto3.resource('s3')
+```
+
+### upload files
+
+```python
+# bucket instance
+bucket_instance = s3.Bucket('kidneypy')
+bucket_instance.upload_file(Filename='./temp2.csv', Key='temp2.csv')
+
+# object instance
+object_instance = s3.Object('kidneypy', key='temp3.csv')
+object_instance.upload_file(Filename='./temp3.csv')
+```
+
+### download files
+
+```python
+# bucket instance
+bucket_instance = s3.Bucket('kidneypy')
+bucket_instance.download_file(Key='temp2.csv', Filename='/tmp/temp2.csv')
+
+# object instance
+object_instance = s3.Object('kidneypy', key='temp3.csv')
+object_instance.download_file('/tmp/temp3.csv')
+```
+
+### list buckets
+
+```python
+[bucket.name for bucket in s3.buckets.all()]
+```
+
+### list objects
+
+```python
+obj = s3.Bucket('kidneypy').objects.all()
+[x.key for x in obj]
+[x.last_modified for x in obj]
+[x.size for x in obj]
+```
+
+*********************************************************************
+
+## S3 helpers
+ 
+```python
+def get_bucket_and_key(s3_path):
+  bucket, prefix = s3_path.lstrip('s3://').split('/', 1)
+  return bucket, prefix
+bucket, key = get_bucket_and_key(s3_path)
 ```
 
 *********************************************************************
