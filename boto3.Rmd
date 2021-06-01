@@ -178,6 +178,29 @@ def get_bucket_and_key(s3_path):
 bucket, key = get_bucket_and_key(s3_path)
 ```
 
+```python
+def list_folders(bucket, prefix, max_keys=int(1e6)):
+    objects = s3.list_objects_v2(
+        Bucket=bucket,
+        Prefix=prefix.rstrip('/') + '/',
+        Delimiter='/',
+        MaxKeys=max_keys)['CommonPrefixes']
+    folders = [os.path.basename(os.path.dirname(x['Prefix'])) 
+               for x in objects]
+    return folders
+```
+
+```python
+def list_files(bucket, prefix, max_keys=int(1e6)):
+    objects = s3.list_objects_v2(
+        Bucket=bucket,
+        Prefix=prefix,
+        MaxKeys=max_keys)['Contents']
+    files = [os.path.basename(os.path.dirname(x['Key'])) 
+            for x in objects]
+    return files
+```
+
 *********************************************************************
 
 ## EC2

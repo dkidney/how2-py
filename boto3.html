@@ -666,6 +666,7 @@ $(document).ready(function () {
 <li><a href="#upload-files">upload files</a></li>
 <li><a href="#download-files">download files</a></li>
 <li><a href="#list-buckets">list buckets</a></li>
+<li><a href="#list-objects">list objects</a></li>
 </ul></li>
 <li><a href="#s3-helpers">S3 helpers</a></li>
 <li><a href="#ec2">EC2</a>
@@ -812,14 +813,14 @@ $(document).ready(function () {
 <div id="list-buckets" class="section level3">
 <h3>list buckets</h3>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>[bucket.name <span class="cf">for</span> bucket <span class="kw">in</span> s3.buckets.<span class="bu">all</span>()]</span></code></pre></div>
-<div id="list-objects" class="section level4">
-<h4>list objects</h4>
+</div>
+<div id="list-objects" class="section level3">
+<h3>list objects</h3>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>obj <span class="op">=</span> s3.Bucket(<span class="st">&#39;kidneypy&#39;</span>).objects.<span class="bu">all</span>()</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>[x.key <span class="cf">for</span> x <span class="kw">in</span> obj]</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>[x.last_modified <span class="cf">for</span> x <span class="kw">in</span> obj]</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>[x.size <span class="cf">for</span> x <span class="kw">in</span> obj]</span></code></pre></div>
 <hr />
-</div>
 </div>
 </div>
 <div id="s3-helpers" class="section level2">
@@ -828,6 +829,23 @@ $(document).ready(function () {
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  bucket, prefix <span class="op">=</span> s3_path.lstrip(<span class="st">&#39;s3://&#39;</span>).split(<span class="st">&#39;/&#39;</span>, <span class="dv">1</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> bucket, prefix</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>bucket, key <span class="op">=</span> get_bucket_and_key(s3_path)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> list_folders(bucket, prefix, max_keys<span class="op">=</span><span class="bu">int</span>(<span class="fl">1e6</span>)):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    objects <span class="op">=</span> s3.list_objects_v2(</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        Bucket<span class="op">=</span>bucket,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        Prefix<span class="op">=</span>prefix.rstrip(<span class="st">&#39;/&#39;</span>) <span class="op">+</span> <span class="st">&#39;/&#39;</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        Delimiter<span class="op">=</span><span class="st">&#39;/&#39;</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        MaxKeys<span class="op">=</span>max_keys)[<span class="st">&#39;CommonPrefixes&#39;</span>]</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    folders <span class="op">=</span> [os.path.basename(os.path.dirname(x[<span class="st">&#39;Prefix&#39;</span>])) </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>               <span class="cf">for</span> x <span class="kw">in</span> objects]</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> folders</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> list_files(bucket, prefix, max_keys<span class="op">=</span><span class="bu">int</span>(<span class="fl">1e6</span>)):</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    objects <span class="op">=</span> s3.list_objects_v2(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        Bucket<span class="op">=</span>bucket,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        Prefix<span class="op">=</span>prefix,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        MaxKeys<span class="op">=</span>max_keys)[<span class="st">&#39;Contents&#39;</span>]</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> [os.path.basename(os.path.dirname(x[<span class="st">&#39;Key&#39;</span>])) </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> x <span class="kw">in</span> objects]</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> files</span></code></pre></div>
 <hr />
 </div>
 <div id="ec2" class="section level2">
