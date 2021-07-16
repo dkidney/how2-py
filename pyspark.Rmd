@@ -1,5 +1,5 @@
 ---
-title: TODO
+title: pyspark
 editor_options: 
   chunk_output_type: console
 ---
@@ -33,13 +33,84 @@ editor_options:
 <!-- ``` -->
 
 
-<!-- ********************************************************************* -->
+*********************************************************************
 
-<!-- ## basics -->
+## spark
 
-<!-- ```python -->
-<!-- # TODO -->
-<!-- ``` -->
+Read from table
+```python
+df = spark.sql('select * from my_table')
+```
+
+Read from parquet
+```python
+df = spark.read.parquet('path')
+```
+
+Invoke garbage collector
+```python
+spark.sparkContext._jvm.System.gc()
+```
+
+*********************************************************************
+
+## spark data frame
+
+View columns
+```python
+df.columns
+```
+
+Count rows
+```python
+df.count()
+```
+
+Select columns
+```python
+df = df.select('col')
+df = df.select(col("col1"), col("col2"), col("col3"))
+```
+
+Rename columns
+```python
+df = df.withColumnRenamed('old_name', 'new_name')
+```
+
+Copy columns
+```python
+df = df.withColumn('new_col', df['existing_col'])
+```
+
+Modify columns
+```python
+```
+
+Count distinct
+```python
+count_distinct_col = df.select("col").distinct().count()
+```
+
+Join tables
+```python
+df3 = df1.join(df2, on='col', how='inner')
+df3 = df1.join(df2, on='col', how='left_anti')
+```
+
+Create temp view for sql querying
+```python
+df.createOrReplaceTempView('table_name')
+```
+
+Write table
+```python
+df.write.mode('overwrite').partitionBy('partition_col').saveAsTable('table_name')
+```
+
+Write parquet
+```python
+df.write.parquet('path', mode="overwrite")
+```
 
 
 <!-- ********************************************************************* -->
