@@ -7,54 +7,91 @@ editor_options:
 ```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
 ```
 
-<!-- ********************************************************************* -->
+*********************************************************************
 
-<!-- > Headline -->
+> An interface for Apache Spark in Python
 
 <!-- ********************************************************************* -->
 
 <!-- ## faqs -->
 
-<!-- ********************************************************************* -->
+*********************************************************************
 
-<!-- ## links -->
+## links
 
-<!-- ********************************************************************* -->
+* https://spark.apache.org/docs/latest/api/python/  
+* https://realpython.com/pyspark-intro/  
 
-<!-- ## setup -->
+*********************************************************************
 
-<!-- ```sh -->
-<!-- pip install todo -->
-<!-- ``` -->
+## setup
+
+```sh
+pip install pyspark
+```
 
 <!-- ```{python} -->
 <!-- import todo -->
 <!-- todo.__version__ -->
 <!-- ``` -->
 
+*********************************************************************
+
+## basics
+
+The * tells Spark to create as many worker threads as logical cores on your machine.
+
+```python
+import pyspark
+sc = pyspark.SparkContext('local[*]')
+```
+
+```python
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.getOrCreate()
+```
 
 *********************************************************************
 
-## spark
+## RDDs
 
-Read from table
+Resilient Distributed Datasets.
+
+### textFile
+
 ```python
-df = spark.sql('select * from my_table')
+rdd = sc.textFile('path')
 ```
 
-Read from parquet
+### parallelize
+
+Transforms some data structures (e.g. lists, tuples) into RDDs.
+
 ```python
-df = spark.read.parquet('path')
+iterator = range(10000)
+rdd = sc.parallelize(iterator, 2)
+even_numbers = rdd.filter(lambda x: x % 2 == 0)
+even_numbers.take(5)
 ```
 
-Invoke garbage collector
-```python
-spark.sparkContext._jvm.System.gc()
-```
+
+
+
 
 *********************************************************************
 
 ## spark data frame
+
+View schema
+```python
+df.printSchema()
+```
+
+View top row
+```python
+df.show(1)
+df.show(1, vertical=True)
+```
 
 View columns
 ```python
@@ -66,10 +103,17 @@ Count rows
 df.count()
 ```
 
+Summarise
+```python
+df.describe().show()
+```
+
 Select columns
 ```python
-df = df.select('col')
-df = df.select(col("col1"), col("col2"), col("col3"))
+df.col
+df.select('col')
+df.select(df.col)
+df.select(col("col1"), col("col2"), col("col3"))
 ```
 
 Rename columns
@@ -82,8 +126,9 @@ Copy columns
 df = df.withColumn('new_col', df['existing_col'])
 ```
 
-Modify columns
+Filter rows
 ```python
+df.filter(df.a == 1)
 ```
 
 Count distinct
@@ -102,16 +147,90 @@ Create temp view for sql querying
 df.createOrReplaceTempView('table_name')
 ```
 
+Collect into local memory
+```python
+df.collect()
+df.take(1)
+```
+
 Write table
 ```python
 df.write.mode('overwrite').partitionBy('partition_col').saveAsTable('table_name')
 ```
 
-Write parquet
+From/to parquet
 ```python
-df.write.parquet('path', mode="overwrite")
+spark.read.csv('asdf.parquet', header=True)
+df.write.parquet('asdf.parquet', header=True, mode="overwrite")
 ```
 
+From/to csv
+```python
+spark.read.csv('asdf.csv', header=True)
+df.write.csv('asdf.csv', header=True, mode="overwrite")
+```
+
+*********************************************************************
+
+## Pandas 
+
+From/to pandas df
+```python
+df = spark.createDataFrame(pandas_df)
+pandas_df = df.select("*").toPandas()
+```
+
+### pandas_udf
+
+* https://spark.apache.org/docs/latest/api/python/user_guide/arrow_pandas.html  
+* https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.functions.pandas_udf.html#pyspark.sql.functions.pandas_udf  
+
+```python
+import pandas as pd
+from pyspark.sql.functions import pandas_udf
+
+@pandas_udf('long')
+def pandas_plus_one(series: pd.Series) -> pd.Series:
+    return series + 1
+
+df.select(pandas_plus_one(df.a)).show()
+```
+
+### mapInPandas
+
+*********************************************************************
+
+## sql
+
+Make a temp view table from a spark df
+```python
+df.createOrReplaceTempView("my_temp_view_table")
+```
+
+Perform queries
+```python
+spark.sql("select count(*) from my_temp_view_table").show()
+df2 = spark.sql("select * from my_temp_view_table limit 10")
+```
+
+Use pandas UDFs
+```python
+@pandas_udf("integer")
+def add_one(s: pd.Series) -> pd.Series:
+    return s + 1
+
+spark.udf.register("add_one", add_one)
+spark.sql("SELECT add_one(v1) FROM tableA").show()
+```
+
+*********************************************************************
+
+## misc
+
+Invoke garbage collector
+```python
+spark.sparkContext._jvm.System.gc()
+```
 
 <!-- ********************************************************************* -->
 
