@@ -46,6 +46,41 @@ editor_options:
 
 *********************************************************************
 
+## plotly express
+
+```python
+import plotly.express as px
+df = px.data.gapminder().query('country == "Canada"')
+```
+
+### bar
+
+```python
+fig = px.bar(df, x='year', y='pop', height=400)
+fig.show()
+```
+
+### tables
+
+```python
+from plotly.figure_factory import create_table
+import plotly.offline as py
+
+table = create_table(df.head(10))
+py.iplot(table)
+```
+
+
+*********************************************************************
+
+## plotly
+
+<!-- ```python -->
+<!-- # TODO -->
+<!-- ``` -->
+
+*********************************************************************
+
 ## colours
 
 * https://www.codegrepper.com/code-examples/python/plotly+colours  

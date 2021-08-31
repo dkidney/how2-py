@@ -91,6 +91,7 @@ Plugins | `Preferences > Plugins`
 Default interpreter | `Preferences > Project > Project Interpreter`
 IPython console | `Preferences > Build, Execution, Deployment > Console > Use IPython if available`
 Docstring format  | `Preferences > Tools > Python Integrated Tools >  Docstrings > File and Code Templates`
+Test runner | `Preferences > Tools > Python Integrated Tools > Testing > Default test runner`
 
 *********************************************************************
 
@@ -149,7 +150,6 @@ I use these:
 *********************************************************************
 
 ## git
-
 
 
 *********************************************************************

@@ -51,6 +51,16 @@ from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 ```
 
+```python
+#import pyspark.sql.functions as F
+from pyspark.context import SparkContext
+from pyspark.sql.session import SparkSession
+sc = SparkContext('local')
+spark = SparkSession(sc)
+
+df = spark.read.load("path_to_parquet_files")
+```
+
 *********************************************************************
 
 ## RDDs
@@ -200,7 +210,7 @@ df.select(pandas_plus_one(df.a)).show()
 
 *********************************************************************
 
-## sql
+## SQL
 
 Make a temp view table from a spark df
 ```python
