@@ -6,9 +6,13 @@ navbar:
   left:
     - text: "topics"
       menu:
+        - text: "python"
+          href: python.html
+        - text: "pip"
+          href: pip.html
+        - text: "---------"
         - text: "basics"
           href: basics.html
-        - text: "---------"
         - text: "strings"
           href: strings.html
         - text: "lists"
@@ -149,10 +153,10 @@ navbar:
           href: sphinx.html
     - text: "envs"
       menu:
+        - text: "pipenv"
+          href: pipenv.html
         - text: "conda"
           href: conda.html
-        - text: "pip"
-          href: pip.html
         - text: "---------"
         - text: "docker"
           href: docker.html
