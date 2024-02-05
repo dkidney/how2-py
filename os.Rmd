@@ -46,14 +46,16 @@ os.path.isfile('a/b/c')
 
 ## env vars
 
-### set
+### os.environ
 
 ```{python}
 import os
 os.environ['BLAH'] = 'asdf'
+os.environ.get('BLAH')
+os.environ.get('BLAHBLAH', None)
 ```
 
-### get
+### os.getenv
 
 ```{python}
 import os

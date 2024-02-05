@@ -30,9 +30,21 @@ brew cask install pycharm-ce
 
 ## projects
 
-### make a new project
+### setting the interpreter
 
-### set the interpreter
+Four ways
+
+#### Project
+
+`Preferences | Project: * | Python Interpreter`
+
+#### Console
+
+`Preferences | Build, Execution, Deployment | Console | Python Console`
+
+#### Run configurations
+
+#### Terminal
 
 *********************************************************************
 
@@ -79,6 +91,7 @@ Plugins | `Preferences > Plugins`
 Default interpreter | `Preferences > Project > Project Interpreter`
 IPython console | `Preferences > Build, Execution, Deployment > Console > Use IPython if available`
 Docstring format  | `Preferences > Tools > Python Integrated Tools >  Docstrings > File and Code Templates`
+Test runner | `Preferences > Tools > Python Integrated Tools > Testing > Default test runner`
 
 *********************************************************************
 
@@ -132,6 +145,11 @@ I use these:
 ## run configurations
 
 * select `Emulate termnal in output console` to see `progress` progress bars.
+
+
+*********************************************************************
+
+## git
 
 
 *********************************************************************

@@ -13,23 +13,49 @@
 
 <title>pycharm</title>
 
-<script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
-<style type="text/css">code{white-space: pre;}</style>
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -107,39 +133,9 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   }
 })();
 </script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 <link rel="stylesheet" href="_style.css" type="text/css" />
 
@@ -150,10 +146,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -170,40 +162,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -231,7 +196,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -243,7 +208,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -254,10 +219,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -269,7 +247,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -425,6 +402,9 @@ $(document).ready(function () {
       <a href="enum.html">enum</a>
     </li>
     <li>
+      <a href="glob.html">glob</a>
+    </li>
+    <li>
       <a href="itertools.html">itertools</a>
     </li>
     <li>
@@ -465,6 +445,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="urllib.html">urllib</a>
+    </li>
+    <li>
+      <a href="uuid.html">uuid</a>
     </li>
     <li>
       <a href="xml.html">xml</a>
@@ -545,6 +528,12 @@ $(document).ready(function () {
     <li>
       <a href="databases.html">databases</a>
     </li>
+    <li>
+      <a href="packages.html">packages</a>
+    </li>
+    <li>
+      <a href="sphinx.html">sphinx</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -602,13 +591,13 @@ $(document).ready(function () {
 </li>
 <li>
   <a href="https://github.com/dkidney/how2-py">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://uk.linkedin.com/in/darren-kidney-495b8a103/">
-    <span class="fa fa-linkedin fa-lg"></span>
+    <span class="fas fa-linkedin fa-lg"></span>
      
   </a>
 </li>
@@ -617,7 +606,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -630,24 +619,24 @@ $(document).ready(function () {
 <li><a href="#install">install</a></li>
 <li><a href="#projects">projects</a>
 <ul>
-<li><a href="#make-a-new-project">make a new project</a></li>
-<li><a href="#set-the-interpreter">set the interpreter</a></li>
+<li><a href="#setting-the-interpreter">setting the interpreter</a></li>
 </ul></li>
 <li><a href="#prefrences">prefrences</a>
 <ul>
 <li><a href="#shortcuts">shortcuts</a></li>
 <li><a href="#other">other</a></li>
 <li><a href="#window-layout">window layout</a></li>
-<li><a href="#console">console</a></li>
+<li><a href="#console-1">console</a></li>
 <li><a href="#code-style">code style</a></li>
 <li><a href="#plugins">plugins</a></li>
 <li><a href="#default-interpreter">default interpreter</a></li>
 </ul></li>
-<li><a href="#run-configurations">run configurations</a></li>
+<li><a href="#run-configurations-1">run configurations</a></li>
+<li><a href="#git">git</a></li>
 <li><a href="#todo">todo</a>
 <ul>
 <li><a href="#make-a-new-py-file">make a new py file</a></li>
-<li><a href="#set-the-interpreter-1">set the interpreter</a></li>
+<li><a href="#set-the-interpreter">set the interpreter</a></li>
 <li><a href="#run-script">run script</a></li>
 </ul></li>
 <li><a href="#switching-project">switching project</a></li>
@@ -675,17 +664,29 @@ $(document).ready(function () {
 <hr />
 <div id="install" class="section level2">
 <h2>install</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">brew</span> cask install pycharm-ce</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> cask install pycharm-ce</span></code></pre></div>
 <hr />
 </div>
 <div id="projects" class="section level2">
 <h2>projects</h2>
-<div id="make-a-new-project" class="section level3">
-<h3>make a new project</h3>
+<div id="setting-the-interpreter" class="section level3">
+<h3>setting the interpreter</h3>
+<p>Four ways</p>
+<div id="project" class="section level4">
+<h4>Project</h4>
+<p><code>Preferences | Project: * | Python Interpreter</code></p>
 </div>
-<div id="set-the-interpreter" class="section level3">
-<h3>set the interpreter</h3>
+<div id="console" class="section level4">
+<h4>Console</h4>
+<p><code>Preferences | Build, Execution, Deployment | Console | Python Console</code></p>
+</div>
+<div id="run-configurations" class="section level4">
+<h4>Run configurations</h4>
+</div>
+<div id="terminal" class="section level4">
+<h4>Terminal</h4>
 <hr />
+</div>
 </div>
 </div>
 <div id="prefrences" class="section level2">
@@ -848,6 +849,10 @@ $(document).ready(function () {
 <td>Docstring format</td>
 <td><code>Preferences &gt; Tools &gt; Python Integrated Tools &gt;  Docstrings &gt; File and Code Templates</code></td>
 </tr>
+<tr class="even">
+<td>Test runner</td>
+<td><code>Preferences &gt; Tools &gt; Python Integrated Tools &gt; Testing &gt; Default test runner</code></td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -884,7 +889,7 @@ $(document).ready(function () {
 <p><code>Window &gt; Use current layout as default</code></p>
 <hr />
 </div>
-<div id="console" class="section level3">
+<div id="console-1" class="section level3">
 <h3>console</h3>
 <p>Use IPython if available (i.e. installed in your python env)</p>
 <ul>
@@ -920,11 +925,15 @@ $(document).ready(function () {
 <p><code>File &gt; Other settings &gt; Project Interpreter</code></p>
 </div>
 </div>
-<div id="run-configurations" class="section level2">
+<div id="run-configurations-1" class="section level2">
 <h2>run configurations</h2>
 <ul>
 <li>select <code>Emulate termnal in output console</code> to see <code>progress</code> progress bars.</li>
 </ul>
+<hr />
+</div>
+<div id="git" class="section level2">
+<h2>git</h2>
 <hr />
 </div>
 <div id="todo" class="section level2">
@@ -933,7 +942,7 @@ $(document).ready(function () {
 <h3>make a new py file</h3>
 <p>within the project, right click on the project folder wand then click <code>New &gt; Python file</code></p>
 </div>
-<div id="set-the-interpreter-1" class="section level3">
+<div id="set-the-interpreter" class="section level3">
 <h3>set the interpreter</h3>
 <ul>
 <li><p>set the <strong>project</strong> interpreter<br />
@@ -1112,7 +1121,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -1130,7 +1139,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
