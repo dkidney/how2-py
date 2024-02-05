@@ -148,8 +148,6 @@ scores['mean_test_score']
 ```
 
 
-
-
 *********************************************************************
 
 ## pipeline
@@ -165,5 +163,6 @@ pipe=Pipeline(Input)
 pipe.fit(X_train, Y_train)
 yhat_test = pipe.predict(X_test)
 ```
+
 
 

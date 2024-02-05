@@ -18,19 +18,18 @@ title: numpy
 
 realpython:  
 
-* https://realpython.com/tutorials/numpy/  
 * https://realpython.com/numpy-array-programming/  
 * https://realpython.com/how-to-use-numpy-arange/  
 
-datacamp tutorials:
+datacamp:
 
 * https://www.datacamp.com/community/tutorials/python-numpy-tutorial  
 
-e-books:  
-
-* https://jakevdp.github.io/PythonDataScienceHandbook/  
-
 *********************************************************************
+
+## basics
+
+* uses row-major orde (like C, but unlike FORTRAN)  
 
 ```{python}
 import numpy as np

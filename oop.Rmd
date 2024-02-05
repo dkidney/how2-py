@@ -82,8 +82,34 @@ except AttributeError as e:
 
 ## abstract base classes
 
+* https://dbader.org/blog/abstract-base-classes-in-python  
+* https://realpython.com/inheritance-composition-python/#abstract-base-classes-in-python
+
 ```python
-# TODO
+from abc import ABCMeta, abstractmethod
+
+
+class MyBaseClass(metaclass=ABCMeta):
+  def __init__(self):
+    self.an_attribute = 10
+    
+  @abstractmethod
+  def do_something(self):
+    pass
+
+
+class AClass(MyBaseClass):
+  def do_something(self):
+    print('hello')
+
+
+class AnotherClass(MyBaseClass):
+  def __init__(self):
+    super().__init__()
+    self.another_attribute = 100
+    
+  def do_something(self):
+    print('hello')
 ```
 
 *********************************************************************

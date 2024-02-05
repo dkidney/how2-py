@@ -84,10 +84,6 @@ even_numbers = rdd.filter(lambda x: x % 2 == 0)
 even_numbers.take(5)
 ```
 
-
-
-
-
 *********************************************************************
 
 ## spark data frame
@@ -238,8 +234,23 @@ spark.sql("SELECT add_one(v1) FROM tableA").show()
 ## misc
 
 Invoke garbage collector
+
 ```python
 spark.sparkContext._jvm.System.gc()
+```
+
+*********************************************************************
+
+## sql.functions
+
+### split
+
+https://stackoverflow.com/questions/56389696/select-column-name-per-row-for-max-value-in-pyspark
+
+```python
+split_col = pyspark.sql.functions.split(df['my_str_col'], '-') 
+df = df.withColumn('NAME1', split_col.getItem(0)) 
+df = df.withColumn('NAME2', split_col.getItem(1)) 
 ```
 
 <!-- ********************************************************************* -->

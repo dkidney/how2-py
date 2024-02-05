@@ -108,6 +108,8 @@ navbar:
           href: sklearn.html
         - text: "keras"
           href: keras.html
+        - text: "xgboost"
+          href: xgboost.html
         - text: "---------"
         - text: "matplotlib"
           href: matplotlib.html
@@ -181,10 +183,12 @@ navbar:
       menu:
         - text: "how2-cli"
           href: https://dkidney.github.io/how2-cli/
-        - text: "how2-sql"
-          href: https://dkidney.github.io/how2-sql/
         - text: "how2-r"
           href: https://dkidney.github.io/how2-r/
+        - text: "how2-sc"
+          href: https://dkidney.github.io/how2-sc/
+        - text: "how2-sql"
+          href: https://dkidney.github.io/how2-sql/
     - icon: fa-github fa-lg
       href: https://github.com/dkidney/how2-py
     - icon: fa-linkedin fa-lg

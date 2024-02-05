@@ -436,6 +436,9 @@ $(document).ready(function () {
       <a href="enum.html">enum</a>
     </li>
     <li>
+      <a href="glob.html">glob</a>
+    </li>
+    <li>
       <a href="itertools.html">itertools</a>
     </li>
     <li>
@@ -555,6 +558,12 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="databases.html">databases</a>
+    </li>
+    <li>
+      <a href="packages.html">packages</a>
+    </li>
+    <li>
+      <a href="sphinx.html">sphinx</a>
     </li>
   </ul>
 </li>
@@ -763,7 +772,33 @@ $(document).ready(function () {
 </div>
 <div id="abstract-base-classes" class="section level2">
 <h2>abstract base classes</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="co"># </span><span class="al">TODO</span></span></code></pre></div>
+<ul>
+<li><a href="https://realpython.com/inheritance-composition-python/#abstract-base-classes-in-python" class="uri">https://realpython.com/inheritance-composition-python/#abstract-base-classes-in-python</a></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="im">from</span> abc <span class="im">import</span> ABCMeta, abstractmethod</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="kw">class</span> MyBaseClass(metaclass<span class="op">=</span>ABCMeta):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>    <span class="va">self</span>.an_attribute <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>    </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>  <span class="at">@abstractmethod</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>  <span class="kw">def</span> do_something(<span class="va">self</span>):</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a>    <span class="cf">pass</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a><span class="kw">class</span> AClass(MyBaseClass):</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a>  <span class="kw">def</span> do_something(<span class="va">self</span>):</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&#39;hello&#39;</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true"></a><span class="kw">class</span> AnotherClass(MyBaseClass):</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true"></a>    <span class="va">self</span>.another_attribute <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true"></a>    </span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true"></a>  <span class="kw">def</span> do_something(<span class="va">self</span>):</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&#39;hello&#39;</span>)</span></code></pre></div>
 <hr />
 </div>
 <div id="notes" class="section level2">
