@@ -13,16 +13,25 @@
 
 <title>logging</title>
 
-<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -34,11 +43,20 @@
     </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -102,13 +120,20 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -116,39 +141,8 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   }
 })();
 </script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
 
 <link rel="stylesheet" href="_style.css" type="text/css" />
@@ -160,10 +154,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -180,40 +170,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -241,7 +207,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -253,7 +219,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -263,11 +229,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -279,13 +262,12 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -293,16 +275,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -346,7 +321,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -356,7 +331,7 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     topics
      
     <span class="caret"></span>
@@ -413,7 +388,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     std
      
     <span class="caret"></span>
@@ -488,7 +463,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     ds
      
     <span class="caret"></span>
@@ -509,6 +484,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="keras.html">keras</a>
+    </li>
+    <li>
+      <a href="xgboost.html">xgboost</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -546,7 +524,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     misc
      
     <span class="caret"></span>
@@ -570,7 +548,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     envs
      
     <span class="caret"></span>
@@ -605,7 +583,7 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     how2
      
     <span class="caret"></span>
@@ -615,22 +593,25 @@ $(document).ready(function () {
       <a href="https://dkidney.github.io/how2-cli/">how2-cli</a>
     </li>
     <li>
-      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
+      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
     </li>
     <li>
-      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
+      <a href="https://dkidney.github.io/how2-sc/">how2-sc</a>
+    </li>
+    <li>
+      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
     </li>
   </ul>
 </li>
 <li>
   <a href="https://github.com/dkidney/how2-py">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://uk.linkedin.com/in/darren-kidney-495b8a103/">
-    <span class="fas fa-linkedin fa-lg"></span>
+    <span class="fa fa-linkedin fa-lg"></span>
      
   </a>
 </li>
@@ -639,7 +620,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -649,13 +630,16 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#links">links</a></li>
-<li><a href="#basics">basics</a>
+<li><a href="#links" id="toc-links">links</a></li>
+<li><a href="#basics" id="toc-basics">basics</a>
 <ul>
-<li><a href="#formating">formating</a></li>
+<li><a href="#formating" id="toc-formating">formating</a></li>
 </ul></li>
-<li><a href="#exception-handling">exception handling</a></li>
-<li><a href="#send-logs-to-multiple-places">send logs to multiple places</a></li>
+<li><a href="#exception-handling" id="toc-exception-handling">exception
+handling</a></li>
+<li><a href="#send-logs-to-multiple-places"
+id="toc-send-logs-to-multiple-places">send logs to multiple
+places</a></li>
 </ul>
 </div>
 
@@ -669,98 +653,117 @@ $(document).ready(function () {
 <div id="links" class="section level2">
 <h2>links</h2>
 <ul>
-<li><a href="https://docs.python.org/3/library/logging" class="uri">https://docs.python.org/3/library/logging</a><br />
+<li><a href="https://docs.python.org/3/library/logging"
+class="uri">https://docs.python.org/3/library/logging</a><br />
 </li>
-<li><a href="https://realpython.com/python-logging" class="uri">https://realpython.com/python-logging</a><br />
+<li><a href="https://realpython.com/python-logging"
+class="uri">https://realpython.com/python-logging</a><br />
 </li>
-<li><a href="https://www.datacamp.com/community/tutorials/logging-in-python" class="uri">https://www.datacamp.com/community/tutorials/logging-in-python</a><br />
+<li><a
+href="https://www.datacamp.com/community/tutorials/logging-in-python"
+class="uri">https://www.datacamp.com/community/tutorials/logging-in-python</a><br />
 </li>
-<li><a href="https://docs.python-guide.org/writing/logging" class="uri">https://docs.python-guide.org/writing/logging</a></li>
+<li><a href="https://docs.python-guide.org/writing/logging"
+class="uri">https://docs.python-guide.org/writing/logging</a></li>
 </ul>
 <hr />
 </div>
 <div id="basics" class="section level2">
 <h2>basics</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> logging</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>logging.basicConfig(level<span class="op">=</span>logging.INFO)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>logging.debug(<span class="st">&#39;This is a debug message&#39;</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>logging.info(<span class="st">&#39;This is an info message&#39;</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>logging.warning(<span class="st">&#39;This is a warning message&#39;</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>logging.error(<span class="st">&#39;This is an error message&#39;</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>logging.critical(<span class="st">&#39;This is a critical message&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> logging</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>logging.basicConfig(level<span class="op">=</span>logging.INFO)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>logging.debug(<span class="st">&#39;This is a debug message&#39;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>logging.info(<span class="st">&#39;This is an info message&#39;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>logging.warning(<span class="st">&#39;This is a warning message&#39;</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>logging.error(<span class="st">&#39;This is an error message&#39;</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>logging.critical(<span class="st">&#39;This is a critical message&#39;</span>)</span></code></pre></div>
 <pre><code>INFO:root:This is an info message
 WARNING:root:This is a warning message
 ERROR:root:This is an error message
 CRITICAL:root:This is a critical message</code></pre>
 <div id="formating" class="section level3">
 <h3>formating</h3>
-<p>You can format the messages using the <code>format</code> argument in <code>basicConfig</code> - see here for more info: <a href="https://docs.python.org/3/library/logging.html#logrecord-attributes" class="uri">https://docs.python.org/3/library/logging.html#logrecord-attributes</a></p>
+<p>You can format the messages using the <code>format</code> argument in
+<code>basicConfig</code> - see here for more info: <a
+href="https://docs.python.org/3/library/logging.html#logrecord-attributes"
+class="uri">https://docs.python.org/3/library/logging.html#logrecord-attributes</a></p>
 <p>e.g. </p>
 <p><code>format='%(levelname)s:%(module)s.%(funcName)s(#%(lineno)s): %(message)s'</code></p>
 <ul>
-<li><code>filename</code> - file name portion of <code>pathname</code> including the file extension</li>
-<li><code>funcName</code> - name of function containing the logging call</li>
+<li><code>filename</code> - file name portion of <code>pathname</code>
+including the file extension</li>
+<li><code>funcName</code> - name of function containing the logging
+call</li>
 <li><code>levelname</code> - WARNING, INFO, etc.</li>
-<li><code>lineno</code> - line number in source code where logging call was made</li>
+<li><code>lineno</code> - line number in source code where logging call
+was made</li>
 <li><code>message</code> - logged message</li>
-<li><code>module</code> - name portion of <code>filename</code> - i.e. without the file extension</li>
-<li><code>name</code> - name of the logger (bespoke, default is root)</li>
-<li><code>pathname</code> - full path of the source file where logging call was made</li>
+<li><code>module</code> - name portion of <code>filename</code> -
+i.e. without the file extension</li>
+<li><code>name</code> - name of the logger (bespoke, default is
+root)</li>
+<li><code>pathname</code> - full path of the source file where logging
+call was made</li>
 <li><code>asctime</code> - datetime</li>
 </ul>
 <p>If using <code>asctime</code> you can format it like this:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>logging.basicConfig(level<span class="op">=</span>logging.INFO,</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">format</span><span class="op">=</span><span class="st">&#39;</span><span class="sc">%(asctime)s</span><span class="st"> ...&#39;</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                    datefmt<span class="op">=</span><span class="st">&#39;%m/</span><span class="sc">%d</span><span class="st">/%Y %I:%M:%S %p&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>logging.basicConfig(level<span class="op">=</span>logging.INFO,</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>                    <span class="bu">format</span><span class="op">=</span><span class="st">&#39;</span><span class="sc">%(asctime)s</span><span class="st"> ...&#39;</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>                    datefmt<span class="op">=</span><span class="st">&#39;%m/</span><span class="sc">%d</span><span class="st">/%Y %I:%M:%S %p&#39;</span>)</span></code></pre></div>
 <hr />
 </div>
 </div>
 <div id="exception-handling" class="section level2">
 <h2>exception handling</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> logging</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>logging.basicConfig(level<span class="op">=</span>logging.INFO)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span> <span class="op">/</span> <span class="dv">0</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    logging.error(<span class="st">&quot;Exception occurred&quot;</span>, exc_info<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="im">import</span> logging</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>logging.basicConfig(level<span class="op">=</span>logging.INFO)</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>    <span class="dv">1</span> <span class="op">/</span> <span class="dv">0</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>    logging.error(<span class="st">&quot;Exception occurred&quot;</span>, exc_info<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
 <pre><code>ERROR:root:Exception occurred
 Traceback (most recent call last):
   File &quot;&lt;string&gt;&quot;, line 2, in &lt;module&gt;
 ZeroDivisionError: division by zero</code></pre>
-<p><code>logging.exception("Exception occurred")</code> gives the same result</p>
+<p><code>logging.exception("Exception occurred")</code> gives the same
+result</p>
 <hr />
 </div>
 <div id="send-logs-to-multiple-places" class="section level2">
 <h2>send logs to multiple places</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> logging</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>logging.basicConfig(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    level<span class="op">=</span>logging.INFO,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">format</span><span class="op">=</span><span class="st">&#39;</span><span class="sc">%(name)s</span><span class="st"> - </span><span class="sc">%(funcName)s</span><span class="st"> - </span><span class="sc">%(levelname)s</span><span class="st"> - </span><span class="sc">%(message)s</span><span class="st">&#39;</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create a custom logger</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>logger <span class="op">=</span> logging.getLogger(<span class="va">__name__</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># add a file handler</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>file_handler <span class="op">=</span> logging.FileHandler(<span class="st">&#39;temp.log&#39;</span>, mode<span class="op">=</span><span class="st">&#39;w&#39;</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>file_handler.setLevel(logging.ERROR)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>file_format <span class="op">=</span> logging.Formatter(<span class="st">&#39;</span><span class="sc">%(asctime)s</span><span class="st"> - </span><span class="sc">%(name)s</span><span class="st"> - </span><span class="sc">%(levelname)s</span><span class="st"> - </span><span class="sc">%(message)s</span><span class="st">&#39;</span>)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>file_handler.setFormatter(file_format)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>logger.addHandler(file_handler)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co"># write some logs</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>logger.debug(<span class="st">&#39;This is a debug message&#39;</span>)</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&#39;This is an info message&#39;</span>)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co">#  __main__ - &lt;module&gt; - INFO - This is an info message</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>logger.warning(<span class="st">&#39;This is a warning message&#39;</span>)</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co">#  __main__ - &lt;module&gt; - </span><span class="al">WARNING</span><span class="co"> - This is a warning message</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>logger.error(<span class="st">&#39;This is an error message&#39;</span>)</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co">#  __main__ - &lt;module&gt; - ERROR - This is an error message</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>logger.critical(<span class="st">&#39;This is a critical message&#39;</span>)</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co">#  __main__ - &lt;module&gt; - CRITICAL - This is a critical message</span></span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> temp.log</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  2021-03-04 15:26:24,449 - __main__ - ERROR - This is an error message</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  2021-03-04 15:26:24,460 - __main__ - CRITICAL - This is a critical message</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="im">import</span> logging</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>logging.basicConfig(</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>    level<span class="op">=</span>logging.INFO,</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>    <span class="bu">format</span><span class="op">=</span><span class="st">&#39;</span><span class="sc">%(name)s</span><span class="st"> - </span><span class="sc">%(funcName)s</span><span class="st"> - </span><span class="sc">%(levelname)s</span><span class="st"> - </span><span class="sc">%(message)s</span><span class="st">&#39;</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co"># create a custom logger</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>logger <span class="op">=</span> logging.getLogger(<span class="va">__name__</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co"># add a file handler</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>file_handler <span class="op">=</span> logging.FileHandler(<span class="st">&#39;temp.log&#39;</span>, mode<span class="op">=</span><span class="st">&#39;w&#39;</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>file_handler.setLevel(logging.ERROR)</span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a>file_format <span class="op">=</span> logging.Formatter(<span class="st">&#39;</span><span class="sc">%(asctime)s</span><span class="st"> - </span><span class="sc">%(name)s</span><span class="st"> - </span><span class="sc">%(levelname)s</span><span class="st"> - </span><span class="sc">%(message)s</span><span class="st">&#39;</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a>file_handler.setFormatter(file_format)</span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a>logger.addHandler(file_handler)</span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="co"># write some logs</span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a>logger.debug(<span class="st">&#39;This is a debug message&#39;</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a>logger.info(<span class="st">&#39;This is an info message&#39;</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a>logger.warning(<span class="st">&#39;This is a warning message&#39;</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a>logger.error(<span class="st">&#39;This is an error message&#39;</span>)</span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a>logger.critical(<span class="st">&#39;This is a critical message&#39;</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a><span class="co">#  [[34m2024-02-05 22:21:59,019[0m] {[34m&lt;string&gt;:[0m1} INFO[0m - This is an info message[0m</span></span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a><span class="co">#  [[34m2024-02-05 22:21:59,026[0m] {[34m&lt;string&gt;:[0m1} WARNING[0m - This is a warning message[0m</span></span>
+<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a><span class="co">#  [[34m2024-02-05 22:21:59,033[0m] {[34m&lt;string&gt;:[0m1} ERROR[0m - This is an error message[0m</span></span>
+<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a><span class="co">#  [[34m2024-02-05 22:21:59,040[0m] {[34m&lt;string&gt;:[0m1} CRITICAL[0m - This is a critical message[0m</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">cat</span> temp.log</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co">#  2024-02-05 22:21:59,033 - __main__ - ERROR - This is an error message</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#  2024-02-05 22:21:59,040 - __main__ - CRITICAL - This is a critical message</span></span></code></pre></div>
 </div>
 
 
@@ -790,7 +793,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

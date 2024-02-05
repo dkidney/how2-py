@@ -13,23 +13,50 @@
 
 <title>scikit-learn (sklearn)</title>
 
-<script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -93,13 +120,20 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -107,39 +141,9 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   }
 })();
 </script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 <link rel="stylesheet" href="_style.css" type="text/css" />
 
@@ -150,10 +154,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -170,40 +170,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -231,7 +207,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -243,7 +219,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -253,11 +229,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -269,13 +262,12 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -283,16 +275,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -336,7 +321,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -346,7 +331,7 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     topics
      
     <span class="caret"></span>
@@ -403,7 +388,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     std
      
     <span class="caret"></span>
@@ -423,6 +408,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="enum.html">enum</a>
+    </li>
+    <li>
+      <a href="glob.html">glob</a>
     </li>
     <li>
       <a href="itertools.html">itertools</a>
@@ -467,12 +455,15 @@ $(document).ready(function () {
       <a href="urllib.html">urllib</a>
     </li>
     <li>
+      <a href="uuid.html">uuid</a>
+    </li>
+    <li>
       <a href="xml.html">xml</a>
     </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     ds
      
     <span class="caret"></span>
@@ -493,6 +484,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="keras.html">keras</a>
+    </li>
+    <li>
+      <a href="xgboost.html">xgboost</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -530,7 +524,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     misc
      
     <span class="caret"></span>
@@ -545,10 +539,16 @@ $(document).ready(function () {
     <li>
       <a href="databases.html">databases</a>
     </li>
+    <li>
+      <a href="packages.html">packages</a>
+    </li>
+    <li>
+      <a href="sphinx.html">sphinx</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     envs
      
     <span class="caret"></span>
@@ -583,7 +583,7 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     how2
      
     <span class="caret"></span>
@@ -593,10 +593,13 @@ $(document).ready(function () {
       <a href="https://dkidney.github.io/how2-cli/">how2-cli</a>
     </li>
     <li>
-      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
+      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
     </li>
     <li>
-      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
+      <a href="https://dkidney.github.io/how2-sc/">how2-sc</a>
+    </li>
+    <li>
+      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
     </li>
   </ul>
 </li>
@@ -617,7 +620,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -627,32 +630,40 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#faqs">faqs</a></li>
-<li><a href="#links">links</a></li>
-<li><a href="#setup">setup</a></li>
-<li><a href="#basics">basics</a></li>
-<li><a href="#preprocessing">preprocessing</a>
+<li><a href="#faqs" id="toc-faqs">faqs</a></li>
+<li><a href="#links" id="toc-links">links</a></li>
+<li><a href="#setup" id="toc-setup">setup</a></li>
+<li><a href="#basics" id="toc-basics">basics</a></li>
+<li><a href="#preprocessing" id="toc-preprocessing">preprocessing</a>
 <ul>
-<li><a href="#standardscaler">StandardScaler</a></li>
-<li><a href="#polynomialfeatures">PolynomialFeatures</a></li>
+<li><a href="#standardscaler"
+id="toc-standardscaler">StandardScaler</a></li>
+<li><a href="#polynomialfeatures"
+id="toc-polynomialfeatures">PolynomialFeatures</a></li>
 </ul></li>
-<li><a href="#linear_model">linear_model</a>
+<li><a href="#linear_model" id="toc-linear_model">linear_model</a>
 <ul>
-<li><a href="#linearregression">LinearRegression</a></li>
-<li><a href="#ridge">Ridge</a></li>
+<li><a href="#linearregression"
+id="toc-linearregression">LinearRegression</a></li>
+<li><a href="#ridge" id="toc-ridge">Ridge</a></li>
 </ul></li>
-<li><a href="#metrics">metrics</a>
+<li><a href="#metrics" id="toc-metrics">metrics</a>
 <ul>
-<li><a href="#mean_squared_error">mean_squared_error</a></li>
+<li><a href="#mean_squared_error"
+id="toc-mean_squared_error">mean_squared_error</a></li>
 </ul></li>
-<li><a href="#model_selection">model_selection</a>
+<li><a href="#model_selection"
+id="toc-model_selection">model_selection</a>
 <ul>
-<li><a href="#train_test_split">train_test_split</a></li>
-<li><a href="#cross_val_score">cross_val_score</a></li>
-<li><a href="#cross_val_predict">cross_val_predict</a></li>
-<li><a href="#gridsearchcv">GridSearchCV</a></li>
+<li><a href="#train_test_split"
+id="toc-train_test_split">train_test_split</a></li>
+<li><a href="#cross_val_score"
+id="toc-cross_val_score">cross_val_score</a></li>
+<li><a href="#cross_val_predict"
+id="toc-cross_val_predict">cross_val_predict</a></li>
+<li><a href="#gridsearchcv" id="toc-gridsearchcv">GridSearchCV</a></li>
 </ul></li>
-<li><a href="#pipeline">pipeline</a></li>
+<li><a href="#pipeline" id="toc-pipeline">pipeline</a></li>
 </ul>
 </div>
 
@@ -668,22 +679,29 @@ $(document).ready(function () {
 <div id="links" class="section level2">
 <h2>links</h2>
 <ul>
-<li><a href="https://scikit-learn.org/stable/" class="uri">https://scikit-learn.org/stable/</a></li>
+<li><a href="https://scikit-learn.org/stable/"
+class="uri">https://scikit-learn.org/stable/</a></li>
 </ul>
 <p>datacamp:</p>
 <ul>
-<li><a href="https://www.datacamp.com/community/tutorials/machine-learning-python">machine learning</a></li>
-<li><a href="https://www.datacamp.com/community/tutorials/feature-selection-python">feature selection</a></li>
-<li><a href="https://www.datacamp.com/community/tutorials/tutorial-machine-learning-basics-norms">norms</a></li>
+<li><a
+href="https://www.datacamp.com/community/tutorials/machine-learning-python">machine
+learning</a></li>
+<li><a
+href="https://www.datacamp.com/community/tutorials/feature-selection-python">feature
+selection</a></li>
+<li><a
+href="https://www.datacamp.com/community/tutorials/tutorial-machine-learning-basics-norms">norms</a></li>
 </ul>
 <hr />
 </div>
 <div id="setup" class="section level2">
 <h2>setup</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">pip</span> install scikit-learn</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="im">import</span> sklearn</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>sklearn.__version__</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="co">#  &#39;0.23.2&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">pip</span> install scikit-learn</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="im">import</span> sklearn</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>sklearn.__version__</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co">#  &#39;0.23.2&#39;</span></span></code></pre></div>
 <hr />
 </div>
 <div id="basics" class="section level2">
@@ -694,16 +712,18 @@ $(document).ready(function () {
 <h2>preprocessing</h2>
 <div id="standardscaler" class="section level3">
 <h3>StandardScaler</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>scl<span class="op">=</span>StandardScaler(with_mean<span class="op">=</span><span class="va">True</span>, with_std<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>scl.fit(X)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>X_scaled <span class="op">=</span> scl.transform(X)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>scl<span class="op">=</span>StandardScaler(with_mean<span class="op">=</span><span class="va">True</span>, with_std<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>scl.fit(X)</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>X_scaled <span class="op">=</span> scl.transform(X)</span></code></pre></div>
 </div>
 <div id="polynomialfeatures" class="section level3">
 <h3>PolynomialFeatures</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>pr<span class="op">=</span>PolynomialFeatures(degree<span class="op">=</span><span class="dv">3</span>, include_bias<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>pr.fit_transform(X[[<span class="st">&#39;x1&#39;</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>pr<span class="op">=</span>PolynomialFeatures(degree<span class="op">=</span><span class="dv">3</span>, include_bias<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>pr.fit_transform(X[[<span class="st">&#39;x1&#39;</span>]])</span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -711,20 +731,22 @@ $(document).ready(function () {
 <h2>linear_model</h2>
 <div id="linearregression" class="section level3">
 <h3>LinearRegression</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>lr <span class="op">=</span> LinearRegression()</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>lr.fit(X_train, Y_train)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>lr.intercept_</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>lr.coef_</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>lr.score(X_train, Y_train) <span class="co"># in-sample R^2</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>Yhat_test <span class="op">=</span> lr.predict(X_test)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>lr <span class="op">=</span> LinearRegression()</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>lr.fit(X_train, Y_train)</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>lr.intercept_</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>lr.coef_</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>lr.score(X_train, Y_train) <span class="co"># in-sample R^2</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>Yhat_test <span class="op">=</span> lr.predict(X_test)</span></code></pre></div>
 </div>
 <div id="ridge" class="section level3">
 <h3>Ridge</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>rr <span class="op">=</span> Ridge(alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>rr.fit(X_train, Y_train)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>yhat_pred <span class="op">=</span> rr.predict(X_test)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>rr <span class="op">=</span> Ridge(alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>rr.fit(X_train, Y_train)</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>yhat_pred <span class="op">=</span> rr.predict(X_test)</span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -732,8 +754,9 @@ $(document).ready(function () {
 <h2>metrics</h2>
 <div id="mean_squared_error" class="section level3">
 <h3>mean_squared_error</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>mean_squared_error(Y_test, Yhat_test)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>mean_squared_error(Y_test, Yhat_test)</span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -741,49 +764,55 @@ $(document).ready(function () {
 <h2>model_selection</h2>
 <div id="train_test_split" class="section level3">
 <h3>train_test_split</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>X_train, X_test, Y_train, Y_test <span class="op">=</span> train_test_split(X, Y, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>X_train, X_test, Y_train, Y_test <span class="op">=</span> train_test_split(X, Y, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span></code></pre></div>
 </div>
 <div id="cross_val_score" class="section level3">
 <h3>cross_val_score</h3>
 <p>returns the evaluation metric for each of the k test folds</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="co"># e.g. R^2 by default for linear model?</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>test_scores <span class="op">=</span> cross_val_score(lr, X_train, Y_train, cv<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># e.g. R^2 by default for linear model?</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>test_scores <span class="op">=</span> cross_val_score(lr, X_train, Y_train, cv<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div>
 </div>
 <div id="cross_val_predict" class="section level3">
 <h3>cross_val_predict</h3>
-<p>returns the predictions for each observation when it was in the test fold</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_predict</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>test_preds <span class="op">=</span> cross_val_predict(lr, X_train, Y_train, cv<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div>
+<p>returns the predictions for each observation when it was in the test
+fold</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_predict</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>test_preds <span class="op">=</span> cross_val_predict(lr, X_train, Y_train, cv<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div>
 </div>
 <div id="gridsearchcv" class="section level3">
 <h3>GridSearchCV</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>rr <span class="op">=</span> Ridge()</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>params <span class="op">=</span> [</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>  <span class="bu">dict</span>(alpha <span class="op">=</span> [<span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>]),</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>  <span class="bu">dict</span>(normalize <span class="op">=</span> [<span class="va">True</span>, <span class="va">False</span>])</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a>]</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a>grid <span class="op">=</span> GridSearchCV(rr, params, cv<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a>grid.fit(X_train, Y_train)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true"></a>grid.best_estimator_</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true"></a>scores <span class="op">=</span> grid.cv_results_</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true"></a>scores[<span class="st">&#39;mean_test_score&#39;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>rr <span class="op">=</span> Ridge()</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>params <span class="op">=</span> [</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  <span class="bu">dict</span>(alpha <span class="op">=</span> [<span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>]),</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>  <span class="bu">dict</span>(normalize <span class="op">=</span> [<span class="va">True</span>, <span class="va">False</span>])</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>]</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>grid <span class="op">=</span> GridSearchCV(rr, params, cv<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>grid.fit(X_train, Y_train)</span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>grid.best_estimator_</span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>scores <span class="op">=</span> grid.cv_results_</span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>scores[<span class="st">&#39;mean_test_score&#39;</span>]</span></code></pre></div>
 <hr />
 </div>
 </div>
 <div id="pipeline" class="section level2">
 <h2>pipeline</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>Input<span class="op">=</span>[</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>  (<span class="st">&#39;scale&#39;</span>, StandardScaler()),</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a>  (<span class="st">&#39;poly3&#39;</span>, PolynomialFeatures(degree<span class="op">=</span><span class="dv">3</span>, include_bias<span class="op">=</span><span class="va">True</span>)),</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a>  (<span class="st">&#39;model&#39;</span>, LinearRegression())</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a>]</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a>pipe<span class="op">=</span>Pipeline(Input)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a>pipe.fit(X_train, Y_train)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true"></a>yhat_test <span class="op">=</span> pipe.predict(X_test)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>Input<span class="op">=</span>[</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  (<span class="st">&#39;scale&#39;</span>, StandardScaler()),</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  (<span class="st">&#39;poly3&#39;</span>, PolynomialFeatures(degree<span class="op">=</span><span class="dv">3</span>, include_bias<span class="op">=</span><span class="va">True</span>)),</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  (<span class="st">&#39;model&#39;</span>, LinearRegression())</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>]</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>pipe<span class="op">=</span>Pipeline(Input)</span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>pipe.fit(X_train, Y_train)</span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>yhat_test <span class="op">=</span> pipe.predict(X_test)</span></code></pre></div>
 </div>
 
 
@@ -795,7 +824,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -813,7 +842,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

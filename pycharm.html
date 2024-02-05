@@ -13,8 +13,8 @@
 
 <title>pycharm</title>
 
-<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -30,8 +30,8 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -41,6 +41,7 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 <style type="text/css">
@@ -119,13 +120,20 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -161,6 +169,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -218,11 +229,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -251,8 +266,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -260,16 +275,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -313,7 +321,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -323,7 +331,7 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     topics
      
     <span class="caret"></span>
@@ -380,7 +388,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     std
      
     <span class="caret"></span>
@@ -455,7 +463,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     ds
      
     <span class="caret"></span>
@@ -476,6 +484,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="keras.html">keras</a>
+    </li>
+    <li>
+      <a href="xgboost.html">xgboost</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -513,7 +524,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     misc
      
     <span class="caret"></span>
@@ -537,7 +548,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     envs
      
     <span class="caret"></span>
@@ -572,7 +583,7 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     how2
      
     <span class="caret"></span>
@@ -582,22 +593,25 @@ $(document).ready(function () {
       <a href="https://dkidney.github.io/how2-cli/">how2-cli</a>
     </li>
     <li>
-      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
+      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
     </li>
     <li>
-      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
+      <a href="https://dkidney.github.io/how2-sc/">how2-sc</a>
+    </li>
+    <li>
+      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
     </li>
   </ul>
 </li>
 <li>
   <a href="https://github.com/dkidney/how2-py">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://uk.linkedin.com/in/darren-kidney-495b8a103/">
-    <span class="fas fa-linkedin fa-lg"></span>
+    <span class="fa fa-linkedin fa-lg"></span>
      
   </a>
 </li>
@@ -616,55 +630,68 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#install">install</a></li>
-<li><a href="#projects">projects</a>
+<li><a href="#install" id="toc-install">install</a></li>
+<li><a href="#projects" id="toc-projects">projects</a>
 <ul>
-<li><a href="#setting-the-interpreter">setting the interpreter</a></li>
+<li><a href="#setting-the-interpreter"
+id="toc-setting-the-interpreter">setting the interpreter</a></li>
 </ul></li>
-<li><a href="#prefrences">prefrences</a>
+<li><a href="#prefrences" id="toc-prefrences">prefrences</a>
 <ul>
-<li><a href="#shortcuts">shortcuts</a></li>
-<li><a href="#other">other</a></li>
-<li><a href="#window-layout">window layout</a></li>
-<li><a href="#console-1">console</a></li>
-<li><a href="#code-style">code style</a></li>
-<li><a href="#plugins">plugins</a></li>
-<li><a href="#default-interpreter">default interpreter</a></li>
+<li><a href="#shortcuts" id="toc-shortcuts">shortcuts</a></li>
+<li><a href="#other" id="toc-other">other</a></li>
+<li><a href="#window-layout" id="toc-window-layout">window
+layout</a></li>
+<li><a href="#console-1" id="toc-console-1">console</a></li>
+<li><a href="#code-style" id="toc-code-style">code style</a></li>
+<li><a href="#plugins" id="toc-plugins">plugins</a></li>
+<li><a href="#default-interpreter" id="toc-default-interpreter">default
+interpreter</a></li>
 </ul></li>
-<li><a href="#run-configurations-1">run configurations</a></li>
-<li><a href="#git">git</a></li>
-<li><a href="#todo">todo</a>
+<li><a href="#run-configurations-1" id="toc-run-configurations-1">run
+configurations</a></li>
+<li><a href="#git" id="toc-git">git</a></li>
+<li><a href="#todo" id="toc-todo">todo</a>
 <ul>
-<li><a href="#make-a-new-py-file">make a new py file</a></li>
-<li><a href="#set-the-interpreter">set the interpreter</a></li>
-<li><a href="#run-script">run script</a></li>
+<li><a href="#make-a-new-py-file" id="toc-make-a-new-py-file">make a new
+py file</a></li>
+<li><a href="#set-the-interpreter" id="toc-set-the-interpreter">set the
+interpreter</a></li>
+<li><a href="#run-script" id="toc-run-script">run script</a></li>
 </ul></li>
-<li><a href="#switching-project">switching project</a></li>
-<li><a href="#customisation">customisation</a>
+<li><a href="#switching-project" id="toc-switching-project">switching
+project</a></li>
+<li><a href="#customisation" id="toc-customisation">customisation</a>
 <ul>
-<li><a href="#shortcuts-1">shortcuts</a></li>
-<li><a href="#misc">misc</a></li>
-<li><a href="#code-folding">code folding</a></li>
+<li><a href="#shortcuts-1" id="toc-shortcuts-1">shortcuts</a></li>
+<li><a href="#misc" id="toc-misc">misc</a></li>
+<li><a href="#code-folding" id="toc-code-folding">code folding</a></li>
 </ul></li>
 </ul>
 </div>
 
 <hr />
 <blockquote>
-<p>an integrated development environment specifically for python - developed by the Czech company JetBrains - the community edition provides an intelligent editor, graphical debugger, refactorings, code inspections and version control integration</p>
+<p>an integrated development environment specifically for python -
+developed by the Czech company JetBrains - the community edition
+provides an intelligent editor, graphical debugger, refactorings, code
+inspections and version control integration</p>
 </blockquote>
 <hr />
 <ul>
-<li><a href="https://www.jetbrains.com/help/pycharm/meet-pycharm.html" class="uri">https://www.jetbrains.com/help/pycharm/meet-pycharm.html</a><br />
+<li><a href="https://www.jetbrains.com/help/pycharm/meet-pycharm.html"
+class="uri">https://www.jetbrains.com/help/pycharm/meet-pycharm.html</a><br />
 </li>
-<li><a href="https://realpython.com/pycharm-guide/" class="uri">https://realpython.com/pycharm-guide/</a><br />
+<li><a href="https://realpython.com/pycharm-guide/"
+class="uri">https://realpython.com/pycharm-guide/</a><br />
 </li>
-<li><a href="https://www.jetbrains.com/pycharm/guide/playlists/42/" class="uri">https://www.jetbrains.com/pycharm/guide/playlists/42/</a></li>
+<li><a href="https://www.jetbrains.com/pycharm/guide/playlists/42/"
+class="uri">https://www.jetbrains.com/pycharm/guide/playlists/42/</a></li>
 </ul>
 <hr />
 <div id="install" class="section level2">
 <h2>install</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> cask install pycharm-ce</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">brew</span> cask install pycharm-ce</span></code></pre></div>
 <hr />
 </div>
 <div id="projects" class="section level2">
@@ -735,7 +762,8 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<p>Personal setup - modified using <code>Preferences &gt; Keymap</code>:</p>
+<p>Personal setup - modified using
+<code>Preferences &gt; Keymap</code>:</p>
 <table>
 <colgroup>
 <col width="36%" />
@@ -753,7 +781,8 @@ $(document).ready(function () {
 <tr class="odd">
 <td>Execute in python console</td>
 <td>CMD + ENTER</td>
-<td>Plug-Ins/Python Community Edition/Execute Selection In Python Console</td>
+<td>Plug-Ins/Python Community Edition/Execute Selection In Python
+Console</td>
 </tr>
 <tr class="even">
 <td>Comment/uncomment</td>
@@ -827,7 +856,8 @@ $(document).ready(function () {
 </tr>
 <tr class="even">
 <td>Vertical guidelines</td>
-<td><code>Preferences &gt; Editor &gt; Code Style &gt; General &gt; Visual guides:</code> 72,79 <code>columns</code></td>
+<td><code>Preferences &gt; Editor &gt; Code Style &gt; General &gt; Visual guides:</code>
+72,79 <code>columns</code></td>
 </tr>
 <tr class="odd">
 <td>Templates</td>
@@ -893,7 +923,8 @@ $(document).ready(function () {
 <h3>console</h3>
 <p>Use IPython if available (i.e. installed in your python env)</p>
 <ul>
-<li>Go to <code>Preferences &gt; Build, Execution, Deployment &gt; Console</code><br />
+<li>Go to
+<code>Preferences &gt; Build, Execution, Deployment &gt; Console</code><br />
 </li>
 <li>then check <code>Use IPython if available</code></li>
 </ul>
@@ -905,8 +936,10 @@ $(document).ready(function () {
 <li>72 (docstrings/comments)</li>
 <li>80 (code)</li>
 </ul>
-<p>See <a href="https://pep8.org/#maximum-line-length" class="uri">https://pep8.org/#maximum-line-length</a></p>
-<p><code>Preferences &gt; Editor &gt; Code Style &gt; General &gt; Visual guides:</code> 72,79 <code>columns</code></p>
+<p>See <a href="https://pep8.org/#maximum-line-length"
+class="uri">https://pep8.org/#maximum-line-length</a></p>
+<p><code>Preferences &gt; Editor &gt; Code Style &gt; General &gt; Visual guides:</code>
+72,79 <code>columns</code></p>
 </div>
 <div id="plugins" class="section level3">
 <h3>plugins</h3>
@@ -928,7 +961,8 @@ $(document).ready(function () {
 <div id="run-configurations-1" class="section level2">
 <h2>run configurations</h2>
 <ul>
-<li>select <code>Emulate termnal in output console</code> to see <code>progress</code> progress bars.</li>
+<li>select <code>Emulate termnal in output console</code> to see
+<code>progress</code> progress bars.</li>
 </ul>
 <hr />
 </div>
@@ -940,14 +974,16 @@ $(document).ready(function () {
 <h2>todo</h2>
 <div id="make-a-new-py-file" class="section level3">
 <h3>make a new py file</h3>
-<p>within the project, right click on the project folder wand then click <code>New &gt; Python file</code></p>
+<p>within the project, right click on the project folder wand then click
+<code>New &gt; Python file</code></p>
 </div>
 <div id="set-the-interpreter" class="section level3">
 <h3>set the interpreter</h3>
 <ul>
 <li><p>set the <strong>project</strong> interpreter<br />
 </p></li>
-<li><p>this will be the interpreter used in the pycharm <strong>python console</strong><br />
+<li><p>this will be the interpreter used in the pycharm <strong>python
+console</strong><br />
 </p></li>
 <li><p>e.g. to set the interpreter to an existing conda env</p></li>
 <li><p><code>PyCharm &gt;</code><br />
@@ -970,14 +1006,18 @@ $(document).ready(function () {
 </p></li>
 <li><p><code>Interpreter</code><br />
 </p></li>
-<li><p>then choose <code>make available to all projects</code> (if you want it to be)</p></li>
-<li><p><em>Dont forget to <code>Apply</code> before clicking <code>Ok</code></em></p></li>
+<li><p>then choose <code>make available to all projects</code> (if you
+want it to be)</p></li>
+<li><p><em>Dont forget to <code>Apply</code> before clicking
+<code>Ok</code></em></p></li>
 </ul>
 <p>things to note:</p>
 <ul>
-<li>if you change the project interpreter you may need to close and re-launch the python console for the change to take effect:
+<li>if you change the project interpreter you may need to close and
+re-launch the python console for the change to take effect:
 <ul>
-<li>close the console, then click <code>Tools &gt; Pycharm console...</code></li>
+<li>close the console, then click
+<code>Tools &gt; Pycharm console...</code></li>
 </ul></li>
 </ul>
 </div>
@@ -986,19 +1026,26 @@ $(document).ready(function () {
 <p><code>Run &gt; Run &gt;</code></p>
 <p>then either:</p>
 <ul>
-<li><code>select file from drop down</code> to use existing interpreter etc, or<br />
+<li><code>select file from drop down</code> to use existing interpreter
+etc, or<br />
 </li>
-<li><code>edit configurations</code> to change interpreter and/or command args etc.</li>
+<li><code>edit configurations</code> to change interpreter and/or
+command args etc.</li>
 </ul>
 <p>things to note:</p>
 <ul>
-<li>when you run a script it gets run in a new terminal tab called <code>Run</code><br />
+<li>when you run a script it gets run in a new terminal tab called
+<code>Run</code><br />
 </li>
-<li>this is <em>not</em> the same thing as the pycharm python console<br />
+<li>this is <em>not</em> the same thing as the pycharm python
+console<br />
 </li>
-<li>you can change the interpreter used in the run terminal from the <code>edit configurations</code> window<br />
+<li>you can change the interpreter used in the run terminal from the
+<code>edit configurations</code> window<br />
 </li>
-<li>changing this will not change the interpreter used in the pycharm python console, although it’s probably a good idea to use the same interpreter for both</li>
+<li>changing this will not change the interpreter used in the pycharm
+python console, although it’s probably a good idea to use the same
+interpreter for both</li>
 </ul>
 <hr />
 </div>

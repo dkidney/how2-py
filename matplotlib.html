@@ -13,23 +13,50 @@
 
 <title>matplotlib</title>
 
-<script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -93,13 +120,20 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -107,39 +141,9 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   }
 })();
 </script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 <link rel="stylesheet" href="_style.css" type="text/css" />
 
@@ -150,10 +154,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -170,40 +170,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -231,7 +207,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -243,7 +219,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -253,11 +229,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -269,13 +262,12 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -283,16 +275,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -336,7 +321,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -346,7 +331,7 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     topics
      
     <span class="caret"></span>
@@ -403,7 +388,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     std
      
     <span class="caret"></span>
@@ -423,6 +408,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="enum.html">enum</a>
+    </li>
+    <li>
+      <a href="glob.html">glob</a>
     </li>
     <li>
       <a href="itertools.html">itertools</a>
@@ -467,12 +455,15 @@ $(document).ready(function () {
       <a href="urllib.html">urllib</a>
     </li>
     <li>
+      <a href="uuid.html">uuid</a>
+    </li>
+    <li>
       <a href="xml.html">xml</a>
     </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     ds
      
     <span class="caret"></span>
@@ -493,6 +484,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="keras.html">keras</a>
+    </li>
+    <li>
+      <a href="xgboost.html">xgboost</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -530,7 +524,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     misc
      
     <span class="caret"></span>
@@ -545,10 +539,16 @@ $(document).ready(function () {
     <li>
       <a href="databases.html">databases</a>
     </li>
+    <li>
+      <a href="packages.html">packages</a>
+    </li>
+    <li>
+      <a href="sphinx.html">sphinx</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     envs
      
     <span class="caret"></span>
@@ -583,7 +583,7 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     how2
      
     <span class="caret"></span>
@@ -593,10 +593,13 @@ $(document).ready(function () {
       <a href="https://dkidney.github.io/how2-cli/">how2-cli</a>
     </li>
     <li>
-      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
+      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
     </li>
     <li>
-      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
+      <a href="https://dkidney.github.io/how2-sc/">how2-sc</a>
+    </li>
+    <li>
+      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
     </li>
   </ul>
 </li>
@@ -617,7 +620,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -627,47 +630,50 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#faqs">faqs</a></li>
-<li><a href="#links">links</a></li>
-<li><a href="#setup">setup</a></li>
-<li><a href="#basics">basics</a>
+<li><a href="#faqs" id="toc-faqs">faqs</a></li>
+<li><a href="#links" id="toc-links">links</a></li>
+<li><a href="#setup" id="toc-setup">setup</a></li>
+<li><a href="#basics" id="toc-basics">basics</a>
 <ul>
-<li><a href="#ipython-magic">ipython magic</a></li>
+<li><a href="#ipython-magic" id="toc-ipython-magic">ipython
+magic</a></li>
 </ul></li>
-<li><a href="#style">style</a></li>
-<li><a href="#pyplot">pyplot</a>
+<li><a href="#style" id="toc-style">style</a></li>
+<li><a href="#pyplot" id="toc-pyplot">pyplot</a>
 <ul>
-<li><a href="#scatter">scatter</a></li>
-<li><a href="#hist">hist</a></li>
-<li><a href="#scatter-1">scatter</a></li>
-<li><a href="#pcolor">pcolor</a></li>
-<li><a href="#annotate">annotate</a></li>
-<li><a href="#subplots">subplots</a></li>
+<li><a href="#scatter" id="toc-scatter">scatter</a></li>
+<li><a href="#hist" id="toc-hist">hist</a></li>
+<li><a href="#scatter-1" id="toc-scatter-1">scatter</a></li>
+<li><a href="#pcolor" id="toc-pcolor">pcolor</a></li>
+<li><a href="#annotate" id="toc-annotate">annotate</a></li>
+<li><a href="#subplots" id="toc-subplots">subplots</a></li>
 </ul></li>
-<li><a href="#artist">Artist</a>
+<li><a href="#artist" id="toc-artist">Artist</a>
 <ul>
-<li><a href="#primitive">Primitive</a></li>
-<li><a href="#composite">Composite</a></li>
+<li><a href="#primitive" id="toc-primitive">Primitive</a></li>
+<li><a href="#composite" id="toc-composite">Composite</a></li>
 </ul></li>
-<li><a href="#backend_bases">backend_bases</a>
+<li><a href="#backend_bases" id="toc-backend_bases">backend_bases</a>
 <ul>
-<li><a href="#figurecanvas">FigureCanvas</a></li>
-<li><a href="#renderer">Renderer</a></li>
-<li><a href="#event">Event</a></li>
+<li><a href="#figurecanvas" id="toc-figurecanvas">FigureCanvas</a></li>
+<li><a href="#renderer" id="toc-renderer">Renderer</a></li>
+<li><a href="#event" id="toc-event">Event</a></li>
 </ul></li>
-<li><a href="#section">??</a>
+<li><a href="#section" id="toc-section">??</a>
 <ul>
-<li><a href="#axis-labels">axis labels</a></li>
-<li><a href="#figure-size">figure size</a></li>
+<li><a href="#axis-labels" id="toc-axis-labels">axis labels</a></li>
+<li><a href="#figure-size" id="toc-figure-size">figure size</a></li>
 </ul></li>
-<li><a href="#plot">plot</a></li>
-<li><a href="#appendix-colors">appendix: colors</a></li>
+<li><a href="#plot" id="toc-plot">plot</a></li>
+<li><a href="#appendix-colors" id="toc-appendix-colors">appendix:
+colors</a></li>
 </ul>
 </div>
 
 <hr />
 <blockquote>
-<p>A comprehensive library for creating static, animated, and interactive visualizations</p>
+<p>A comprehensive library for creating static, animated, and
+interactive visualizations</p>
 </blockquote>
 <hr />
 <div id="faqs" class="section level2">
@@ -677,24 +683,29 @@ $(document).ready(function () {
 <div id="links" class="section level2">
 <h2>links</h2>
 <ul>
-<li><a href="https://matplotlib.org/" class="uri">https://matplotlib.org/</a><br />
+<li><a href="https://matplotlib.org/"
+class="uri">https://matplotlib.org/</a><br />
 </li>
-<li><a href="https://www.aosabook.org/en/matplotlib.html" class="uri">https://www.aosabook.org/en/matplotlib.html</a></li>
+<li><a href="https://www.aosabook.org/en/matplotlib.html"
+class="uri">https://www.aosabook.org/en/matplotlib.html</a></li>
 </ul>
 <p>datacamp tutorials:</p>
 <ul>
-<li><a href="https://www.datacamp.com/community/tutorials/matplotlib-tutorial-python">matplotlib-tutorial-python</a><br />
+<li><a
+href="https://www.datacamp.com/community/tutorials/matplotlib-tutorial-python">matplotlib-tutorial-python</a><br />
 </li>
-<li><a href="https://www.datacamp.com/community/tutorials/histograms-matplotlib">histograms-matplotlib</a></li>
+<li><a
+href="https://www.datacamp.com/community/tutorials/histograms-matplotlib">histograms-matplotlib</a></li>
 </ul>
 <hr />
 </div>
 <div id="setup" class="section level2">
 <h2>setup</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">pip</span> install matplotlib</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>mpl.__version__</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="co">#  &#39;1.3.1&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">pip</span> install matplotlib</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>mpl.__version__</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co">#  &#39;3.3.2&#39;</span></span></code></pre></div>
 <hr />
 </div>
 <div id="basics" class="section level2">
@@ -705,7 +716,8 @@ $(document).ready(function () {
 </li>
 <li>artist layer - <code>Artist</code><br />
 </li>
-<li>backend layer - <code>FigureCanvaas</code>, <code>Renderer</code>, <code>Event</code></li>
+<li>backend layer - <code>FigureCanvaas</code>, <code>Renderer</code>,
+<code>Event</code></li>
 </ul>
 <div id="ipython-magic" class="section level3">
 <h3>ipython magic</h3>
@@ -718,82 +730,93 @@ $(document).ready(function () {
 </div>
 <div id="style" class="section level2">
 <h2>style</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>mpl.style.use([<span class="st">&#39;ggplot&#39;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>mpl.style.use([<span class="st">&#39;ggplot&#39;</span>])</span></code></pre></div>
 <hr />
 </div>
 <div id="pyplot" class="section level2">
 <h2>pyplot</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div>
 <div id="scatter" class="section level3">
 <h3>scatter</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>plt.plot(<span class="dv">1</span>, <span class="dv">1</span>, <span class="st">&#39;o&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>plt.plot(<span class="dv">1</span>, <span class="dv">1</span>, <span class="st">&#39;o&#39;</span>)</span></code></pre></div>
 </div>
 <div id="hist" class="section level3">
 <h3>hist</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>plt.hist(x)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>plt.title(<span class="vs">r&#39;Normal distribution with $\mu=0, \sigma=1$&#39;</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>plt.xlabel(<span class="st">&#39;x-axis-label&#39;</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>plt.ylabel(<span class="st">&#39;y-axis-label&#39;</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>plt.text(x, y, <span class="st">&#39;label&#39;</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>plt.savefig(<span class="st">&#39;a_histogram.png)</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a><span class="st">plt.show()</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>plt.hist(x)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>plt.title(<span class="vs">r&#39;Normal distribution with $\mu=0, \sigma=1$&#39;</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;x-axis-label&#39;</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;y-axis-label&#39;</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>plt.text(x, y, <span class="st">&#39;label&#39;</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>plt.savefig(<span class="st">&#39;a_histogram.png)</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="er">plt.show</span>()</span></code></pre></div>
 </div>
 <div id="scatter-1" class="section level3">
 <h3>scatter</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>plt.scatter(x, y)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>plt.scatter(x, y)</span></code></pre></div>
 </div>
 <div id="pcolor" class="section level3">
 <h3>pcolor</h3>
 <p>Heat map</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>plt.pcolor(df_pivot, cmap<span class="op">=</span><span class="st">&#39;Rdbu&#39;</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>plt.colourbar()</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>plt.show()</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>plt.pcolor(df_pivot, cmap<span class="op">=</span><span class="st">&#39;Rdbu&#39;</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>plt.colourbar()</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>plt.show()</span></code></pre></div>
 </div>
 <div id="annotate" class="section level3">
 <h3>annotate</h3>
 <ul>
-<li><a href="https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.annotate" class="uri">https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.annotate</a></li>
+<li><a
+href="https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.annotate"
+class="uri">https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.annotate</a></li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="co"># Annotate arrow</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>plt.annotate(<span class="st">&#39;label&#39;</span>,                     </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>             xy<span class="op">=</span>(<span class="dv">32</span>, <span class="dv">70</span>),             <span class="co"># place head of the arrow at point (year 2012 , pop 70)</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>             xytext<span class="op">=</span>(<span class="dv">28</span>, <span class="dv">20</span>),         <span class="co"># place base of the arrow at point (year 2008 , pop 20)</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>             xycoords<span class="op">=</span><span class="st">&#39;data&#39;</span>,         <span class="co"># will use the coordinate system of the object being annotated </span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a>             arrowprops<span class="op">=</span><span class="bu">dict</span>(arrowstyle<span class="op">=</span><span class="st">&#39;-&gt;&#39;</span>, connectionstyle<span class="op">=</span><span class="st">&#39;arc3&#39;</span>, color<span class="op">=</span><span class="st">&#39;blue&#39;</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a>            )</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true"></a><span class="co"># Annotate Text</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true"></a>plt.annotate(<span class="st">&#39;2008 - 2011 Financial Crisis&#39;</span>, <span class="co"># text to display</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true"></a>             xy<span class="op">=</span>(<span class="dv">28</span>, <span class="dv">30</span>),                    <span class="co"># start the text at at point (year 2008 , pop 30)</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true"></a>             rotation<span class="op">=</span><span class="fl">72.5</span>,                  <span class="co"># based on trial and error to match the arrow</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true"></a>             va<span class="op">=</span><span class="st">&#39;bottom&#39;</span>,                    <span class="co"># want the text to be vertically &#39;bottom&#39; aligned</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true"></a>             ha<span class="op">=</span><span class="st">&#39;left&#39;</span>,                      <span class="co"># want the text to be horizontally &#39;left&#39; algned.</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true"></a>            )</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># Annotate arrow</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>plt.annotate(<span class="st">&#39;label&#39;</span>,                     </span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>             xy<span class="op">=</span>(<span class="dv">32</span>, <span class="dv">70</span>),             <span class="co"># place head of the arrow at point (year 2012 , pop 70)</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>             xytext<span class="op">=</span>(<span class="dv">28</span>, <span class="dv">20</span>),         <span class="co"># place base of the arrow at point (year 2008 , pop 20)</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>             xycoords<span class="op">=</span><span class="st">&#39;data&#39;</span>,         <span class="co"># will use the coordinate system of the object being annotated </span></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>             arrowprops<span class="op">=</span><span class="bu">dict</span>(arrowstyle<span class="op">=</span><span class="st">&#39;-&gt;&#39;</span>, connectionstyle<span class="op">=</span><span class="st">&#39;arc3&#39;</span>, color<span class="op">=</span><span class="st">&#39;blue&#39;</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>            )</span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co"># Annotate Text</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>plt.annotate(<span class="st">&#39;2008 - 2011 Financial Crisis&#39;</span>, <span class="co"># text to display</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>             xy<span class="op">=</span>(<span class="dv">28</span>, <span class="dv">30</span>),                    <span class="co"># start the text at at point (year 2008 , pop 30)</span></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a>             rotation<span class="op">=</span><span class="fl">72.5</span>,                  <span class="co"># based on trial and error to match the arrow</span></span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a>             va<span class="op">=</span><span class="st">&#39;bottom&#39;</span>,                    <span class="co"># want the text to be vertically &#39;bottom&#39; aligned</span></span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a>             ha<span class="op">=</span><span class="st">&#39;left&#39;</span>,                      <span class="co"># want the text to be horizontally &#39;left&#39; algned.</span></span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a>            )</span></code></pre></div>
 <p>line of best fit</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="co"># plot line of best fit</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>plt.plot(x, fit[<span class="dv">0</span>] <span class="op">*</span> x <span class="op">+</span> fit[<span class="dv">1</span>], color<span class="op">=</span><span class="st">&#39;red&#39;</span>) <span class="co"># recall that x is the Years</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>plt.annotate(<span class="st">&#39;y=</span><span class="sc">{0:.0f}</span><span class="st"> x + </span><span class="sc">{1:.0f}</span><span class="st">&#39;</span>.<span class="bu">format</span>(fit[<span class="dv">0</span>], fit[<span class="dv">1</span>]), xy<span class="op">=</span>(<span class="dv">2000</span>, <span class="dv">150000</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># plot line of best fit</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>plt.plot(x, fit[<span class="dv">0</span>] <span class="op">*</span> x <span class="op">+</span> fit[<span class="dv">1</span>], color<span class="op">=</span><span class="st">&#39;red&#39;</span>) <span class="co"># recall that x is the Years</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>plt.annotate(<span class="st">&#39;y=</span><span class="sc">{0:.0f}</span><span class="st"> x + </span><span class="sc">{1:.0f}</span><span class="st">&#39;</span>.<span class="bu">format</span>(fit[<span class="dv">0</span>], fit[<span class="dv">1</span>]), xy<span class="op">=</span>(<span class="dv">2000</span>, <span class="dv">150000</span>))</span></code></pre></div>
 </div>
 <div id="subplots" class="section level3">
 <h3>subplots</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>fig <span class="op">=</span> plt.figure() <span class="co"># create figure</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>ax0 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>) <span class="co"># add subplot 1 (1 row, 2 columns, first plot)</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>) <span class="co"># add subplot 2 (1 row, 2 columns, second plot). See tip below**</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a><span class="co"># Subplot 1: Box plot</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a>df_CI.plot(kind<span class="op">=</span><span class="st">&#39;box&#39;</span>, color<span class="op">=</span><span class="st">&#39;blue&#39;</span>, vert<span class="op">=</span><span class="va">False</span>, figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">6</span>), ax<span class="op">=</span>ax0) <span class="co"># add to subplot 1</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a>ax0.set_title(<span class="st">&#39;Box Plots of Immigrants from China and India (1980 - 2013)&#39;</span>)</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true"></a>ax0.set_xlabel(<span class="st">&#39;Number of Immigrants&#39;</span>)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true"></a>ax0.set_ylabel(<span class="st">&#39;Countries&#39;</span>)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true"></a></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true"></a><span class="co"># Subplot 2: Line plot</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true"></a>df_CI.plot(kind<span class="op">=</span><span class="st">&#39;line&#39;</span>, figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">6</span>), ax<span class="op">=</span>ax1) <span class="co"># add to subplot 2</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true"></a>ax1.set_title (<span class="st">&#39;Line Plots of Immigrants from China and India (1980 - 2013)&#39;</span>)</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true"></a>ax1.set_ylabel(<span class="st">&#39;Number of Immigrants&#39;</span>)</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true"></a>ax1.set_xlabel(<span class="st">&#39;Years&#39;</span>)</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true"></a></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true"></a>plt.show()</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>fig <span class="op">=</span> plt.figure() <span class="co"># create figure</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>ax0 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>) <span class="co"># add subplot 1 (1 row, 2 columns, first plot)</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>) <span class="co"># add subplot 2 (1 row, 2 columns, second plot). See tip below**</span></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="co"># Subplot 1: Box plot</span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>df_CI.plot(kind<span class="op">=</span><span class="st">&#39;box&#39;</span>, color<span class="op">=</span><span class="st">&#39;blue&#39;</span>, vert<span class="op">=</span><span class="va">False</span>, figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">6</span>), ax<span class="op">=</span>ax0) <span class="co"># add to subplot 1</span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>ax0.set_title(<span class="st">&#39;Box Plots of Immigrants from China and India (1980 - 2013)&#39;</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>ax0.set_xlabel(<span class="st">&#39;Number of Immigrants&#39;</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a>ax0.set_ylabel(<span class="st">&#39;Countries&#39;</span>)</span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="co"># Subplot 2: Line plot</span></span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a>df_CI.plot(kind<span class="op">=</span><span class="st">&#39;line&#39;</span>, figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">6</span>), ax<span class="op">=</span>ax1) <span class="co"># add to subplot 2</span></span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a>ax1.set_title (<span class="st">&#39;Line Plots of Immigrants from China and India (1980 - 2013)&#39;</span>)</span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a>ax1.set_ylabel(<span class="st">&#39;Number of Immigrants&#39;</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a>ax1.set_xlabel(<span class="st">&#39;Years&#39;</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a>plt.show()</span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -818,14 +841,18 @@ $(document).ready(function () {
 </li>
 <li><code>Tick</code><br />
 </li>
-<li><code>Axes</code> - the most important composite artist because it is where most of the plotting methods are defined - e.g. for creating and manipulating the ticks, axis lines, grid and plot background<br />
+<li><code>Axes</code> - the most important composite artist because it
+is where most of the plotting methods are defined - e.g. for creating
+and manipulating the ticks, axis lines, grid and plot background<br />
 </li>
-<li><code>Figure</code> - top-level object that contains and manages all of the elements in a given graphic</li>
+<li><code>Figure</code> - top-level object that contains and manages all
+of the elements in a given graphic</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="im">from</span> matplotlib.figure <span class="im">import</span> Figure</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>fig <span class="op">=</span> Figure()</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>) <span class="co"># create an axes artist</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a><span class="co"># 111 means 1 row, 1 col, cell 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="im">from</span> matplotlib.figure <span class="im">import</span> Figure</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>fig <span class="op">=</span> Figure()</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>) <span class="co"># create an axes artist</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># 111 means 1 row, 1 col, cell 1</span></span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -834,13 +861,15 @@ $(document).ready(function () {
 <div id="figurecanvas" class="section level3">
 <h3>FigureCanvas</h3>
 <p>Encompasses the area onto which the figure is drawn</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="im">from</span> matplotlib.backend_bases <span class="im">import</span> FigureCanvasAgg <span class="im">as</span> FigureCanvas</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>canvas <span class="op">=</span> FigureCanvas(fig) <span class="co"># see Figure</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="im">from</span> matplotlib.backend_bases <span class="im">import</span> FigureCanvasAgg <span class="im">as</span> FigureCanvas</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>canvas <span class="op">=</span> FigureCanvas(fig) <span class="co"># see Figure</span></span></code></pre></div>
 <p>Agg = anti-green geometry - a high performance library</p>
 </div>
 <div id="renderer" class="section level3">
 <h3>Renderer</h3>
-<p>An instance of the Renderer class that knows how to draw on the FigureCanvas</p>
+<p>An instance of the Renderer class that knows how to draw on the
+FigureCanvas</p>
 </div>
 <div id="event" class="section level3">
 <h3>Event</h3>
@@ -852,201 +881,206 @@ $(document).ready(function () {
 <h2>??</h2>
 <div id="axis-labels" class="section level3">
 <h3>axis labels</h3>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a><span class="co"># label names</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a>row_labels <span class="op">=</span> <span class="bu">list</span>(df.columns)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true"></a>col_labels <span class="op">=</span> <span class="bu">list</span>(df.index)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true"></a><span class="co"># move ticks and labels to the center</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true"></a>ax.set_xticks(np.arange(df.shape[<span class="dv">1</span>]) <span class="op">+</span> <span class="fl">0.5</span>, minor<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true"></a>ax.set_yticks(np.arange(df.shape[<span class="dv">0</span>]) <span class="op">+</span> <span class="fl">0.5</span>, minor<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true"></a></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true"></a><span class="co"># insert labels</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true"></a>ax.set_xticklabels(row_labels, minor<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true"></a>ax.set_yticklabels(col_labels, minor<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true"></a></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true"></a><span class="co"># rotate labels</span></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="co"># label names</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>row_labels <span class="op">=</span> <span class="bu">list</span>(df.columns)</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>col_labels <span class="op">=</span> <span class="bu">list</span>(df.index)</span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a><span class="co"># move ticks and labels to the center</span></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>ax.set_xticks(np.arange(df.shape[<span class="dv">1</span>]) <span class="op">+</span> <span class="fl">0.5</span>, minor<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a>ax.set_yticks(np.arange(df.shape[<span class="dv">0</span>]) <span class="op">+</span> <span class="fl">0.5</span>, minor<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a><span class="co"># insert labels</span></span>
+<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a>ax.set_xticklabels(row_labels, minor<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a>ax.set_yticklabels(col_labels, minor<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a><span class="co"># rotate labels</span></span>
+<span id="cb16-16"><a href="#cb16-16" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span></code></pre></div>
 </div>
 <div id="figure-size" class="section level3">
 <h3>figure size</h3>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>width <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a>height <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a>plt.figure(figsize<span class="op">=</span>(width, height))</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>width <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>height <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(width, height))</span></code></pre></div>
 <hr />
 </div>
 </div>
 <div id="plot" class="section level2">
 <h2>plot</h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="kw">def</span> PlotPolly(model, independent_variable, dependent_variabble, Name):</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a>    x_new <span class="op">=</span> np.linspace(<span class="dv">15</span>, <span class="dv">55</span>, <span class="dv">100</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a>    y_new <span class="op">=</span> model(x_new)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true"></a>    plt.plot(independent_variable, dependent_variabble, <span class="st">&#39;.&#39;</span>, x_new, y_new, <span class="st">&#39;-&#39;</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true"></a>    plt.title(<span class="st">&#39;Polynomial Fit with Matplotlib for Price ~ Length&#39;</span>)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true"></a>    ax <span class="op">=</span> plt.gca()</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true"></a>    ax.set_facecolor((<span class="fl">0.898</span>, <span class="fl">0.898</span>, <span class="fl">0.898</span>))</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true"></a>    fig <span class="op">=</span> plt.gcf()</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true"></a>    plt.xlabel(Name)</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true"></a>    plt.ylabel(<span class="st">&#39;Price of Cars&#39;</span>)</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true"></a></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true"></a>    plt.show()</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true"></a>    plt.close()</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="kw">def</span> PlotPolly(model, independent_variable, dependent_variabble, Name):</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>    x_new <span class="op">=</span> np.linspace(<span class="dv">15</span>, <span class="dv">55</span>, <span class="dv">100</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>    y_new <span class="op">=</span> model(x_new)</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>    plt.plot(independent_variable, dependent_variabble, <span class="st">&#39;.&#39;</span>, x_new, y_new, <span class="st">&#39;-&#39;</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>    plt.title(<span class="st">&#39;Polynomial Fit with Matplotlib for Price ~ Length&#39;</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a>    ax <span class="op">=</span> plt.gca()</span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a>    ax.set_facecolor((<span class="fl">0.898</span>, <span class="fl">0.898</span>, <span class="fl">0.898</span>))</span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a>    fig <span class="op">=</span> plt.gcf()</span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a>    plt.xlabel(Name)</span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a>    plt.ylabel(<span class="st">&#39;Price of Cars&#39;</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a>    plt.show()</span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a>    plt.close()</span></code></pre></div>
 <hr />
 </div>
 <div id="appendix-colors" class="section level2">
 <h2>appendix: colors</h2>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a><span class="cf">for</span> name, <span class="bu">hex</span> <span class="kw">in</span> mpl.colors.cnames.items():</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a>    <span class="bu">print</span>(name, <span class="bu">hex</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a><span class="co">#  (&#39;indigo&#39;, &#39;#4B0082&#39;)</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a><span class="co">#  (&#39;gold&#39;, &#39;#FFD700&#39;)</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true"></a><span class="co">#  (&#39;hotpink&#39;, &#39;#FF69B4&#39;)</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true"></a><span class="co">#  (&#39;firebrick&#39;, &#39;#B22222&#39;)</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true"></a><span class="co">#  (&#39;indianred&#39;, &#39;#CD5C5C&#39;)</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true"></a><span class="co">#  (&#39;yellow&#39;, &#39;#FFFF00&#39;)</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true"></a><span class="co">#  (&#39;mistyrose&#39;, &#39;#FFE4E1&#39;)</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true"></a><span class="co">#  (&#39;darkolivegreen&#39;, &#39;#556B2F&#39;)</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true"></a><span class="co">#  (&#39;olive&#39;, &#39;#808000&#39;)</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true"></a><span class="co">#  (&#39;darkseagreen&#39;, &#39;#8FBC8F&#39;)</span></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true"></a><span class="co">#  (&#39;pink&#39;, &#39;#FFC0CB&#39;)</span></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true"></a><span class="co">#  (&#39;tomato&#39;, &#39;#FF6347&#39;)</span></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true"></a><span class="co">#  (&#39;lightcoral&#39;, &#39;#F08080&#39;)</span></span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true"></a><span class="co">#  (&#39;orangered&#39;, &#39;#FF4500&#39;)</span></span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true"></a><span class="co">#  (&#39;navajowhite&#39;, &#39;#FFDEAD&#39;)</span></span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true"></a><span class="co">#  (&#39;lime&#39;, &#39;#00FF00&#39;)</span></span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true"></a><span class="co">#  (&#39;palegreen&#39;, &#39;#98FB98&#39;)</span></span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true"></a><span class="co">#  (&#39;darkslategrey&#39;, &#39;#2F4F4F&#39;)</span></span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true"></a><span class="co">#  (&#39;greenyellow&#39;, &#39;#ADFF2F&#39;)</span></span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true"></a><span class="co">#  (&#39;burlywood&#39;, &#39;#DEB887&#39;)</span></span>
-<span id="cb19-24"><a href="#cb19-24" aria-hidden="true"></a><span class="co">#  (&#39;seashell&#39;, &#39;#FFF5EE&#39;)</span></span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true"></a><span class="co">#  (&#39;mediumspringgreen&#39;, &#39;#00FA9A&#39;)</span></span>
-<span id="cb19-26"><a href="#cb19-26" aria-hidden="true"></a><span class="co">#  (&#39;fuchsia&#39;, &#39;#FF00FF&#39;)</span></span>
-<span id="cb19-27"><a href="#cb19-27" aria-hidden="true"></a><span class="co">#  (&#39;papayawhip&#39;, &#39;#FFEFD5&#39;)</span></span>
-<span id="cb19-28"><a href="#cb19-28" aria-hidden="true"></a><span class="co">#  (&#39;blanchedalmond&#39;, &#39;#FFEBCD&#39;)</span></span>
-<span id="cb19-29"><a href="#cb19-29" aria-hidden="true"></a><span class="co">#  (&#39;chartreuse&#39;, &#39;#7FFF00&#39;)</span></span>
-<span id="cb19-30"><a href="#cb19-30" aria-hidden="true"></a><span class="co">#  (&#39;dimgray&#39;, &#39;#696969&#39;)</span></span>
-<span id="cb19-31"><a href="#cb19-31" aria-hidden="true"></a><span class="co">#  (&#39;black&#39;, &#39;#000000&#39;)</span></span>
-<span id="cb19-32"><a href="#cb19-32" aria-hidden="true"></a><span class="co">#  (&#39;peachpuff&#39;, &#39;#FFDAB9&#39;)</span></span>
-<span id="cb19-33"><a href="#cb19-33" aria-hidden="true"></a><span class="co">#  (&#39;springgreen&#39;, &#39;#00FF7F&#39;)</span></span>
-<span id="cb19-34"><a href="#cb19-34" aria-hidden="true"></a><span class="co">#  (&#39;aquamarine&#39;, &#39;#7FFFD4&#39;)</span></span>
-<span id="cb19-35"><a href="#cb19-35" aria-hidden="true"></a><span class="co">#  (&#39;white&#39;, &#39;#FFFFFF&#39;)</span></span>
-<span id="cb19-36"><a href="#cb19-36" aria-hidden="true"></a><span class="co">#  (&#39;orange&#39;, &#39;#FFA500&#39;)</span></span>
-<span id="cb19-37"><a href="#cb19-37" aria-hidden="true"></a><span class="co">#  (&#39;lightsalmon&#39;, &#39;#FFA07A&#39;)</span></span>
-<span id="cb19-38"><a href="#cb19-38" aria-hidden="true"></a><span class="co">#  (&#39;darkslategray&#39;, &#39;#2F4F4F&#39;)</span></span>
-<span id="cb19-39"><a href="#cb19-39" aria-hidden="true"></a><span class="co">#  (&#39;brown&#39;, &#39;#A52A2A&#39;)</span></span>
-<span id="cb19-40"><a href="#cb19-40" aria-hidden="true"></a><span class="co">#  (&#39;ivory&#39;, &#39;#FFFFF0&#39;)</span></span>
-<span id="cb19-41"><a href="#cb19-41" aria-hidden="true"></a><span class="co">#  (&#39;dodgerblue&#39;, &#39;#1E90FF&#39;)</span></span>
-<span id="cb19-42"><a href="#cb19-42" aria-hidden="true"></a><span class="co">#  (&#39;peru&#39;, &#39;#CD853F&#39;)</span></span>
-<span id="cb19-43"><a href="#cb19-43" aria-hidden="true"></a><span class="co">#  (&#39;darkgrey&#39;, &#39;#A9A9A9&#39;)</span></span>
-<span id="cb19-44"><a href="#cb19-44" aria-hidden="true"></a><span class="co">#  (&#39;lawngreen&#39;, &#39;#7CFC00&#39;)</span></span>
-<span id="cb19-45"><a href="#cb19-45" aria-hidden="true"></a><span class="co">#  (&#39;chocolate&#39;, &#39;#D2691E&#39;)</span></span>
-<span id="cb19-46"><a href="#cb19-46" aria-hidden="true"></a><span class="co">#  (&#39;crimson&#39;, &#39;#DC143C&#39;)</span></span>
-<span id="cb19-47"><a href="#cb19-47" aria-hidden="true"></a><span class="co">#  (&#39;forestgreen&#39;, &#39;#228B22&#39;)</span></span>
-<span id="cb19-48"><a href="#cb19-48" aria-hidden="true"></a><span class="co">#  (&#39;slateblue&#39;, &#39;#6A5ACD&#39;)</span></span>
-<span id="cb19-49"><a href="#cb19-49" aria-hidden="true"></a><span class="co">#  (&#39;lightseagreen&#39;, &#39;#20B2AA&#39;)</span></span>
-<span id="cb19-50"><a href="#cb19-50" aria-hidden="true"></a><span class="co">#  (&#39;cyan&#39;, &#39;#00FFFF&#39;)</span></span>
-<span id="cb19-51"><a href="#cb19-51" aria-hidden="true"></a><span class="co">#  (&#39;mintcream&#39;, &#39;#F5FFFA&#39;)</span></span>
-<span id="cb19-52"><a href="#cb19-52" aria-hidden="true"></a><span class="co">#  (&#39;silver&#39;, &#39;#C0C0C0&#39;)</span></span>
-<span id="cb19-53"><a href="#cb19-53" aria-hidden="true"></a><span class="co">#  (&#39;antiquewhite&#39;, &#39;#FAEBD7&#39;)</span></span>
-<span id="cb19-54"><a href="#cb19-54" aria-hidden="true"></a><span class="co">#  (&#39;mediumorchid&#39;, &#39;#BA55D3&#39;)</span></span>
-<span id="cb19-55"><a href="#cb19-55" aria-hidden="true"></a><span class="co">#  (&#39;skyblue&#39;, &#39;#87CEEB&#39;)</span></span>
-<span id="cb19-56"><a href="#cb19-56" aria-hidden="true"></a><span class="co">#  (&#39;gray&#39;, &#39;#808080&#39;)</span></span>
-<span id="cb19-57"><a href="#cb19-57" aria-hidden="true"></a><span class="co">#  (&#39;darkturquoise&#39;, &#39;#00CED1&#39;)</span></span>
-<span id="cb19-58"><a href="#cb19-58" aria-hidden="true"></a><span class="co">#  (&#39;goldenrod&#39;, &#39;#DAA520&#39;)</span></span>
-<span id="cb19-59"><a href="#cb19-59" aria-hidden="true"></a><span class="co">#  (&#39;darkgreen&#39;, &#39;#006400&#39;)</span></span>
-<span id="cb19-60"><a href="#cb19-60" aria-hidden="true"></a><span class="co">#  (&#39;floralwhite&#39;, &#39;#FFFAF0&#39;)</span></span>
-<span id="cb19-61"><a href="#cb19-61" aria-hidden="true"></a><span class="co">#  (&#39;darkviolet&#39;, &#39;#9400D3&#39;)</span></span>
-<span id="cb19-62"><a href="#cb19-62" aria-hidden="true"></a><span class="co">#  (&#39;darkgray&#39;, &#39;#A9A9A9&#39;)</span></span>
-<span id="cb19-63"><a href="#cb19-63" aria-hidden="true"></a><span class="co">#  (&#39;moccasin&#39;, &#39;#FFE4B5&#39;)</span></span>
-<span id="cb19-64"><a href="#cb19-64" aria-hidden="true"></a><span class="co">#  (&#39;saddlebrown&#39;, &#39;#8B4513&#39;)</span></span>
-<span id="cb19-65"><a href="#cb19-65" aria-hidden="true"></a><span class="co">#  (&#39;grey&#39;, &#39;#808080&#39;)</span></span>
-<span id="cb19-66"><a href="#cb19-66" aria-hidden="true"></a><span class="co">#  (&#39;darkslateblue&#39;, &#39;#483D8B&#39;)</span></span>
-<span id="cb19-67"><a href="#cb19-67" aria-hidden="true"></a><span class="co">#  (&#39;lightskyblue&#39;, &#39;#87CEFA&#39;)</span></span>
-<span id="cb19-68"><a href="#cb19-68" aria-hidden="true"></a><span class="co">#  (&#39;lightpink&#39;, &#39;#FFB6C1&#39;)</span></span>
-<span id="cb19-69"><a href="#cb19-69" aria-hidden="true"></a><span class="co">#  (&#39;mediumvioletred&#39;, &#39;#C71585&#39;)</span></span>
-<span id="cb19-70"><a href="#cb19-70" aria-hidden="true"></a><span class="co">#  (&#39;slategrey&#39;, &#39;#708090&#39;)</span></span>
-<span id="cb19-71"><a href="#cb19-71" aria-hidden="true"></a><span class="co">#  (&#39;red&#39;, &#39;#FF0000&#39;)</span></span>
-<span id="cb19-72"><a href="#cb19-72" aria-hidden="true"></a><span class="co">#  (&#39;deeppink&#39;, &#39;#FF1493&#39;)</span></span>
-<span id="cb19-73"><a href="#cb19-73" aria-hidden="true"></a><span class="co">#  (&#39;limegreen&#39;, &#39;#32CD32&#39;)</span></span>
-<span id="cb19-74"><a href="#cb19-74" aria-hidden="true"></a><span class="co">#  (&#39;darkmagenta&#39;, &#39;#8B008B&#39;)</span></span>
-<span id="cb19-75"><a href="#cb19-75" aria-hidden="true"></a><span class="co">#  (&#39;palegoldenrod&#39;, &#39;#EEE8AA&#39;)</span></span>
-<span id="cb19-76"><a href="#cb19-76" aria-hidden="true"></a><span class="co">#  (&#39;plum&#39;, &#39;#DDA0DD&#39;)</span></span>
-<span id="cb19-77"><a href="#cb19-77" aria-hidden="true"></a><span class="co">#  (&#39;turquoise&#39;, &#39;#40E0D0&#39;)</span></span>
-<span id="cb19-78"><a href="#cb19-78" aria-hidden="true"></a><span class="co">#  (&#39;lightgrey&#39;, &#39;#D3D3D3&#39;)</span></span>
-<span id="cb19-79"><a href="#cb19-79" aria-hidden="true"></a><span class="co">#  (&#39;lightgoldenrodyellow&#39;, &#39;#FAFAD2&#39;)</span></span>
-<span id="cb19-80"><a href="#cb19-80" aria-hidden="true"></a><span class="co">#  (&#39;darkgoldenrod&#39;, &#39;#B8860B&#39;)</span></span>
-<span id="cb19-81"><a href="#cb19-81" aria-hidden="true"></a><span class="co">#  (&#39;lavender&#39;, &#39;#E6E6FA&#39;)</span></span>
-<span id="cb19-82"><a href="#cb19-82" aria-hidden="true"></a><span class="co">#  (&#39;maroon&#39;, &#39;#800000&#39;)</span></span>
-<span id="cb19-83"><a href="#cb19-83" aria-hidden="true"></a><span class="co">#  (&#39;yellowgreen&#39;, &#39;#9ACD32&#39;)</span></span>
-<span id="cb19-84"><a href="#cb19-84" aria-hidden="true"></a><span class="co">#  (&#39;sandybrown&#39;, &#39;#FAA460&#39;)</span></span>
-<span id="cb19-85"><a href="#cb19-85" aria-hidden="true"></a><span class="co">#  (&#39;thistle&#39;, &#39;#D8BFD8&#39;)</span></span>
-<span id="cb19-86"><a href="#cb19-86" aria-hidden="true"></a><span class="co">#  (&#39;violet&#39;, &#39;#EE82EE&#39;)</span></span>
-<span id="cb19-87"><a href="#cb19-87" aria-hidden="true"></a><span class="co">#  (&#39;navy&#39;, &#39;#000080&#39;)</span></span>
-<span id="cb19-88"><a href="#cb19-88" aria-hidden="true"></a><span class="co">#  (&#39;magenta&#39;, &#39;#FF00FF&#39;)</span></span>
-<span id="cb19-89"><a href="#cb19-89" aria-hidden="true"></a><span class="co">#  (&#39;dimgrey&#39;, &#39;#696969&#39;)</span></span>
-<span id="cb19-90"><a href="#cb19-90" aria-hidden="true"></a><span class="co">#  (&#39;tan&#39;, &#39;#D2B48C&#39;)</span></span>
-<span id="cb19-91"><a href="#cb19-91" aria-hidden="true"></a><span class="co">#  (&#39;rosybrown&#39;, &#39;#BC8F8F&#39;)</span></span>
-<span id="cb19-92"><a href="#cb19-92" aria-hidden="true"></a><span class="co">#  (&#39;olivedrab&#39;, &#39;#6B8E23&#39;)</span></span>
-<span id="cb19-93"><a href="#cb19-93" aria-hidden="true"></a><span class="co">#  (&#39;blue&#39;, &#39;#0000FF&#39;)</span></span>
-<span id="cb19-94"><a href="#cb19-94" aria-hidden="true"></a><span class="co">#  (&#39;lightblue&#39;, &#39;#ADD8E6&#39;)</span></span>
-<span id="cb19-95"><a href="#cb19-95" aria-hidden="true"></a><span class="co">#  (&#39;ghostwhite&#39;, &#39;#F8F8FF&#39;)</span></span>
-<span id="cb19-96"><a href="#cb19-96" aria-hidden="true"></a><span class="co">#  (&#39;honeydew&#39;, &#39;#F0FFF0&#39;)</span></span>
-<span id="cb19-97"><a href="#cb19-97" aria-hidden="true"></a><span class="co">#  (&#39;cornflowerblue&#39;, &#39;#6495ED&#39;)</span></span>
-<span id="cb19-98"><a href="#cb19-98" aria-hidden="true"></a><span class="co">#  (&#39;linen&#39;, &#39;#FAF0E6&#39;)</span></span>
-<span id="cb19-99"><a href="#cb19-99" aria-hidden="true"></a><span class="co">#  (&#39;darkblue&#39;, &#39;#00008B&#39;)</span></span>
-<span id="cb19-100"><a href="#cb19-100" aria-hidden="true"></a><span class="co">#  (&#39;powderblue&#39;, &#39;#B0E0E6&#39;)</span></span>
-<span id="cb19-101"><a href="#cb19-101" aria-hidden="true"></a><span class="co">#  (&#39;seagreen&#39;, &#39;#2E8B57&#39;)</span></span>
-<span id="cb19-102"><a href="#cb19-102" aria-hidden="true"></a><span class="co">#  (&#39;darkkhaki&#39;, &#39;#BDB76B&#39;)</span></span>
-<span id="cb19-103"><a href="#cb19-103" aria-hidden="true"></a><span class="co">#  (&#39;snow&#39;, &#39;#FFFAFA&#39;)</span></span>
-<span id="cb19-104"><a href="#cb19-104" aria-hidden="true"></a><span class="co">#  (&#39;sienna&#39;, &#39;#A0522D&#39;)</span></span>
-<span id="cb19-105"><a href="#cb19-105" aria-hidden="true"></a><span class="co">#  (&#39;mediumblue&#39;, &#39;#0000CD&#39;)</span></span>
-<span id="cb19-106"><a href="#cb19-106" aria-hidden="true"></a><span class="co">#  (&#39;royalblue&#39;, &#39;#4169E1&#39;)</span></span>
-<span id="cb19-107"><a href="#cb19-107" aria-hidden="true"></a><span class="co">#  (&#39;lightcyan&#39;, &#39;#E0FFFF&#39;)</span></span>
-<span id="cb19-108"><a href="#cb19-108" aria-hidden="true"></a><span class="co">#  (&#39;green&#39;, &#39;#008000&#39;)</span></span>
-<span id="cb19-109"><a href="#cb19-109" aria-hidden="true"></a><span class="co">#  (&#39;mediumpurple&#39;, &#39;#9370DB&#39;)</span></span>
-<span id="cb19-110"><a href="#cb19-110" aria-hidden="true"></a><span class="co">#  (&#39;midnightblue&#39;, &#39;#191970&#39;)</span></span>
-<span id="cb19-111"><a href="#cb19-111" aria-hidden="true"></a><span class="co">#  (&#39;cornsilk&#39;, &#39;#FFF8DC&#39;)</span></span>
-<span id="cb19-112"><a href="#cb19-112" aria-hidden="true"></a><span class="co">#  (&#39;paleturquoise&#39;, &#39;#AFEEEE&#39;)</span></span>
-<span id="cb19-113"><a href="#cb19-113" aria-hidden="true"></a><span class="co">#  (&#39;bisque&#39;, &#39;#FFE4C4&#39;)</span></span>
-<span id="cb19-114"><a href="#cb19-114" aria-hidden="true"></a><span class="co">#  (&#39;slategray&#39;, &#39;#708090&#39;)</span></span>
-<span id="cb19-115"><a href="#cb19-115" aria-hidden="true"></a><span class="co">#  (&#39;darkcyan&#39;, &#39;#008B8B&#39;)</span></span>
-<span id="cb19-116"><a href="#cb19-116" aria-hidden="true"></a><span class="co">#  (&#39;khaki&#39;, &#39;#F0E68C&#39;)</span></span>
-<span id="cb19-117"><a href="#cb19-117" aria-hidden="true"></a><span class="co">#  (&#39;wheat&#39;, &#39;#F5DEB3&#39;)</span></span>
-<span id="cb19-118"><a href="#cb19-118" aria-hidden="true"></a><span class="co">#  (&#39;teal&#39;, &#39;#008080&#39;)</span></span>
-<span id="cb19-119"><a href="#cb19-119" aria-hidden="true"></a><span class="co">#  (&#39;darkorchid&#39;, &#39;#9932CC&#39;)</span></span>
-<span id="cb19-120"><a href="#cb19-120" aria-hidden="true"></a><span class="co">#  (&#39;deepskyblue&#39;, &#39;#00BFFF&#39;)</span></span>
-<span id="cb19-121"><a href="#cb19-121" aria-hidden="true"></a><span class="co">#  (&#39;salmon&#39;, &#39;#FA8072&#39;)</span></span>
-<span id="cb19-122"><a href="#cb19-122" aria-hidden="true"></a><span class="co">#  (&#39;darkred&#39;, &#39;#8B0000&#39;)</span></span>
-<span id="cb19-123"><a href="#cb19-123" aria-hidden="true"></a><span class="co">#  (&#39;steelblue&#39;, &#39;#4682B4&#39;)</span></span>
-<span id="cb19-124"><a href="#cb19-124" aria-hidden="true"></a><span class="co">#  (&#39;palevioletred&#39;, &#39;#DB7093&#39;)</span></span>
-<span id="cb19-125"><a href="#cb19-125" aria-hidden="true"></a><span class="co">#  (&#39;lightslategray&#39;, &#39;#778899&#39;)</span></span>
-<span id="cb19-126"><a href="#cb19-126" aria-hidden="true"></a><span class="co">#  (&#39;aliceblue&#39;, &#39;#F0F8FF&#39;)</span></span>
-<span id="cb19-127"><a href="#cb19-127" aria-hidden="true"></a><span class="co">#  (&#39;lightslategrey&#39;, &#39;#778899&#39;)</span></span>
-<span id="cb19-128"><a href="#cb19-128" aria-hidden="true"></a><span class="co">#  (&#39;lightgreen&#39;, &#39;#90EE90&#39;)</span></span>
-<span id="cb19-129"><a href="#cb19-129" aria-hidden="true"></a><span class="co">#  (&#39;orchid&#39;, &#39;#DA70D6&#39;)</span></span>
-<span id="cb19-130"><a href="#cb19-130" aria-hidden="true"></a><span class="co">#  (&#39;gainsboro&#39;, &#39;#DCDCDC&#39;)</span></span>
-<span id="cb19-131"><a href="#cb19-131" aria-hidden="true"></a><span class="co">#  (&#39;mediumseagreen&#39;, &#39;#3CB371&#39;)</span></span>
-<span id="cb19-132"><a href="#cb19-132" aria-hidden="true"></a><span class="co">#  (&#39;lightgray&#39;, &#39;#D3D3D3&#39;)</span></span>
-<span id="cb19-133"><a href="#cb19-133" aria-hidden="true"></a><span class="co">#  (&#39;mediumturquoise&#39;, &#39;#48D1CC&#39;)</span></span>
-<span id="cb19-134"><a href="#cb19-134" aria-hidden="true"></a><span class="co">#  (&#39;lemonchiffon&#39;, &#39;#FFFACD&#39;)</span></span>
-<span id="cb19-135"><a href="#cb19-135" aria-hidden="true"></a><span class="co">#  (&#39;cadetblue&#39;, &#39;#5F9EA0&#39;)</span></span>
-<span id="cb19-136"><a href="#cb19-136" aria-hidden="true"></a><span class="co">#  (&#39;lightyellow&#39;, &#39;#FFFFE0&#39;)</span></span>
-<span id="cb19-137"><a href="#cb19-137" aria-hidden="true"></a><span class="co">#  (&#39;lavenderblush&#39;, &#39;#FFF0F5&#39;)</span></span>
-<span id="cb19-138"><a href="#cb19-138" aria-hidden="true"></a><span class="co">#  (&#39;coral&#39;, &#39;#FF7F50&#39;)</span></span>
-<span id="cb19-139"><a href="#cb19-139" aria-hidden="true"></a><span class="co">#  (&#39;purple&#39;, &#39;#800080&#39;)</span></span>
-<span id="cb19-140"><a href="#cb19-140" aria-hidden="true"></a><span class="co">#  (&#39;aqua&#39;, &#39;#00FFFF&#39;)</span></span>
-<span id="cb19-141"><a href="#cb19-141" aria-hidden="true"></a><span class="co">#  (&#39;whitesmoke&#39;, &#39;#F5F5F5&#39;)</span></span>
-<span id="cb19-142"><a href="#cb19-142" aria-hidden="true"></a><span class="co">#  (&#39;mediumslateblue&#39;, &#39;#7B68EE&#39;)</span></span>
-<span id="cb19-143"><a href="#cb19-143" aria-hidden="true"></a><span class="co">#  (&#39;darkorange&#39;, &#39;#FF8C00&#39;)</span></span>
-<span id="cb19-144"><a href="#cb19-144" aria-hidden="true"></a><span class="co">#  (&#39;mediumaquamarine&#39;, &#39;#66CDAA&#39;)</span></span>
-<span id="cb19-145"><a href="#cb19-145" aria-hidden="true"></a><span class="co">#  (&#39;darksalmon&#39;, &#39;#E9967A&#39;)</span></span>
-<span id="cb19-146"><a href="#cb19-146" aria-hidden="true"></a><span class="co">#  (&#39;beige&#39;, &#39;#F5F5DC&#39;)</span></span>
-<span id="cb19-147"><a href="#cb19-147" aria-hidden="true"></a><span class="co">#  (&#39;blueviolet&#39;, &#39;#8A2BE2&#39;)</span></span>
-<span id="cb19-148"><a href="#cb19-148" aria-hidden="true"></a><span class="co">#  (&#39;azure&#39;, &#39;#F0FFFF&#39;)</span></span>
-<span id="cb19-149"><a href="#cb19-149" aria-hidden="true"></a><span class="co">#  (&#39;lightsteelblue&#39;, &#39;#B0C4DE&#39;)</span></span>
-<span id="cb19-150"><a href="#cb19-150" aria-hidden="true"></a><span class="co">#  (&#39;oldlace&#39;, &#39;#FDF5E6&#39;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="cf">for</span> name, <span class="bu">hex</span> <span class="kw">in</span> mpl.colors.cnames.items():</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>    <span class="bu">print</span>(name, <span class="bu">hex</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="co">#  aliceblue #F0F8FF</span></span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a><span class="co">#  antiquewhite #FAEBD7</span></span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a><span class="co">#  aqua #00FFFF</span></span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a><span class="co">#  aquamarine #7FFFD4</span></span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a><span class="co">#  azure #F0FFFF</span></span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a><span class="co">#  beige #F5F5DC</span></span>
+<span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a><span class="co">#  bisque #FFE4C4</span></span>
+<span id="cb19-11"><a href="#cb19-11" tabindex="-1"></a><span class="co">#  black #000000</span></span>
+<span id="cb19-12"><a href="#cb19-12" tabindex="-1"></a><span class="co">#  blanchedalmond #FFEBCD</span></span>
+<span id="cb19-13"><a href="#cb19-13" tabindex="-1"></a><span class="co">#  blue #0000FF</span></span>
+<span id="cb19-14"><a href="#cb19-14" tabindex="-1"></a><span class="co">#  blueviolet #8A2BE2</span></span>
+<span id="cb19-15"><a href="#cb19-15" tabindex="-1"></a><span class="co">#  brown #A52A2A</span></span>
+<span id="cb19-16"><a href="#cb19-16" tabindex="-1"></a><span class="co">#  burlywood #DEB887</span></span>
+<span id="cb19-17"><a href="#cb19-17" tabindex="-1"></a><span class="co">#  cadetblue #5F9EA0</span></span>
+<span id="cb19-18"><a href="#cb19-18" tabindex="-1"></a><span class="co">#  chartreuse #7FFF00</span></span>
+<span id="cb19-19"><a href="#cb19-19" tabindex="-1"></a><span class="co">#  chocolate #D2691E</span></span>
+<span id="cb19-20"><a href="#cb19-20" tabindex="-1"></a><span class="co">#  coral #FF7F50</span></span>
+<span id="cb19-21"><a href="#cb19-21" tabindex="-1"></a><span class="co">#  cornflowerblue #6495ED</span></span>
+<span id="cb19-22"><a href="#cb19-22" tabindex="-1"></a><span class="co">#  cornsilk #FFF8DC</span></span>
+<span id="cb19-23"><a href="#cb19-23" tabindex="-1"></a><span class="co">#  crimson #DC143C</span></span>
+<span id="cb19-24"><a href="#cb19-24" tabindex="-1"></a><span class="co">#  cyan #00FFFF</span></span>
+<span id="cb19-25"><a href="#cb19-25" tabindex="-1"></a><span class="co">#  darkblue #00008B</span></span>
+<span id="cb19-26"><a href="#cb19-26" tabindex="-1"></a><span class="co">#  darkcyan #008B8B</span></span>
+<span id="cb19-27"><a href="#cb19-27" tabindex="-1"></a><span class="co">#  darkgoldenrod #B8860B</span></span>
+<span id="cb19-28"><a href="#cb19-28" tabindex="-1"></a><span class="co">#  darkgray #A9A9A9</span></span>
+<span id="cb19-29"><a href="#cb19-29" tabindex="-1"></a><span class="co">#  darkgreen #006400</span></span>
+<span id="cb19-30"><a href="#cb19-30" tabindex="-1"></a><span class="co">#  darkgrey #A9A9A9</span></span>
+<span id="cb19-31"><a href="#cb19-31" tabindex="-1"></a><span class="co">#  darkkhaki #BDB76B</span></span>
+<span id="cb19-32"><a href="#cb19-32" tabindex="-1"></a><span class="co">#  darkmagenta #8B008B</span></span>
+<span id="cb19-33"><a href="#cb19-33" tabindex="-1"></a><span class="co">#  darkolivegreen #556B2F</span></span>
+<span id="cb19-34"><a href="#cb19-34" tabindex="-1"></a><span class="co">#  darkorange #FF8C00</span></span>
+<span id="cb19-35"><a href="#cb19-35" tabindex="-1"></a><span class="co">#  darkorchid #9932CC</span></span>
+<span id="cb19-36"><a href="#cb19-36" tabindex="-1"></a><span class="co">#  darkred #8B0000</span></span>
+<span id="cb19-37"><a href="#cb19-37" tabindex="-1"></a><span class="co">#  darksalmon #E9967A</span></span>
+<span id="cb19-38"><a href="#cb19-38" tabindex="-1"></a><span class="co">#  darkseagreen #8FBC8F</span></span>
+<span id="cb19-39"><a href="#cb19-39" tabindex="-1"></a><span class="co">#  darkslateblue #483D8B</span></span>
+<span id="cb19-40"><a href="#cb19-40" tabindex="-1"></a><span class="co">#  darkslategray #2F4F4F</span></span>
+<span id="cb19-41"><a href="#cb19-41" tabindex="-1"></a><span class="co">#  darkslategrey #2F4F4F</span></span>
+<span id="cb19-42"><a href="#cb19-42" tabindex="-1"></a><span class="co">#  darkturquoise #00CED1</span></span>
+<span id="cb19-43"><a href="#cb19-43" tabindex="-1"></a><span class="co">#  darkviolet #9400D3</span></span>
+<span id="cb19-44"><a href="#cb19-44" tabindex="-1"></a><span class="co">#  deeppink #FF1493</span></span>
+<span id="cb19-45"><a href="#cb19-45" tabindex="-1"></a><span class="co">#  deepskyblue #00BFFF</span></span>
+<span id="cb19-46"><a href="#cb19-46" tabindex="-1"></a><span class="co">#  dimgray #696969</span></span>
+<span id="cb19-47"><a href="#cb19-47" tabindex="-1"></a><span class="co">#  dimgrey #696969</span></span>
+<span id="cb19-48"><a href="#cb19-48" tabindex="-1"></a><span class="co">#  dodgerblue #1E90FF</span></span>
+<span id="cb19-49"><a href="#cb19-49" tabindex="-1"></a><span class="co">#  firebrick #B22222</span></span>
+<span id="cb19-50"><a href="#cb19-50" tabindex="-1"></a><span class="co">#  floralwhite #FFFAF0</span></span>
+<span id="cb19-51"><a href="#cb19-51" tabindex="-1"></a><span class="co">#  forestgreen #228B22</span></span>
+<span id="cb19-52"><a href="#cb19-52" tabindex="-1"></a><span class="co">#  fuchsia #FF00FF</span></span>
+<span id="cb19-53"><a href="#cb19-53" tabindex="-1"></a><span class="co">#  gainsboro #DCDCDC</span></span>
+<span id="cb19-54"><a href="#cb19-54" tabindex="-1"></a><span class="co">#  ghostwhite #F8F8FF</span></span>
+<span id="cb19-55"><a href="#cb19-55" tabindex="-1"></a><span class="co">#  gold #FFD700</span></span>
+<span id="cb19-56"><a href="#cb19-56" tabindex="-1"></a><span class="co">#  goldenrod #DAA520</span></span>
+<span id="cb19-57"><a href="#cb19-57" tabindex="-1"></a><span class="co">#  gray #808080</span></span>
+<span id="cb19-58"><a href="#cb19-58" tabindex="-1"></a><span class="co">#  green #008000</span></span>
+<span id="cb19-59"><a href="#cb19-59" tabindex="-1"></a><span class="co">#  greenyellow #ADFF2F</span></span>
+<span id="cb19-60"><a href="#cb19-60" tabindex="-1"></a><span class="co">#  grey #808080</span></span>
+<span id="cb19-61"><a href="#cb19-61" tabindex="-1"></a><span class="co">#  honeydew #F0FFF0</span></span>
+<span id="cb19-62"><a href="#cb19-62" tabindex="-1"></a><span class="co">#  hotpink #FF69B4</span></span>
+<span id="cb19-63"><a href="#cb19-63" tabindex="-1"></a><span class="co">#  indianred #CD5C5C</span></span>
+<span id="cb19-64"><a href="#cb19-64" tabindex="-1"></a><span class="co">#  indigo #4B0082</span></span>
+<span id="cb19-65"><a href="#cb19-65" tabindex="-1"></a><span class="co">#  ivory #FFFFF0</span></span>
+<span id="cb19-66"><a href="#cb19-66" tabindex="-1"></a><span class="co">#  khaki #F0E68C</span></span>
+<span id="cb19-67"><a href="#cb19-67" tabindex="-1"></a><span class="co">#  lavender #E6E6FA</span></span>
+<span id="cb19-68"><a href="#cb19-68" tabindex="-1"></a><span class="co">#  lavenderblush #FFF0F5</span></span>
+<span id="cb19-69"><a href="#cb19-69" tabindex="-1"></a><span class="co">#  lawngreen #7CFC00</span></span>
+<span id="cb19-70"><a href="#cb19-70" tabindex="-1"></a><span class="co">#  lemonchiffon #FFFACD</span></span>
+<span id="cb19-71"><a href="#cb19-71" tabindex="-1"></a><span class="co">#  lightblue #ADD8E6</span></span>
+<span id="cb19-72"><a href="#cb19-72" tabindex="-1"></a><span class="co">#  lightcoral #F08080</span></span>
+<span id="cb19-73"><a href="#cb19-73" tabindex="-1"></a><span class="co">#  lightcyan #E0FFFF</span></span>
+<span id="cb19-74"><a href="#cb19-74" tabindex="-1"></a><span class="co">#  lightgoldenrodyellow #FAFAD2</span></span>
+<span id="cb19-75"><a href="#cb19-75" tabindex="-1"></a><span class="co">#  lightgray #D3D3D3</span></span>
+<span id="cb19-76"><a href="#cb19-76" tabindex="-1"></a><span class="co">#  lightgreen #90EE90</span></span>
+<span id="cb19-77"><a href="#cb19-77" tabindex="-1"></a><span class="co">#  lightgrey #D3D3D3</span></span>
+<span id="cb19-78"><a href="#cb19-78" tabindex="-1"></a><span class="co">#  lightpink #FFB6C1</span></span>
+<span id="cb19-79"><a href="#cb19-79" tabindex="-1"></a><span class="co">#  lightsalmon #FFA07A</span></span>
+<span id="cb19-80"><a href="#cb19-80" tabindex="-1"></a><span class="co">#  lightseagreen #20B2AA</span></span>
+<span id="cb19-81"><a href="#cb19-81" tabindex="-1"></a><span class="co">#  lightskyblue #87CEFA</span></span>
+<span id="cb19-82"><a href="#cb19-82" tabindex="-1"></a><span class="co">#  lightslategray #778899</span></span>
+<span id="cb19-83"><a href="#cb19-83" tabindex="-1"></a><span class="co">#  lightslategrey #778899</span></span>
+<span id="cb19-84"><a href="#cb19-84" tabindex="-1"></a><span class="co">#  lightsteelblue #B0C4DE</span></span>
+<span id="cb19-85"><a href="#cb19-85" tabindex="-1"></a><span class="co">#  lightyellow #FFFFE0</span></span>
+<span id="cb19-86"><a href="#cb19-86" tabindex="-1"></a><span class="co">#  lime #00FF00</span></span>
+<span id="cb19-87"><a href="#cb19-87" tabindex="-1"></a><span class="co">#  limegreen #32CD32</span></span>
+<span id="cb19-88"><a href="#cb19-88" tabindex="-1"></a><span class="co">#  linen #FAF0E6</span></span>
+<span id="cb19-89"><a href="#cb19-89" tabindex="-1"></a><span class="co">#  magenta #FF00FF</span></span>
+<span id="cb19-90"><a href="#cb19-90" tabindex="-1"></a><span class="co">#  maroon #800000</span></span>
+<span id="cb19-91"><a href="#cb19-91" tabindex="-1"></a><span class="co">#  mediumaquamarine #66CDAA</span></span>
+<span id="cb19-92"><a href="#cb19-92" tabindex="-1"></a><span class="co">#  mediumblue #0000CD</span></span>
+<span id="cb19-93"><a href="#cb19-93" tabindex="-1"></a><span class="co">#  mediumorchid #BA55D3</span></span>
+<span id="cb19-94"><a href="#cb19-94" tabindex="-1"></a><span class="co">#  mediumpurple #9370DB</span></span>
+<span id="cb19-95"><a href="#cb19-95" tabindex="-1"></a><span class="co">#  mediumseagreen #3CB371</span></span>
+<span id="cb19-96"><a href="#cb19-96" tabindex="-1"></a><span class="co">#  mediumslateblue #7B68EE</span></span>
+<span id="cb19-97"><a href="#cb19-97" tabindex="-1"></a><span class="co">#  mediumspringgreen #00FA9A</span></span>
+<span id="cb19-98"><a href="#cb19-98" tabindex="-1"></a><span class="co">#  mediumturquoise #48D1CC</span></span>
+<span id="cb19-99"><a href="#cb19-99" tabindex="-1"></a><span class="co">#  mediumvioletred #C71585</span></span>
+<span id="cb19-100"><a href="#cb19-100" tabindex="-1"></a><span class="co">#  midnightblue #191970</span></span>
+<span id="cb19-101"><a href="#cb19-101" tabindex="-1"></a><span class="co">#  mintcream #F5FFFA</span></span>
+<span id="cb19-102"><a href="#cb19-102" tabindex="-1"></a><span class="co">#  mistyrose #FFE4E1</span></span>
+<span id="cb19-103"><a href="#cb19-103" tabindex="-1"></a><span class="co">#  moccasin #FFE4B5</span></span>
+<span id="cb19-104"><a href="#cb19-104" tabindex="-1"></a><span class="co">#  navajowhite #FFDEAD</span></span>
+<span id="cb19-105"><a href="#cb19-105" tabindex="-1"></a><span class="co">#  navy #000080</span></span>
+<span id="cb19-106"><a href="#cb19-106" tabindex="-1"></a><span class="co">#  oldlace #FDF5E6</span></span>
+<span id="cb19-107"><a href="#cb19-107" tabindex="-1"></a><span class="co">#  olive #808000</span></span>
+<span id="cb19-108"><a href="#cb19-108" tabindex="-1"></a><span class="co">#  olivedrab #6B8E23</span></span>
+<span id="cb19-109"><a href="#cb19-109" tabindex="-1"></a><span class="co">#  orange #FFA500</span></span>
+<span id="cb19-110"><a href="#cb19-110" tabindex="-1"></a><span class="co">#  orangered #FF4500</span></span>
+<span id="cb19-111"><a href="#cb19-111" tabindex="-1"></a><span class="co">#  orchid #DA70D6</span></span>
+<span id="cb19-112"><a href="#cb19-112" tabindex="-1"></a><span class="co">#  palegoldenrod #EEE8AA</span></span>
+<span id="cb19-113"><a href="#cb19-113" tabindex="-1"></a><span class="co">#  palegreen #98FB98</span></span>
+<span id="cb19-114"><a href="#cb19-114" tabindex="-1"></a><span class="co">#  paleturquoise #AFEEEE</span></span>
+<span id="cb19-115"><a href="#cb19-115" tabindex="-1"></a><span class="co">#  palevioletred #DB7093</span></span>
+<span id="cb19-116"><a href="#cb19-116" tabindex="-1"></a><span class="co">#  papayawhip #FFEFD5</span></span>
+<span id="cb19-117"><a href="#cb19-117" tabindex="-1"></a><span class="co">#  peachpuff #FFDAB9</span></span>
+<span id="cb19-118"><a href="#cb19-118" tabindex="-1"></a><span class="co">#  peru #CD853F</span></span>
+<span id="cb19-119"><a href="#cb19-119" tabindex="-1"></a><span class="co">#  pink #FFC0CB</span></span>
+<span id="cb19-120"><a href="#cb19-120" tabindex="-1"></a><span class="co">#  plum #DDA0DD</span></span>
+<span id="cb19-121"><a href="#cb19-121" tabindex="-1"></a><span class="co">#  powderblue #B0E0E6</span></span>
+<span id="cb19-122"><a href="#cb19-122" tabindex="-1"></a><span class="co">#  purple #800080</span></span>
+<span id="cb19-123"><a href="#cb19-123" tabindex="-1"></a><span class="co">#  rebeccapurple #663399</span></span>
+<span id="cb19-124"><a href="#cb19-124" tabindex="-1"></a><span class="co">#  red #FF0000</span></span>
+<span id="cb19-125"><a href="#cb19-125" tabindex="-1"></a><span class="co">#  rosybrown #BC8F8F</span></span>
+<span id="cb19-126"><a href="#cb19-126" tabindex="-1"></a><span class="co">#  royalblue #4169E1</span></span>
+<span id="cb19-127"><a href="#cb19-127" tabindex="-1"></a><span class="co">#  saddlebrown #8B4513</span></span>
+<span id="cb19-128"><a href="#cb19-128" tabindex="-1"></a><span class="co">#  salmon #FA8072</span></span>
+<span id="cb19-129"><a href="#cb19-129" tabindex="-1"></a><span class="co">#  sandybrown #F4A460</span></span>
+<span id="cb19-130"><a href="#cb19-130" tabindex="-1"></a><span class="co">#  seagreen #2E8B57</span></span>
+<span id="cb19-131"><a href="#cb19-131" tabindex="-1"></a><span class="co">#  seashell #FFF5EE</span></span>
+<span id="cb19-132"><a href="#cb19-132" tabindex="-1"></a><span class="co">#  sienna #A0522D</span></span>
+<span id="cb19-133"><a href="#cb19-133" tabindex="-1"></a><span class="co">#  silver #C0C0C0</span></span>
+<span id="cb19-134"><a href="#cb19-134" tabindex="-1"></a><span class="co">#  skyblue #87CEEB</span></span>
+<span id="cb19-135"><a href="#cb19-135" tabindex="-1"></a><span class="co">#  slateblue #6A5ACD</span></span>
+<span id="cb19-136"><a href="#cb19-136" tabindex="-1"></a><span class="co">#  slategray #708090</span></span>
+<span id="cb19-137"><a href="#cb19-137" tabindex="-1"></a><span class="co">#  slategrey #708090</span></span>
+<span id="cb19-138"><a href="#cb19-138" tabindex="-1"></a><span class="co">#  snow #FFFAFA</span></span>
+<span id="cb19-139"><a href="#cb19-139" tabindex="-1"></a><span class="co">#  springgreen #00FF7F</span></span>
+<span id="cb19-140"><a href="#cb19-140" tabindex="-1"></a><span class="co">#  steelblue #4682B4</span></span>
+<span id="cb19-141"><a href="#cb19-141" tabindex="-1"></a><span class="co">#  tan #D2B48C</span></span>
+<span id="cb19-142"><a href="#cb19-142" tabindex="-1"></a><span class="co">#  teal #008080</span></span>
+<span id="cb19-143"><a href="#cb19-143" tabindex="-1"></a><span class="co">#  thistle #D8BFD8</span></span>
+<span id="cb19-144"><a href="#cb19-144" tabindex="-1"></a><span class="co">#  tomato #FF6347</span></span>
+<span id="cb19-145"><a href="#cb19-145" tabindex="-1"></a><span class="co">#  turquoise #40E0D0</span></span>
+<span id="cb19-146"><a href="#cb19-146" tabindex="-1"></a><span class="co">#  violet #EE82EE</span></span>
+<span id="cb19-147"><a href="#cb19-147" tabindex="-1"></a><span class="co">#  wheat #F5DEB3</span></span>
+<span id="cb19-148"><a href="#cb19-148" tabindex="-1"></a><span class="co">#  white #FFFFFF</span></span>
+<span id="cb19-149"><a href="#cb19-149" tabindex="-1"></a><span class="co">#  whitesmoke #F5F5F5</span></span>
+<span id="cb19-150"><a href="#cb19-150" tabindex="-1"></a><span class="co">#  yellow #FFFF00</span></span>
+<span id="cb19-151"><a href="#cb19-151" tabindex="-1"></a><span class="co">#  yellowgreen #9ACD32</span></span></code></pre></div>
 <hr />
 </div>
 
@@ -1059,7 +1093,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -1077,7 +1111,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

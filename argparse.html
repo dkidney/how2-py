@@ -13,23 +13,50 @@
 
 <title>argparse</title>
 
-<script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -93,13 +120,20 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -107,39 +141,9 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   }
 })();
 </script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 <link rel="stylesheet" href="_style.css" type="text/css" />
 
@@ -150,10 +154,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -170,40 +170,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -231,7 +207,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -243,7 +219,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -253,11 +229,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -269,13 +262,12 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -283,16 +275,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -336,7 +321,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -346,7 +331,7 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     topics
      
     <span class="caret"></span>
@@ -403,7 +388,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     std
      
     <span class="caret"></span>
@@ -423,6 +408,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="enum.html">enum</a>
+    </li>
+    <li>
+      <a href="glob.html">glob</a>
     </li>
     <li>
       <a href="itertools.html">itertools</a>
@@ -467,12 +455,15 @@ $(document).ready(function () {
       <a href="urllib.html">urllib</a>
     </li>
     <li>
+      <a href="uuid.html">uuid</a>
+    </li>
+    <li>
       <a href="xml.html">xml</a>
     </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     ds
      
     <span class="caret"></span>
@@ -493,6 +484,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="keras.html">keras</a>
+    </li>
+    <li>
+      <a href="xgboost.html">xgboost</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -530,7 +524,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     misc
      
     <span class="caret"></span>
@@ -545,10 +539,16 @@ $(document).ready(function () {
     <li>
       <a href="databases.html">databases</a>
     </li>
+    <li>
+      <a href="packages.html">packages</a>
+    </li>
+    <li>
+      <a href="sphinx.html">sphinx</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     envs
      
     <span class="caret"></span>
@@ -583,7 +583,7 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     how2
      
     <span class="caret"></span>
@@ -593,10 +593,13 @@ $(document).ready(function () {
       <a href="https://dkidney.github.io/how2-cli/">how2-cli</a>
     </li>
     <li>
-      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
+      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
     </li>
     <li>
-      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
+      <a href="https://dkidney.github.io/how2-sc/">how2-sc</a>
+    </li>
+    <li>
+      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
     </li>
   </ul>
 </li>
@@ -617,7 +620,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -627,8 +630,8 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#links">links</a></li>
-<li><a href="#example">example</a></li>
+<li><a href="#links" id="toc-links">links</a></li>
+<li><a href="#example" id="toc-example">example</a></li>
 </ul>
 </div>
 
@@ -640,130 +643,135 @@ $(document).ready(function () {
 <div id="links" class="section level2">
 <h2>links</h2>
 <ul>
-<li><a href="https://docs.python.org/3/library/argparse" class="uri">https://docs.python.org/3/library/argparse</a></li>
+<li><a href="https://docs.python.org/3/library/argparse"
+class="uri">https://docs.python.org/3/library/argparse</a></li>
 </ul>
 <p>realpython:</p>
 <ul>
-<li><a href="https://realpython.com/command-line-interfaces-python-argparse" class="uri">https://realpython.com/command-line-interfaces-python-argparse</a><br />
+<li><a
+href="https://realpython.com/command-line-interfaces-python-argparse"
+class="uri">https://realpython.com/command-line-interfaces-python-argparse</a><br />
 </li>
-<li><a href="https://realpython.com/comparing-python-command-line-parsing-libraries-argparse-docopt-click" class="uri">https://realpython.com/comparing-python-command-line-parsing-libraries-argparse-docopt-click</a></li>
+<li><a
+href="https://realpython.com/comparing-python-command-line-parsing-libraries-argparse-docopt-click"
+class="uri">https://realpython.com/comparing-python-command-line-parsing-libraries-argparse-docopt-click</a></li>
 </ul>
 <hr />
 </div>
 <div id="example" class="section level2">
 <h2>example</h2>
 <p><code>argparse_example.py</code></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="co">&quot;&quot;&quot;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="co">A description</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="co">&quot;&quot;&quot;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="kw">def</span> main(words, integer, coin, favourite, true):</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>    <span class="bu">print</span>()</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&#39;words    :&#39;</span>, <span class="op">*</span>words)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&#39;integer  :&#39;</span>, integer)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&#39;coin     :&#39;</span>, coin)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&#39;favourite:&#39;</span>, favourite)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&#39;true     :&#39;</span>, true)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a>    <span class="im">import</span> argparse</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a>    parser <span class="op">=</span> argparse.ArgumentParser(</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a>        description<span class="op">=</span>__doc__,</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a>        epilog<span class="op">=</span><span class="st">&#39;Good luck! :)&#39;</span>)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true"></a>    parser.version <span class="op">=</span> <span class="st">&#39;1.0&#39;</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true"></a>    parser.add_argument(</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true"></a>        <span class="st">&#39;--version&#39;</span>, <span class="st">&#39;-v&#39;</span>,</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true"></a>        action<span class="op">=</span><span class="st">&#39;version&#39;</span>)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true"></a>    parser.add_argument(</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true"></a>        <span class="st">&#39;words&#39;</span>,</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">&#39;some words&#39;</span>,</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true"></a>        nargs<span class="op">=</span><span class="st">&#39;+&#39;</span>)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true"></a>    parser.add_argument(</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true"></a>        <span class="st">&#39;--integer&#39;</span>, <span class="st">&#39;-i&#39;</span>,</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">&#39;an integer&#39;</span>,</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true"></a>        metavar<span class="op">=</span><span class="st">&#39;integer&#39;</span>,</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">int</span>,</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true"></a>        default<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true"></a>    parser.add_argument(</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true"></a>        <span class="st">&#39;--coin&#39;</span>, <span class="st">&#39;-c&#39;</span>,</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">&#39;result of a coin  toss&#39;</span>,</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true"></a>        choices<span class="op">=</span>[<span class="st">&#39;heads&#39;</span>, <span class="st">&#39;tails&#39;</span>],</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true"></a>        default<span class="op">=</span><span class="st">&#39;heads&#39;</span>)</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true"></a>    parser.add_argument(</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true"></a>        <span class="st">&#39;--favourite&#39;</span>, <span class="st">&#39;-f&#39;</span>,</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">&#39;favourite number&#39;</span>,</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">int</span>,</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true"></a>        choices<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>),</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true"></a>        default<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true"></a>    parser.add_argument(</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true"></a>        <span class="st">&#39;--true&#39;</span>, <span class="st">&#39;-t&#39;</span>,</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">&#39;true or false&#39;</span>,</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true"></a>        action<span class="op">=</span><span class="st">&#39;store_true&#39;</span>)</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true"></a>    args <span class="op">=</span> parser.parse_args()</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true"></a></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="bu">vars</span>(args))</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true"></a></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true"></a>    main(words<span class="op">=</span>args.words,</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true"></a>         integer<span class="op">=</span>args.integer,</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true"></a>         coin<span class="op">=</span>args.coin,</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true"></a>         favourite<span class="op">=</span>args.favourite,</span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true"></a>         true<span class="op">=</span>args.true)</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">/usr/local/anaconda3/envs/how2-py/bin/python</span> <span class="kw">\</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">argparse_example.py</span> -h</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="co">#  usage: argparse_example.py [-h] [--version] [--integer integer]</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="co">#                             [--coin {heads,tails}] [--favourite {1,2,3,4,5}]</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="co">#                             [--true]</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a><span class="co">#                             words [words ...]</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="co">#  </span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a><span class="co">#  A description</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a><span class="co">#  </span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a><span class="co">#  positional arguments:</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a><span class="co">#    words                 some words</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a><span class="co">#  </span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a><span class="co">#  optional arguments:</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a><span class="co">#    -h, --help            show this help message and exit</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a><span class="co">#    --version, -v         show program&#39;s version number and exit</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true"></a><span class="co">#    --integer integer, -i integer</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true"></a><span class="co">#                          an integer</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true"></a><span class="co">#    --coin {heads,tails}, -c {heads,tails}</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true"></a><span class="co">#                          result of a coin toss</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true"></a><span class="co">#    --favourite {1,2,3,4,5}, -f {1,2,3,4,5}</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true"></a><span class="co">#                          favourite number</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true"></a><span class="co">#    --true, -t            true or false</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true"></a><span class="co">#  </span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true"></a><span class="co">#  Good luck! :)</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">/usr/local/anaconda3/envs/how2-py/bin/python</span> <span class="kw">\</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">argparse_example.py</span> -v</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="co">#  1.0</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">/usr/local/anaconda3/envs/how2-py/bin/python</span> <span class="kw">\</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">argparse_example.py</span> hello world</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="co">#  {&#39;words&#39;: [&#39;hello&#39;, &#39;world&#39;], &#39;integer&#39;: 42, &#39;coin&#39;: &#39;heads&#39;, &#39;favourite&#39;: 3, &#39;true&#39;: False}</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="co">#  </span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="co">#  words    : hello world</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a><span class="co">#  integer  : 42</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="co">#  coin     : heads</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="co">#  favourite: 3</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a><span class="co">#  true     : False</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">/usr/local/anaconda3/envs/how2-py/bin/python</span> <span class="kw">\</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="ex">argparse_example.py</span> hello world -i 99 -t</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="co">#  {&#39;words&#39;: [&#39;hello&#39;, &#39;world&#39;], &#39;integer&#39;: 99, &#39;coin&#39;: &#39;heads&#39;, &#39;favourite&#39;: 3, &#39;true&#39;: True}</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="co">#  </span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="co">#  words    : hello world</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="co">#  integer  : 99</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="co">#  coin     : heads</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a><span class="co">#  favourite: 3</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a><span class="co">#  true     : True</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="co">A description</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="kw">def</span> main(words, integer, coin, favourite, true):</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>    <span class="bu">print</span>()</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;words    :&#39;</span>, <span class="op">*</span>words)</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;integer  :&#39;</span>, integer)</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;coin     :&#39;</span>, coin)</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;favourite:&#39;</span>, favourite)</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;true     :&#39;</span>, true)</span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a>    <span class="im">import</span> argparse</span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a>    parser <span class="op">=</span> argparse.ArgumentParser(</span>
+<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a>        description<span class="op">=</span>__doc__,</span>
+<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a>        epilog<span class="op">=</span><span class="st">&#39;Good luck! :)&#39;</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a>    parser.version <span class="op">=</span> <span class="st">&#39;1.0&#39;</span></span>
+<span id="cb1-23"><a href="#cb1-23" tabindex="-1"></a>    parser.add_argument(</span>
+<span id="cb1-24"><a href="#cb1-24" tabindex="-1"></a>        <span class="st">&#39;--version&#39;</span>, <span class="st">&#39;-v&#39;</span>,</span>
+<span id="cb1-25"><a href="#cb1-25" tabindex="-1"></a>        action<span class="op">=</span><span class="st">&#39;version&#39;</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" tabindex="-1"></a>    parser.add_argument(</span>
+<span id="cb1-28"><a href="#cb1-28" tabindex="-1"></a>        <span class="st">&#39;words&#39;</span>,</span>
+<span id="cb1-29"><a href="#cb1-29" tabindex="-1"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">&#39;some words&#39;</span>,</span>
+<span id="cb1-30"><a href="#cb1-30" tabindex="-1"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb1-31"><a href="#cb1-31" tabindex="-1"></a>        nargs<span class="op">=</span><span class="st">&#39;+&#39;</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" tabindex="-1"></a>    parser.add_argument(</span>
+<span id="cb1-34"><a href="#cb1-34" tabindex="-1"></a>        <span class="st">&#39;--integer&#39;</span>, <span class="st">&#39;-i&#39;</span>,</span>
+<span id="cb1-35"><a href="#cb1-35" tabindex="-1"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">&#39;an integer&#39;</span>,</span>
+<span id="cb1-36"><a href="#cb1-36" tabindex="-1"></a>        metavar<span class="op">=</span><span class="st">&#39;integer&#39;</span>,</span>
+<span id="cb1-37"><a href="#cb1-37" tabindex="-1"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">int</span>,</span>
+<span id="cb1-38"><a href="#cb1-38" tabindex="-1"></a>        default<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" tabindex="-1"></a>    parser.add_argument(</span>
+<span id="cb1-41"><a href="#cb1-41" tabindex="-1"></a>        <span class="st">&#39;--coin&#39;</span>, <span class="st">&#39;-c&#39;</span>,</span>
+<span id="cb1-42"><a href="#cb1-42" tabindex="-1"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">&#39;result of a coin  toss&#39;</span>,</span>
+<span id="cb1-43"><a href="#cb1-43" tabindex="-1"></a>        choices<span class="op">=</span>[<span class="st">&#39;heads&#39;</span>, <span class="st">&#39;tails&#39;</span>],</span>
+<span id="cb1-44"><a href="#cb1-44" tabindex="-1"></a>        default<span class="op">=</span><span class="st">&#39;heads&#39;</span>)</span>
+<span id="cb1-45"><a href="#cb1-45" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" tabindex="-1"></a>    parser.add_argument(</span>
+<span id="cb1-47"><a href="#cb1-47" tabindex="-1"></a>        <span class="st">&#39;--favourite&#39;</span>, <span class="st">&#39;-f&#39;</span>,</span>
+<span id="cb1-48"><a href="#cb1-48" tabindex="-1"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">&#39;favourite number&#39;</span>,</span>
+<span id="cb1-49"><a href="#cb1-49" tabindex="-1"></a>        <span class="bu">type</span><span class="op">=</span><span class="bu">int</span>,</span>
+<span id="cb1-50"><a href="#cb1-50" tabindex="-1"></a>        choices<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>),</span>
+<span id="cb1-51"><a href="#cb1-51" tabindex="-1"></a>        default<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb1-52"><a href="#cb1-52" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" tabindex="-1"></a>    parser.add_argument(</span>
+<span id="cb1-54"><a href="#cb1-54" tabindex="-1"></a>        <span class="st">&#39;--true&#39;</span>, <span class="st">&#39;-t&#39;</span>,</span>
+<span id="cb1-55"><a href="#cb1-55" tabindex="-1"></a>        <span class="bu">help</span><span class="op">=</span><span class="st">&#39;true or false&#39;</span>,</span>
+<span id="cb1-56"><a href="#cb1-56" tabindex="-1"></a>        action<span class="op">=</span><span class="st">&#39;store_true&#39;</span>)</span>
+<span id="cb1-57"><a href="#cb1-57" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" tabindex="-1"></a>    args <span class="op">=</span> parser.parse_args()</span>
+<span id="cb1-59"><a href="#cb1-59" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">vars</span>(args))</span>
+<span id="cb1-61"><a href="#cb1-61" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" tabindex="-1"></a>    main(words<span class="op">=</span>args.words,</span>
+<span id="cb1-63"><a href="#cb1-63" tabindex="-1"></a>         integer<span class="op">=</span>args.integer,</span>
+<span id="cb1-64"><a href="#cb1-64" tabindex="-1"></a>         coin<span class="op">=</span>args.coin,</span>
+<span id="cb1-65"><a href="#cb1-65" tabindex="-1"></a>         favourite<span class="op">=</span>args.favourite,</span>
+<span id="cb1-66"><a href="#cb1-66" tabindex="-1"></a>         true<span class="op">=</span>args.true)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">/usr/local/anaconda3/envs/how2-py/bin/python</span> <span class="dt">\</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>argparse_example.py <span class="at">-h</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co">#  usage: argparse_example.py [-h] [--version] [--integer integer]</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co">#                             [--coin {heads,tails}] [--favourite {1,2,3,4,5}]</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co">#                             [--true]</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co">#                             words [words ...]</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="co">#  </span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="co">#  A description</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="co">#  </span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="co">#  positional arguments:</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="co">#    words                 some words</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co">#  </span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co">#  optional arguments:</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="co">#    -h, --help            show this help message and exit</span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="co">#    --version, -v         show program&#39;s version number and exit</span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="co">#    --integer integer, -i integer</span></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a><span class="co">#                          an integer</span></span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a><span class="co">#    --coin {heads,tails}, -c {heads,tails}</span></span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a><span class="co">#                          result of a coin toss</span></span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a><span class="co">#    --favourite {1,2,3,4,5}, -f {1,2,3,4,5}</span></span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a><span class="co">#                          favourite number</span></span>
+<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a><span class="co">#    --true, -t            true or false</span></span>
+<span id="cb2-23"><a href="#cb2-23" tabindex="-1"></a><span class="co">#  </span></span>
+<span id="cb2-24"><a href="#cb2-24" tabindex="-1"></a><span class="co">#  Good luck! :)</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">/usr/local/anaconda3/envs/how2-py/bin/python</span> <span class="dt">\</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>argparse_example.py <span class="at">-v</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co">#  1.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">/usr/local/anaconda3/envs/how2-py/bin/python</span> <span class="dt">\</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>argparse_example.py hello world</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#  {&#39;words&#39;: [&#39;hello&#39;, &#39;world&#39;], &#39;integer&#39;: 42, &#39;coin&#39;: &#39;heads&#39;, &#39;favourite&#39;: 3, &#39;true&#39;: False}</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#  </span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#  words    : hello world</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#  integer  : 42</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#  coin     : heads</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#  favourite: 3</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#  true     : False</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">/usr/local/anaconda3/envs/how2-py/bin/python</span> <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>argparse_example.py hello world <span class="at">-i</span> 99 <span class="at">-t</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#  {&#39;words&#39;: [&#39;hello&#39;, &#39;world&#39;], &#39;integer&#39;: 99, &#39;coin&#39;: &#39;heads&#39;, &#39;favourite&#39;: 3, &#39;true&#39;: True}</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#  </span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#  words    : hello world</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#  integer  : 99</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#  coin     : heads</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#  favourite: 3</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#  true     : True</span></span></code></pre></div>
 </div>
 
 
@@ -775,7 +783,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -793,7 +801,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

@@ -13,23 +13,50 @@
 
 <title>airflow</title>
 
-<script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -93,13 +120,20 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -107,39 +141,9 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   }
 })();
 </script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 <link rel="stylesheet" href="_style.css" type="text/css" />
 
@@ -150,10 +154,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -170,40 +170,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -231,7 +207,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -243,7 +219,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -253,11 +229,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -269,13 +262,12 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -283,16 +275,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -336,7 +321,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -346,7 +331,7 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     topics
      
     <span class="caret"></span>
@@ -403,7 +388,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     std
      
     <span class="caret"></span>
@@ -423,6 +408,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="enum.html">enum</a>
+    </li>
+    <li>
+      <a href="glob.html">glob</a>
     </li>
     <li>
       <a href="itertools.html">itertools</a>
@@ -467,12 +455,15 @@ $(document).ready(function () {
       <a href="urllib.html">urllib</a>
     </li>
     <li>
+      <a href="uuid.html">uuid</a>
+    </li>
+    <li>
       <a href="xml.html">xml</a>
     </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     ds
      
     <span class="caret"></span>
@@ -493,6 +484,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="keras.html">keras</a>
+    </li>
+    <li>
+      <a href="xgboost.html">xgboost</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -530,7 +524,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     misc
      
     <span class="caret"></span>
@@ -545,10 +539,16 @@ $(document).ready(function () {
     <li>
       <a href="databases.html">databases</a>
     </li>
+    <li>
+      <a href="packages.html">packages</a>
+    </li>
+    <li>
+      <a href="sphinx.html">sphinx</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     envs
      
     <span class="caret"></span>
@@ -583,7 +583,7 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     how2
      
     <span class="caret"></span>
@@ -593,10 +593,13 @@ $(document).ready(function () {
       <a href="https://dkidney.github.io/how2-cli/">how2-cli</a>
     </li>
     <li>
-      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
+      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
     </li>
     <li>
-      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
+      <a href="https://dkidney.github.io/how2-sc/">how2-sc</a>
+    </li>
+    <li>
+      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
     </li>
   </ul>
 </li>
@@ -617,7 +620,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -627,34 +630,40 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#links">links</a></li>
-<li><a href="#setup">setup</a>
+<li><a href="#links" id="toc-links">links</a></li>
+<li><a href="#setup" id="toc-setup">setup</a>
 <ul>
-<li><a href="#folder-structure">folder structure</a></li>
-<li><a href="#fernet-key">fernet key</a></li>
+<li><a href="#folder-structure" id="toc-folder-structure">folder
+structure</a></li>
+<li><a href="#fernet-key" id="toc-fernet-key">fernet key</a></li>
 </ul></li>
-<li><a href="#quick-start">quick start</a></li>
-<li><a href="#basics">basics</a>
+<li><a href="#quick-start" id="toc-quick-start">quick start</a></li>
+<li><a href="#basics" id="toc-basics">basics</a>
 <ul>
-<li><a href="#terms">terms</a></li>
-<li><a href="#components">components</a></li>
+<li><a href="#terms" id="toc-terms">terms</a></li>
+<li><a href="#components" id="toc-components">components</a></li>
 </ul></li>
-<li><a href="#operators">operators</a>
+<li><a href="#operators" id="toc-operators">operators</a>
 <ul>
-<li><a href="#pythonoperator">PythonOperator</a></li>
-<li><a href="#bashoperator">BashOperator</a></li>
-<li><a href="#emailoperator">EmailOperator</a></li>
-<li><a href="#simplehttpoperator">SimpleHttpOperator</a></li>
-<li><a href="#mysqloperator">MySqlOperator</a></li>
+<li><a href="#pythonoperator"
+id="toc-pythonoperator">PythonOperator</a></li>
+<li><a href="#bashoperator" id="toc-bashoperator">BashOperator</a></li>
+<li><a href="#emailoperator"
+id="toc-emailoperator">EmailOperator</a></li>
+<li><a href="#simplehttpoperator"
+id="toc-simplehttpoperator">SimpleHttpOperator</a></li>
+<li><a href="#mysqloperator"
+id="toc-mysqloperator">MySqlOperator</a></li>
 </ul></li>
-<li><a href="#example-dag">example DAG</a></li>
-<li><a href="#aws">aws</a></li>
+<li><a href="#example-dag" id="toc-example-dag">example DAG</a></li>
+<li><a href="#aws" id="toc-aws">aws</a></li>
 </ul>
 </div>
 
 <hr />
 <blockquote>
-<p>A platform to programmatically author, schedule and monitor workflows</p>
+<p>A platform to programmatically author, schedule and monitor
+workflows</p>
 </blockquote>
 <!-- ********************************************************************* -->
 <!-- ## faqs -->
@@ -662,62 +671,73 @@ $(document).ready(function () {
 <div id="links" class="section level2">
 <h2>links</h2>
 <ul>
-<li><a href="https://airflow.apache.org/" class="uri">https://airflow.apache.org/</a><br />
+<li><a href="https://airflow.apache.org/"
+class="uri">https://airflow.apache.org/</a><br />
 </li>
-<li><a href="https://airflow.apache.org/docs/stable/" class="uri">https://airflow.apache.org/docs/stable/</a><br />
+<li><a href="https://airflow.apache.org/docs/stable/"
+class="uri">https://airflow.apache.org/docs/stable/</a><br />
 </li>
-<li><a href="https://airflow-tutorial.readthedocs.io/en/latest/index.html" class="uri">https://airflow-tutorial.readthedocs.io/en/latest/index.html</a></li>
+<li><a
+href="https://airflow-tutorial.readthedocs.io/en/latest/index.html"
+class="uri">https://airflow-tutorial.readthedocs.io/en/latest/index.html</a></li>
 </ul>
 <hr />
 </div>
 <div id="setup" class="section level2">
 <h2>setup</h2>
 <p>setup a virtual environment:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="va">env_name=</span>airflow</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="ex">conda</span> create -y --name <span class="va">${env_name}</span> python=3.7.6</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ex">conda</span> activate <span class="va">${env_name}</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="va">env_name</span><span class="op">=</span>airflow</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-y</span> <span class="at">--name</span> <span class="va">${env_name}</span> python=3.7.6</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="ex">conda</span> activate <span class="va">${env_name}</span></span></code></pre></div>
 <p>install and initialise airflow:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="co"># set an alternative installation directory if you don&#39;t want the default</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="bu">export</span> <span class="va">AIRFLOW_HOME=</span>~/airflow  # ~/airflow <span class="va">is</span> <span class="va">the</span> <span class="va">default</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="co"># install airflow and dependencies</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="ex">pip</span> install -U apache-airflow  # installs to <span class="va">${AIRFLOW_HOME}</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a><span class="ex">pip</span> install -U boto3</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="ex">pip</span> install -U cryptography # recommended</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a><span class="co"># create and initialize the airflow sqlite database</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a><span class="ex">airflow</span> initdb</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># set an alternative installation directory if you don&#39;t want the default</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="bu">export</span> <span class="va">AIRFLOW_HOME</span><span class="op">=</span>~/airflow  <span class="co"># ~/airflow is the default</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co"># install airflow and dependencies</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> apache-airflow  <span class="co"># installs to ${AIRFLOW_HOME}</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> boto3</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> cryptography <span class="co"># recommended</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="co"># create and initialize the airflow sqlite database</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="ex">airflow</span> initdb</span></code></pre></div>
 <p>check version:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">airflow</span> version</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="im">import</span> airflow</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>airflow.__version__</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="co">#  &#39;1.10.12&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">airflow</span> version</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="im">import</span> airflow</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>airflow.__version__</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#  &#39;1.10.12&#39;</span></span></code></pre></div>
 <div id="folder-structure" class="section level3">
 <h3>folder structure</h3>
 <p>Dags should be placed in <code>${AIRFLOW_HOME}/dags/</code></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">tree</span> <span class="va">${AIRFLOW_HOME}</span> -L 1</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="co">#├── airflow.cfg</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="co">#├── airflow.db</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="co">#├── dags</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="co">#├── logs</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="co">#└── unittests.cfg</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="ex">tree</span> <span class="va">${AIRFLOW_HOME}</span>/dags -L 1</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a><span class="co">#├── __pycache__</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a><span class="co">#└── test_dag.py</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">tree</span> <span class="va">${AIRFLOW_HOME}</span> <span class="at">-L</span> 1</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="co">#├── airflow.cfg</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#├── airflow.db</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#├── dags</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#├── logs</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#└── unittests.cfg</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="ex">tree</span> <span class="va">${AIRFLOW_HOME}</span>/dags <span class="at">-L</span> 1</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#├── __pycache__</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#└── test_dag.py</span></span></code></pre></div>
 </div>
 <div id="fernet-key" class="section level3">
 <h3>fernet key</h3>
 <ul>
-<li><a href="https://airflow.readthedocs.io/en/stable/howto/secure-connections.html" class="uri">https://airflow.readthedocs.io/en/stable/howto/secure-connections.html</a></li>
+<li><a
+href="https://airflow.readthedocs.io/en/stable/howto/secure-connections.html"
+class="uri">https://airflow.readthedocs.io/en/stable/howto/secure-connections.html</a></li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="co"># make sure your airflow.cfg file has a fernet_key</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="fu">grep</span> fernet_key ~/airflow/airflow.cfg</span></code></pre></div>
-<p>If you don’t have a <code>fernet_key</code> then generate one in a python session</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="im">from</span> cryptography.fernet <span class="im">import</span> Fernet</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>fernet_key<span class="op">=</span> Fernet.generate_key()</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="bu">print</span>(fernet_key.decode()) <span class="co"># keep it in a safe place!</span></span></code></pre></div>
-<p>Then either edit <code>${AIRFLOW_HOME}/airflow.cfg</code> manually to permanently add the key to your airflow setup, or set it as an environmental variable:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="bu">export</span> <span class="va">AIRFLOW__CORE__FERNET_KEY=</span>your_fernet_key</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># make sure your airflow.cfg file has a fernet_key</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">grep</span> fernet_key ~/airflow/airflow.cfg</span></code></pre></div>
+<p>If you don’t have a <code>fernet_key</code> then generate one in a
+python session</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="im">from</span> cryptography.fernet <span class="im">import</span> Fernet</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>fernet_key<span class="op">=</span> Fernet.generate_key()</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="bu">print</span>(fernet_key.decode()) <span class="co"># keep it in a safe place!</span></span></code></pre></div>
+<p>Then either edit <code>${AIRFLOW_HOME}/airflow.cfg</code> manually to
+permanently add the key to your airflow setup, or set it as an
+environmental variable:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="bu">export</span> <span class="va">AIRFLOW__CORE__FERNET_KEY</span><span class="op">=</span>your_fernet_key</span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -727,15 +747,20 @@ $(document).ready(function () {
 <ol style="list-style-type: decimal">
 <li>start the web server</li>
 </ol>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">conda</span> activate airflow</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="ex">airflow</span> webserver -p 8080 # default port is 8080</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">conda</span> activate airflow</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="ex">airflow</span> webserver <span class="at">-p</span> 8080 <span class="co"># default port is 8080</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>start the scheduler</li>
 </ol>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="ex">conda</span> activate airflow</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="ex">airflow</span> scheduler</span></code></pre></div>
-<p>visit <a href="http://localhost:8080/admin/" class="uri">http://localhost:8080/admin/</a> and enable the example dag in the home page</p>
-<p>The web interface should show real-time updates to your dags in <code>${AIRFLOW_HOME}/dags/</code> as long as the scheduler is running.</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">conda</span> activate airflow</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="ex">airflow</span> scheduler</span></code></pre></div>
+<p>visit <a href="http://localhost:8080/admin/"
+class="uri">http://localhost:8080/admin/</a> and enable the example dag
+in the home page</p>
+<p>The web interface should show real-time updates to your dags in
+<code>${AIRFLOW_HOME}/dags/</code> as long as the scheduler is
+running.</p>
 <hr />
 </div>
 <div id="basics" class="section level2">
@@ -745,9 +770,11 @@ $(document).ready(function () {
 <ul>
 <li><strong>task/operator</strong> - a defined unit of work<br />
 </li>
-<li><strong>task instance</strong> - an individual run of a single task<br />
+<li><strong>task instance</strong> - an individual run of a single
+task<br />
 </li>
-<li><strong>dag</strong> - directed acyclic graph - a set of tasks with explicit execution order<br />
+<li><strong>dag</strong> - directed acyclic graph - a set of tasks with
+explicit execution order<br />
 </li>
 <li><strong>dag run</strong> - individual execution/run of a DAG</li>
 </ul>
@@ -755,13 +782,16 @@ $(document).ready(function () {
 <div id="components" class="section level3">
 <h3>components</h3>
 <ul>
-<li><strong>web server</strong> - a gui where you can track job status and read logs from a remote file store<br />
+<li><strong>web server</strong> - a gui where you can track job status
+and read logs from a remote file store<br />
 </li>
 <li><strong>scheduler</strong> - responsible for scheduling jobs<br />
 </li>
-<li><strong>executor</strong> - the mechanism that gets the tasks done<br />
+<li><strong>executor</strong> - the mechanism that gets the tasks
+done<br />
 </li>
-<li><strong>metadata database</strong> - powers how the other components interact and stores the Airflow states</li>
+<li><strong>metadata database</strong> - powers how the other components
+interact and stores the Airflow states</li>
 </ul>
 <hr />
 </div>
@@ -770,23 +800,25 @@ $(document).ready(function () {
 <h2>operators</h2>
 <div id="pythonoperator" class="section level3">
 <h3>PythonOperator</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="kw">def</span> print_context(ds, <span class="op">**</span>kwargs):</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>    pprint(kwargs)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>    <span class="bu">print</span>(ds)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>    <span class="cf">return</span> <span class="st">&#39;Whatever you return gets printed in the logs&#39;</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a>run_this <span class="op">=</span> PythonOperator(</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a>    task_id<span class="op">=</span><span class="st">&#39;print_the_context&#39;</span>,</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a>    provide_context<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true"></a>    python_callable<span class="op">=</span>print_context,</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true"></a>    dag<span class="op">=</span>dag,</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="kw">def</span> print_context(ds, <span class="op">**</span>kwargs):</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>    pprint(kwargs)</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>    <span class="bu">print</span>(ds)</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">&#39;Whatever you return gets printed in the logs&#39;</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>run_this <span class="op">=</span> PythonOperator(</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>    task_id<span class="op">=</span><span class="st">&#39;print_the_context&#39;</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>    provide_context<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>    python_callable<span class="op">=</span>print_context,</span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>    dag<span class="op">=</span>dag,</span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="bashoperator" class="section level3">
 <h3>BashOperator</h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>t1 <span class="op">=</span> BashOperator(task_id<span class="op">=</span><span class="st">&#39;print_date&#39;</span>,</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>    bash_command<span class="op">=</span><span class="st">&#39;date,</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a><span class="st">    dag=dag) </span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>t1 <span class="op">=</span> BashOperator(task_id<span class="op">=</span><span class="st">&#39;print_date&#39;</span>,</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>    bash_command<span class="op">=</span><span class="st">&#39;date,</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="er">    dag=dag</span>) </span></code></pre></div>
 </div>
 <div id="emailoperator" class="section level3">
 <h3>EmailOperator</h3>
@@ -801,62 +833,65 @@ $(document).ready(function () {
 </div>
 <div id="example-dag" class="section level2">
 <h2>example DAG</h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="co"># 1. imports</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="im">from</span> airflow <span class="im">import</span> DAG</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="im">from</span> airflow.hooks.base_hook <span class="im">import</span> BaseHook</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a><span class="im">from</span> airflow.operators.bash_operator <span class="im">import</span> BashOperator</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a><span class="im">from</span> airflow.operators.python_operator <span class="im">import</span> PythonOperator</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a><span class="im">import</span> json</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a><span class="im">import</span> boto3</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true"></a><span class="im">from</span> airflow.utils.dates <span class="im">import</span> days_ago</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true"></a><span class="co"># 2. default arguments</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true"></a>default_args <span class="op">=</span> {</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true"></a>    <span class="st">&#39;owner&#39;</span>: <span class="st">&#39;me&#39;</span>,</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true"></a>    <span class="st">&#39;start_date&#39;</span>: days_ago(<span class="dv">2</span>),</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true"></a>    <span class="st">&#39;retries&#39;</span>: <span class="dv">1</span>,</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true"></a>    <span class="st">&#39;retry_delay&#39;</span>: dt.timedelta(minutes<span class="op">=</span><span class="dv">1</span>),</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true"></a>}</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true"></a></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true"></a><span class="co"># 3. define tasks</span></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true"></a><span class="kw">def</span> save_to_s3():</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true"></a>    auth_aws_datascience <span class="op">=</span> BaseHook.get_connection(<span class="st">&#39;aws_datascience&#39;</span>).extra_dejson</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true"></a>    aws_key <span class="op">=</span> auth_aws_datascience[<span class="st">&#39;aws_access_key_id&#39;</span>]</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true"></a>    aws_secret <span class="op">=</span> auth_aws_datascience[<span class="st">&#39;aws_secret_access_key&#39;</span>]</span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true"></a>    blank <span class="op">=</span> {}</span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true"></a>    tdate <span class="op">=</span> <span class="bu">str</span>(dt.date.today())</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">&#39;empty.json&#39;</span>,<span class="st">&#39;w&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true"></a>        json.dump(blank,<span class="bu">file</span>)</span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true"></a>    s3 <span class="op">=</span> boto3.client(<span class="st">&#39;s3&#39;</span>, aws_access_key_id<span class="op">=</span>aws_key,</span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true"></a>                      aws_secret_access_key<span class="op">=</span>aws_secret)</span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true"></a>    file_name <span class="op">=</span> <span class="st">&#39;</span><span class="sc">{}</span><span class="st">_dk.json&#39;</span>.<span class="bu">format</span>(tdate)</span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true"></a>    s3.upload_file(<span class="st">&#39;empty.json&#39;</span>, <span class="st">&#39;ds-datamart&#39;</span>, <span class="st">&#39;model_dar_test/&#39;</span><span class="op">+</span>file_name)</span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true"></a></span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true"></a><span class="co"># 4. instantiate a DAG</span></span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true"></a><span class="cf">with</span> DAG(<span class="st">&#39;save_s3&#39;</span>,</span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true"></a>         default_args<span class="op">=</span>default_args,</span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true"></a>         schedule_interval<span class="op">=</span><span class="st">&#39;@daily&#39;</span>,</span>
-<span id="cb13-37"><a href="#cb13-37" aria-hidden="true"></a>         ) <span class="im">as</span> dag:</span>
-<span id="cb13-38"><a href="#cb13-38" aria-hidden="true"></a>    print_save <span class="op">=</span> BashOperator(task_id<span class="op">=</span><span class="st">&#39;print_save&#39;</span>,</span>
-<span id="cb13-39"><a href="#cb13-39" aria-hidden="true"></a>                               bash_command<span class="op">=</span><span class="st">&#39;echo &quot;Saving File to S3&quot;&#39;</span>)</span>
-<span id="cb13-40"><a href="#cb13-40" aria-hidden="true"></a>    save_file <span class="op">=</span> PythonOperator(task_id<span class="op">=</span><span class="st">&#39;save_s3&#39;</span>,</span>
-<span id="cb13-41"><a href="#cb13-41" aria-hidden="true"></a>                                 python_callable<span class="op">=</span>save_to_s3)</span>
-<span id="cb13-42"><a href="#cb13-42" aria-hidden="true"></a></span>
-<span id="cb13-43"><a href="#cb13-43" aria-hidden="true"></a><span class="co"># 5. specify operator order</span></span>
-<span id="cb13-44"><a href="#cb13-44" aria-hidden="true"></a>print_save <span class="op">&gt;&gt;</span> save_file</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># 1. imports</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="im">from</span> airflow <span class="im">import</span> DAG</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="im">from</span> airflow.hooks.base_hook <span class="im">import</span> BaseHook</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="im">from</span> airflow.operators.bash_operator <span class="im">import</span> BashOperator</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="im">from</span> airflow.operators.python_operator <span class="im">import</span> PythonOperator</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="im">import</span> boto3</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="im">from</span> airflow.utils.dates <span class="im">import</span> days_ago</span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="co"># 2. default arguments</span></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a>default_args <span class="op">=</span> {</span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a>    <span class="st">&#39;owner&#39;</span>: <span class="st">&#39;me&#39;</span>,</span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a>    <span class="st">&#39;start_date&#39;</span>: days_ago(<span class="dv">2</span>),</span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a>    <span class="st">&#39;retries&#39;</span>: <span class="dv">1</span>,</span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a>    <span class="st">&#39;retry_delay&#39;</span>: dt.timedelta(minutes<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a>}</span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="co"># 3. define tasks</span></span>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="kw">def</span> save_to_s3():</span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a>    auth_aws_datascience <span class="op">=</span> BaseHook.get_connection(<span class="st">&#39;aws_datascience&#39;</span>).extra_dejson</span>
+<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a>    aws_key <span class="op">=</span> auth_aws_datascience[<span class="st">&#39;aws_access_key_id&#39;</span>]</span>
+<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a>    aws_secret <span class="op">=</span> auth_aws_datascience[<span class="st">&#39;aws_secret_access_key&#39;</span>]</span>
+<span id="cb13-24"><a href="#cb13-24" tabindex="-1"></a>    blank <span class="op">=</span> {}</span>
+<span id="cb13-25"><a href="#cb13-25" tabindex="-1"></a>    tdate <span class="op">=</span> <span class="bu">str</span>(dt.date.today())</span>
+<span id="cb13-26"><a href="#cb13-26" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">&#39;empty.json&#39;</span>,<span class="st">&#39;w&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb13-27"><a href="#cb13-27" tabindex="-1"></a>        json.dump(blank,<span class="bu">file</span>)</span>
+<span id="cb13-28"><a href="#cb13-28" tabindex="-1"></a>    s3 <span class="op">=</span> boto3.client(<span class="st">&#39;s3&#39;</span>, aws_access_key_id<span class="op">=</span>aws_key,</span>
+<span id="cb13-29"><a href="#cb13-29" tabindex="-1"></a>                      aws_secret_access_key<span class="op">=</span>aws_secret)</span>
+<span id="cb13-30"><a href="#cb13-30" tabindex="-1"></a>    file_name <span class="op">=</span> <span class="st">&#39;</span><span class="sc">{}</span><span class="st">_dk.json&#39;</span>.<span class="bu">format</span>(tdate)</span>
+<span id="cb13-31"><a href="#cb13-31" tabindex="-1"></a>    s3.upload_file(<span class="st">&#39;empty.json&#39;</span>, <span class="st">&#39;ds-datamart&#39;</span>, <span class="st">&#39;model_dar_test/&#39;</span><span class="op">+</span>file_name)</span>
+<span id="cb13-32"><a href="#cb13-32" tabindex="-1"></a></span>
+<span id="cb13-33"><a href="#cb13-33" tabindex="-1"></a><span class="co"># 4. instantiate a DAG</span></span>
+<span id="cb13-34"><a href="#cb13-34" tabindex="-1"></a><span class="cf">with</span> DAG(<span class="st">&#39;save_s3&#39;</span>,</span>
+<span id="cb13-35"><a href="#cb13-35" tabindex="-1"></a>         default_args<span class="op">=</span>default_args,</span>
+<span id="cb13-36"><a href="#cb13-36" tabindex="-1"></a>         schedule_interval<span class="op">=</span><span class="st">&#39;@daily&#39;</span>,</span>
+<span id="cb13-37"><a href="#cb13-37" tabindex="-1"></a>         ) <span class="im">as</span> dag:</span>
+<span id="cb13-38"><a href="#cb13-38" tabindex="-1"></a>    print_save <span class="op">=</span> BashOperator(task_id<span class="op">=</span><span class="st">&#39;print_save&#39;</span>,</span>
+<span id="cb13-39"><a href="#cb13-39" tabindex="-1"></a>                               bash_command<span class="op">=</span><span class="st">&#39;echo &quot;Saving File to S3&quot;&#39;</span>)</span>
+<span id="cb13-40"><a href="#cb13-40" tabindex="-1"></a>    save_file <span class="op">=</span> PythonOperator(task_id<span class="op">=</span><span class="st">&#39;save_s3&#39;</span>,</span>
+<span id="cb13-41"><a href="#cb13-41" tabindex="-1"></a>                                 python_callable<span class="op">=</span>save_to_s3)</span>
+<span id="cb13-42"><a href="#cb13-42" tabindex="-1"></a></span>
+<span id="cb13-43"><a href="#cb13-43" tabindex="-1"></a><span class="co"># 5. specify operator order</span></span>
+<span id="cb13-44"><a href="#cb13-44" tabindex="-1"></a>print_save <span class="op">&gt;&gt;</span> save_file</span></code></pre></div>
 <hr />
 </div>
 <div id="aws" class="section level2">
 <h2>aws</h2>
 <ul>
-<li>need to provide aws access key and secret key, so that they can be accessed using <code>BaseHook</code><br />
+<li>need to provide aws access key and secret key, so that they can be
+accessed using <code>BaseHook</code><br />
 </li>
 <li>go to airflow web interface, then click admin, connections<br />
 </li>
 <li>in connections, add new name (?)<br />
 </li>
-<li>in the extra textbox, add a dictionary containing region_name, aws_access_key_id and aws_secret_access_key</li>
+<li>in the extra textbox, add a dictionary containing region_name,
+aws_access_key_id and aws_secret_access_key</li>
 </ul>
 <!-- ********************************************************************* -->
 <!-- ## appendix: dir -->
@@ -876,7 +911,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -894,7 +929,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

@@ -5,7 +5,7 @@
 .ipynb_checkpoints/
 .DS_Store
 
-site_libs/**
+site_libs/
 
 temp.config
 temp.json

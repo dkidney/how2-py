@@ -13,16 +13,25 @@
 
 <title>boto3</title>
 
-<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -34,7 +43,15 @@
     </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
@@ -103,13 +120,20 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -117,39 +141,8 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   }
 })();
 </script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
 
 <link rel="stylesheet" href="_style.css" type="text/css" />
@@ -161,10 +154,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -181,40 +170,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -242,7 +207,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -254,7 +219,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -264,11 +229,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -280,13 +262,12 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -294,16 +275,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -347,7 +321,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -357,7 +331,7 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     topics
      
     <span class="caret"></span>
@@ -414,7 +388,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     std
      
     <span class="caret"></span>
@@ -489,7 +463,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     ds
      
     <span class="caret"></span>
@@ -510,6 +484,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="keras.html">keras</a>
+    </li>
+    <li>
+      <a href="xgboost.html">xgboost</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -547,7 +524,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     misc
      
     <span class="caret"></span>
@@ -571,7 +548,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     envs
      
     <span class="caret"></span>
@@ -606,7 +583,7 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     how2
      
     <span class="caret"></span>
@@ -616,22 +593,25 @@ $(document).ready(function () {
       <a href="https://dkidney.github.io/how2-cli/">how2-cli</a>
     </li>
     <li>
-      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
+      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
     </li>
     <li>
-      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
+      <a href="https://dkidney.github.io/how2-sc/">how2-sc</a>
+    </li>
+    <li>
+      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
     </li>
   </ul>
 </li>
 <li>
   <a href="https://github.com/dkidney/how2-py">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://uk.linkedin.com/in/darren-kidney-495b8a103/">
-    <span class="fas fa-linkedin fa-lg"></span>
+    <span class="fa fa-linkedin fa-lg"></span>
      
   </a>
 </li>
@@ -640,7 +620,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -650,40 +630,52 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#faqs">faqs</a></li>
-<li><a href="#setup">setup</a></li>
-<li><a href="#basics">basics</a></li>
-<li><a href="#s3-client">S3 client</a>
+<li><a href="#faqs" id="toc-faqs">faqs</a></li>
+<li><a href="#setup" id="toc-setup">setup</a></li>
+<li><a href="#basics" id="toc-basics">basics</a></li>
+<li><a href="#s3-client" id="toc-s3-client">S3 client</a>
 <ul>
-<li><a href="#upload_file"><code>upload_file</code></a></li>
-<li><a href="#download_file"><code>download_file</code></a></li>
-<li><a href="#list_buckets"><code>list_buckets</code></a></li>
-<li><a href="#list_objects_v2"><code>list_objects_v2</code></a></li>
-<li><a href="#get_object"><code>get_object</code></a></li>
+<li><a href="#upload_file"
+id="toc-upload_file"><code>upload_file</code></a></li>
+<li><a href="#download_file"
+id="toc-download_file"><code>download_file</code></a></li>
+<li><a href="#list_buckets"
+id="toc-list_buckets"><code>list_buckets</code></a></li>
+<li><a href="#list_objects_v2"
+id="toc-list_objects_v2"><code>list_objects_v2</code></a></li>
+<li><a href="#get_object"
+id="toc-get_object"><code>get_object</code></a></li>
 </ul></li>
-<li><a href="#s3-resource">S3 resource</a>
+<li><a href="#s3-resource" id="toc-s3-resource">S3 resource</a>
 <ul>
-<li><a href="#upload-files">upload files</a></li>
-<li><a href="#download-files">download files</a></li>
-<li><a href="#list-buckets">list buckets</a></li>
-<li><a href="#list-objects">list objects</a></li>
+<li><a href="#upload-files" id="toc-upload-files">upload files</a></li>
+<li><a href="#download-files" id="toc-download-files">download
+files</a></li>
+<li><a href="#list-buckets" id="toc-list-buckets">list buckets</a></li>
+<li><a href="#list-objects" id="toc-list-objects">list objects</a></li>
 </ul></li>
-<li><a href="#s3-helpers">S3 helpers</a></li>
-<li><a href="#ec2">EC2</a>
+<li><a href="#s3-helpers" id="toc-s3-helpers">S3 helpers</a></li>
+<li><a href="#ec2" id="toc-ec2">EC2</a>
 <ul>
-<li><a href="#instance-info">instance info</a></li>
+<li><a href="#instance-info" id="toc-instance-info">instance
+info</a></li>
 </ul></li>
 </ul>
 </div>
 
 <hr />
 <blockquote>
-<p>the Amazon Web Services (AWS) SDK for Python - enables Python developers to create, configure, and manage AWS services, such as EC2 and S3</p>
+<p>the Amazon Web Services (AWS) SDK for Python - enables Python
+developers to create, configure, and manage AWS services, such as EC2
+and S3</p>
 </blockquote>
 <hr />
 <ul>
-<li><a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3" class="uri">https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3</a></li>
-<li><a href="https://realpython.com/python-boto3-aws-s3" class="uri">https://realpython.com/python-boto3-aws-s3</a></li>
+<li><a
+href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3"
+class="uri">https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3</a></li>
+<li><a href="https://realpython.com/python-boto3-aws-s3"
+class="uri">https://realpython.com/python-boto3-aws-s3</a></li>
 </ul>
 <hr />
 <div id="faqs" class="section level2">
@@ -697,10 +689,11 @@ $(document).ready(function () {
 </div>
 <div id="setup" class="section level2">
 <h2>setup</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install boto3</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> boto3</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>boto3.__version__</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  &#39;1.14.58&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">pip</span> install boto3</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="im">import</span> boto3</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>boto3.__version__</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co">#  &#39;1.15.17&#39;</span></span></code></pre></div>
 <hr />
 </div>
 <div id="basics" class="section level2">
@@ -732,126 +725,144 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<p>However you can access all the client methods from the resource via <code>resource.meta.client</code>.</p>
+<p>However you can access all the client methods from the resource via
+<code>resource.meta.client</code>.</p>
 <hr />
 </div>
 <div id="s3-client" class="section level2">
 <h2>S3 client</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>s3 <span class="op">=</span> boto3.client(<span class="st">&#39;s3&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>s3 <span class="op">=</span> boto3.client(<span class="st">&#39;s3&#39;</span>)</span></code></pre></div>
 <div id="upload_file" class="section level3">
 <h3><code>upload_file</code></h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>s3.upload_file(Filename<span class="op">=</span><span class="st">&#39;./temp1.csv&#39;</span>, Bucket<span class="op">=</span><span class="st">&#39;kidneypy&#39;</span>, Key<span class="op">=</span><span class="st">&#39;temp1.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>s3.upload_file(Filename<span class="op">=</span><span class="st">&#39;./temp1.csv&#39;</span>, Bucket<span class="op">=</span><span class="st">&#39;kidneypy&#39;</span>, Key<span class="op">=</span><span class="st">&#39;temp1.csv&#39;</span>)</span></code></pre></div>
 </div>
 <div id="download_file" class="section level3">
 <h3><code>download_file</code></h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>s3.download_file(Bucket<span class="op">=</span><span class="st">&#39;kidneypy&#39;</span>, Key<span class="op">=</span><span class="st">&#39;temp1.csv&#39;</span>, Filename<span class="op">=</span><span class="st">&#39;/tmp/temp1.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>s3.download_file(Bucket<span class="op">=</span><span class="st">&#39;kidneypy&#39;</span>, Key<span class="op">=</span><span class="st">&#39;temp1.csv&#39;</span>, Filename<span class="op">=</span><span class="st">&#39;/tmp/temp1.csv&#39;</span>)</span></code></pre></div>
 </div>
 <div id="list_buckets" class="section level3">
 <h3><code>list_buckets</code></h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>obj <span class="op">=</span> s3.list_buckets()</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pprint(obj[<span class="st">&#39;Buckets&#39;</span>])</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>[x[<span class="st">&#39;Name&#39;</span>] <span class="cf">for</span> x <span class="kw">in</span> obj[<span class="st">&#39;Buckets&#39;</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>obj <span class="op">=</span> s3.list_buckets()</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>pprint(obj[<span class="st">&#39;Buckets&#39;</span>])</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>[x[<span class="st">&#39;Name&#39;</span>] <span class="cf">for</span> x <span class="kw">in</span> obj[<span class="st">&#39;Buckets&#39;</span>]]</span></code></pre></div>
 </div>
 <div id="list_objects_v2" class="section level3">
 <h3><code>list_objects_v2</code></h3>
 <div id="files" class="section level4">
 <h4>Files</h4>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>obj <span class="op">=</span> s3.list_objects_v2(Bucket<span class="op">=</span><span class="st">&#39;kidneypy&#39;</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(obj[<span class="st">&#39;Contents&#39;</span>])</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(obj[<span class="st">&#39;Contents&#39;</span>])</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>pprint(obj[<span class="st">&#39;Contents&#39;</span>][<span class="dv">0</span>])</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>pprint([x[<span class="st">&#39;Key&#39;</span>] <span class="cf">for</span> x <span class="kw">in</span> obj[<span class="st">&#39;Contents&#39;</span>]])</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>pprint([x[<span class="st">&#39;LastModified&#39;</span>] <span class="cf">for</span> x <span class="kw">in</span> obj[<span class="st">&#39;Contents&#39;</span>]])</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>pprint([x[<span class="st">&#39;Size&#39;</span>] <span class="cf">for</span> x <span class="kw">in</span> obj[<span class="st">&#39;Contents&#39;</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>obj <span class="op">=</span> s3.list_objects_v2(Bucket<span class="op">=</span><span class="st">&#39;kidneypy&#39;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="bu">type</span>(obj[<span class="st">&#39;Contents&#39;</span>])</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="bu">len</span>(obj[<span class="st">&#39;Contents&#39;</span>])</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>pprint(obj[<span class="st">&#39;Contents&#39;</span>][<span class="dv">0</span>])</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>pprint([x[<span class="st">&#39;Key&#39;</span>] <span class="cf">for</span> x <span class="kw">in</span> obj[<span class="st">&#39;Contents&#39;</span>]])</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>pprint([x[<span class="st">&#39;LastModified&#39;</span>] <span class="cf">for</span> x <span class="kw">in</span> obj[<span class="st">&#39;Contents&#39;</span>]])</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>pprint([x[<span class="st">&#39;Size&#39;</span>] <span class="cf">for</span> x <span class="kw">in</span> obj[<span class="st">&#39;Contents&#39;</span>]])</span></code></pre></div>
 </div>
 <div id="folders" class="section level4">
 <h4>Folders</h4>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span> <span class="op">=</span> s3.list_objects_v2(Bucket<span class="op">=</span>bucket,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                          Prefix<span class="op">=</span>key.rstrip(<span class="st">&#39;/&#39;</span>) <span class="op">+</span> <span class="st">&#39;/&#39;</span>,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                          Delimiter<span class="op">=</span><span class="st">&#39;/&#39;</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                          MaxKeys<span class="op">=</span><span class="bu">int</span>(<span class="fl">1e6</span>))[<span class="st">&#39;CommonPrefixes&#39;</span>]</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>s3_folders <span class="op">=</span> [os.path.basename(os.path.dirname(x[<span class="st">&#39;Prefix&#39;</span>]))</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>              <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">list</span>]</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>pprint(s3_folders)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="bu">list</span> <span class="op">=</span> s3.list_objects_v2(Bucket<span class="op">=</span>bucket,</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>                          Prefix<span class="op">=</span>key.rstrip(<span class="st">&#39;/&#39;</span>) <span class="op">+</span> <span class="st">&#39;/&#39;</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>                          Delimiter<span class="op">=</span><span class="st">&#39;/&#39;</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>                          MaxKeys<span class="op">=</span><span class="bu">int</span>(<span class="fl">1e6</span>))[<span class="st">&#39;CommonPrefixes&#39;</span>]</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>s3_folders <span class="op">=</span> [os.path.basename(os.path.dirname(x[<span class="st">&#39;Prefix&#39;</span>]))</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>              <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">list</span>]</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>pprint(s3_folders)</span></code></pre></div>
 </div>
 </div>
 <div id="get_object" class="section level3">
 <h3><code>get_object</code></h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>obj <span class="op">=</span> s3.get_object(Bucket<span class="op">=</span><span class="st">&#39;kidneypy&#39;</span>, Key<span class="op">=</span><span class="st">&#39;temp1.csv&#39;</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># as string</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>obj[<span class="st">&#39;Body&#39;</span>].read().decode(<span class="st">&#39;utf-8&#39;</span>) </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># as df</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>pd.read_csv(obj[<span class="st">&#39;Body&#39;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>obj <span class="op">=</span> s3.get_object(Bucket<span class="op">=</span><span class="st">&#39;kidneypy&#39;</span>, Key<span class="op">=</span><span class="st">&#39;temp1.csv&#39;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># as string</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>obj[<span class="st">&#39;Body&#39;</span>].read().decode(<span class="st">&#39;utf-8&#39;</span>) </span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co"># as df</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>pd.read_csv(obj[<span class="st">&#39;Body&#39;</span>])</span></code></pre></div>
 <hr />
 </div>
 </div>
 <div id="s3-resource" class="section level2">
 <h2>S3 resource</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>s3 <span class="op">=</span> boto3.resource(<span class="st">&#39;s3&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>s3 <span class="op">=</span> boto3.resource(<span class="st">&#39;s3&#39;</span>)</span></code></pre></div>
 <div id="upload-files" class="section level3">
 <h3>upload files</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bucket instance</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>bucket_instance <span class="op">=</span> s3.Bucket(<span class="st">&#39;kidneypy&#39;</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>bucket_instance.upload_file(Filename<span class="op">=</span><span class="st">&#39;./temp2.csv&#39;</span>, Key<span class="op">=</span><span class="st">&#39;temp2.csv&#39;</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># object instance</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>object_instance <span class="op">=</span> s3.Object(<span class="st">&#39;kidneypy&#39;</span>, key<span class="op">=</span><span class="st">&#39;temp3.csv&#39;</span>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>object_instance.upload_file(Filename<span class="op">=</span><span class="st">&#39;./temp3.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># bucket instance</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>bucket_instance <span class="op">=</span> s3.Bucket(<span class="st">&#39;kidneypy&#39;</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>bucket_instance.upload_file(Filename<span class="op">=</span><span class="st">&#39;./temp2.csv&#39;</span>, Key<span class="op">=</span><span class="st">&#39;temp2.csv&#39;</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co"># object instance</span></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>object_instance <span class="op">=</span> s3.Object(<span class="st">&#39;kidneypy&#39;</span>, key<span class="op">=</span><span class="st">&#39;temp3.csv&#39;</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>object_instance.upload_file(Filename<span class="op">=</span><span class="st">&#39;./temp3.csv&#39;</span>)</span></code></pre></div>
 </div>
 <div id="download-files" class="section level3">
 <h3>download files</h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bucket instance</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>bucket_instance <span class="op">=</span> s3.Bucket(<span class="st">&#39;kidneypy&#39;</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>bucket_instance.download_file(Key<span class="op">=</span><span class="st">&#39;temp2.csv&#39;</span>, Filename<span class="op">=</span><span class="st">&#39;/tmp/temp2.csv&#39;</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># object instance</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>object_instance <span class="op">=</span> s3.Object(<span class="st">&#39;kidneypy&#39;</span>, key<span class="op">=</span><span class="st">&#39;temp3.csv&#39;</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>object_instance.download_file(<span class="st">&#39;/tmp/temp3.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># bucket instance</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>bucket_instance <span class="op">=</span> s3.Bucket(<span class="st">&#39;kidneypy&#39;</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>bucket_instance.download_file(Key<span class="op">=</span><span class="st">&#39;temp2.csv&#39;</span>, Filename<span class="op">=</span><span class="st">&#39;/tmp/temp2.csv&#39;</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co"># object instance</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>object_instance <span class="op">=</span> s3.Object(<span class="st">&#39;kidneypy&#39;</span>, key<span class="op">=</span><span class="st">&#39;temp3.csv&#39;</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>object_instance.download_file(<span class="st">&#39;/tmp/temp3.csv&#39;</span>)</span></code></pre></div>
 </div>
 <div id="list-buckets" class="section level3">
 <h3>list buckets</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>[bucket.name <span class="cf">for</span> bucket <span class="kw">in</span> s3.buckets.<span class="bu">all</span>()]</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>[bucket.name <span class="cf">for</span> bucket <span class="kw">in</span> s3.buckets.<span class="bu">all</span>()]</span></code></pre></div>
 </div>
 <div id="list-objects" class="section level3">
 <h3>list objects</h3>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>obj <span class="op">=</span> s3.Bucket(<span class="st">&#39;kidneypy&#39;</span>).objects.<span class="bu">all</span>()</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>[x.key <span class="cf">for</span> x <span class="kw">in</span> obj]</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>[x.last_modified <span class="cf">for</span> x <span class="kw">in</span> obj]</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>[x.size <span class="cf">for</span> x <span class="kw">in</span> obj]</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>obj <span class="op">=</span> s3.Bucket(<span class="st">&#39;kidneypy&#39;</span>).objects.<span class="bu">all</span>()</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>[x.key <span class="cf">for</span> x <span class="kw">in</span> obj]</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>[x.last_modified <span class="cf">for</span> x <span class="kw">in</span> obj]</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>[x.size <span class="cf">for</span> x <span class="kw">in</span> obj]</span></code></pre></div>
 <hr />
 </div>
 </div>
 <div id="s3-helpers" class="section level2">
 <h2>S3 helpers</h2>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_bucket_and_key(s3_path):</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  bucket, prefix <span class="op">=</span> s3_path.lstrip(<span class="st">&#39;s3://&#39;</span>).split(<span class="st">&#39;/&#39;</span>, <span class="dv">1</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> bucket, prefix</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>bucket, key <span class="op">=</span> get_bucket_and_key(s3_path)</span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> list_folders(bucket, prefix, max_keys<span class="op">=</span><span class="bu">int</span>(<span class="fl">1e6</span>)):</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    objects <span class="op">=</span> s3.list_objects_v2(</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        Bucket<span class="op">=</span>bucket,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        Prefix<span class="op">=</span>prefix.rstrip(<span class="st">&#39;/&#39;</span>) <span class="op">+</span> <span class="st">&#39;/&#39;</span>,</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        Delimiter<span class="op">=</span><span class="st">&#39;/&#39;</span>,</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        MaxKeys<span class="op">=</span>max_keys)[<span class="st">&#39;CommonPrefixes&#39;</span>]</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    folders <span class="op">=</span> [os.path.basename(os.path.dirname(x[<span class="st">&#39;Prefix&#39;</span>])) </span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>               <span class="cf">for</span> x <span class="kw">in</span> objects]</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> folders</span></code></pre></div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> list_files(bucket, prefix, max_keys<span class="op">=</span><span class="bu">int</span>(<span class="fl">1e6</span>)):</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    objects <span class="op">=</span> s3.list_objects_v2(</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        Bucket<span class="op">=</span>bucket,</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        Prefix<span class="op">=</span>prefix,</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        MaxKeys<span class="op">=</span>max_keys)[<span class="st">&#39;Contents&#39;</span>]</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> [os.path.basename(os.path.dirname(x[<span class="st">&#39;Key&#39;</span>])) </span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> x <span class="kw">in</span> objects]</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> files</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="kw">def</span> get_bucket_and_key(s3_path):</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  bucket, prefix <span class="op">=</span> s3_path.lstrip(<span class="st">&#39;s3://&#39;</span>).split(<span class="st">&#39;/&#39;</span>, <span class="dv">1</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="cf">return</span> bucket, prefix</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>bucket, key <span class="op">=</span> get_bucket_and_key(s3_path)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="kw">def</span> list_folders(bucket, prefix, max_keys<span class="op">=</span><span class="bu">int</span>(<span class="fl">1e6</span>)):</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>    objects <span class="op">=</span> s3.list_objects_v2(</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>        Bucket<span class="op">=</span>bucket,</span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>        Prefix<span class="op">=</span>prefix.rstrip(<span class="st">&#39;/&#39;</span>) <span class="op">+</span> <span class="st">&#39;/&#39;</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>        Delimiter<span class="op">=</span><span class="st">&#39;/&#39;</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>        MaxKeys<span class="op">=</span>max_keys)[<span class="st">&#39;CommonPrefixes&#39;</span>]</span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>    folders <span class="op">=</span> [os.path.basename(os.path.dirname(x[<span class="st">&#39;Prefix&#39;</span>])) </span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>               <span class="cf">for</span> x <span class="kw">in</span> objects]</span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a>    <span class="cf">return</span> folders</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="kw">def</span> list_files(bucket, prefix, max_keys<span class="op">=</span><span class="bu">int</span>(<span class="fl">1e6</span>)):</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>    objects <span class="op">=</span> s3.list_objects_v2(</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>        Bucket<span class="op">=</span>bucket,</span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>        Prefix<span class="op">=</span>prefix,</span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>        MaxKeys<span class="op">=</span>max_keys)[<span class="st">&#39;Contents&#39;</span>]</span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>    files <span class="op">=</span> [os.path.basename(os.path.dirname(x[<span class="st">&#39;Key&#39;</span>])) </span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a>            <span class="cf">for</span> x <span class="kw">in</span> objects]</span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a>    <span class="cf">return</span> files</span></code></pre></div>
 <hr />
 </div>
 <div id="ec2" class="section level2">
 <h2>EC2</h2>
 <ul>
-<li><a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2" class="uri">https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2</a></li>
+<li><a
+href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2"
+class="uri">https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2</a></li>
 </ul>
 <div id="instance-info" class="section level3">
 <h3>instance info</h3>
@@ -885,7 +896,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

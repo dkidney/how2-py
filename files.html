@@ -13,23 +13,50 @@
 
 <title>files</title>
 
-<script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -93,13 +120,20 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -107,39 +141,9 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
   }
 })();
 </script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 <link rel="stylesheet" href="_style.css" type="text/css" />
 
@@ -150,10 +154,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -170,40 +170,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -231,7 +207,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -243,7 +219,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -253,11 +229,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -269,13 +262,12 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -283,16 +275,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -336,7 +321,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -346,7 +331,7 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     topics
      
     <span class="caret"></span>
@@ -403,7 +388,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     std
      
     <span class="caret"></span>
@@ -423,6 +408,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="enum.html">enum</a>
+    </li>
+    <li>
+      <a href="glob.html">glob</a>
     </li>
     <li>
       <a href="itertools.html">itertools</a>
@@ -467,12 +455,15 @@ $(document).ready(function () {
       <a href="urllib.html">urllib</a>
     </li>
     <li>
+      <a href="uuid.html">uuid</a>
+    </li>
+    <li>
       <a href="xml.html">xml</a>
     </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     ds
      
     <span class="caret"></span>
@@ -493,6 +484,9 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="keras.html">keras</a>
+    </li>
+    <li>
+      <a href="xgboost.html">xgboost</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -530,7 +524,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     misc
      
     <span class="caret"></span>
@@ -545,10 +539,16 @@ $(document).ready(function () {
     <li>
       <a href="databases.html">databases</a>
     </li>
+    <li>
+      <a href="packages.html">packages</a>
+    </li>
+    <li>
+      <a href="sphinx.html">sphinx</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     envs
      
     <span class="caret"></span>
@@ -583,7 +583,7 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     how2
      
     <span class="caret"></span>
@@ -593,10 +593,13 @@ $(document).ready(function () {
       <a href="https://dkidney.github.io/how2-cli/">how2-cli</a>
     </li>
     <li>
-      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
+      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
     </li>
     <li>
-      <a href="https://dkidney.github.io/how2-r/">how2-r</a>
+      <a href="https://dkidney.github.io/how2-sc/">how2-sc</a>
+    </li>
+    <li>
+      <a href="https://dkidney.github.io/how2-sql/">how2-sql</a>
     </li>
   </ul>
 </li>
@@ -617,7 +620,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -627,28 +630,31 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#reading">reading</a>
+<li><a href="#reading" id="toc-reading">reading</a>
 <ul>
-<li><a href="#read">read</a></li>
-<li><a href="#readline">readline</a></li>
-<li><a href="#readlines">readlines</a></li>
+<li><a href="#read" id="toc-read">read</a></li>
+<li><a href="#readline" id="toc-readline">readline</a></li>
+<li><a href="#readlines" id="toc-readlines">readlines</a></li>
 </ul></li>
-<li><a href="#writing">writing</a>
+<li><a href="#writing" id="toc-writing">writing</a>
 <ul>
-<li><a href="#write">write</a></li>
-<li><a href="#writelines">writelines</a></li>
+<li><a href="#write" id="toc-write">write</a></li>
+<li><a href="#writelines" id="toc-writelines">writelines</a></li>
 </ul></li>
-<li><a href="#copying">copying</a></li>
-<li><a href="#misc">misc</a></li>
+<li><a href="#copying" id="toc-copying">copying</a></li>
+<li><a href="#misc" id="toc-misc">misc</a></li>
 </ul>
 </div>
 
 <hr />
 <ul>
-<li><a href="https://www.datacamp.com/community/tutorials/reading-writing-files-python" class="uri">https://www.datacamp.com/community/tutorials/reading-writing-files-python</a></li>
+<li><a
+href="https://www.datacamp.com/community/tutorials/reading-writing-files-python"
+class="uri">https://www.datacamp.com/community/tutorials/reading-writing-files-python</a></li>
 </ul>
 <hr />
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>fh <span class="op">=</span> <span class="bu">open</span>(filepath, mode) <span class="co"># returns a file object called a handle</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>fh <span class="op">=</span> <span class="bu">open</span>(filepath, mode) <span class="co"># returns a file object called a handle</span></span></code></pre></div>
 <table>
 <colgroup>
 <col width="50%" />
@@ -667,15 +673,18 @@ $(document).ready(function () {
 </tr>
 <tr class="even">
 <td>w</td>
-<td>Write; creates a new file (erasing the data for any file with the same name)</td>
+<td>Write; creates a new file (erasing the data for any file with the
+same name)</td>
 </tr>
 <tr class="odd">
 <td>x</td>
-<td>Write; creates a new file, but fails if the file path already exists</td>
+<td>Write; creates a new file, but fails if the file path already
+exists</td>
 </tr>
 <tr class="even">
 <td>a</td>
-<td>Append to existing file (create the file if it does not already exist)</td>
+<td>Append to existing file (create the file if it does not already
+exist)</td>
 </tr>
 <tr class="odd">
 <td>r+</td>
@@ -687,90 +696,103 @@ $(document).ready(function () {
 </tr>
 <tr class="odd">
 <td>t</td>
-<td>Text mode for files (automatically decoding bytes to Unicode). This is the default if not specified. Add t to other modes to use this (i.e., ‘rt’ or ‘xt’)</td>
+<td>Text mode for files (automatically decoding bytes to Unicode). This
+is the default if not specified. Add t to other modes to use this (i.e.,
+‘rt’ or ‘xt’)</td>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&#39;line 1\nline 2\nline 3&#39;</span> <span class="op">&gt;</span> temp.txt</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="fu">cat</span> temp.txt</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="co">#  line 1</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="co">#  line 2</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="co">#  line 3</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>fh <span class="op">=</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>fh.name</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="co">#  &#39;temp.txt&#39;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>fh.mode</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="co">#  &#39;r&#39;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>fh.close()</span></code></pre></div>
-<p>Using <code>with</code> means you don’t have to explicitly close the file hand.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>    ...</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&#39;line 1\nline 2\nline 3&#39;</span> <span class="op">&gt;</span> temp.txt</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">cat</span> temp.txt</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co">#  line 1</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co">#  line 2</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co">#  line 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>fh <span class="op">=</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>fh.name</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>fh.mode</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>fh.close()</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#  &#39;temp.txt&#39;</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#  &#39;r&#39;</span></span></code></pre></div>
+<p>Using <code>with</code> means you don’t have to explicitly close the
+file hand.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>    ...</span></code></pre></div>
 <hr />
 <div id="reading" class="section level2">
 <h2>reading</h2>
 <div id="read" class="section level3">
 <h3>read</h3>
 <p>Reads everything by default - returns a string.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>    out <span class="op">=</span> fh.read()</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>out</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="co">#  &#39;line 1\nline 2\nline 3\n&#39;</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="bu">print</span>(out)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="co">#  line 1</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="co">#  line 2</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a><span class="co">#  line 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>    out <span class="op">=</span> fh.read()</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>out</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="bu">print</span>(out)</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#  &#39;line 1\nline 2\nline 3\n&#39;</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#  line 1</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#  line 2</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#  line 3</span></span></code></pre></div>
 <p>Specify the number of characters to read</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>    out <span class="op">=</span> fh.read(<span class="dv">2</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="bu">print</span>(out)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="co">#  li</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>    out <span class="op">=</span> fh.read(<span class="dv">2</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="bu">print</span>(out)</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co">#  li</span></span></code></pre></div>
 </div>
 <div id="readline" class="section level3">
 <h3>readline</h3>
 <p>Reads one line at a time</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(), end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(), end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(), end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="co">#  line 1</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a><span class="co">#  line 2</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="co">#  line 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>    <span class="bu">print</span>(fh.readline(), end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>    <span class="bu">print</span>(fh.readline(), end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>    <span class="bu">print</span>(fh.readline(), end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#  line 1</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#  line 2</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#  line 3</span></span></code></pre></div>
 <p>Specify the number of characters to print</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">3</span>))</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">4</span>))</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">3</span>))</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">4</span>))</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">3</span>))</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">4</span>))</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a><span class="co">#  lin</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a><span class="co">#  e 1</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a><span class="co">#  </span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true"></a><span class="co">#  lin</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true"></a><span class="co">#  e 2</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true"></a><span class="co">#  </span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true"></a><span class="co">#  lin</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true"></a><span class="co">#  e 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">3</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">4</span>))</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">3</span>))</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">4</span>))</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">3</span>))</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>    <span class="bu">print</span>(fh.readline(<span class="dv">4</span>))</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#  lin</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#  e 1</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#  </span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">#  lin</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="co">#  e 2</span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#  </span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co">#  lin</span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#  e 3</span></span></code></pre></div>
 <p>Alternatively,</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>    <span class="cf">for</span> line <span class="kw">in</span> fh:</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>        <span class="bu">print</span>(line, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a><span class="co">#  line 1</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a><span class="co">#  line 2</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a><span class="co">#  line 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> fh:</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>        <span class="bu">print</span>(line, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co">#  line 1</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co">#  line 2</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co">#  line 3</span></span></code></pre></div>
 </div>
 <div id="readlines" class="section level3">
 <h3>readlines</h3>
-<p>Reads everything and returns a list of strings (one line per element).</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>    out <span class="op">=</span> fh.readlines()</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="bu">print</span>(out)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="co">#  [&#39;line 1\n&#39;, &#39;line 2\n&#39;, &#39;line 3\n&#39;]</span></span></code></pre></div>
+<p>Reads everything and returns a list of strings (one line per
+element).</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>    out <span class="op">=</span> fh.readlines()</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="bu">print</span>(out)</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co">#  [&#39;line 1\n&#39;, &#39;line 2\n&#39;, &#39;line 3\n&#39;]</span></span></code></pre></div>
 <p>Specify the number of lines to read</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>    out <span class="op">=</span> fh.readlines(<span class="dv">2</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a><span class="bu">print</span>(out)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="co">#  [&#39;line 1\n&#39;]</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>    out <span class="op">=</span> fh.readlines(<span class="dv">2</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="bu">print</span>(out)</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co">#  [&#39;line 1\n&#39;]</span></span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -778,33 +800,35 @@ $(document).ready(function () {
 <h2>writing</h2>
 <div id="write" class="section level3">
 <h3>write</h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;a&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>    fh.write(<span class="st">&quot;line 4</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>    fh.write(<span class="st">&quot;line 5</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a><span class="co">#  7</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a><span class="co">#  7</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a>    <span class="bu">print</span>(fh.read())</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a><span class="co">#  line 1</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true"></a><span class="co">#  line 2</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true"></a><span class="co">#  line 3</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true"></a><span class="co">#  line 4</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true"></a><span class="co">#  line 5</span></span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>lines <span class="op">=</span> [<span class="st">&#39;line 6</span><span class="ch">\n</span><span class="st">&#39;</span>, <span class="st">&#39;line 7</span><span class="ch">\n</span><span class="st">&#39;</span>]</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;a&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>    <span class="cf">for</span> line <span class="kw">in</span> lines:</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a>        fh.write(line)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a><span class="co">#  7</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a><span class="co">#  7</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a>    <span class="bu">print</span>(fh.read())</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true"></a><span class="co">#  line 1</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true"></a><span class="co">#  line 2</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true"></a><span class="co">#  line 3</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true"></a><span class="co">#  line 4</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true"></a><span class="co">#  line 5</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true"></a><span class="co">#  line 6</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true"></a><span class="co">#  line 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;a&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>    fh.write(<span class="st">&quot;line 4</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>    fh.write(<span class="st">&quot;line 5</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>    <span class="bu">print</span>(fh.read())</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="co">#  7</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co">#  7</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="co">#  line 1</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="co">#  line 2</span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co">#  line 3</span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="co">#  line 4</span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="co">#  line 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>lines <span class="op">=</span> [<span class="st">&#39;line 6</span><span class="ch">\n</span><span class="st">&#39;</span>, <span class="st">&#39;line 7</span><span class="ch">\n</span><span class="st">&#39;</span>]</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;a&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> lines:</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>        fh.write(line)</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>    <span class="bu">print</span>(fh.read())</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="co">#  7</span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="co">#  7</span></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="co">#  line 1</span></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a><span class="co">#  line 2</span></span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="co">#  line 3</span></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="co">#  line 4</span></span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="co">#  line 5</span></span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="co">#  line 6</span></span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a><span class="co">#  line 7</span></span></code></pre></div>
 </div>
 <div id="writelines" class="section level3">
 <h3>writelines</h3>
@@ -813,35 +837,37 @@ $(document).ready(function () {
 </div>
 <div id="copying" class="section level2">
 <h2>copying</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> readfile:</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp2.txt&quot;</span>, <span class="st">&quot;w&quot;</span>) <span class="im">as</span> writefile:</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>        <span class="cf">for</span> line <span class="kw">in</span> readfile:</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a>            writefile.write(line)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a><span class="co">#  7</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a><span class="co">#  7</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a><span class="co">#  7</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true"></a><span class="co">#  7</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true"></a><span class="co">#  7</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true"></a><span class="co">#  7</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true"></a><span class="co">#  7</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp2.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true"></a>    <span class="bu">print</span>(fh.read())</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true"></a><span class="co">#  line 1</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true"></a><span class="co">#  line 2</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true"></a><span class="co">#  line 3</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true"></a><span class="co">#  line 4</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true"></a><span class="co">#  line 5</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true"></a><span class="co">#  line 6</span></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true"></a><span class="co">#  line 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> readfile:</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp2.txt&quot;</span>, <span class="st">&quot;w&quot;</span>) <span class="im">as</span> writefile:</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>        <span class="cf">for</span> line <span class="kw">in</span> readfile:</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>            writefile.write(line)</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&quot;temp2.txt&quot;</span>, <span class="st">&quot;r&quot;</span>) <span class="im">as</span> fh:</span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a>    <span class="bu">print</span>(fh.read())</span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co">#  7</span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co">#  7</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co">#  7</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co">#  7</span></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co">#  7</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="co">#  7</span></span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="co">#  7</span></span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="co">#  line 1</span></span>
+<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a><span class="co">#  line 2</span></span>
+<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="co">#  line 3</span></span>
+<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="co">#  line 4</span></span>
+<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="co">#  line 5</span></span>
+<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a><span class="co">#  line 6</span></span>
+<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="co">#  line 7</span></span></code></pre></div>
 <hr />
 </div>
 <div id="misc" class="section level2">
 <h2>misc</h2>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>fh.seek(offset,reference_point) <span class="co"># the reference points are 0 (the beginning of the file and is default), 1 (the current position of file) and 2 (the end of the file).</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>fh.tell()</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>fh.truncate()</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a>fh.<span class="bu">next</span>()</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a>fh.flush()</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>fh.seek(offset,reference_point) <span class="co"># the reference points are 0 (the beginning of the file and is default), 1 (the current position of file) and 2 (the end of the file).</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>fh.tell()</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>fh.truncate()</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>fh.<span class="bu">next</span>()</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>fh.flush()</span></code></pre></div>
 <hr />
 </div>
 
@@ -854,7 +880,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -872,7 +898,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
