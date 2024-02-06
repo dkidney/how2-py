@@ -15,41 +15,50 @@ editor_options:
 
 <!-- ## faqs -->
 
-<!-- ********************************************************************* -->
+*********************************************************************
 
-<!-- ## links -->
+## links
 
-<!-- * https://docs.python.org/3/library/todo -->
+* https://pipenv.pypa.io/en/latest/installation.html 
+* https://realpython.com/pipenv-guide/ 
 
-<!-- ********************************************************************* -->
+*********************************************************************
 
-<!-- ## setup -->
+## install
 
-<!-- ```sh -->
-<!-- pip install todo -->
-<!-- ``` -->
+```sh
+pip3 install pipenv --user
+```
 
-<!-- ```{python} -->
-<!-- import todo -->
-<!-- todo.__version__ -->
-<!-- ``` -->
+*********************************************************************
+
+## upgrade
+
+```sh
+pip3 install --user --upgrade pipenv
+```
+
+*********************************************************************
+
+## check version
+
+```sh
+pipenv --version 
+#pipenv, version 2023.11.17
+```
+
+*********************************************************************
+
+## manage project dependencies
+
+```sh
+cd myproject
+
+pipenv shell  # creates a virtual environment if one doesn’t already exist
+pipenv shell --/usr/local/bin/python3.12  # use a specific version
+
+pipenv install <package>
+```
 
 
-<!-- ********************************************************************* -->
 
-<!-- ## basics -->
-
-<!-- ```python -->
-<!-- # TODO -->
-<!-- ``` -->
-
-
-<!-- ********************************************************************* -->
-
-<!-- ## appendix: dir -->
-
-<!-- ```{python} -->
-<!-- from pprint import pprint -->
-<!-- import todo -->
-<!-- pprint(dir(todo)) -->
-<!-- ``` -->

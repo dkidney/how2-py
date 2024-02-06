@@ -15,13 +15,8 @@ editor_options:
 
 ## links 
 
-realpython:
-
-* [what-is-pip](https://realpython.com/what-is-pip/)  
-
-datacamp:
-
-* [python-developer-set-up](https://www.datacamp.com/community/tutorials/python-developer-set-up)  
+* https://realpython.com/what-is-pip/  
+* https://www.datacamp.com/community/tutorials/python-developer-set-up 
 
 *********************************************************************
 
@@ -45,21 +40,24 @@ see the link below if you don't have it installed:
 ### info
 
 ```{sh}
-which pip
-pip --version
+which pip3
+#/usr/local/bin/pip3
+
+pip3 --version
+#pip 24.0 from /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pip (python 3.12)
 ```
 
 ### upgrade {#upgrade-pip}
 
 ```sh
-pip install --upgrade pip
-pip install -U pip
+pip3 install --upgrade pip
+pip3 install -U pip
 ```
 
 ### help
 
 ```sh
-pip help
+pip3 help
 ```
 
 *********************************************************************
@@ -69,30 +67,30 @@ pip help
 ### install/uninstall
 
 ```sh
-pip install package-name
-pip install package-name==1.0
-pip install -U package-name # upgrade if already installed
-pip uninstall package-name
+pip3 install package-name
+pip3 install package-name==1.0
+pip3 install -U package-name # upgrade if already installed
+pip3 uninstall package-name
 ```
 
 ### requirements {#requirements}
 
 ```sh
-pip freeze # print requirements
-pip freeze > requirements.txt # create a requirements.txt file with pkg==version
-pip install -r requirements.txt # install from requirements.txt
-pip install -U -r requirements.txt # install requirements.txt and upgrade packages (if possible)
+pip3 freeze # print requirements
+pip3 freeze > requirements.txt # create a requirements.txt file with pkg==version
+pip3 install -r requirements.txt # install from requirements.txt
+pip3 install -U -r requirements.txt # install requirements.txt and upgrade packages (if possible)
 ```
 
 ### list
 
 ```sh
-pip list # list all packages 
-pip list --outdated # list all outdated packages 
+pip3 list # list all packages 
+pip3 list --outdated # list all outdated packages 
 ```
 
 ### show
 
 ```sh
-pip show package-name
+pip3 show package-name
 ```

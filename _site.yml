@@ -137,6 +137,8 @@ navbar:
         - text: "---------"
         - text: "beautifulsoup"
           href: beautifulsoup.html
+        - text: "ete3"
+          href: ete3.html
     - text: "misc"
       menu:
         - text: "airflow"

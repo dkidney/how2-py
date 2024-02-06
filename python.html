@@ -11,7 +11,7 @@
 
 
 
-<title>installing python</title>
+<title>installing python 3</title>
 
 <script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -44,6 +44,103 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -533,39 +630,53 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">installing python</h1>
+<h1 class="title toc-ignore">installing python 3</h1>
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#links" id="toc-links">links</a></li>
+<li><a href="#macos" id="toc-macos">macOS</a>
+<ul>
+<li><a href="#official-installer" id="toc-official-installer">official
+installer</a></li>
+<li><a href="#homebrew" id="toc-homebrew">homebrew</a></li>
+</ul></li>
+<li><a href="#check-installation" id="toc-check-installation">check
+installation</a></li>
+</ul>
+</div>
 
-<!-- ********************************************************************* -->
-<!-- > Headline -->
-<!-- ********************************************************************* -->
-<!-- ## faqs -->
-<!-- ********************************************************************* -->
-<!-- ## links -->
-<!-- * https://docs.python.org/3/library/todo -->
-<!-- ********************************************************************* -->
-<!-- ## setup -->
-<!-- ```sh -->
-<!-- pip install todo -->
-<!-- ``` -->
-<!-- ```{python} -->
-<!-- import todo -->
-<!-- todo.__version__ -->
-<!-- ``` -->
-<!-- ********************************************************************* -->
-<!-- ## basics -->
-<!-- ```python -->
-<!-- # TODO -->
-<!-- ``` -->
-<!-- ********************************************************************* -->
-<!-- ## appendix: dir -->
-<!-- ```{python} -->
-<!-- from pprint import pprint -->
-<!-- import todo -->
-<!-- pprint(dir(todo)) -->
-<!-- ``` -->
+<hr />
+<div id="links" class="section level2">
+<h2>links</h2>
+<ul>
+<li><a href="https://realpython.com/installing-python/"
+class="uri">https://realpython.com/installing-python/</a></li>
+<li><a href="https://opensource.com/article/19/5/python-3-default-mac"
+class="uri">https://opensource.com/article/19/5/python-3-default-mac</a></li>
+</ul>
+<hr />
+</div>
+<div id="macos" class="section level2">
+<h2>macOS</h2>
+<div id="official-installer" class="section level3">
+<h3>official installer</h3>
+<p>Download from <a href="https://www.python.org/downloads/macos/"
+class="uri">https://www.python.org/downloads/macos/</a></p>
+</div>
+<div id="homebrew" class="section level3">
+<h3>homebrew</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">brew</span> install python3</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="check-installation" class="section level2">
+<h2>check installation</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">python3</span> <span class="at">--version</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">pip3</span> <span class="at">--version</span></span></code></pre></div>
+</div>
 
 
 
