@@ -8,51 +8,51 @@ navbar:
       menu:
         - text: "python"
           href: python.html
-        - text: "pip"
-          href: pip.html
-        - text: "---------"
-        - text: "basics"
-          href: basics.html
-        - text: "strings"
-          href: strings.html
-        - text: "lists"
-          href: lists.html
-        - text: "dicts"
-          href: dicts.html
-        - text: "tuples"
-          href: tuples.html
-        - text: "sets"
-          href: sets.html
-        - text: "---------"
-        - text: "comprehensions"
-          href: comprehensions.html
-        - text: "generators"
-          href: generators.html
-        - text: "---------"
-        - text: "args and kwargs"
-          href: args_and_kwargs.html
-        # - text: "constants"
-        #   href: _todo.html
-        - text: "decorators"
-          href: decorators.html
-        - text: "documentation"
-          href: documentation.html
-        - text: "exceptions"
-          href: exceptions.html
-        - text: "files"
-          href: files.html
-        # - text: "functions"
-        #   href: _todo.html
-        - text: "oop"
-          href: oop.html
-        # - text: "profiling"
-        #   href: _todo.html
-        # - text: "scripting"
-        #   href: _todo.html
-        # - text: "testing"
-        #   href: _todo.html
-        - text: "underscores"
-          href: underscores.html
+        # - text: "pip"
+        #   href: pip.html
+        # - text: "---------"
+        # - text: "basics"
+        #   href: basics.html
+        # - text: "strings"
+        #   href: strings.html
+        # - text: "lists"
+        #   href: lists.html
+        # - text: "dicts"
+        #   href: dicts.html
+        # - text: "tuples"
+        #   href: tuples.html
+        # - text: "sets"
+        #   href: sets.html
+        # - text: "---------"
+        # - text: "comprehensions"
+        #   href: comprehensions.html
+        # - text: "generators"
+        #   href: generators.html
+        # - text: "---------"
+        # - text: "args and kwargs"
+        #   href: args_and_kwargs.html
+        # # - text: "constants"
+        # #   href: _todo.html
+        # - text: "decorators"
+        #   href: decorators.html
+        # - text: "documentation"
+        #   href: documentation.html
+        # - text: "exceptions"
+        #   href: exceptions.html
+        # - text: "files"
+        #   href: files.html
+        # # - text: "functions"
+        # #   href: _todo.html
+        # - text: "oop"
+        #   href: oop.html
+        # # - text: "profiling"
+        # #   href: _todo.html
+        # # - text: "scripting"
+        # #   href: _todo.html
+        # # - text: "testing"
+        # #   href: _todo.html
+        # - text: "underscores"
+        #   href: underscores.html
     # - text: "std"
     #   menu:
     #     - text: "argparse"
