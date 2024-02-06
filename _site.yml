@@ -53,137 +53,134 @@ navbar:
         #   href: _todo.html
         - text: "underscores"
           href: underscores.html
-    - text: "std"
-      menu:
-        - text: "argparse"
-          href: argparse.html
-        - text: "collections"
-          href: collections.html
-        - text: "configparser"
-          href: configparser.html
-        - text: "datetime"
-          href: datetime.html
-        - text: "enum"
-          href: enum.html
-        - text: "glob"
-          href: glob.html
-        - text: "itertools"
-          href: itertools.html
-        - text: "json"
-          href: json.html
-        - text: "logging"
-          href: logging.html
-        - text: "os"
-          href: os.html
-        - text: "pickle"
-          href: pickle.html
-        - text: "random"
-          href: random.html
-        - text: "re"
-          href: re.html
-        - text: "shutil"
-          href: shutil.html
-        - text: "sqlite"
-          href: sqlite.html
-        - text: "statistics"
-          href: statistics.html
-        - text: "subprocess"
-          href: subprocess.html
-        - text: "sys"
-          href: sys.html
-        - text: "unittest"
-          href: unittest.html
-        - text: "urllib"
-          href: urllib.html
-        - text: "uuid"
-          href: uuid.html
-        - text: "xml"
-          href: xml.html
-    - text: "ds"
-      menu:
-        - text: "numpy"
-          href: numpy.html
-        - text: "pandas"
-          href: pandas.html
-        - text: "scipy"
-          href: scipy.html
-        - text: "---------"
-        - text: "sklearn"
-          href: sklearn.html
-        - text: "keras"
-          href: keras.html
-        - text: "xgboost"
-          href: xgboost.html
-        - text: "---------"
-        - text: "matplotlib"
-          href: matplotlib.html
-        - text: "seaborn"
-          href: seaborn.html
-        - text: "folium"
-          href: folium.html
-        - text: "---------"
-        - text: "boto3"
-          href: boto3.html
-        - text: "pyarrow"
-          href: pyarrow.html
-        - text: "pyhocon"
-          href: pyhocon.html
-        - text: "pyspark"
-          href: pyspark.html
-        - text: "requests"
-          href: requests.html
-        - text: "xmltodict"
-          href: xmltodict.html
-        - text: "---------"
-        - text: "beautifulsoup"
-          href: beautifulsoup.html
-        - text: "ete3"
-          href: ete3.html
-    - text: "misc"
-      menu:
-        - text: "airflow"
-          href: airflow.html
-        - text: "apis"
-          href: apis.html
-        - text: "databases"
-          href: databases.html
-        # - text: "flask"
-        #   href: _todo.html
-        - text: "packages"
-          href: packages.html
-        - text: "sphinx"
-          href: sphinx.html
-    - text: "envs"
-      menu:
-        - text: "pipenv"
-          href: pipenv.html
-        - text: "conda"
-          href: conda.html
-        - text: "---------"
-        - text: "docker"
-          href: docker.html
-        # - text: "pipenv"
-        #   href: _todo.html
-        - text: "pyenv"
-          href: pyenv.html
-        # - text: "venv"
-        #   href: _todo.html
-        - text: "---------"
-        - text: "pycharm"
-          href: pycharm.html
-        # - text: "spyder"
-        #   href: _todo.html
-        - text: "---------"
-        - text: "ipython"
-          href: ipython.html
-        - text: "jupyter notebook"
-          href: jupyter.html
-        # - text: "jupyter lab"
-        #   href: _todo.html
-        # - text: "zepplin"
-        #   href: _todo.html
-        # - text: "databricks"
-        #   href: _todo.html
+    # - text: "std"
+    #   menu:
+    #     - text: "argparse"
+    #       href: argparse.html
+    #     - text: "collections"
+    #       href: collections.html
+    #     - text: "configparser"
+    #       href: configparser.html
+    #     - text: "datetime"
+    #       href: datetime.html
+    #     - text: "enum"
+    #       href: enum.html
+    #     - text: "glob"
+    #       href: glob.html
+    #     - text: "itertools"
+    #       href: itertools.html
+    #     - text: "json"
+    #       href: json.html
+    #     - text: "logging"
+    #       href: logging.html
+    #     - text: "os"
+    #       href: os.html
+    #     - text: "pickle"
+    #       href: pickle.html
+    #     - text: "random"
+    #       href: random.html
+    #     - text: "re"
+    #       href: re.html
+    #     - text: "shutil"
+    #       href: shutil.html
+    #     - text: "sqlite"
+    #       href: sqlite.html
+    #     - text: "statistics"
+    #       href: statistics.html
+    #     - text: "subprocess"
+    #       href: subprocess.html
+    #     - text: "sys"
+    #       href: sys.html
+    #     - text: "unittest"
+    #       href: unittest.html
+    #     - text: "urllib"
+    #       href: urllib.html
+    #     - text: "uuid"
+    #       href: uuid.html
+    #     - text: "xml"
+    #       href: xml.html
+    # - text: "ds"
+    #   menu:
+    #     - text: "numpy"
+    #       href: numpy.html
+    #     - text: "pandas"
+    #       href: pandas.html
+    #     - text: "scipy"
+    #       href: scipy.html
+    #     - text: "---------"
+    #     - text: "sklearn"
+    #       href: sklearn.html
+    #     - text: "keras"
+    #       href: keras.html
+    #     - text: "xgboost"
+    #       href: xgboost.html
+    #     - text: "---------"
+    #     - text: "matplotlib"
+    #       href: matplotlib.html
+    #     - text: "seaborn"
+    #       href: seaborn.html
+    #     - text: "folium"
+    #       href: folium.html
+    #     - text: "---------"
+    #     - text: "boto3"
+    #       href: boto3.html
+    #     - text: "pyarrow"
+    #       href: pyarrow.html
+    #     - text: "pyhocon"
+    #       href: pyhocon.html
+    #     - text: "pyspark"
+    #       href: pyspark.html
+    #     - text: "requests"
+    #       href: requests.html
+    #     - text: "xmltodict"
+    #       href: xmltodict.html
+    #     - text: "---------"
+    #     - text: "beautifulsoup"
+    #       href: beautifulsoup.html
+    #     - text: "ete3"
+    #       href: ete3.html
+    # - text: "misc"
+    #   menu:
+    #     - text: "airflow"
+    #       href: airflow.html
+    #     - text: "apis"
+    #       href: apis.html
+    #     - text: "databases"
+    #       href: databases.html
+    #     # - text: "flask"
+    #     #   href: _todo.html
+    #     - text: "packages"
+    #       href: packages.html
+    #     - text: "sphinx"
+    #       href: sphinx.html
+    # - text: "envs"
+    #   menu:
+    #     - text: "---------"
+    #     - text: "pycharm"
+    #       href: pycharm.html
+    #     # - text: "spyder"
+    #     #   href: _todo.html
+    #     - text: "pipenv"
+    #       href: pipenv.html
+    #     - text: "conda"
+    #       href: conda.html
+    #     - text: "pyenv"
+    #       href: pyenv.html
+    #     # - text: "venv"
+    #     #   href: _todo.html
+    #     - text: "docker"
+    #       href: docker.html
+    #     - text: "---------"
+    #     - text: "ipython"
+    #       href: ipython.html
+    #     - text: "jupyter notebook"
+    #       href: jupyter.html
+    #     # - text: "jupyter lab"
+    #     #   href: _todo.html
+    #     # - text: "zepplin"
+    #     #   href: _todo.html
+    #     # - text: "databricks"
+    #     #   href: _todo.html
   right:
     - text: "how2"
       menu:
