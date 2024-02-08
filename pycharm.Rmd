@@ -22,29 +22,39 @@ editor_options:
 
 ## install
 
+### installer
+
+https://www.jetbrains.com/pycharm/download/?section=mac
+
+### homebrew
+
 ```sh
 brew cask install pycharm-ce
 ```
 
 *********************************************************************
 
-## projects
+## set the interpreter
 
-### setting the interpreter
+### Project
 
-Four ways
+`Preferences | Project: <project name> | Python Interpreter`
 
-#### Project
-
-`Preferences | Project: * | Python Interpreter`
-
-#### Console
+### Console
 
 `Preferences | Build, Execution, Deployment | Console | Python Console`
 
-#### Run configurations
+### Terminal
 
-#### Terminal
+If you have set up pipenv then you should see the name of the environment in bracket to the left of the terminal promt. If not, just launch the pipenv shell.
+
+### Run configurations
+
+*********************************************************************
+
+## configure keyboard shortcuts
+
+
 
 *********************************************************************
 
