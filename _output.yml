@@ -1,6 +1,6 @@
 html_document:
-    highlight: haddock
-    theme: cosmo
+    #highlight: haddock
+    #theme: cosmo
     toc: true
     toc_depth: 3
     # toc_float:
