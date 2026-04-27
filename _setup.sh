@@ -1,16 +1,16 @@
 # update conda
 conda deactivate
 conda deactivate
-conda update -y --name base conda
+conda update -y -n base conda
 conda search python
 conda env list
 
 env_name=how2-py
 # conda env remove --name ${env_name}
-# conda create -y --name ${env_name} python=3.9
+conda create -y --name ${env_name} python=3
 conda activate ${env_name}
 conda update -y python
-python --version && which python
+python -V && which python
 pip install -U pip
 pip install -U -r _requirements.txt
 pip list

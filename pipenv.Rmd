@@ -1,0 +1,100 @@
+---
+title: pipenv
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r knitr_config, code=readLines("_knitr_config.R"), echo=FALSE}
+```
+
+<!-- ********************************************************************* -->
+
+<!-- > 'preferred installer program' the standard package manager for python -->
+
+*********************************************************************
+
+## links 
+
+* https://realpython.com/pipenv-guide/
+
+* https://www.jetbrains.com/help/pycharm/pipenv.html
+
+<!-- ********************************************************************* -->
+
+<!-- ## faqs -->
+
+<!-- * [upgrade pip](#upgrade-pip)   -->
+<!-- * [install packages from requirements.txt](#requirements)   -->
+
+*********************************************************************
+
+## setup
+
+### install
+
+```sh
+pip install pipenv
+```
+
+*********************************************************************
+
+## basics
+
+```sh
+# create a virtual environment
+pipenv shell
+
+# install a package into your virtual environment
+pipenv install pandas
+
+# install a package into your virtual environment just for dev purposes
+pipenv install pytest --dev
+
+# automatically detect requirements.txt and convert to a Pipfile
+pipenv install
+
+# lock your environment - create Pipfile.lock
+pipenv lock
+
+# install from Pipfile.lock
+pipenv install --ignore-pipfile
+
+# find out where your virtual environment is
+pipenv --venv
+
+# find out where your project home is
+pipenv --where
+```
+
+*********************************************************************
+
+## files
+
+### Pipfile
+
+Contains top-level dependences. E.g. 
+
+```
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+pytest = "*"
+
+[packages]
+flask = "==0.12.1"
+numpy = "*"
+requests = {git = "https://github.com/requests/requests.git", editable = true}
+
+[requires]
+python_version = "3.6"
+```
+
+### Pipfile.lock
+
+Don't need to edit this manually - it gets made when you run `pipenv lock`
+
+
+
